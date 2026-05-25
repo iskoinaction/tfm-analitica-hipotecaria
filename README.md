@@ -1,7 +1,7 @@
 # Plataforma de Analítica Avanzada del Mercado Hipotecario
 
-**Trabajo de Fin de Máster — Máster en Ciencia de Datos**  
-CaixaBank Advanced Business Analytics | 2026
+**Trabajo Fin de Máster — Master en Business Analytics, IA y ML**  
+Universidad Francisco de Vitoria | 2026
 
 Panel de datos provincial español: 52 provincias · 2005–2030 · 4.368 observaciones
 
@@ -28,7 +28,6 @@ TFM/
 │   ├── 6. pasos_web.ipynb
 │   ├── dataset_final_tfm.csv
 │   └── predicciones_provinciales_2026_2030.csv
-├── notebooks viejos/            # Versiones previas y exploración inicial
 ├── Web/                         # Aplicación Flask
 │   ├── app.py
 │   ├── demanda_models.py
@@ -90,6 +89,16 @@ El notebook `4. econometria_y_demanda_hipotecaria.ipynb` compara cinco algoritmo
 | **RF_Nac (modelo ganador)** | **7,11%** |
 
 El modelo ganador (`RF_Nac`) entrena directamente sobre el agregado nacional con medias ponderadas por población de las variables provinciales, evitando la acumulación de errores del enfoque provincial. Se añaden features de momentum: variación interanual, media móvil de 4 trimestres y diferencia.
+
+**Justificación del uso del RMSE como métrica de evaluación**
+
+En el contexto de este proyecto, las variables objetivo son magnitudes macroeconómicas con alta varianza estructural: el volumen mensual de hipotecas formalizadas puede oscilar decenas de miles de unidades según el ciclo económico, y el precio del m² varía varios cientos de euros entre trimestres en provincias con mercados tensionados. En este entorno, el RMSE (Root Mean Squared Error) es la métrica de referencia por tres razones fundamentales.
+
+En primer lugar, el RMSE penaliza de forma cuadrática los errores grandes, lo que resulta especialmente relevante en variables macroeconómicas donde los desvíos extremos tienen consecuencias asimétricas: una infraestimación severa de la demanda hipotecaria en un trimestre de expansión crediticia tiene un impacto operativo y de riesgo mucho mayor que un error moderado sostenido en el tiempo. Esta penalización cuadrática alinea la métrica con la función de pérdida real del negocio bancario.
+
+En segundo lugar, el RMSE está expresado en las mismas unidades que la variable objetivo (número de hipotecas o euros/m²), lo que facilita su interpretación directa por parte de los equipos de negocio y su comparación con las tolerancias operativas reales, a diferencia del MSE cuya escala cuadrática dificulta la lectura intuitiva.
+
+En tercer lugar, en series temporales de panel con validación temporal estricta (sin aleatorización), el RMSE se complementa con el MAPE para controlar el efecto de escala entre provincias: el MAPE permite comparar el error relativo entre Madrid (con volúmenes de hipotecas diez veces superiores a Soria) y el RMSE captura el error absoluto crítico para el modelo agregado nacional. Ambas métricas se reportan conjuntamente en el benchmarking para ofrecer una imagen completa de la capacidad predictiva.
 
 ### Fase 5 — Modelo VECM: cointegración a largo plazo
 
@@ -158,18 +167,30 @@ La aplicación web integra todos los modelos en un portal de banca digital con e
 ## Instalación y ejecución
 
 ```bash
-# Instalar dependencias
+# 1. Instalar dependencias
 pip install -r Web/requirements.txt
 
-# Configurar variables de entorno
+# 2. Crear el archivo de configuración a partir de la plantilla
 cp Web/.env.example Web/.env
-# Editar Web/.env con las credenciales correspondientes
+```
 
-# Arrancar la aplicación
+Editar `Web/.env` con los valores reales:
+
+| Variable | Descripción | Cómo obtenerla |
+|---|---|---|
+| `GEMINI_API_KEY` | API key de Google Gemini (chatbots Noa y asistente ejecutivo) | Google AI Studio: aistudio.google.com |
+| `FLASK_SECRET_KEY` | Clave secreta para las sesiones Flask | Cualquier cadena aleatoria segura (ej. `python -c "import secrets; print(secrets.token_hex(32))"`) |
+| `APP_USERNAME` | Usuario para acceder al portal | El que se desee |
+| `APP_PASSWORD` | Contraseña para acceder al portal | La que se desee |
+
+```bash
+# 3. Arrancar la aplicación
 cd Web
 python app.py
 # El portal queda disponible en http://localhost:8000
 ```
+
+> El archivo `.env` está excluido del repositorio mediante `.gitignore` y nunca se sube a GitHub. Solo se comparte la plantilla `.env.example` sin valores reales.
 
 ---
 
@@ -204,5 +225,5 @@ python app.py
 
 ## Autor
 
-Trabajo desarrollado en el contexto del Máster en Ciencia de Datos (2025–2026).  
+Trabajo desarrollado en el contexto del Master en Business Analytics, IA y ML — Universidad Francisco de Vitoria (2025–2026).  
 Contacto: iskoinaction@gmail.com
