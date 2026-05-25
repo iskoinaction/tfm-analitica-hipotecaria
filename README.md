@@ -131,7 +131,7 @@ SHAP (`TreeExplainer`) descompone la predicción variable a variable, cumpliendo
 Para alimentar el asesor con años futuros se proyectan las variables macro provinciales:
 
 - **Euribor e IPC:** se usan las Staff Projections del BCE (convergencia al 2,00–2,30% y al objetivo del 2,0%) en lugar de modelos de series temporales, cuya capacidad predictiva a más de dos años es limitada para estas variables.
-- **PIB per cápita:** SARIMAX(1,1,0)(1,1,0)₄ por provincia.
+- **PIB per cápita:** SARIMA(1,1,0)(1,1,0)₄ por provincia.
 - **Tasa de paro:** sistema de tres niveles seleccionado por criterio AIC (SARIMA con dummy COVID, ARIMA(3,1,2) con dummy, ARIMA(3,1,2) sin dummy), con un suelo estructural del 8,5% basado en la NAIRU española estimada por la OCDE.
 - **Precio del m²:** Holt-Winters con selección por backtesting de ventana expansiva sobre los últimos 8 trimestres.
 
@@ -226,4 +226,4 @@ python app.py
 ## Autor
 
 Trabajo desarrollado en el contexto del Master en Business Analytics, IA y ML — Universidad Francisco de Vitoria (2025–2026).  
-Contacto: iskoinaction@gmail.com
+Contacto: franbustos3@hotmail.es
