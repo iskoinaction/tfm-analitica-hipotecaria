@@ -128,14 +128,86 @@ SHAP (`TreeExplainer`) descompone la predicción variable a variable, cumpliendo
 
 ### Fase 7 — Proyecciones macroeconómicas 2026–2030
 
-Para alimentar el asesor con años futuros se proyectan las variables macro provinciales:
+Para alimentar el asesor con años futuros se proyectan las variables macro provinciales para las 52 provincias. Los resultados se almacenan en `predicciones_provinciales_2026_2030.csv` (8.320 filas en formato long). La elección del modelo para cada variable no es arbitraria: responde al análisis previo de las propiedades estocásticas de cada serie y a un protocolo de backtesting con ventana de entrenamiento 2005–2021 y test 2022–2025.
 
-- **Euribor e IPC:** se usan las Staff Projections del BCE (convergencia al 2,00–2,30% y al objetivo del 2,0%) en lugar de modelos de series temporales, cuya capacidad predictiva a más de dos años es limitada para estas variables.
-- **PIB per cápita:** SARIMA(1,1,0)(1,1,0)₄ por provincia.
-- **Tasa de paro:** sistema de tres niveles seleccionado por criterio AIC (SARIMA con dummy COVID, ARIMA(3,1,2) con dummy, ARIMA(3,1,2) sin dummy), con un suelo estructural del 8,5% basado en la NAIRU española estimada por la OCDE.
-- **Precio del m²:** Holt-Winters con selección por backtesting de ventana expansiva sobre los últimos 8 trimestres.
+---
 
-Los resultados se almacenan en `predicciones_provinciales_2026_2030.csv` (8.320 filas en formato long).
+#### Euribor e IPC — Proyecciones institucionales del BCE
+
+**Por qué no se modelizan.** El Euribor depende de las decisiones discrecionales del Consejo de Gobierno del BCE sobre los tipos de referencia; el IPC incorpora shocks de oferta (energía, cadenas de suministro) y tensiones geopolíticas. Ningún modelo de series temporales puede anticipar estos factores con fiabilidad: el Euribor pasó de valores negativos en 2021 a superar el 4% en 2023 en menos de 18 meses, un movimiento completamente fuera del rango de cualquier extrapolación histórica. Usar una ARIMA sobre el Euribor produciría MAPE superiores al 50% para horizontes mayores de dos años.
+
+**Decisión.** Se utilizan directamente las Staff Projections del BCE y del FMI como escenario base: Euribor convergiendo al 2,00–2,30%; IPC convergiendo al objetivo del 2,0%.
+
+---
+
+#### PIB per cápita — SARIMA(1,1,0)(1,1,0)₄ por provincia
+
+**Por qué SARIMA.** El test ADF sobre el PIB_pc nacional arroja p = 0,989 en niveles (no rechaza raíz unitaria) y p < 0,001 en primera diferencia (estacionaria): la serie es I(1). Además presenta un ciclo estacional marcado (mayor gasto en Q4 por consumo navideño). El SARIMA es el modelo canónico para series I(1) con estacionalidad: combina la diferenciación regular para eliminar la tendencia estocástica y la diferenciación estacional para eliminar el ciclo anual.
+
+**Cómo se descompone el SARIMA(1,1,0)(1,1,0)₄.** La ecuación del modelo es:
+
+```
+Φ_1(L) · Φ_1(L⁴) · (1−L) · (1−L⁴) · Y_t = c + ε_t
+```
+
+Donde cada factor tiene un rol concreto:
+
+| Factor | Expresión | Efecto |
+|---|---|---|
+| `(1−L)` | Diferencia regular | Elimina la tendencia estocástica (hace la serie I(0)) |
+| `(1−L⁴)` | Diferencia estacional | Elimina el ciclo anual: ΔY_t = Y_t − Y_{t−4} |
+| `Φ_1(L) = (1 − φ₁L)` | AR(1) regular | Captura la inercia trimestral del PIB |
+| `Φ_1(L⁴) = (1 − Φ₁L⁴)` | AR(1) estacional | Captura la inercia año a año |
+
+La doble diferenciación `(1−L)(1−L⁴)` es la firma del modelo: trabajar solo con `(1−L)` dejaría ciclos estacionales residuales; trabajar solo con `(1−L⁴)` no eliminaría la tendencia de crecimiento real. La combinación de ambas produce una serie estacionaria sobre la que el modelo AR estima los coeficientes de inercia.
+
+**Guardrail CAGR.** Una vez obtenido el forecast, se aplica una restricción económica para evitar extrapolar el boom 2022–2024:
+
+```
+CAGR_cap = min(CAGR_histórico, 4%)
+Ŷ_final  = min(Ŷ_SARIMA, Y_T · (1 + CAGR_cap)^años)
+```
+
+El CAGR histórico nacional (2005–2025) es del 2,24% anual, por lo que el cap del 4% no resulta activo en la mayoría de provincias pero evita extrapolaciones en las de mayor dinamismo reciente (Álava, Madrid). Resultados del backtesting: MAPE mediana de 7,2% sobre 8 trimestres de test; U de Theil mediana de 0,749 (supera al naive).
+
+---
+
+#### Tasa de paro — Sistema de tres niveles por provincia
+
+La tasa de paro es la variable con mayor heterogeneidad estructural entre provincias: Baleares tiene un ciclo estacional de 15 puntos porcentuales entre verano e invierno; Extremadura tiene paro estructural del 20%; Madrid ronda el 10% con muy poca variación estacional. No existe un modelo único que funcione bien en todas. Se implementa un **sistema de tres niveles** donde cada provincia recibe el modelo que minimiza su error en backtesting.
+
+**Protocolo de discriminación por provincia.** Para cada una de las 52 provincias se ejecuta el siguiente procedimiento:
+
+1. Se estiman los tres modelos candidatos sobre el periodo de entrenamiento (2005Q1–2021Q4).
+2. Se genera el forecast sobre el periodo de test (2022Q1–2025Q4, 16 trimestres) y se calcula el MAPE.
+3. Se asigna a cada provincia el nivel de modelo con menor MAPE en test.
+
+El periodo de test se fija deliberadamente en 2022–2025 (excluyendo el COVID) para evaluar los modelos en condiciones de mercado laboral normalizado. Incluir el periodo pandémico en el test penalizaría todos los modelos por un shock imposible de anticipar con información histórica.
+
+**Los tres niveles:**
+
+| Nivel | Modelo | N provincias | MAPE mediana | U₂ mediana | Criterio de asignación |
+|---|---|:---:|:---:|:---:|---|
+| 1 | SARIMA(1,0,0)(1,0,0)₄ + dummy COVID | 2 | 12,9% | 0,545 | Estacionalidad provincial fuerte + dummy mejora MAPE |
+| 2 | ARIMA(3,1,2) + dummy COVID | 17 | 12,9% | 0,713 | Dummy mejora MAPE en backtesting |
+| 3 | ARIMA(3,1,2) sin dummy | 33 | 16,9% | 1,032 | Dummy no mejora o empeora MAPE |
+| **Total** | | **52** | **15,7%** | **0,944** | |
+
+**Por qué solo 2 provincias usan SARIMA.** El SARIMA requiere que el patrón estacional sea consistente a lo largo del periodo muestral. Badajoz tiene empleo agrícola con ciclo Q3 marcado (recolecta de aceituna, tomate y fresa) que se mantiene estable 20 años. Girona tiene estacionalidad turística de verano igualmente estable. En el resto de provincias con estacionalidad turística fuerte, como Baleares, el COVID destruyó temporalmente el patrón (la amplitud del ciclo cayó de 12 a 5 puntos porcentuales en 2020–2021), lo que impide al SARIMA aprender un patrón limpio. En esos casos, el ARIMA(3,1,2) con dummy absorbe el shock COVID como un coeficiente discreto sin contaminar los parámetros de la dinámica regular.
+
+**Por qué la dummy COVID mejora solo en 17 de 52 provincias.** La dummy absorbe el shock pandémico como un nivel adicional. En las 33 provincias donde no mejora, el COVID no dejó una huella estructural detectable en la serie de paro provincial: la variable consume un grado de libertad sin reducir el error de previsión. Forzar la dummy en esas provincias empeora el MAPE al introducir un parámetro innecesario en series con pocas observaciones (~68 trimestres de entrenamiento).
+
+**Suelo estructural NAIRU del 8,5%.** Sobre el forecast de cualquiera de los tres modelos se aplica `np.clip(forecast, 8.5, None)`. El mínimo histórico del paro español fue el 7,95% en 2007Q2 —un outlier insostenible de la burbuja inmobiliaria—. La OCDE estima la NAIRU española post-reforma laboral de 2021 en el 9–10% para 2030. El suelo del 8,5% es coherente con el mínimo estructural bajo condiciones normales e impide que los modelos proyecten escenarios de pleno empleo que carecen de precedente histórico sostenido.
+
+---
+
+#### Precio del m² — Holt-Winters con amortiguación por provincia
+
+**Por qué Holt-Winters y no ARIMA.** Los modelos ARIMA estiman sus parámetros otorgando igual peso a todas las observaciones de la muestra. Para el precio del m², cuyo régimen cambió drásticamente en 2022–2024 (rally sin precedente desde 2007), esto implica que un ARIMA aprende un nivel medio histórico que infravalora la aceleración reciente. Holt-Winters asigna pesos decrecientes hacia el pasado, priorizando la información reciente, y actualiza automáticamente su estimación del nivel y la tendencia con cada nuevo dato.
+
+**Por qué la tendencia amortiguada.** El componente `damped_trend` introduce un parámetro φ ∈ (0,1) que frena la extrapolación de la pendiente actual conforme avanza el horizonte. Sin amortiguación, Holt-Winters extrapola el rally 2022–2024 indefinidamente, llegando a precios inverosímiles en 2030. Con φ estimado por MLE (en torno a 0,94 según el backtesting), la predicción frena la pendiente de forma automática respetando la rigidez estructural a la baja del mercado inmobiliario (*sticky prices*).
+
+**Selección por backtesting de ventana expansiva.** Para cada provincia se comparan Holt-Winters y Seasonal Naive sobre los últimos 8 trimestres reales. Holt-Winters gana en el 79% de las provincias (MAPE mediana 2,9%; U₂ mediana 0,634). El Seasonal Naive se mantiene como benchmark: cualquier modelo con U₂ > 1 no aportaría valor sobre repetir el mismo trimestre del año anterior.
 
 ### Fase 8 — Portal web Flask
 
