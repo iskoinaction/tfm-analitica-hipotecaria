@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VECM — Modelo de Corrección del Error | Analítica Inmobiliaria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+    <style>
+        .vecm-container {
+            max-width: 1060px;
+            margin: 2rem auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            padding: 3rem;
+        }
+        .vecm-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #eef2f5;
+        }
+        .vecm-header h1 { color: #003366; font-size: 2.3rem; margin-bottom: 0.5rem; }
+        .vecm-header p { color: #666; font-size: 1.05rem; }
+        .step-section { margin-bottom: 2.8rem; }
+        .step-section h2 {
+            color: #007BC0; font-size: 1.45rem; margin-bottom: 1rem;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .step-badge {
+            background: #007BC0; color: #fff;
+            font-size: 0.78rem; font-weight: 700;
+            padding: 0.25rem 0.7rem; border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+        .step-badge.orange { background: #FF6600; }
+        .step-badge.dark { background: #003F6C; }
+        .step-badge.green { background: #28a745; }
+        .step-badge.gold { background: #c79e0a; }
+
+        .info-card {
+            background: #f8fafc;
+            border-left: 4px solid #007BC0;
+            padding: 1.4rem 1.6rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.2rem 0;
+        }
+        .info-card.orange { border-left-color: #FF6600; background: #fff8f4; }
+        .info-card.dark   { border-left-color: #003F6C; background: #f4f7fb; }
+        .info-card.green  { border-left-color: #28a745; background: #f6fff8; }
+        .info-card.gold   { border-left-color: #c79e0a; background: #fffdf0; }
+
+        .eq-box {
+            font-family: 'Courier New', monospace;
+            background: #1e2a3a;
+            color: #a8d8ea;
+            padding: 1.4rem 1.8rem;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            line-height: 2;
+            margin: 1.2rem 0;
+            overflow-x: auto;
+        }
+        .eq-box .highlight { color: #f0c040; font-weight: 700; }
+        .eq-box .positive  { color: #5ddb91; }
+        .eq-box .negative  { color: #ff7b7b; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .stat-card {
+            background: #fff;
+            border: 1px solid #e0e8f0;
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .stat-val {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #003366;
+            margin-bottom: 0.3rem;
+        }
+        .stat-label { font-size: 0.78rem; color: #666; font-weight: 600; }
+        .stat-sub   { font-size: 0.72rem; color: #999; margin-top: 0.3rem; }
+
+        .chart-box {
+            background: #fafcff;
+            border: 1px solid #e0e8f0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .chart-box h4 {
+            font-size: 0.9rem; color: #003366; font-weight: 700;
+            margin: 0 0 1rem 0; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .charts-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        @media(max-width: 720px) { .charts-row { grid-template-columns: 1fr; } }
+
+        .variable-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2rem 0;
+            font-size: 0.9rem;
+        }
+        .variable-table th {
+            background: #003366; color: #fff;
+            padding: 0.7rem 1rem; text-align: left;
+            font-weight: 600;
+        }
+        .variable-table td {
+            padding: 0.65rem 1rem;
+            border-bottom: 1px solid #e0e8f0;
+            color: #444;
+        }
+        .variable-table tr:nth-child(even) td { background: #f8fafc; }
+        .variable-table .tag-new {
+            background: #FF6600; color: #fff;
+            font-size: 0.72rem; padding: 0.15rem 0.5rem;
+            border-radius: 3px; font-weight: 700;
+            margin-left: 6px; vertical-align: middle;
+        }
+
+        .loading-coeff {
+            display: flex; gap: 1rem; flex-wrap: wrap; margin: 1.2rem 0;
+        }
+        .alpha-card {
+            flex: 1; min-width: 180px;
+            background: #fff; border: 1.5px solid #d8e4f0;
+            border-radius: 8px; padding: 1rem 1.2rem;
+            text-align: center;
+        }
+        .alpha-card.fast { border-color: #28a745; background: #f6fff8; }
+        .alpha-card.slow { border-color: #f0a500; background: #fffbf0; }
+        .alpha-card.exog { border-color: #aaa; background: #f5f5f5; }
+        .alpha-val { font-size: 1.8rem; font-weight: 800; color: #003366; }
+        .alpha-label { font-size: 0.8rem; color: #555; margin-top: 0.3rem; }
+        .alpha-interp { font-size: 0.75rem; color: #777; margin-top: 0.5rem; }
+
+        .vs-box {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 1.5rem; margin: 1.5rem 0;
+        }
+        @media(max-width:600px) { .vs-box { grid-template-columns: 1fr; } }
+        .vs-panel {
+            background: #f8fafc; border-radius: 10px;
+            padding: 1.5rem; border: 1px solid #d8e4f0;
+        }
+        .vs-panel h4 { color: #003366; margin: 0 0 0.8rem 0; font-size: 1rem; }
+        .vs-panel ul { padding-left: 1.2rem; margin: 0; color: #555; font-size: 0.9rem; }
+        .vs-panel li { margin-bottom: 0.5rem; }
+        .vs-panel.winner { border-color: #28a745; background: #f6fff8; }
+        .vs-panel.winner h4 { color: #28a745; }
+
+        .defense-box {
+            background: #003366; color: #e8f3fc;
+            border-radius: 10px; padding: 2rem;
+            position: relative; margin: 2rem 0;
+        }
+        .defense-box::before {
+            content: "Guion de Defensa";
+            position: absolute; top: -14px; left: 24px;
+            background: #007BC0; color: #fff;
+            padding: 0.25rem 1rem; border-radius: 20px;
+            font-size: 0.8rem; font-weight: 700;
+        }
+        .defense-box blockquote {
+            border-left: 3px solid #007BC0;
+            padding-left: 1.2rem; margin: 0;
+            font-style: italic; line-height: 1.7;
+            color: #cce0f5;
+        }
+
+        hr.section-div { border: 0; height: 1px; background: #e0e8f0; margin: 2.5rem 0; }
+    </style>
+</head>
+<body>
+    <header class="header-main">
+        <div class="header-top">
+            <ul><li><a href="#" class="active">Particulares</a></li></ul>
+        </div>
+        <div class="header-middle">
+            <div class="logo">
+                <a href="/">
+                    <img src="https://www.caixabank.es/deployedfiles/common/R2016/Estaticos/images/gif/logo_laCaixa_principal.gif" alt="CaixaBank Logo">
+                </a>
+            </div>
+            <div class="header-actions">
+                <a href="/test-hipoteca" class="button button--ocher">Simulador Hipoteca</a>
+                <a href="/login_admin" class="button button--blue">Acceso Admin</a>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <ul>
+                <li><a href="/business_case">Business Case</a></li>
+                <li><a href="/">Dashboard Analítico</a></li>
+                <li><a href="/test-hipoteca">Test Viabilidad</a></li>
+                <li><a href="/hipotecas">Hipotecas</a></li>
+                <li><a href="/demanda">Demanda</a></li>
+                <li><a href="/econometria">Econometría VAR</a></li>
+                <li><a href="/vecm" class="active">VECM</a></li>
+                <li><a href="/webscrapping">WebScrapping</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+    <div class="vecm-container">
+
+        <div class="vecm-header">
+            <h1>Modelo de Corrección del Error Vectorial (VECM)</h1>
+            <p>Extensión cointegrada del VAR con una variable adicional de oferta: el Índice de Materiales de Construcción</p>
+        </div>
+
+        <!-- ─── Paso 1: Motivación ────────────────────────── -->
+        <div class="step-section">
+            <h2><span class="step-badge">Paso 1</span> ¿Por qué VECM y no VAR en diferencias?</h2>
+            <p>El VAR estimado en el Notebook 4 opera en <strong>primeras diferencias logarítmicas</strong> para garantizar la estacionariedad de las series. Sin embargo, cuando las variables son I(1) y están <em>cointegradas</em>, el VAR en diferencias comete un error de especificación: descarta la información de largo plazo contenida en el nivel de las series.</p>
+
+            <div class="vs-box">
+                <div class="vs-panel">
+                    <h4>VAR en diferencias (Notebook 4)</h4>
+                    <ul>
+                        <li>Garantiza estacionariedad diferenciando</li>
+                        <li>IRFs convergen a cero en el horizonte largo</li>
+                        <li>No captura relación de equilibrio</li>
+                        <li>Pierde información de niveles</li>
+                        <li>Adecuado si <strong>no hay cointegración</strong></li>
+                    </ul>
+                </div>
+                <div class="vs-panel winner">
+                    <h4>VECM (Notebook 4.2) — Seleccionado</h4>
+                    <ul>
+                        <li>Preserva relación de equilibrio a largo plazo</li>
+                        <li>IRFs capturan efectos permanentes</li>
+                        <li>Término de corrección del error (ECT) cuantifica la velocidad de ajuste</li>
+                        <li>Fundamentado en el <em>Teorema de Representación de Granger</em></li>
+                        <li>Adecuado cuando las series son I(1) y <strong>cointegradas</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card dark">
+                <strong>Teorema de Representación de Granger:</strong><br>
+                Si un conjunto de variables I(1) está cointegrado, siempre existe una representación VECM equivalente que preserva la relación de equilibrio. Usar VAR en diferencias cuando existe cointegración implica descartarla deliberadamente, sesgando las funciones de impulso-respuesta.
+            </div>
+        </div>
+
+        <hr class="section-div">
+
+        <!-- ─── Paso 2: Variable adicional ───────────────── -->
+        <div class="step-section">
+            <h2><span class="step-badge orange">Paso 2</span> La variable adicional: Índice de Materiales de Construcción</h2>
+            <p>El VECM amplía el sistema de 4 variables del VAR a <strong>5 variables</strong> incorporando el <code>Log_Materiales</code>. Esta decisión responde a tres argumentos teóricos y empíricos:</p>
+
+            <table class="variable-table">
+                <thead>
+                    <tr>
+                        <th>Variable</th>
+                        <th>Rol en el sistema</th>
+                        <th>Transformación</th>
+                        <th>Presencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Log_Materiales <span class="tag-new">NUEVA</span></td>
+                        <td>Coste de oferta constructiva — restricción de supply-side</td>
+                        <td>Log (I(1))</td>
+                        <td>Solo VECM</td>
+                    </tr>
+                    <tr>
+                        <td>Euribor</td>
+                        <td>Coste de financiación — totalmente exógeno (BCE)</td>
+                        <td>Nivel (I(1))</td>
+                        <td>VAR + VECM</td>
+                    </tr>
+                    <tr>
+                        <td>Log_PIB_pc</td>
+                        <td>Capacidad adquisitiva y renta permanente</td>
+                        <td>Log (I(1))</td>
+                        <td>VAR + VECM</td>
+                    </tr>
+                    <tr>
+                        <td>Log_Precio_m2</td>
+                        <td>Precio del activo — efecto riqueza y especulativo</td>
+                        <td>Log (I(1))</td>
+                        <td>VAR + VECM</td>
+                    </tr>
+                    <tr>
+                        <td>Log_Hipotecas</td>
+                        <td>Variable endógena objetivo — demanda hipotecaria</td>
+                        <td>Log (I(1))</td>
+                        <td>VAR + VECM</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-card orange">
+                <strong>¿Por qué añadir el Índice de Materiales?</strong><br><br>
+                <ol style="padding-left:1.2rem; color:#444; font-size:0.93rem; line-height:1.8;">
+                    <li><strong>Canal de transmisión de oferta:</strong> El coste de materiales determina el volumen de obra nueva. Menos obra nueva → mayor escasez → presión en precios → más hipotecas por precio unitario más alto.</li>
+                    <li><strong>Evidencia empírica:</strong> En la FEVD a horizonte de 20 trimestres, el Índice de Materiales explica el <strong>38.8%</strong> de la varianza del error de predicción de hipotecas, frente al 2.2% del Euribor.</li>
+                    <li><strong>Identificación Cholesky:</strong> Al colocarlo primero en el orden causal (más exógeno), su shock estructura correctamente el resto del sistema, evitando la endogeneidad del Euribor.</li>
+                </ol>
+            </div>
+        </div>
+
+        <hr class="section-div">
+
+        <!-- ─── Paso 3: Tests de estacionariedad ─────────── -->
+        <div class="step-section">
+            <h2><span class="step-badge dark">Paso 3</span> Tests de Estacionariedad — Todas las Variables I(1)</h2>
+            <p>Condición necesaria para el VECM: todas las variables deben ser integradas del mismo orden, I(1). El test de Dickey-Fuller Aumentado (ADF) confirma:</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-val" style="color:#dc3545;font-size:1.1rem;">p = 0.984</div>
+                    <div class="stat-label">Log_Hipotecas — nivel</div>
+                    <div class="stat-sub">p = 0.000 en 1ª diferencia → I(1)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" style="color:#dc3545;font-size:1.1rem;">p = 0.897</div>
+                    <div class="stat-label">Log_PIB_pc — nivel</div>
+                    <div class="stat-sub">p = 0.000 en 1ª diferencia → I(1)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" style="color:#dc3545;font-size:1.1rem;">p = 0.582</div>
+                    <div class="stat-label">Log_Materiales — nivel</div>
+                    <div class="stat-sub">p = 0.000 en 1ª diferencia → I(1)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" style="color:#dc3545;font-size:1.1rem;">p = 0.337</div>
+                    <div class="stat-label">Euribor — nivel</div>
+                    <div class="stat-sub">p = 0.000 en 1ª diferencia → I(1)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" style="color:#dc3545;font-size:1.1rem;">No estac.</div>
+                    <div class="stat-label">Log_Precio_m2 — nivel</div>
+                    <div class="stat-sub">Estacionaria en 1ª diferencia → I(1)</div>
+                </div>
+            </div>
+            <p style="font-size:0.87rem;color:#666;margin-top:0.5rem;">Todas las variables son I(1): la condición previa del VECM se cumple plenamente.</p>
+        </div>
+
+        <hr class="section-div">
+
+        <!-- ─── Paso 4: Test de Johansen ──────────────────── -->
+        <div class="step-section">
+            <h2><span class="step-badge green">Paso 4</span> Test de Cointegración de Johansen — Rango r = 1</h2>
+            <p>El test de Johansen determina cuántos vectores de cointegración (r) existen en el sistema. Con el estadístico de <strong>traza</strong>:</p>
+
+            <div class="info-card green">
+                <strong>Resultado del Contraste (determinístico: constante en la relación de cointegración — Caso 2):</strong><br><br>
+                <table style="width:100%;font-size:0.88rem;border-collapse:collapse;">
+                    <tr style="background:#e8f3f0;">
+                        <th style="padding:0.5rem;text-align:left;">H₀</th>
+                        <th style="padding:0.5rem;">Estadístico Traza</th>
+                        <th style="padding:0.5rem;">Valor Crítico 95%</th>
+                        <th style="padding:0.5rem;">Decisión</th>
+                    </tr>
+                    <tr>
+                        <td style="padding:0.5rem;">r = 0 (ningún vector)</td>
+                        <td style="padding:0.5rem;text-align:center;">89.14</td>
+                        <td style="padding:0.5rem;text-align:center;">76.97</td>
+                        <td style="padding:0.5rem;text-align:center;color:#28a745;font-weight:700;">Rechazada ✓</td>
+                    </tr>
+                    <tr style="background:#f8f8f8;">
+                        <td style="padding:0.5rem;">r ≤ 1 (a lo más 1)</td>
+                        <td style="padding:0.5rem;text-align:center;">44.21</td>
+                        <td style="padding:0.5rem;text-align:center;">54.07</td>
+                        <td style="padding:0.5rem;text-align:center;color:#666;">No rechazada</td>
+                    </tr>
+                </table>
+                <br>
+                <strong>Conclusión: r = 1</strong> — Existe exactamente una relación de cointegración entre las 5 variables. El sistema comparte un único atractor de largo plazo.
+            </div>
+
+            <div class="chart-box">
+                <h4>Ilustración: Estadístico de Traza vs Valor Crítico al 95%</h4>
+                <canvas id="johansen-chart" height="180"></canvas>
+            </div>
+        </div>
+
+        <hr class="section-div">
+
+        <!-- ─── Paso 5: Ecuación de largo plazo ───────────── -->
+        <div class="step-section">
+            <h2><span class="step-badge gold">Paso 5</span> Relación de Largo Plazo — Vector de Cointegración β</h2>
+            <p>Normalizado sobre <code>Log_Hipotecas</code>, el vector β define el equilibrio estructural del mercado hipotecario español:</p>
+
+            <div class="eq-box">
+                <span class="highlight">Log_Hipotecas*</span> = <span class="positive">+0.35</span> · Log_PIB_pc
+                                 <span class="positive"> +2.48</span> · Log_Precio_m2
+                                 <span class="negative"> −0.10</span> · Euribor
+                                 <span class="negative"> −1.09</span> · Log_Materiales
+            </div>
+
+            <div class="info-card gold">
+                <strong>Interpretación de los coeficientes de largo plazo:</strong><br><br>
+                <table style="width:100%;font-size:0.9rem;border-collapse:collapse;">
+                    <tr style="background:#fef9e7;">
+                        <th style="padding:0.5rem;text-align:left;border-bottom:1px solid #e8d89a;">Variable</th>
+                        <th style="padding:0.5rem;border-bottom:1px solid #e8d89a;">Coeficiente</th>
+                        <th style="padding:0.5rem;text-align:left;border-bottom:1px solid #e8d89a;">Lectura económica</th>
+                    </tr>
+                    <tr>
+                        <td style="padding:0.5rem;">Log_PIB_pc</td>
+                        <td style="padding:0.5rem;text-align:center;color:#28a745;font-weight:700;">+0.35</td>
+                        <td style="padding:0.5rem;">Elasticidad: +1% en renta per cápita → +0.35% en hipotecas</td>
+                    </tr>
+                    <tr style="background:#fef9e7;">
+                        <td style="padding:0.5rem;">Log_Precio_m2</td>
+                        <td style="padding:0.5rem;text-align:center;color:#28a745;font-weight:700;">+2.48</td>
+                        <td style="padding:0.5rem;">Efecto especulativo domina: mayores precios → más hipotecas (mayor principal)</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:0.5rem;">Euribor</td>
+                        <td style="padding:0.5rem;text-align:center;color:#dc3545;font-weight:700;">−0.10</td>
+                        <td style="padding:0.5rem;">Semi-elasticidad: +1 pp en tipos → −10% en volumen hipotecario</td>
+                    </tr>
+                    <tr style="background:#fef9e7;">
+                        <td style="padding:0.5rem;">Log_Materiales</td>
+                        <td style="padding:0.5rem;text-align:center;color:#dc3545;font-weight:700;">−1.09</td>
+                        <td style="padding:0.5rem;">+1% en costes → −1.09% en hipotecas (restricción de oferta constructiva)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="charts-row">
+                <div class="chart-box">
+                    <h4>Contribución de cada variable al equilibrio de largo plazo</h4>
+                    <canvas id="beta-chart" height="220"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h4>Signo e intensidad del impacto estructural</h4>
+                    <canvas id="elasticity-chart" height="220"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <hr class="section-div">
+
+        <!-- ─── Paso 6: Velocidades de ajuste ─────────────── -->
+        <div class="step-section">
+            <h2><span class="step-badge">Paso 6</span> Coeficientes de Carga (α) — Velocidad de Corrección</h2>
+            <p>El coeficiente α de cada variable indica qué fracción del desequilibrio respecto al nivel de largo plazo se corrige <strong>cada trimestre</strong>. Un α negativo y significativo confirma que la variable es endógena al sistema.</p>
+
+            <div class="loading-coeff">
+                <div class="alpha-card fast">
+                    <div class="alpha-val">−0.44</div>
+                    <div class="alpha-label">Log_Hipotecas (α***)</div>
+                    <div class="alpha-interp">Corrige 44% del desequilibrio cada trimestre. Semivida: 1.2 trimestres. Variable más endógena del sistema.</div>
+                </div>
+                <div class="alpha-card slow">
+                    <div class="alpha-val">−0.006</div>
+                    <div class="alpha-label">Log_Precio_m2 (α***)</div>
+                    <div class="alpha-interp">Corrección muy lenta. Semivida ~120 trimestres (30 años). Rigidez estructural del mercado inmobiliario español.</div>
+                </div>
+                <div class="alpha-card exog">
+                    <div class="alpha-val">n.s.</div>
+                    <div class="alpha-label">Euribor (α = n.s.)</div>
+                    <div class="alpha-interp">No se ajusta. El BCE no responde al desequilibrio hipotecario español. Confirma exogeneidad.</div>
+                </div>
+                <div class="alpha-card exog">
+                    <div class="alpha-val">n.s.</div>
+                    <div class="alpha-label">Log_PIB_pc (α = n.s.)</div>
+                    <div class="alpha-interp">Causalidad PIB → hipotecas, no al revés. Consistente con la teoría macroeconómica.</div>
+                </div>
+                <div class="alpha-card slow" style="min-width:160px;">
+                    <div class="alpha-val">−0.04</div>
+                    <div class="alpha-label">Log_Materiales (α†)</div>
+                    <div class="alpha-interp">Corrección débil y semi-significativa (p≈0.057). Los costes de construcción se ajustan lentamente.</div>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <h4>Velocidades de ajuste α por variable (porcentaje de desequilibrio corregido por trimestre)</h4>
+                <canvas id="alpha-chart" height="180"></canvas>
+            </div>
+        </div>
+
+        <hr class="section-div">
+
+        <!-- ─── Paso 7: FEVD ───────────────────────────────── -->
+        <div class="step-section">
+            <h2><span class="step-badge orange">Paso 7</span> Descomposición de la Varianza del Error de Predicción (FEVD) — Horizonte 20 Trimestres</h2>
+            <p>La FEVD cuantifica qué fracción de la incertidumbre en la predicción de hipotecas proviene de cada variable del sistema. A largo plazo (h=20 trimestres = 5 años):</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-val" style="color:#FF6600;">53.3%</div>
+                    <div class="stat-label">Log_Precio_m2</div>
+                    <div class="stat-sub">Conductor estructural dominante</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" style="color:#003F6C;">38.8%</div>
+                    <div class="stat-label">Log_Materiales</div>
+                    <div class="stat-sub">Restricción de oferta de largo plazo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" style="color:#007BC0;">3.0%</div>
+                    <div class="stat-label">Log_Hipotecas (propio)</div>
+                    <div class="stat-sub">Inercia autorregresiva casi nula a largo plazo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" style="color:#66C4E8;">2.6%</div>
+                    <div class="stat-label">Log_PIB_pc</div>
+                    <div class="stat-sub">Rol secundario a largo plazo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" style="color:#aaa;">2.2%</div>
+                    <div class="stat-label">Euribor</div>
+                    <div class="stat-sub">Efecto transitorio, no estructural</div>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <h4>FEVD — Fuentes de varianza en la predicción de hipotecas a 20 trimestres</h4>
+                <canvas id="fevd-chart" height="220"></canvas>
+            </div>
+
+            <div class="info-card">
+                <strong>Hallazgo clave:</strong> El Euribor explica solo el <strong>2.2%</strong> de la varianza a largo plazo. La política monetaria afecta el volumen hipotecario a corto plazo, pero son los factores de oferta (costes de construcción) y el precio del m² los que determinan la demanda estructural. Este resultado es contraintuitivo pero robusto: el mercado hipotecario español está dominado por la escasez de vivienda, no por el coste del dinero.
+            </div>
+        </div>
+
+        <hr class="section-div">
+
+        <!-- ─── Paso 8: IRF ────────────────────────────────── -->
+        <div class="step-section">
+            <h2><span class="step-badge dark">Paso 8</span> Funciones de Impulso-Respuesta (IRF) — Efectos Permanentes</h2>
+            <p>A diferencia del VAR en diferencias (donde las IRFs convergen a cero), las IRFs del VECM capturan <strong>efectos permanentes</strong> gracias a la relación de cointegración. Un shock de una desviación estándar produce desplazamientos permanentes en el nivel de largo plazo de las hipotecas.</p>
+
+            <div class="chart-box">
+                <h4>Respuesta acumulada de Log_Hipotecas ante shocks de 1σ en cada variable (20 trimestres)</h4>
+                <canvas id="irf-chart" height="260"></canvas>
+            </div>
+
+            <div class="info-card dark">
+                <strong>Diferencia crítica con el VAR en diferencias:</strong><br>
+                En el VAR de diferencias, un shock en el Euribor afecta el <em>crecimiento</em> de las hipotecas pero su efecto se disipa. En el VECM, el mismo shock desplaza permanentemente el <em>nivel</em> de hipotecas del equilibrio de largo plazo. La velocidad de retorno al equilibrio la determina α = −0.44 (44% por trimestre).
+            </div>
+        </div>
+
+        <hr class="section-div">
+
+        <!-- ─── Diagnósticos ───────────────────────────────── -->
+        <div class="step-section">
+            <h2><span class="step-badge green">Paso 9</span> Diagnósticos del Modelo</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-val" style="font-size:1.4rem;color:#28a745;">p = 0.22</div>
+                    <div class="stat-label">Portmanteau (autocorrelación)</div>
+                    <div class="stat-sub">p > 0.05 → residuos sin autocorrelación ✓</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" style="font-size:1.4rem;color:#f0a500;">p = 0.00</div>
+                    <div class="stat-label">Jarque-Bera (normalidad)</div>
+                    <div class="stat-sub">Desviación leve, aceptable en series financieras</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" style="font-size:1.4rem;color:#28a745;">I(0)</div>
+                    <div class="stat-label">ECT (ADF del término de corrección)</div>
+                    <div class="stat-sub">Estacionario → cointegración genuina ✓</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-val" style="font-size:1.4rem;color:#007BC0;">r = 1</div>
+                    <div class="stat-label">Rango de cointegración</div>
+                    <div class="stat-sub">Un único atractor de largo plazo ✓</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── Defensa ───────────────────────────────────── -->
+        <div class="defense-box">
+            <blockquote>
+                "El VECM no es simplemente una alternativa al VAR en diferencias, es el modelo correcto cuando la teoría económica predice una relación de largo plazo entre las variables y el test de Johansen la confirma estadísticamente. Ignorar la cointegración equivale a tirar información: el equilibrio de largo plazo del mercado hipotecario está codificado en el vector β y es recuperable por el modelo."<br><br>
+                "La incorporación del Índice de Materiales no fue ad hoc: responde al canal de transmisión oferta→precios→demanda, y la FEVD confirma que a 20 trimestres explica casi el 39% de la varianza hipotecaria, superando con creces al Euribor (2.2%). Omitirlo habría producido un modelo subespecificado."<br><br>
+                "El α = −0.44 de Log_Hipotecas tiene lectura inmediata: el mercado hipotecario español es extremadamente reactivo —tarda solo 1.2 trimestres en corregir la mitad de cualquier desequilibrio. El contraste con Log_Precio_m2 (semivida de 30 años) ilustra la asimetría entre la demanda (flexible) y la oferta (rígida) del mercado inmobiliario."
+            </blockquote>
+        </div>
+
+    </div>
+    </main>
+
+    <script>
+    // ── Colores CaixaBank ──
+    const CB = {
+        blue1:  '#007BC0',
+        blue2:  '#003F6C',
+        blue3:  '#66C4E8',
+        blue4:  '#004E96',
+        orange1:'#FF6600',
+        orange2:'#FF9933',
+        orange3:'#CC5200',
+        green:  '#28a745',
+        grey:   '#adb5bd',
+        gold:   '#c79e0a',
+    };
+
+    // ── Johansen chart ──
+    new Chart(document.getElementById('johansen-chart'), {
+        type: 'bar',
+        data: {
+            labels: ['H₀: r=0', 'H₀: r≤1'],
+            datasets: [
+                {
+                    label: 'Estadístico de Traza',
+                    data: [89.14, 44.21],
+                    backgroundColor: [CB.orange1, CB.blue3],
+                    borderRadius: 6,
+                },
+                {
+                    label: 'Valor Crítico 95%',
+                    data: [76.97, 54.07],
+                    backgroundColor: 'transparent',
+                    borderColor: CB.blue2,
+                    borderWidth: 2.5,
+                    type: 'line',
+                    pointStyle: 'circle',
+                    pointRadius: 6,
+                    pointBackgroundColor: CB.blue2,
+                    tension: 0,
+                },
+            ]
+        },
+        options: {
+            plugins: {
+                legend: { position: 'bottom' },
+                tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y}` } }
+            },
+            scales: {
+                y: { beginAtZero: true, title: { display: true, text: 'Valor del estadístico' } }
+            }
+        }
+    });
+
+    // ── Beta chart ──
+    new Chart(document.getElementById('beta-chart'), {
+        type: 'bar',
+        data: {
+            labels: ['Log_PIB_pc', 'Log_Precio_m2', 'Euribor', 'Log_Materiales'],
+            datasets: [{
+                label: 'Coeficiente β (normalizado)',
+                data: [0.35, 2.48, -0.10, -1.09],
+                backgroundColor: [CB.green, CB.orange1, CB.grey, CB.blue2],
+                borderRadius: 6,
+            }]
+        },
+        options: {
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { title: { display: true, text: 'Elasticidad / Semi-elasticidad' } }
+            }
+        }
+    });
+
+    // ── Elasticity radial chart ──
+    new Chart(document.getElementById('elasticity-chart'), {
+        type: 'radar',
+        data: {
+            labels: ['Log_PIB_pc\n(+0.35)', 'Log_Precio_m2\n(+2.48)', 'Euribor\n(−0.10)', 'Log_Materiales\n(−1.09)'],
+            datasets: [{
+                label: '|Coeficiente|',
+                data: [0.35, 2.48, 0.10, 1.09],
+                backgroundColor: 'rgba(0,123,192,0.15)',
+                borderColor: CB.blue1,
+                borderWidth: 2,
+                pointBackgroundColor: [CB.green, CB.orange1, CB.grey, CB.blue2],
+                pointRadius: 6,
+            }]
+        },
+        options: {
+            plugins: { legend: { display: false } },
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    ticks: { font: { size: 9 } },
+                    pointLabels: { font: { size: 10 } }
+                }
+            }
+        }
+    });
+
+    // ── Alpha chart ──
+    new Chart(document.getElementById('alpha-chart'), {
+        type: 'bar',
+        data: {
+            labels: ['Log_Hipotecas', 'Log_Precio_m2', 'Euribor', 'Log_PIB_pc', 'Log_Materiales'],
+            datasets: [{
+                label: 'α (velocidad de corrección)',
+                data: [-0.4377, -0.0058, 0, 0, -0.0432],
+                backgroundColor: [CB.orange1, CB.orange2, CB.grey, CB.grey, CB.blue3],
+                borderRadius: 6,
+            }]
+        },
+        options: {
+            plugins: { legend: { display: false } },
+            scales: {
+                y: {
+                    title: { display: true, text: 'α (negativo = endógeno, se ajusta)' },
+                    max: 0.05,
+                }
+            }
+        }
+    });
+
+    // ── FEVD donut ──
+    new Chart(document.getElementById('fevd-chart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Log_Precio_m2 (53.3%)', 'Log_Materiales (38.8%)', 'Log_Hipotecas (3.0%)', 'Log_PIB_pc (2.6%)', 'Euribor (2.2%)'],
+            datasets: [{
+                data: [53.3, 38.8, 3.0, 2.6, 2.2],
+                backgroundColor: [CB.orange1, CB.blue2, CB.blue1, CB.blue3, CB.grey],
+                borderWidth: 2,
+                borderColor: '#fff',
+            }]
+        },
+        options: {
+            plugins: {
+                legend: { position: 'right', labels: { font: { size: 12 }, padding: 16 } },
+                tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.parsed}%` } }
+            },
+            cutout: '60%',
+        }
+    });
+
+    // ── IRF chart ──
+    const quarters = Array.from({length:20}, (_,i) => `Q${i+1}`);
+    new Chart(document.getElementById('irf-chart'), {
+        type: 'line',
+        data: {
+            labels: quarters,
+            datasets: [
+                {
+                    label: 'Shock Log_Precio_m2',
+                    data: [0.18, 0.31, 0.40, 0.47, 0.51, 0.54, 0.56, 0.57, 0.58, 0.59,
+                           0.59, 0.60, 0.60, 0.60, 0.61, 0.61, 0.61, 0.61, 0.61, 0.61],
+                    borderColor: CB.orange1, backgroundColor: 'transparent', tension: 0.3,
+                    borderWidth: 2.5, pointRadius: 0,
+                },
+                {
+                    label: 'Shock Log_Materiales',
+                    data: [-0.12, -0.22, -0.30, -0.36, -0.40, -0.43, -0.45, -0.46, -0.47, -0.48,
+                           -0.48, -0.49, -0.49, -0.49, -0.49, -0.50, -0.50, -0.50, -0.50, -0.50],
+                    borderColor: CB.blue2, backgroundColor: 'transparent', tension: 0.3,
+                    borderWidth: 2.5, pointRadius: 0,
+                },
+                {
+                    label: 'Shock Euribor',
+                    data: [-0.05, -0.08, -0.09, -0.09, -0.09, -0.09, -0.09, -0.09, -0.09, -0.09,
+                           -0.09, -0.09, -0.09, -0.09, -0.09, -0.09, -0.09, -0.09, -0.09, -0.09],
+                    borderColor: CB.grey, backgroundColor: 'transparent', tension: 0.3,
+                    borderWidth: 2, pointRadius: 0, borderDash: [6,3],
+                },
+                {
+                    label: 'Shock Log_PIB_pc',
+                    data: [0.04, 0.07, 0.09, 0.10, 0.10, 0.11, 0.11, 0.11, 0.11, 0.11,
+                           0.11, 0.11, 0.11, 0.11, 0.11, 0.11, 0.11, 0.11, 0.11, 0.11],
+                    borderColor: CB.blue3, backgroundColor: 'transparent', tension: 0.3,
+                    borderWidth: 2, pointRadius: 0, borderDash: [3,3],
+                },
+            ]
+        },
+        options: {
+            plugins: { legend: { position: 'bottom' } },
+            scales: {
+                y: {
+                    title: { display: true, text: 'Respuesta acumulada de Log_Hipotecas (desviaciones estándar)' },
+                    grid: { color: '#e8eef4' }
+                },
+                x: { title: { display: true, text: 'Trimestres tras el shock' } }
+            }
+        }
+    });
+    </script>
+</body>
+</html>

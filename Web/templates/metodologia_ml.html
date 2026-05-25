@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparencia ML - Modelo Hipotecario CaixaBank</title>
+    <!-- Fuentes Corporativas (Aproximación Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Highlight.js para código elegante -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <style>
+        :root {
+            /* Paleta Oficial CaixaBank */
+            --cb-primary: #00A4E1;
+            /* Azul Claro/Cyan */
+            --cb-night: #154360;
+            /* Azul Oscuro Noche */
+            --cb-gray: #4A4A4A;
+            /* Gris Texto */
+            --cb-bg: #F5F7F8;
+            --cb-white: #FFFFFF;
+            --cb-black: #000000;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--cb-bg);
+            color: var(--cb-gray);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Nav Corporativa CaixaBank */
+        .cb-navbar {
+            background-color: var(--cb-white);
+            height: 85px;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            border-bottom: 2px solid #E5E5E5;
+        }
+
+        .cb-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cb-logo-container svg {
+            height: 55px;
+        }
+
+        .cb-logo-text {
+            color: #222;
+        }
+
+        .title-banner {
+            background: linear-gradient(135deg, var(--cb-night) 0%, #0d2f44 100%);
+            color: var(--cb-white);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--cb-primary);
+        }
+
+        .title-banner h1 {
+            font-weight: 300;
+            margin: 0 0 10px 0;
+            font-size: 2.2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: -30px auto 40px auto;
+            background: var(--cb-white);
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            position: relative;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--cb-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .btn-back:hover {
+            color: var(--cb-night);
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: var(--cb-night);
+            font-weight: 600;
+            border-bottom: 2px solid var(--cb-bg);
+            padding-bottom: 15px;
+            margin-top: 50px;
+            font-size: 1.5rem;
+        }
+
+        h2::before {
+            content: "■ ";
+            color: var(--cb-primary);
+        }
+
+        .box-info {
+            background-color: rgba(0, 164, 225, 0.05);
+            border-left: 4px solid var(--cb-primary);
+            padding: 20px;
+            margin: 20px 0;
+            color: var(--cb-night);
+        }
+
+        /* Código y Output */
+        .code-container {
+            margin: 30px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-header {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 8px 15px;
+            font-size: 0.8rem;
+            font-family: monospace;
+            border-bottom: 1px solid #181a1f;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        pre {
+            margin: 0 !important;
+            border-radius: 0 !important;
+        }
+
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.85rem;
+        }
+
+        .output-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-top: none;
+            padding: 20px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            color: #333;
+        }
+
+        .output-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #888;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        ul.cb-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        ul.cb-list li {
+            position: relative;
+            margin-bottom: 10px;
+            padding-left: 20px;
+        }
+
+        ul.cb-list li::before {
+            content: "■ ";
+            position: absolute;
+            left: 0;
+            color: var(--cb-primary);
+            font-size: 0.8rem;
+            top: 3px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: var(--cb-primary);
+            color: white;
+            vertical-align: middle;
+            margin-left: 0.5rem;
+        }
+
+        .tag.ml {
+            background: #FF9900;
+        }
+
+        .tag.stat {
+            background: #2EBA6D;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV CORPORATIVA CAIXABANK -->
+    <nav class="cb-navbar">
+        <div class="cb-logo-container">
+            <img src="/static/logo.png" alt="Logotipo CaixaBank Advanced Business Analytics"
+                style="height: 65px; width: auto; object-fit: contain;">
+        </div>
+    </nav>
+
+    <div class="title-banner">
+        <h1>Transparencia Algorítmica: Informe para Gestores</h1>
+        <p>Documentación técnica de los cuadernos de Machine Learning de Pricing y Macros</p>
+    </div>
+
+    <div class="container">
+        <a href="javascript:window.close();" class="btn-back">← Volver al Simulador</a>
+
+        <p>Bienvenido/a al portal de transparencia. En CaixaBank nos regimos por directrices de IA Explicable (XAI).
+            Todo el modelo de simulación de hipotecas que visualizas a la izquierda en el aplicativo está basado
+            estrictamente en el código de nuestros equipos de Data Science, del cual exponemos a continuación su
+            entrenamiento en Python, validación métrica y la algorística tras la recomendación de tipos de interés a los
+            clientes.</p>
+
+        <!-- RESUMEN EJECUTIVO -->
+        <div
+            style="background-color: var(--cb-white); border: 1px solid #e9ecef; border-left: 4px solid var(--cb-primary); padding: 25px; margin-bottom: 40px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
+            <h3 style="color: var(--cb-night); margin-top: 0; font-size: 1.3rem;">Resumen de Modelos Implementados
+                (Pipeline Algorítmico)</h3>
+            <p style="font-size: 0.95rem;">La arquitectura técnica de este simulador ensambla secuencialmente varias
+                capas analíticas documentadas en los cuadernos del TFM:</p>
+            <ul class="cb-list">
+                <li style="margin-bottom: 12px;"><strong>Defensa Estocástica (Test ADF y Cointegración)</strong>: Base
+                    formal econométrica que previene regresiones espurias calculando las raíces
+                    unitarias previas al salto temporal. <em>Fuente: 4. econometria_y_demanda_hipotecaria.ipynb &amp;
+                    4.1. formalizacion_matematica_v2.ipynb</em></li>
+                <li style="margin-bottom: 12px;"><strong>SHAP TreeExplainer (Explicabilidad AI Act)</strong>: Se emplean
+                    valores SHAP (SHapley Additive exPlanations) sobre el Gradient Boosting para descomponer
+                    <u>exactamente</u> la contribución de cada variable al spread predicho. Esto cumple los requisitos
+                    de explicabilidad del Artículo 13-14 de la AI Act para modelos de crédito bancario.
+                    <em>Fuente: 5. HIPOTECA_PERSONALIZADA_provincial.ipynb</em>
+                </li>
+                <li style="margin-bottom: 12px;"><strong>Estrategia Mixta Macroeconómica (Extrapolación
+                        Temporal)</strong>: Para estimar los valores futuros que alimentan el simulador (2026-2030), se
+                    asigna a cada variable el método que mejor se comporta en backtesting provincial (2017Q1–2019Q4).
+                    El Euríbor y el IPC usan proyecciones del BCE, y las demás variables emplean modelos
+                    SARIMA/ARIMA/Holt-Winters optimizados <strong>por provincia</strong>.
+                    <em>Fuente: 5. HIPOTECA_PERSONALIZADA_provincial.ipynb (secciones 10 y 47)</em></li>
+                <li style="margin-bottom: 12px;"><strong>Gradient Boosting Regressor + Ajuste por Perfil (Motor ML de Pricing
+                        Principal)</strong>: Ensamblado predictivo de árboles de decisión con hiperparámetros
+                    conservadores (<code>max_depth=3</code>, <code>min_samples_leaf=5</code>,
+                    <code>learning_rate=0.06</code>). Predice el spread base y lo ajusta con una función
+                    sigmoidal (tanh) basada en el ratio ingresos/PIB_pc provincial del cliente.
+                    Se complementa con un Filtro Post-Riesgos que limita el tipo si supera el 35% de DTI.
+                    <em>Fuente: 5. HIPOTECA_PERSONALIZADA_provincial.ipynb (secciones 11 y 12)</em></li>
+            </ul>
+
+            <div style="background:#f0f8ff; border:1px solid #d0e8f7; padding:15px; border-radius:4px; margin-top:15px;">
+                <strong style="color:var(--cb-night);">Procedencia de los Datos y Notebooks (carpeta <em>notebooks acabados/</em>):</strong>
+                <table style="width:100%; font-size:0.88rem; margin-top:10px; border-collapse:collapse;">
+                    <tr style="border-bottom:1px solid #ddd;">
+                        <td style="padding:6px;"><strong>1. data_cleaning.ipynb</strong></td>
+                        <td style="padding:6px;">Limpieza y normalización del panel temporal: 52 provincias × trimestres 2005-2025. Tratamiento de outliers y valores nulos.</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #ddd;">
+                        <td style="padding:6px;"><strong>2. datos_bce.ipynb</strong></td>
+                        <td style="padding:6px;">Extracción de datos BCE: APRC, Euribor, tipos hipotecarios oficiales. Base del <code>tipos_hipotecas.csv</code>.</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #ddd;">
+                        <td style="padding:6px;"><strong>3. data_joining.ipynb</strong></td>
+                        <td style="padding:6px;">Integración de fuentes (INE, BdE, BCE, Eurostat) en <code>dataset_final_tfm.csv</code> (4.368 obs, 52 provincias).</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #ddd;">
+                        <td style="padding:6px;"><strong>4. econometria_y_demanda_hipotecaria.ipynb</strong></td>
+                        <td style="padding:6px;">Pipeline completo: corrección data leakage (lags), benchmark 6 modelos ML (RF, XGBoost, SARIMAX, VAR), tests ADF, cointegración de Johansen, IRF, RF_Nac como modelo ganador de demanda.</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #ddd;">
+                        <td style="padding:6px;"><strong>4.1. formalizacion_matematica_v2.ipynb</strong></td>
+                        <td style="padding:6px;">Formalización matemática de todos los modelos: AR, MA, ARIMA, SARIMA, NAIRU, ADF, Johansen, GBR, RF, función sigmoidal tanh.</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #ddd;">
+                        <td style="padding:6px;"><strong>4.2. vecm_hipotecas.ipynb</strong></td>
+                        <td style="padding:6px;">Modelo VECM (Vector Error Correction Model) para el análisis de cointegración de largo plazo entre variables hipotecarias.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:6px;"><strong>5. HIPOTECA_PERSONALIZADA_provincial.ipynb</strong></td>
+                        <td style="padding:6px;">Motor de pricing hipotecario: benchmark de 6 modelos (Regresión Lineal, Ridge, GBR, RF, XGBoost, LASSO), defensa econométrica (ADF, cointegración), backtesting provincial (HW vs Naive), <strong>GBR + SHAP</strong> seleccionado, ajuste sigmoidal por perfil (income_ratio tanh), filtro DTI con búsqueda binaria, impuestos por CCAA.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 1 -->
+        <h2>1. Variables de Contribución: SHAP TreeExplainer <span class="tag ml">AI Act</span></h2>
+        <p>Para explicar al cliente el peso exacto de cada variable macroeconómica en su tipo de interés,
+            se emplean <strong>valores SHAP (SHapley Additive exPlanations)</strong> calculados sobre el
+            modelo GradientBoosting. A diferencia de los coeficientes lineales, SHAP proporciona contribuciones
+            <strong>exactas</strong> (suman al valor predicho), incluso para modelos no lineales.
+        </p>
+
+        <div class="box-info">
+            <strong>Conformidad AI Act (Art. 13-14):</strong> SHAP TreeExplainer es un método de explicabilidad
+            <em>model-agnostic</em> que descompone cada predicción individual en la contribución exacta de cada
+            variable. Esto permite al cliente, al gestor y al regulador verificar que no existe discriminación
+            y que el modelo es transparente.
+        </div>
+
+        <div class="code-container">
+            <div class="code-header"><span>Python — 5. HIPOTECA_PERSONALIZADA_provincial.ipynb (sección 11)</span><span>Explicabilidad SHAP</span></div>
+            <pre><code class="language-python"># 1. Entrenar GBR con hiperparámetros conservadores
+from sklearn.ensemble import GradientBoostingRegressor
+import shap
+
+FEATURES = ['Euribor','IPC','Tasa_Paro','Precio_m2','PIB_pc','tasa_ahorro']
+TARGET   = 'Spread_Hipotecas'
+
+scaler = StandardScaler()
+X_s    = scaler.fit_transform(data[FEATURES].values)
+
+gbr = GradientBoostingRegressor(
+    n_estimators=100, max_depth=3, learning_rate=0.06,
+    min_samples_leaf=5, random_state=42
+)
+gbr.fit(X_s, data[TARGET].values)
+
+# 2. Calcular contribuciones SHAP para un cliente específico
+explainer   = shap.TreeExplainer(gbr)
+shap_values = explainer.shap_values(X_client_scaled)
+
+# 3. Cada valor SHAP indica la contribución EXACTA de esa variable
+# al spread predicho. La suma de todos los SHAP + base_value = predicción.
+for feat, shap_val in zip(FEATURES, shap_values[0]):
+    print(f"{feat}: {shap_val:+.4f}%")</code></pre>
+            <div class="output-box">
+                <span class="output-label">Ejemplo: Contribución SHAP al Spread (Valladolid 2023)</span>
+Variable       Valor          SHAP
+------------------------------------------
+Euribor        3.865          -1.1989%
+tasa_ahorro    11.000         +0.0393%
+IPC            3.638          -0.0748%
+PIB_pc         31392          -0.0728%
+Tasa_Paro      9.372          -0.0066%
+Precio_m2      1295.229       -0.0020%
+------------------------------------------
+Base value                    +1.6514%
+= Predicción Spread            0.3355%
+
+[INFO] Los valores SHAP suman exactamente la diferencia
+entre la predicción (0.3355%) y la media del modelo (1.6514%).
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2 -->
+        <h2>2. Desempeño y Justificación de la Selección del Modelo</h2>
+        <p>Se comparan 6 modelos con <strong>TimeSeriesSplit CV-5</strong> (validación temporal que evita data leakage).
+            El GBR <strong>no se elige por superar en R²</strong> — con cambios estructurales en el spread
+            (crisis 2008-2012, tipos negativos 2016-2020, subida 2022), los R² de CV temporal son negativos para
+            todos los modelos. La selección se basa en:</p>
+
+        <ul class="cb-list">
+            <li><strong>SHAP TreeExplainer</strong> proporciona explicabilidad exacta (AI Act Art. 13-14)</li>
+            <li>En <strong>RMSE/MAE</strong> (error absoluto), GBR es competitivo</li>
+            <li>Captura <strong>no-linealidades</strong> que los modelos lineales ignoran</li>
+            <li>Hiperparámetros conservadores controlan el sobreajuste</li>
+        </ul>
+
+        <div class="code-container">
+            <div class="code-header"><span>Python — 5. HIPOTECA_PERSONALIZADA_provincial.ipynb (sección 7b)</span><span>TimeSeriesSplit CV-5 y
+                    Selección</span></div>
+            <pre><code class="language-python">from sklearn.model_selection import cross_validate, TimeSeriesSplit
+from sklearn.pipeline import Pipeline
+
+modelos = {
+    'Regresión Lineal':    Pipeline([('scaler', StandardScaler()), ('model', LinearRegression())]),
+    'Ridge':               Pipeline([('scaler', StandardScaler()), ('model', Ridge(alpha=1.0))]),
+    'Gradient Boosting':   Pipeline([('scaler', StandardScaler()), ('model', GradientBoostingRegressor(
+                                n_estimators=100, max_depth=3, learning_rate=0.06,
+                                min_samples_leaf=5, random_state=42))]),
+}
+
+# TimeSeriesSplit respeta la temporalidad — sin data leakage
+tscv = TimeSeriesSplit(n_splits=5)
+for nombre, pipeline in modelos.items():
+    cv = cross_validate(pipeline, X, y, cv=tscv, scoring={'rmse':..., 'mae':...})
+    print(f"{nombre}: RMSE={-cv['test_rmse'].mean():.4f}, MAE={-cv['test_mae'].mean():.4f}")</code></pre>
+            <div class="output-box">
+                <span class="output-label">Resultados reales TimeSeriesSplit CV-5</span>
+Modelo                 R² CV      RMSE CV    MAE CV
+============================================================
+Regresión Lineal       -6.66      0.5515     0.4980
+Ridge                  -6.66      0.5515     0.4980
+Gradient Boosting      -7.60      0.5733     0.4998
+
+Nota: R² negativos son normales con TimeSeriesSplit sobre datos
+con cambios estructurales. GBR se elige por SHAP + RMSE competitivo.
+            </div>
+        </div>
+
+            <p>El R² de <em>entrenamiento</em> del GBR es ~0.98 (referencia), pero esto <strong>no es validación</strong>.
+                Se reporta honestamente que ningún modelo generaliza bien hacia adelante con este tipo de datos
+                macroeconómicos. La fortaleza del GBR reside en SHAP, no en R².</p>
+
+            <!-- SECCIÓN 3 -->
+            <h2>3. Defensa Econométrica Previa (ADF y Cointegración)</h2>
+            <p>Antes de proyectar la economía con algoritmos predictivos, el marco XAI exige justificar bajo econometría
+                clásica por qué los tensores temporales se configuran de determinada manera. El uso de la Integración
+                (la letra 'I' en SARIMAX correspondiente al parámetro <code>d=1</code>) no es arbitrario.</p>
+
+            <div class="code-container">
+                <div class="code-header"><span>Python — 4. econometria_y_demanda_hipotecaria.ipynb (sección 7.2)</span><span>Test de
+                        Estacionariedad Augmented Dickey-Fuller (ADF)</span></div>
+                <pre><code class="language-python">from statsmodels.tsa.stattools import adfuller
+
+# 1. Test de Raíz Unitaria sobre variable en bruto (Nivel 0)
+result_nivel = adfuller(df['Tasa_Paro'].dropna())
+print(f"ADF Nivel 0 -> P-Value: {result_nivel[1]:.4f}")
+
+# 2. Test sobre la Primera Diferencia (Nivel 1)
+result_diff = adfuller(df['Tasa_Paro'].diff().dropna())
+print(f"ADF Diferenciado (d=1) -> P-Value: {result_diff[1]:.4f}")</code></pre>
+                <div class="output-box">
+                    <span class="output-label">Interpretación Econométrica</span>ADF Nivel 0 -> P-Value: 0.3852 (No
+                    Estacionaria. Media variante)
+                    ADF Diferenciado (d=1) -> P-Value: 0.0150 (Estacionaria. Rechaza Ho al 95%)
+
+                    [CONCLUSIÓN]: La serie contiene una Raíz Unitaria. Proyectarla en bruto produciría Varianza
+                    Infinita. Al forzar el hiperparámetro d=1 en el SARIMAX a continuación, garantizamos que el
+                    algoritmo trabaje sobre los *incrementos* estables de la serie, eliminando el ruido de tendencia a
+                    largo plazo.
+                </div>
+            </div>
+
+            <div class="box-info">
+                <strong>Selección por Backtesting y Prevención de Regresión Espuria:</strong>
+                Para la fase de extrapolación macroeconómica se ha adoptado una <strong>estrategia de selección por
+                    backtesting</strong> que asigna a cada variable el método que mejor se comporta sobre datos que
+                los modelos no han visto (período de test: 2017Q1–2019Q4). Los modelos de Machine Learning basados
+                en árboles son excelentes interpoladores dentro de los rangos entrenados, pero fuera de esos rangos
+                tienden a dar respuestas planas. Los modelos econométricos (SARIMA, ARIMA) capturan mejor las
+                tendencias y estacionalidades de cada serie individual.
+            </div>
+
+            <!-- SECCIÓN 3.1 -->
+            <h2>3.1 Algoritmos de Extrapolación Temporal <span class="tag stat">BACKTESTING</span></h2>
+            <p>Se compararon 6 modelos (ARIMA, SARIMA, Prophet, VAR, ETS, Seasonal Naive) sobre cada variable
+                macroeconómica. El ganador cambia según la naturaleza de cada serie, lo que confirma la pertinencia
+                de la estrategia mixta:</p>
+
+            <ul class="cb-list">
+                <li style="margin-bottom: 8px;"><strong>Euríbor e IPC (Escenarios BCE / Forward Guidance):</strong>
+                    Determinados por decisiones del Consejo de Gobierno del BCE y shocks exógenos (energía,
+                    geopolítica). Ningún modelo de series temporales puede anticiparlos con fiabilidad. Se utilizan
+                    directamente las <em>proyecciones macroeconómicas publicadas por el BCE y el FMI</em>.</li>
+                <li style="margin-bottom: 8px;"><strong>PIB per cápita → SARIMA(1,1,0)(1,1,0)<sub>4</sub>:</strong>
+                    El ciclo trimestral del PIB tiene una estructura estacional muy marcada que solo los modelos con
+                    componente estacional explícito capturan. SARIMA obtiene el menor error con un <strong>MAPE del
+                        0.6%</strong>, frente al 0.8% de Prophet y errores 4x superiores del resto.</li>
+                <li style="margin-bottom: 8px;"><strong>Tasa de Paro → Auto-ARIMA (AIC) + Suelo 8.5%:</strong>
+                    ARIMA queda prácticamente empatado con VAR y Prophet (RMSE ≈ 0.75). Se selecciona ARIMA con
+                    optimización automática del orden (p,d,q) por criterio AIC. Se aplica un <strong>suelo estructural
+                        del 8.5%</strong> basado en factores exógenos <em>ceteris paribus</em>.</li>
+                <li style="margin-bottom: 8px;"><strong>Precio del m², Población, Pob. Extranjera y Transmisiones → Holt-Winters (Exponential Smoothing):</strong>
+                    Tras el duelo de modelos "naive", se ha decidido usar Holt-Winters para todas las variables volumétricas y de precios por cuatro razones críticas:
+                    <ul style="margin-top: 5px;">
+                        <li><strong>Dominio Aplastante:</strong> HW gana en las variables más pesadas: Precio_m2 (79% de mejora) y Población (74% de mejora).</li>
+                        <li><strong>Visión a Largo Plazo:</strong> El Seasonal Naive proyecta una línea plana, mientras que HW entiende la tendencia y el crecimiento.</li>
+                        <li><strong>Consistencia:</strong> Es mucho más robusto presentar un pipeline único y coherente.</li>
+                        <li><strong>Marginalidad:</strong> Aunque el Naive ganó en ventas por un mínimo 0.8%, HW suaviza mejor el ruido.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="code-container">
+                <div class="code-header"><span>Python — 5. HIPOTECA_PERSONALIZADA_provincial.ipynb (sección 10) &amp; app.py</span><span>Modelos Ganadores
+                        del Backtesting</span></div>
+                <pre><code class="language-python"># Fragmento del Motor de Proyección (Duelo de Modelos)
+import statsmodels.api as sm
+from statsmodels.tsa.holtwinters import ExponentialSmoothing
+
+# 1. PIB_pc: SARIMA(1,1,0)(1,1,0,4) — estacionalidad trimestral
+model = sm.tsa.SARIMAX(ts_pib, order=(1,1,0), seasonal_order=(1,1,0,4))
+preds_pib = model.fit(disp=False).get_forecast(steps=N).predicted_mean
+
+# 2. Tasa_Paro: Auto-ARIMA (AIC) + Suelo 8.5%
+mod_paro = sm.tsa.ARIMA(ts_paro, order=(3,1,2)).fit()
+preds_paro = np.clip(mod_paro.get_forecast(steps=N).predicted_mean, 8.5, None)
+
+# 3. Resto de variables volumétricas y precios: Holt-Winters
+# Precio_m2, Transmisiones, Poblacion, Pob_Ext
+mod_hw = ExponentialSmoothing(ts_var, trend='add', seasonal='add', seasonal_periods=4).fit()
+preds_hw = mod_hw.forecast(steps=N)</code></pre>
+                <div class="output-box">
+                    <span class="output-label">DUELO TOTAL: Holt-Winters vs Seasonal Naive</span>
+           Variable  MAPE HW (%)  MAPE S.Naive (%)  U2 Holt-Winters        Ganador  Mejora (%)
+          Precio_m2         1.53              7.29            0.326   Holt-Winters        79.0
+          Poblacion         0.42              1.61            0.262   Holt-Winters        73.9
+             PIB_pc         7.30              9.41            0.779   Holt-Winters        22.4
+          Tasa_Paro         6.17             10.36            0.654   Holt-Winters        40.5
+Transmisiones_Total         9.42              8.57            0.689 Seasonal Naive         0.0
+                </div>
+            </div>
+
+            <!-- SECCIÓN 3.2: Demanda Hipotecaria (Notebook 4) -->
+            <h2>3.2 Modelo de Demanda Hipotecaria <span class="tag stat">Notebook 4</span></h2>
+            <p>El volumen hipotecario (número de hipotecas formalizadas) se predice con un enfoque distinto al del pricing.
+                El notebook <strong>4. econometria_y_demanda_hipotecaria.ipynb</strong> implementa un benchmark completo
+                de 6 enfoques sobre el panel de 52 provincias (2005-2025):</p>
+            <ul class="cb-list">
+                <li><strong>Corrección de Data Leakage:</strong> Las variables contemporáneas al target
+                    (<code>Precio_m2</code>, <code>Transmisiones_Total</code>, <code>Spread_Hipotecas</code>)
+                    se convierten en lags (t-1 y t-4) para evitar filtración de información futura.</li>
+                <li><strong>Benchmark Provincial → Agregado:</strong> Predecir por provincia y sumar. Acumula errores
+                    (MAPE nacional ~9.7%).</li>
+                <li><strong>RF_Nac (Modelo Ganador):</strong> Random Forest entrenado directamente sobre datos
+                    <em>agregados nacionales</em> con feature engineering rico. MAPE <strong>7.1%</strong>,
+                    R² <strong>0.40</strong> (único enfoque con varianza explicada positiva).</li>
+                <li><strong>SARIMAX:</strong> Series temporales clásico como alternativa econométrica. Comparado
+                    directamente contra RF_Nac en el mismo período de test.</li>
+                <li><strong>VAR + IRF (Funciones de Impulso-Respuesta):</strong> Modelo vectorial que cuantifica
+                    cómo responde el volumen hipotecario ante shocks de ±1 unidad en Euribor, PIB y precio m²
+                    a lo largo de 12 trimestres.</li>
+            </ul>
+            <div class="box-info">
+                <strong>Conclusión (Notebook 4, Sección 7.3):</strong> Los tests de cointegración de Johansen confirman
+                que las variables hipotecarias presentan relaciones de largo plazo. Sin embargo, la heterogeneidad
+                provincial y la ausencia de cointegración global descarta el uso de un VECM conjunto: se opta por
+                modelos ML (RF_Nac) para la predicción nacional y SARIMA individuales por provincia.
+            </div>
+
+            <!-- SECCIÓN 4 -->
+            <h2>4. Modelo Principal: Pricing Hipotecario <span class="tag ml">GBR + SHAP</span></h2>
+            <p>Para determinar el tipo exacto (Spread óptimo) sugerido para un cliente, el sistema ejecuta un
+                <strong>Gradient Boosting Regressor</strong> entrenado sobre el dataset completo (4.368 observaciones,
+                52 provincias, 2005-2025) y aplica un ajuste por perfil basado en el ratio ingresos/PIB_pc provincial.
+                Fuente: <em>5. HIPOTECA_PERSONALIZADA_provincial.ipynb</em> (sección 11).</p>
+
+            <div class="box-info">
+                <strong>Anti-Overfitting y Explicabilidad:</strong>
+                El pipeline usa <code>max_depth=3</code> (máximo 8 hojas por árbol), <code>min_samples_leaf=5</code>,
+                y <code>learning_rate=0.06</code> (100 árboles con aprendizaje lento).
+                SHAP TreeExplainer descompone cada predicción en la contribución exacta de cada variable —
+                cumpliendo AI Act sin sacrificar capacidad no-lineal.
+            </div>
+
+            <div class="code-container">
+                <div class="code-header"><span>Python — 5. HIPOTECA_PERSONALIZADA_provincial.ipynb (sección 11) &amp; app.py</span><span>GBR + SHAP + Ajuste Perfil Sigmoidal</span></div>
+                <pre><code class="language-python">def _train_ml_pricing_model(year: str):
+    """Entrena GBR + SHAP para predecir Spread_Hipotecas."""
+    FEATURES = ['Euribor', 'IPC', 'Tasa_Paro', 'Precio_m2', 'PIB_pc', 'tasa_ahorro']
+    TARGET   = 'Spread_Hipotecas'
+
+    data_model = df[FEATURES + [TARGET]].dropna()
+    scaler = StandardScaler()
+    X_s = scaler.fit_transform(data_model[FEATURES].values)
+    y   = data_model[TARGET].values
+
+    model = GradientBoostingRegressor(
+        n_estimators=100, max_depth=3, learning_rate=0.06,
+        min_samples_leaf=5, random_state=42
+    )
+    model.fit(X_s, y)
+
+    # SHAP TreeExplainer para explicabilidad AI Act
+    explainer = shap.TreeExplainer(model)
+
+    return model, scaler, explainer, r2_train, rmse_cv, n_samples, mae_cv
+
+def _calc_income_adjustment(income, pib_pc):
+    """Ajuste sigmoidal (tanh) por perfil del cliente."""
+    income_ratio = (income * 12) / pib_pc
+    x = (income_ratio - 1.0) * 2.0
+    adj = -0.25 * np.tanh(x)       # ratio > 1 → bonificación
+    if income_ratio < 0.5: adj += 0.05  # penalización extra
+    return round(adj, 4)</code></pre>
+                <div class="output-box">
+                    <span class="output-label">Rendimiento (GBR con TimeSeriesSplit CV-5)</span>
+GBR entrenado: 4,160 observaciones | 52 provincias | 2005-2025
+Hiperparámetros: n_estimators=100, max_depth=3, lr=0.06, min_samples_leaf=5
+
+R² entrenamiento (referencia, NO es validación): 0.9864
+RMSE CV temporal (validación real):               0.5733%
+MAE CV temporal:                                  0.4998%
+
+Nota: GBR elegido por SHAP TreeExplainer (AI Act), NO por R² ≫ lineales.
+SHAP proporciona contribuciones exactas; LR solo da aproximaciones lineales.
+                </div>
+            </div>
+
+            <!-- SECCIÓN 5 -->
+            <h2>5. Regulación Final: Maximización Comercial vs DTI CaixaBank</h2>
+            <p>El algoritmo anterior nos dará lo que la máquina "cree que podemos cobrar" como Spread en función del
+                mercado macro. Sin embargo, no podemos encasquetarle ese tipo al perfil del cliente de la web si hace
+                que su cuota exceda los topes regulatorios de Banco de España y riesgos inter-bancarios. Entra en escena
+                el filtro final de nuestro código de backend:</p>
+
+            <div class="code-container">
+                <div class="code-header"><span>Python — Producción Backend (app.py)</span><span>Acotamiento de Oferta vs
+                        Tope de Ingresos (DTI) con Búsqueda Binaria</span></div>
+                <pre><code class="language-python">def _compute_ml_optimal_rate(...):
+    # 1. Extraer spread "Puro" comercial que sugiere el modelo entrenado antes
+    x_s = scaler.transform([[macro_vals[f] for f in FEATURES]])
+    ml_spread = max(float(model.predict(x_s)[0]), 0.1) # Min 0.1 banco como piso
+    ml_rate_raw = euribor + ml_spread
+
+    # 2. Límite de Viabilidad Bancaria: Máximo Dinero mensual libre para el DTI < 35%
+    max_cuota = max(0, 0.35 * income - other_debts)
+
+    dti_max_rate = ml_rate_raw  
+    if max_cuota > 0 and loan > 0:
+        
+        # 3. Búsqueda binaria O(log N) de la asintótica de la Tasa
+        lo, hi = 0.001, 0.25  # Evaluar TIN desde 0.1% a 25% anual
+        for _ in range(50):
+            mid = (lo + hi) / 2
+            mr = mid / 12     # Desplazar a tasa mensual
+            
+            # Proyección geométrica de la anualidad (Ecuación Canónica de Préstamo)
+            cuota_mid = loan * mr * (1 + mr)**n_months / ((1 + mr)**n_months - 1)
+            
+            # Subir o bajar el límite
+            if cuota_mid <= max_cuota: lo = mid
+            else: hi = mid
+            
+        dti_max_rate = round(lo * 100, 4) # Tasa máxima biológicamente soportable
+
+    # 4. Decisión de la IA XAI
+    # El banco intenta exprimir beneficio usando ML (ml_rate_raw), 
+    # pero obligamos matemáticamente a frenarlo por debajo del ahogamiento del cliente
+    ml_rate_capped = min(ml_rate_raw, dti_max_rate)
+    
+    return {'ml_rate': ml_rate_capped}</code></pre>
+                <div class="output-box">
+                    <span class="output-label">Decisión Analítica (Traza API)</span>[SYS-PRICER] Predicción base Euribor
+                    + Diferencial ML: 4.881% TIN
+                    [SYS-RIESGOS] Capacidad de pago máxima residual al 35% DTI: 620 EUR / Mes
+                    [SYS-MATH] Búsqueda de iteración Binaria [=================] 100%
+                    [SYS-MATH] TIN máximo soportable por prestatario: 3.722%
+                    [RESOLUCIÓN] Operación de riesgo de impago. Troncando ambición comercial del Árbol de Decisión.
+                    Spread rebajado a: 3.722% TIN.
+                    [RESPONSE] 200 OK. Entregando {ml_rate: 3.722, dti_max_rate: 3.722} al Front-End UI.
+                </div>
+            </div>
+
+            <div
+                style="text-align:center; margin-top: 50px; color: var(--cb-gray); font-size: 0.85rem; border-top: 1px solid #ccc; padding-top:20px;">
+                &copy; 2026 CaixaBank, S.A. | Inteligencia de Negocio y Data Analytics — Documento de Transparencia XAI
+                de uso Exclusivo y Confindencial
+            </div>
+
+        </div>
+
+</body>
+
+</html>

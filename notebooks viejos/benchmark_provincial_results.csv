@@ -1,0 +1,1457 @@
+variable,unidad,metodo,mape,rmse
+Precio_m2,A Coruña,SeasNaive+Drift,2.495,38.405
+Precio_m2,A Coruña,Auto-ARIMA,6.075,83.984
+Precio_m2,A Coruña,ETS-HoltWinters,8.999,126.866
+Precio_m2,A Coruña,MA-4Q,8.466,132.163
+Precio_m2,Albacete,SeasNaive+Drift,2.184,29.69
+Precio_m2,Albacete,Auto-ARIMA,6.405,76.04
+Precio_m2,Albacete,ETS-HoltWinters,8.82,106.451
+Precio_m2,Albacete,MA-4Q,8.418,95.536
+Precio_m2,Alicante,SeasNaive+Drift,7.404,158.103
+Precio_m2,Alicante,Auto-ARIMA,7.99,171.482
+Precio_m2,Alicante,ETS-HoltWinters,4.748,111.855
+Precio_m2,Alicante,MA-4Q,13.584,262.223
+Precio_m2,Almería,SeasNaive+Drift,1.629,26.854
+Precio_m2,Almería,Auto-ARIMA,2.042,33.185
+Precio_m2,Almería,ETS-HoltWinters,1.799,27.264
+Precio_m2,Almería,MA-4Q,11.219,155.787
+Precio_m2,Badajoz,SeasNaive+Drift,1.654,24.588
+Precio_m2,Badajoz,Auto-ARIMA,1.112,11.742
+Precio_m2,Badajoz,ETS-HoltWinters,3.74,40.829
+Precio_m2,Badajoz,MA-4Q,7.339,76.554
+Precio_m2,Barcelona,SeasNaive+Drift,1.75,56.394
+Precio_m2,Barcelona,Auto-ARIMA,5.823,204.839
+Precio_m2,Barcelona,ETS-HoltWinters,4.078,153.978
+Precio_m2,Barcelona,MA-4Q,7.551,243.618
+Precio_m2,Burgos,SeasNaive+Drift,1.419,21.346
+Precio_m2,Burgos,Auto-ARIMA,3.186,51.891
+Precio_m2,Burgos,ETS-HoltWinters,2.195,29.536
+Precio_m2,Burgos,MA-4Q,7.167,102.245
+Precio_m2,Cantabria,SeasNaive+Drift,3.645,79.096
+Precio_m2,Cantabria,Auto-ARIMA,4.739,84.726
+Precio_m2,Cantabria,ETS-HoltWinters,8.086,138.399
+Precio_m2,Cantabria,MA-4Q,13.385,266.863
+Precio_m2,Castellón,SeasNaive+Drift,2.866,49.262
+Precio_m2,Castellón,Auto-ARIMA,7.994,114.059
+Precio_m2,Castellón,ETS-HoltWinters,2.1,37.859
+Precio_m2,Castellón,MA-4Q,11.076,149.545
+Precio_m2,Ceuta,SeasNaive+Drift,9.82,222.945
+Precio_m2,Ceuta,Auto-ARIMA,4.256,89.09
+Precio_m2,Ceuta,ETS-HoltWinters,9.233,207.526
+Precio_m2,Ceuta,MA-4Q,1.1,27.283
+Precio_m2,Ciudad Real,SeasNaive+Drift,2.417,19.167
+Precio_m2,Ciudad Real,Auto-ARIMA,2.535,19.951
+Precio_m2,Ciudad Real,ETS-HoltWinters,1.957,15.93
+Precio_m2,Ciudad Real,MA-4Q,6.936,55.404
+Precio_m2,Comunidad Foral de Navarra,SeasNaive+Drift,1.905,37.768
+Precio_m2,Comunidad Foral de Navarra,Auto-ARIMA,12.614,230.656
+Precio_m2,Comunidad Foral de Navarra,ETS-HoltWinters,11.619,214.711
+Precio_m2,Comunidad Foral de Navarra,MA-4Q,9.525,174.558
+Precio_m2,Comunidad de Madrid,SeasNaive+Drift,4.587,164.986
+Precio_m2,Comunidad de Madrid,Auto-ARIMA,5.29,306.438
+Precio_m2,Comunidad de Madrid,ETS-HoltWinters,4.516,259.317
+Precio_m2,Comunidad de Madrid,MA-4Q,11.071,480.06
+Precio_m2,Cuenca,SeasNaive+Drift,4.223,39.209
+Precio_m2,Cuenca,Auto-ARIMA,1.621,19.131
+Precio_m2,Cuenca,ETS-HoltWinters,2.582,24.573
+Precio_m2,Cuenca,MA-4Q,7.509,69.16
+Precio_m2,Cáceres,SeasNaive+Drift,2.128,22.572
+Precio_m2,Cáceres,Auto-ARIMA,2.54,26.631
+Precio_m2,Cáceres,ETS-HoltWinters,2.806,29.859
+Precio_m2,Cáceres,MA-4Q,6.031,56.196
+Precio_m2,Cádiz,SeasNaive+Drift,1.553,38.622
+Precio_m2,Cádiz,Auto-ARIMA,5.48,97.647
+Precio_m2,Cádiz,ETS-HoltWinters,6.466,119.778
+Precio_m2,Cádiz,MA-4Q,12.16,235.126
+Precio_m2,Córdoba,SeasNaive+Drift,3.605,48.515
+Precio_m2,Córdoba,Auto-ARIMA,5.955,84.67
+Precio_m2,Córdoba,ETS-HoltWinters,9.855,145.852
+Precio_m2,Córdoba,MA-4Q,8.184,98.933
+Precio_m2,Girona,SeasNaive+Drift,1.627,38.028
+Precio_m2,Girona,Auto-ARIMA,11.476,274.532
+Precio_m2,Girona,ETS-HoltWinters,6.099,145.785
+Precio_m2,Girona,MA-4Q,9.02,202.761
+Precio_m2,Granada,SeasNaive+Drift,3.606,50.367
+Precio_m2,Granada,Auto-ARIMA,2.645,42.653
+Precio_m2,Granada,ETS-HoltWinters,2.846,40.738
+Precio_m2,Granada,MA-4Q,9.19,146.093
+Precio_m2,Guadalajara,SeasNaive+Drift,3.3,59.221
+Precio_m2,Guadalajara,Auto-ARIMA,4.059,70.703
+Precio_m2,Guadalajara,ETS-HoltWinters,4.912,81.89
+Precio_m2,Guadalajara,MA-4Q,13.855,213.481
+Precio_m2,Guipúzcoa,SeasNaive+Drift,6.058,174.509
+Precio_m2,Guipúzcoa,Auto-ARIMA,7.142,193.907
+Precio_m2,Guipúzcoa,ETS-HoltWinters,10.725,305.072
+Precio_m2,Guipúzcoa,MA-4Q,6.66,178.833
+Precio_m2,Huelva,SeasNaive+Drift,1.435,22.737
+Precio_m2,Huelva,Auto-ARIMA,3.014,49.748
+Precio_m2,Huelva,ETS-HoltWinters,3.069,50.67
+Precio_m2,Huelva,MA-4Q,7.683,114.696
+Precio_m2,Huesca,SeasNaive+Drift,3.066,46.546
+Precio_m2,Huesca,Auto-ARIMA,3.939,57.499
+Precio_m2,Huesca,ETS-HoltWinters,4.722,69.354
+Precio_m2,Huesca,MA-4Q,9.381,142.495
+Precio_m2,Islas Baleares,SeasNaive+Drift,5.325,238.099
+Precio_m2,Islas Baleares,Auto-ARIMA,7.08,313.801
+Precio_m2,Islas Baleares,ETS-HoltWinters,5.109,230.396
+Precio_m2,Islas Baleares,MA-4Q,15.691,590.955
+Precio_m2,Jaén,SeasNaive+Drift,1.935,22.495
+Precio_m2,Jaén,Auto-ARIMA,5.816,60.32
+Precio_m2,Jaén,ETS-HoltWinters,7.801,82.332
+Precio_m2,Jaén,MA-4Q,6.915,66.564
+Precio_m2,La Rioja,SeasNaive+Drift,3.622,45.729
+Precio_m2,La Rioja,Auto-ARIMA,1.007,13.232
+Precio_m2,La Rioja,ETS-HoltWinters,0.808,11.089
+Precio_m2,La Rioja,MA-4Q,12.798,166.922
+Precio_m2,Las Palmas,SeasNaive+Drift,3.709,83.833
+Precio_m2,Las Palmas,Auto-ARIMA,4.45,108.725
+Precio_m2,Las Palmas,ETS-HoltWinters,1.352,35.668
+Precio_m2,Las Palmas,MA-4Q,9.535,189.075
+Precio_m2,León,SeasNaive+Drift,5.225,58.214
+Precio_m2,León,Auto-ARIMA,11.713,123.883
+Precio_m2,León,ETS-HoltWinters,10.954,116.982
+Precio_m2,León,MA-4Q,5.323,52.921
+Precio_m2,Lleida,SeasNaive+Drift,5.286,76.632
+Precio_m2,Lleida,Auto-ARIMA,5.337,82.083
+Precio_m2,Lleida,ETS-HoltWinters,4.276,65.498
+Precio_m2,Lleida,MA-4Q,10.121,135.6
+Precio_m2,Lugo,SeasNaive+Drift,2.979,31.555
+Precio_m2,Lugo,Auto-ARIMA,3.444,48.931
+Precio_m2,Lugo,ETS-HoltWinters,1.927,28.722
+Precio_m2,Lugo,MA-4Q,6.567,78.237
+Precio_m2,Melilla,SeasNaive+Drift,1.7,36.437
+Precio_m2,Melilla,Auto-ARIMA,1.32,28.702
+Precio_m2,Melilla,ETS-HoltWinters,1.974,43.445
+Precio_m2,Melilla,MA-4Q,4.615,87.992
+Precio_m2,Málaga,SeasNaive+Drift,4.723,160.022
+Precio_m2,Málaga,Auto-ARIMA,3.421,126.287
+Precio_m2,Málaga,ETS-HoltWinters,2.79,102.265
+Precio_m2,Málaga,MA-4Q,16.524,458.218
+Precio_m2,Ourense,SeasNaive+Drift,4.703,45.816
+Precio_m2,Ourense,Auto-ARIMA,4.988,49.573
+Precio_m2,Ourense,ETS-HoltWinters,4.183,41.632
+Precio_m2,Ourense,MA-4Q,9.225,91.467
+Precio_m2,Palencia,SeasNaive+Drift,4.171,49.393
+Precio_m2,Palencia,Auto-ARIMA,6.239,67.285
+Precio_m2,Palencia,ETS-HoltWinters,9.809,110.729
+Precio_m2,Palencia,MA-4Q,3.659,40.412
+Precio_m2,Pontevedra,SeasNaive+Drift,1.983,34.285
+Precio_m2,Pontevedra,Auto-ARIMA,8.149,152.129
+Precio_m2,Pontevedra,ETS-HoltWinters,3.222,72.667
+Precio_m2,Pontevedra,MA-4Q,10.287,179.453
+Precio_m2,Principado de Asturias,SeasNaive+Drift,2.437,56.023
+Precio_m2,Principado de Asturias,Auto-ARIMA,3.669,87.18
+Precio_m2,Principado de Asturias,ETS-HoltWinters,2.603,44.761
+Precio_m2,Principado de Asturias,MA-4Q,9.424,178.989
+Precio_m2,Región de Murcia,SeasNaive+Drift,1.965,31.768
+Precio_m2,Región de Murcia,Auto-ARIMA,2.85,41.138
+Precio_m2,Región de Murcia,ETS-HoltWinters,2.976,37.263
+Precio_m2,Región de Murcia,MA-4Q,7.335,108.909
+Precio_m2,Salamanca,SeasNaive+Drift,5.35,72.87
+Precio_m2,Salamanca,Auto-ARIMA,3.532,57.44
+Precio_m2,Salamanca,ETS-HoltWinters,1.847,33.876
+Precio_m2,Salamanca,MA-4Q,5.863,85.892
+Precio_m2,Santa Cruz de Tenerife,SeasNaive+Drift,13.628,289.806
+Precio_m2,Santa Cruz de Tenerife,Auto-ARIMA,10.051,232.84
+Precio_m2,Santa Cruz de Tenerife,ETS-HoltWinters,7.425,173.322
+Precio_m2,Santa Cruz de Tenerife,MA-4Q,16.714,350.676
+Precio_m2,Segovia,SeasNaive+Drift,2.272,30.116
+Precio_m2,Segovia,Auto-ARIMA,6.716,85.093
+Precio_m2,Segovia,ETS-HoltWinters,6.962,89.546
+Precio_m2,Segovia,MA-4Q,9.019,123.507
+Precio_m2,Sevilla,SeasNaive+Drift,1.413,29.586
+Precio_m2,Sevilla,Auto-ARIMA,3.398,63.826
+Precio_m2,Sevilla,ETS-HoltWinters,5.306,96.217
+Precio_m2,Sevilla,MA-4Q,9.083,170.268
+Precio_m2,Soria,SeasNaive+Drift,4.667,51.481
+Precio_m2,Soria,Auto-ARIMA,6.91,91.925
+Precio_m2,Soria,ETS-HoltWinters,6.166,80.605
+Precio_m2,Soria,MA-4Q,10.21,131.309
+Precio_m2,Tarragona,SeasNaive+Drift,1.262,21.437
+Precio_m2,Tarragona,Auto-ARIMA,2.9,66.135
+Precio_m2,Tarragona,ETS-HoltWinters,1.236,25.416
+Precio_m2,Tarragona,MA-4Q,9.898,177.314
+Precio_m2,Teruel,SeasNaive+Drift,2.106,22.441
+Precio_m2,Teruel,Auto-ARIMA,3.127,35.475
+Precio_m2,Teruel,ETS-HoltWinters,1.845,20.702
+Precio_m2,Teruel,MA-4Q,8.033,82.723
+Precio_m2,Toledo,SeasNaive+Drift,1.77,28.779
+Precio_m2,Toledo,Auto-ARIMA,3.313,53.972
+Precio_m2,Toledo,ETS-HoltWinters,1.75,29.996
+Precio_m2,Toledo,MA-4Q,11.215,133.752
+Precio_m2,Valencia,SeasNaive+Drift,2.02,46.562
+Precio_m2,Valencia,Auto-ARIMA,3.622,71.506
+Precio_m2,Valencia,ETS-HoltWinters,5.467,89.21
+Precio_m2,Valencia,MA-4Q,14.856,259.791
+Precio_m2,Valladolid,SeasNaive+Drift,1.947,33.817
+Precio_m2,Valladolid,Auto-ARIMA,4.767,90.575
+Precio_m2,Valladolid,ETS-HoltWinters,2.618,51.048
+Precio_m2,Valladolid,MA-4Q,8.635,141.833
+Precio_m2,Vizcaya,SeasNaive+Drift,1.163,39.505
+Precio_m2,Vizcaya,Auto-ARIMA,1.176,37.978
+Precio_m2,Vizcaya,ETS-HoltWinters,1.884,54.65
+Precio_m2,Vizcaya,MA-4Q,6.83,188.779
+Precio_m2,Zamora,SeasNaive+Drift,2.438,25.219
+Precio_m2,Zamora,Auto-ARIMA,2.147,22.577
+Precio_m2,Zamora,ETS-HoltWinters,4.195,43.963
+Precio_m2,Zamora,MA-4Q,5.621,50.439
+Precio_m2,Zaragoza,SeasNaive+Drift,1.742,35.728
+Precio_m2,Zaragoza,Auto-ARIMA,4.358,73.88
+Precio_m2,Zaragoza,ETS-HoltWinters,9.554,168.687
+Precio_m2,Zaragoza,MA-4Q,11.686,209.699
+Precio_m2,Álava,SeasNaive+Drift,2.054,49.48
+Precio_m2,Álava,Auto-ARIMA,2.811,63.921
+Precio_m2,Álava,ETS-HoltWinters,5.191,122.068
+Precio_m2,Álava,MA-4Q,7.643,171.618
+Precio_m2,Ávila,SeasNaive+Drift,1.501,21.648
+Precio_m2,Ávila,Auto-ARIMA,3.763,49.011
+Precio_m2,Ávila,ETS-HoltWinters,1.236,17.208
+Precio_m2,Ávila,MA-4Q,10.166,113.141
+Tasa_Paro,A Coruña,SeasNaive+Drift,12.756,1.292
+Tasa_Paro,A Coruña,Auto-ARIMA,29.26,2.423
+Tasa_Paro,A Coruña,ETS-HoltWinters,26.718,2.227
+Tasa_Paro,A Coruña,MA-4Q,27.434,2.254
+Tasa_Paro,Albacete,SeasNaive+Drift,77.888,9.69
+Tasa_Paro,Albacete,Auto-ARIMA,11.432,1.468
+Tasa_Paro,Albacete,ETS-HoltWinters,29.619,3.741
+Tasa_Paro,Albacete,MA-4Q,14.771,1.892
+Tasa_Paro,Alicante,SeasNaive+Drift,19.796,3.344
+Tasa_Paro,Alicante,Auto-ARIMA,16.164,2.372
+Tasa_Paro,Alicante,ETS-HoltWinters,21.39,2.997
+Tasa_Paro,Alicante,MA-4Q,14.887,2.116
+Tasa_Paro,Almería,SeasNaive+Drift,8.935,1.78
+Tasa_Paro,Almería,Auto-ARIMA,17.443,2.718
+Tasa_Paro,Almería,ETS-HoltWinters,9.428,1.557
+Tasa_Paro,Almería,MA-4Q,17.962,2.833
+Tasa_Paro,Badajoz,SeasNaive+Drift,20.652,3.725
+Tasa_Paro,Badajoz,Auto-ARIMA,16.587,2.863
+Tasa_Paro,Badajoz,ETS-HoltWinters,5.983,1.399
+Tasa_Paro,Badajoz,MA-4Q,15.034,2.704
+Tasa_Paro,Barcelona,SeasNaive+Drift,14.25,1.384
+Tasa_Paro,Barcelona,Auto-ARIMA,29.187,2.547
+Tasa_Paro,Barcelona,ETS-HoltWinters,29.526,2.596
+Tasa_Paro,Barcelona,MA-4Q,17.248,1.522
+Tasa_Paro,Burgos,SeasNaive+Drift,33.334,2.744
+Tasa_Paro,Burgos,Auto-ARIMA,9.378,0.775
+Tasa_Paro,Burgos,ETS-HoltWinters,7.317,0.647
+Tasa_Paro,Burgos,MA-4Q,16.538,1.36
+Tasa_Paro,Cantabria,SeasNaive+Drift,14.419,1.315
+Tasa_Paro,Cantabria,Auto-ARIMA,33.439,2.674
+Tasa_Paro,Cantabria,ETS-HoltWinters,37.584,2.983
+Tasa_Paro,Cantabria,MA-4Q,24.043,1.926
+Tasa_Paro,Castellón,SeasNaive+Drift,24.328,3.611
+Tasa_Paro,Castellón,Auto-ARIMA,20.779,2.991
+Tasa_Paro,Castellón,ETS-HoltWinters,34.022,4.915
+Tasa_Paro,Castellón,MA-4Q,12.451,2.091
+Tasa_Paro,Ceuta,SeasNaive+Drift,27.803,8.417
+Tasa_Paro,Ceuta,Auto-ARIMA,17.595,5.277
+Tasa_Paro,Ceuta,ETS-HoltWinters,23.194,6.779
+Tasa_Paro,Ceuta,MA-4Q,13.033,4.19
+Tasa_Paro,Ciudad Real,SeasNaive+Drift,31.483,5.653
+Tasa_Paro,Ciudad Real,Auto-ARIMA,32.29,5.275
+Tasa_Paro,Ciudad Real,ETS-HoltWinters,54.525,8.864
+Tasa_Paro,Ciudad Real,MA-4Q,20.75,3.536
+Tasa_Paro,Comunidad Foral de Navarra,SeasNaive+Drift,10.456,1.093
+Tasa_Paro,Comunidad Foral de Navarra,Auto-ARIMA,26.387,2.241
+Tasa_Paro,Comunidad Foral de Navarra,ETS-HoltWinters,33.212,2.814
+Tasa_Paro,Comunidad Foral de Navarra,MA-4Q,21.738,1.925
+Tasa_Paro,Comunidad de Madrid,SeasNaive+Drift,14.433,1.368
+Tasa_Paro,Comunidad de Madrid,Auto-ARIMA,28.099,2.578
+Tasa_Paro,Comunidad de Madrid,ETS-HoltWinters,24.591,2.255
+Tasa_Paro,Comunidad de Madrid,MA-4Q,26.799,2.473
+Tasa_Paro,Cuenca,SeasNaive+Drift,73.603,8.507
+Tasa_Paro,Cuenca,Auto-ARIMA,26.756,3.596
+Tasa_Paro,Cuenca,ETS-HoltWinters,20.083,2.749
+Tasa_Paro,Cuenca,MA-4Q,17.919,2.535
+Tasa_Paro,Cáceres,SeasNaive+Drift,54.708,9.566
+Tasa_Paro,Cáceres,Auto-ARIMA,9.308,1.65
+Tasa_Paro,Cáceres,ETS-HoltWinters,8.985,1.597
+Tasa_Paro,Cáceres,MA-4Q,14.092,2.441
+Tasa_Paro,Cádiz,SeasNaive+Drift,7.02,1.648
+Tasa_Paro,Cádiz,Auto-ARIMA,19.386,4.292
+Tasa_Paro,Cádiz,ETS-HoltWinters,19.637,4.264
+Tasa_Paro,Cádiz,MA-4Q,16.582,3.654
+Tasa_Paro,Córdoba,SeasNaive+Drift,10.519,2.297
+Tasa_Paro,Córdoba,Auto-ARIMA,9.558,1.94
+Tasa_Paro,Córdoba,ETS-HoltWinters,9.964,1.972
+Tasa_Paro,Córdoba,MA-4Q,14.33,2.617
+Tasa_Paro,Girona,SeasNaive+Drift,80.955,7.571
+Tasa_Paro,Girona,Auto-ARIMA,11.778,1.188
+Tasa_Paro,Girona,ETS-HoltWinters,25.365,2.541
+Tasa_Paro,Girona,MA-4Q,15.938,1.728
+Tasa_Paro,Granada,SeasNaive+Drift,21.454,4.746
+Tasa_Paro,Granada,Auto-ARIMA,6.965,1.629
+Tasa_Paro,Granada,ETS-HoltWinters,13.193,2.946
+Tasa_Paro,Granada,MA-4Q,7.95,1.814
+Tasa_Paro,Guadalajara,SeasNaive+Drift,28.713,3.743
+Tasa_Paro,Guadalajara,Auto-ARIMA,10.995,1.3
+Tasa_Paro,Guadalajara,ETS-HoltWinters,13.516,1.587
+Tasa_Paro,Guadalajara,MA-4Q,10.993,1.303
+Tasa_Paro,Guipúzcoa,SeasNaive+Drift,22.195,1.856
+Tasa_Paro,Guipúzcoa,Auto-ARIMA,30.966,2.176
+Tasa_Paro,Guipúzcoa,ETS-HoltWinters,39.514,2.681
+Tasa_Paro,Guipúzcoa,MA-4Q,21.077,1.493
+Tasa_Paro,Huelva,SeasNaive+Drift,27.57,4.603
+Tasa_Paro,Huelva,Auto-ARIMA,20.867,3.551
+Tasa_Paro,Huelva,ETS-HoltWinters,27.91,4.616
+Tasa_Paro,Huelva,MA-4Q,22.529,3.647
+Tasa_Paro,Huesca,SeasNaive+Drift,38.803,3.09
+Tasa_Paro,Huesca,Auto-ARIMA,34.892,2.772
+Tasa_Paro,Huesca,ETS-HoltWinters,32.878,2.585
+Tasa_Paro,Huesca,MA-4Q,28.98,2.271
+Tasa_Paro,Islas Baleares,SeasNaive+Drift,95.228,8.318
+Tasa_Paro,Islas Baleares,Auto-ARIMA,15.986,1.846
+Tasa_Paro,Islas Baleares,ETS-HoltWinters,21.637,2.11
+Tasa_Paro,Islas Baleares,MA-4Q,45.354,4.134
+Tasa_Paro,Jaén,SeasNaive+Drift,12.391,2.913
+Tasa_Paro,Jaén,Auto-ARIMA,13.701,2.7
+Tasa_Paro,Jaén,ETS-HoltWinters,15.055,3.055
+Tasa_Paro,Jaén,MA-4Q,15.936,3.032
+Tasa_Paro,La Rioja,SeasNaive+Drift,40.794,3.995
+Tasa_Paro,La Rioja,Auto-ARIMA,12.813,1.627
+Tasa_Paro,La Rioja,ETS-HoltWinters,31.981,3.092
+Tasa_Paro,La Rioja,MA-4Q,11.82,1.174
+Tasa_Paro,Las Palmas,SeasNaive+Drift,82.53,13.406
+Tasa_Paro,Las Palmas,Auto-ARIMA,9.458,1.574
+Tasa_Paro,Las Palmas,ETS-HoltWinters,33.428,5.362
+Tasa_Paro,Las Palmas,MA-4Q,19.45,2.943
+Tasa_Paro,León,SeasNaive+Drift,70.445,7.842
+Tasa_Paro,León,Auto-ARIMA,13.65,1.584
+Tasa_Paro,León,ETS-HoltWinters,64.729,7.304
+Tasa_Paro,León,MA-4Q,10.167,1.21
+Tasa_Paro,Lleida,SeasNaive+Drift,34.702,2.443
+Tasa_Paro,Lleida,Auto-ARIMA,71.418,4.243
+Tasa_Paro,Lleida,ETS-HoltWinters,78.804,4.709
+Tasa_Paro,Lleida,MA-4Q,63.998,3.823
+Tasa_Paro,Lugo,SeasNaive+Drift,32.908,2.367
+Tasa_Paro,Lugo,Auto-ARIMA,24.88,1.813
+Tasa_Paro,Lugo,ETS-HoltWinters,29.093,2.07
+Tasa_Paro,Lugo,MA-4Q,30.906,2.251
+Tasa_Paro,Melilla,SeasNaive+Drift,13.373,4.526
+Tasa_Paro,Melilla,Auto-ARIMA,9.268,3.068
+Tasa_Paro,Melilla,ETS-HoltWinters,10.895,3.375
+Tasa_Paro,Melilla,MA-4Q,9.113,3.105
+Tasa_Paro,Málaga,SeasNaive+Drift,8.301,1.428
+Tasa_Paro,Málaga,Auto-ARIMA,35.561,5.137
+Tasa_Paro,Málaga,ETS-HoltWinters,34.623,4.991
+Tasa_Paro,Málaga,MA-4Q,30.793,4.564
+Tasa_Paro,Ourense,SeasNaive+Drift,19.174,2.154
+Tasa_Paro,Ourense,Auto-ARIMA,22.087,2.311
+Tasa_Paro,Ourense,ETS-HoltWinters,33.098,3.353
+Tasa_Paro,Ourense,MA-4Q,16.87,1.906
+Tasa_Paro,Palencia,SeasNaive+Drift,16.245,1.842
+Tasa_Paro,Palencia,Auto-ARIMA,15.609,1.341
+Tasa_Paro,Palencia,ETS-HoltWinters,20.338,1.64
+Tasa_Paro,Palencia,MA-4Q,29.339,2.296
+Tasa_Paro,Pontevedra,SeasNaive+Drift,18.412,2.357
+Tasa_Paro,Pontevedra,Auto-ARIMA,11.411,1.399
+Tasa_Paro,Pontevedra,ETS-HoltWinters,7.103,0.899
+Tasa_Paro,Pontevedra,MA-4Q,19.103,2.133
+Tasa_Paro,Principado de Asturias,SeasNaive+Drift,32.326,3.613
+Tasa_Paro,Principado de Asturias,Auto-ARIMA,47.878,4.879
+Tasa_Paro,Principado de Asturias,ETS-HoltWinters,52.716,5.44
+Tasa_Paro,Principado de Asturias,MA-4Q,26.043,2.784
+Tasa_Paro,Región de Murcia,SeasNaive+Drift,27.097,3.841
+Tasa_Paro,Región de Murcia,Auto-ARIMA,6.462,0.909
+Tasa_Paro,Región de Murcia,ETS-HoltWinters,11.393,1.646
+Tasa_Paro,Región de Murcia,MA-4Q,8.911,1.326
+Tasa_Paro,Salamanca,SeasNaive+Drift,58.184,6.131
+Tasa_Paro,Salamanca,Auto-ARIMA,18.595,2.069
+Tasa_Paro,Salamanca,ETS-HoltWinters,18.843,2.085
+Tasa_Paro,Salamanca,MA-4Q,17.96,2.003
+Tasa_Paro,Santa Cruz de Tenerife,SeasNaive+Drift,43.852,6.303
+Tasa_Paro,Santa Cruz de Tenerife,Auto-ARIMA,12.09,1.976
+Tasa_Paro,Santa Cruz de Tenerife,ETS-HoltWinters,9.388,1.792
+Tasa_Paro,Santa Cruz de Tenerife,MA-4Q,30.77,4.423
+Tasa_Paro,Segovia,SeasNaive+Drift,26.452,2.297
+Tasa_Paro,Segovia,Auto-ARIMA,20.583,1.567
+Tasa_Paro,Segovia,ETS-HoltWinters,21.678,1.761
+Tasa_Paro,Segovia,MA-4Q,27.941,1.953
+Tasa_Paro,Sevilla,SeasNaive+Drift,42.334,6.565
+Tasa_Paro,Sevilla,Auto-ARIMA,5.079,1.087
+Tasa_Paro,Sevilla,ETS-HoltWinters,32.565,5.16
+Tasa_Paro,Sevilla,MA-4Q,18.872,2.964
+Tasa_Paro,Soria,SeasNaive+Drift,32.32,3.024
+Tasa_Paro,Soria,Auto-ARIMA,36.601,2.618
+Tasa_Paro,Soria,ETS-HoltWinters,29.139,2.021
+Tasa_Paro,Soria,MA-4Q,29.023,2.112
+Tasa_Paro,Tarragona,SeasNaive+Drift,55.24,7.36
+Tasa_Paro,Tarragona,Auto-ARIMA,19.367,2.789
+Tasa_Paro,Tarragona,ETS-HoltWinters,36.918,4.784
+Tasa_Paro,Tarragona,MA-4Q,12.668,1.803
+Tasa_Paro,Teruel,SeasNaive+Drift,16.053,1.659
+Tasa_Paro,Teruel,Auto-ARIMA,22.776,2.051
+Tasa_Paro,Teruel,ETS-HoltWinters,39.094,3.22
+Tasa_Paro,Teruel,MA-4Q,18.197,1.637
+Tasa_Paro,Toledo,SeasNaive+Drift,16.192,2.544
+Tasa_Paro,Toledo,Auto-ARIMA,20.902,3.026
+Tasa_Paro,Toledo,ETS-HoltWinters,8.903,1.543
+Tasa_Paro,Toledo,MA-4Q,14.842,2.163
+Tasa_Paro,Valencia,SeasNaive+Drift,19.729,2.49
+Tasa_Paro,Valencia,Auto-ARIMA,6.045,0.795
+Tasa_Paro,Valencia,ETS-HoltWinters,9.516,1.297
+Tasa_Paro,Valencia,MA-4Q,9.159,1.209
+Tasa_Paro,Valladolid,SeasNaive+Drift,71.973,7.12
+Tasa_Paro,Valladolid,Auto-ARIMA,16.901,1.998
+Tasa_Paro,Valladolid,ETS-HoltWinters,18.816,2.122
+Tasa_Paro,Valladolid,MA-4Q,9.87,1.377
+Tasa_Paro,Vizcaya,SeasNaive+Drift,35.581,3.444
+Tasa_Paro,Vizcaya,Auto-ARIMA,13.876,1.263
+Tasa_Paro,Vizcaya,ETS-HoltWinters,13.38,1.222
+Tasa_Paro,Vizcaya,MA-4Q,17.08,1.514
+Tasa_Paro,Zamora,SeasNaive+Drift,17.778,2.312
+Tasa_Paro,Zamora,Auto-ARIMA,17.945,2.364
+Tasa_Paro,Zamora,ETS-HoltWinters,23.418,3.133
+Tasa_Paro,Zamora,MA-4Q,13.882,1.964
+Tasa_Paro,Zaragoza,SeasNaive+Drift,33.498,3.407
+Tasa_Paro,Zaragoza,Auto-ARIMA,13.4,1.25
+Tasa_Paro,Zaragoza,ETS-HoltWinters,14.46,1.288
+Tasa_Paro,Zaragoza,MA-4Q,18.204,1.618
+Tasa_Paro,Álava,SeasNaive+Drift,53.298,4.865
+Tasa_Paro,Álava,Auto-ARIMA,14.019,1.231
+Tasa_Paro,Álava,ETS-HoltWinters,16.576,1.434
+Tasa_Paro,Álava,MA-4Q,24.532,1.955
+Tasa_Paro,Ávila,SeasNaive+Drift,21.332,2.709
+Tasa_Paro,Ávila,Auto-ARIMA,22.94,2.521
+Tasa_Paro,Ávila,ETS-HoltWinters,11.831,1.454
+Tasa_Paro,Ávila,MA-4Q,36.822,3.874
+Transmisiones_Total,A Coruña,SeasNaive+Drift,33.256,3662.198
+Transmisiones_Total,A Coruña,Auto-ARIMA,25.548,2567.132
+Transmisiones_Total,A Coruña,ETS-HoltWinters,28.41,3026.151
+Transmisiones_Total,A Coruña,MA-4Q,25.039,2510.236
+Transmisiones_Total,Albacete,SeasNaive+Drift,52.517,2868.818
+Transmisiones_Total,Albacete,Auto-ARIMA,15.785,858.307
+Transmisiones_Total,Albacete,ETS-HoltWinters,9.822,526.529
+Transmisiones_Total,Albacete,MA-4Q,14.999,783.447
+Transmisiones_Total,Alicante,SeasNaive+Drift,36.637,10244.723
+Transmisiones_Total,Alicante,Auto-ARIMA,24.059,6370.749
+Transmisiones_Total,Alicante,ETS-HoltWinters,22.494,6710.785
+Transmisiones_Total,Alicante,MA-4Q,24.156,6416.661
+Transmisiones_Total,Almería,SeasNaive+Drift,24.437,2423.416
+Transmisiones_Total,Almería,Auto-ARIMA,24.089,2376.436
+Transmisiones_Total,Almería,ETS-HoltWinters,28.743,2881.721
+Transmisiones_Total,Almería,MA-4Q,25.322,2462.144
+Transmisiones_Total,Badajoz,SeasNaive+Drift,41.846,2960.142
+Transmisiones_Total,Badajoz,Auto-ARIMA,17.706,1156.989
+Transmisiones_Total,Badajoz,ETS-HoltWinters,24.509,1731.761
+Transmisiones_Total,Badajoz,MA-4Q,17.299,1149.088
+Transmisiones_Total,Barcelona,SeasNaive+Drift,58.603,28110.628
+Transmisiones_Total,Barcelona,Auto-ARIMA,18.86,9781.636
+Transmisiones_Total,Barcelona,ETS-HoltWinters,16.527,8220.482
+Transmisiones_Total,Barcelona,MA-4Q,17.7,8901.377
+Transmisiones_Total,Burgos,SeasNaive+Drift,24.081,2159.984
+Transmisiones_Total,Burgos,Auto-ARIMA,14.454,1151.457
+Transmisiones_Total,Burgos,ETS-HoltWinters,14.493,1363.797
+Transmisiones_Total,Burgos,MA-4Q,13.128,1124.285
+Transmisiones_Total,Cantabria,SeasNaive+Drift,26.719,2025.388
+Transmisiones_Total,Cantabria,Auto-ARIMA,30.428,2194.757
+Transmisiones_Total,Cantabria,ETS-HoltWinters,29.659,2215.309
+Transmisiones_Total,Cantabria,MA-4Q,26.348,1829.141
+Transmisiones_Total,Castellón,SeasNaive+Drift,17.261,2018.101
+Transmisiones_Total,Castellón,Auto-ARIMA,12.352,1404.023
+Transmisiones_Total,Castellón,ETS-HoltWinters,10.848,1392.389
+Transmisiones_Total,Castellón,MA-4Q,11.717,1323.125
+Transmisiones_Total,Ceuta,SeasNaive+Drift,36.516,1311.699
+Transmisiones_Total,Ceuta,Auto-ARIMA,31.171,1078.275
+Transmisiones_Total,Ceuta,ETS-HoltWinters,33.01,1155.692
+Transmisiones_Total,Ceuta,MA-4Q,17.572,630.359
+Transmisiones_Total,Ciudad Real,SeasNaive+Drift,22.405,1630.351
+Transmisiones_Total,Ciudad Real,Auto-ARIMA,25.161,1541.032
+Transmisiones_Total,Ciudad Real,ETS-HoltWinters,21.924,1411.261
+Transmisiones_Total,Ciudad Real,MA-4Q,25.535,1548.583
+Transmisiones_Total,Comunidad Foral de Navarra,SeasNaive+Drift,83.014,5676.553
+Transmisiones_Total,Comunidad Foral de Navarra,Auto-ARIMA,27.193,2105.213
+Transmisiones_Total,Comunidad Foral de Navarra,ETS-HoltWinters,30.203,2061.028
+Transmisiones_Total,Comunidad Foral de Navarra,MA-4Q,32.145,2224.124
+Transmisiones_Total,Comunidad de Madrid,SeasNaive+Drift,18.295,11134.971
+Transmisiones_Total,Comunidad de Madrid,Auto-ARIMA,25.792,12803.704
+Transmisiones_Total,Comunidad de Madrid,ETS-HoltWinters,27.447,13455.043
+Transmisiones_Total,Comunidad de Madrid,MA-4Q,28.311,14161.891
+Transmisiones_Total,Cuenca,SeasNaive+Drift,66.951,4049.206
+Transmisiones_Total,Cuenca,Auto-ARIMA,77.253,3384.886
+Transmisiones_Total,Cuenca,ETS-HoltWinters,75.407,3450.388
+Transmisiones_Total,Cuenca,MA-4Q,83.406,3519.043
+Transmisiones_Total,Cáceres,SeasNaive+Drift,55.479,3163.748
+Transmisiones_Total,Cáceres,Auto-ARIMA,20.028,1264.781
+Transmisiones_Total,Cáceres,ETS-HoltWinters,17.333,1012.374
+Transmisiones_Total,Cáceres,MA-4Q,22.225,1412.967
+Transmisiones_Total,Cádiz,SeasNaive+Drift,46.453,3849.34
+Transmisiones_Total,Cádiz,Auto-ARIMA,28.635,2368.413
+Transmisiones_Total,Cádiz,ETS-HoltWinters,33.676,2747.359
+Transmisiones_Total,Cádiz,MA-4Q,27.927,2293.761
+Transmisiones_Total,Córdoba,SeasNaive+Drift,86.997,7465.275
+Transmisiones_Total,Córdoba,Auto-ARIMA,34.638,2883.018
+Transmisiones_Total,Córdoba,ETS-HoltWinters,29.391,2428.798
+Transmisiones_Total,Córdoba,MA-4Q,21.759,1895.185
+Transmisiones_Total,Girona,SeasNaive+Drift,53.366,5227.139
+Transmisiones_Total,Girona,Auto-ARIMA,14.697,1492.382
+Transmisiones_Total,Girona,ETS-HoltWinters,19.377,1974.294
+Transmisiones_Total,Girona,MA-4Q,14.865,1654.583
+Transmisiones_Total,Granada,SeasNaive+Drift,21.668,2747.173
+Transmisiones_Total,Granada,Auto-ARIMA,15.037,2088.448
+Transmisiones_Total,Granada,ETS-HoltWinters,17.543,2362.556
+Transmisiones_Total,Granada,MA-4Q,13.133,1642.912
+Transmisiones_Total,Guadalajara,SeasNaive+Drift,87.191,3558.506
+Transmisiones_Total,Guadalajara,Auto-ARIMA,29.068,1247.893
+Transmisiones_Total,Guadalajara,ETS-HoltWinters,33.927,1703.982
+Transmisiones_Total,Guadalajara,MA-4Q,26.88,1188.964
+Transmisiones_Total,Guipúzcoa,SeasNaive+Drift,41.183,2293.338
+Transmisiones_Total,Guipúzcoa,Auto-ARIMA,27.596,1567.285
+Transmisiones_Total,Guipúzcoa,ETS-HoltWinters,28.98,1604.152
+Transmisiones_Total,Guipúzcoa,MA-4Q,28.558,1645.589
+Transmisiones_Total,Huelva,SeasNaive+Drift,48.487,2450.045
+Transmisiones_Total,Huelva,Auto-ARIMA,13.153,757.068
+Transmisiones_Total,Huelva,ETS-HoltWinters,25.156,1328.025
+Transmisiones_Total,Huelva,MA-4Q,13.229,757.996
+Transmisiones_Total,Huesca,SeasNaive+Drift,21.765,1237.151
+Transmisiones_Total,Huesca,Auto-ARIMA,27.256,1282.128
+Transmisiones_Total,Huesca,ETS-HoltWinters,44.905,2021.464
+Transmisiones_Total,Huesca,MA-4Q,22.509,1012.182
+Transmisiones_Total,Islas Baleares,SeasNaive+Drift,34.886,3852.654
+Transmisiones_Total,Islas Baleares,Auto-ARIMA,38.691,4234.387
+Transmisiones_Total,Islas Baleares,ETS-HoltWinters,63.346,6689.006
+Transmisiones_Total,Islas Baleares,MA-4Q,50.234,5317.427
+Transmisiones_Total,Jaén,SeasNaive+Drift,54.323,4808.218
+Transmisiones_Total,Jaén,Auto-ARIMA,22.269,1823.298
+Transmisiones_Total,Jaén,ETS-HoltWinters,20.079,1490.322
+Transmisiones_Total,Jaén,MA-4Q,22.818,1994.096
+Transmisiones_Total,La Rioja,SeasNaive+Drift,27.554,1615.399
+Transmisiones_Total,La Rioja,Auto-ARIMA,21.283,999.193
+Transmisiones_Total,La Rioja,ETS-HoltWinters,39.905,1954.294
+Transmisiones_Total,La Rioja,MA-4Q,18.165,865.356
+Transmisiones_Total,Las Palmas,SeasNaive+Drift,42.278,3420.37
+Transmisiones_Total,Las Palmas,Auto-ARIMA,32.453,2469.03
+Transmisiones_Total,Las Palmas,ETS-HoltWinters,27.767,2077.599
+Transmisiones_Total,Las Palmas,MA-4Q,27.751,1988.552
+Transmisiones_Total,León,SeasNaive+Drift,28.233,2239.984
+Transmisiones_Total,León,Auto-ARIMA,12.167,1259.054
+Transmisiones_Total,León,ETS-HoltWinters,12.891,1150.352
+Transmisiones_Total,León,MA-4Q,12.192,1275.056
+Transmisiones_Total,Lleida,SeasNaive+Drift,14.056,1084.895
+Transmisiones_Total,Lleida,Auto-ARIMA,13.438,928.401
+Transmisiones_Total,Lleida,ETS-HoltWinters,23.731,1647.376
+Transmisiones_Total,Lleida,MA-4Q,14.548,1003.115
+Transmisiones_Total,Lugo,SeasNaive+Drift,53.492,2165.216
+Transmisiones_Total,Lugo,Auto-ARIMA,24.335,1012.593
+Transmisiones_Total,Lugo,ETS-HoltWinters,27.114,1209.002
+Transmisiones_Total,Lugo,MA-4Q,15.986,675.948
+Transmisiones_Total,Melilla,SeasNaive+Drift,29.986,1276.119
+Transmisiones_Total,Melilla,Auto-ARIMA,18.716,705.039
+Transmisiones_Total,Melilla,ETS-HoltWinters,42.752,1465.369
+Transmisiones_Total,Melilla,MA-4Q,27.277,919.506
+Transmisiones_Total,Málaga,SeasNaive+Drift,27.6,6820.421
+Transmisiones_Total,Málaga,Auto-ARIMA,16.406,4123.015
+Transmisiones_Total,Málaga,ETS-HoltWinters,14.06,3342.035
+Transmisiones_Total,Málaga,MA-4Q,20.985,5181.178
+Transmisiones_Total,Ourense,SeasNaive+Drift,316.47,15649.525
+Transmisiones_Total,Ourense,Auto-ARIMA,267.669,13055.367
+Transmisiones_Total,Ourense,ETS-HoltWinters,249.317,12186.021
+Transmisiones_Total,Ourense,MA-4Q,264.578,12887.106
+Transmisiones_Total,Palencia,SeasNaive+Drift,51.562,4970.825
+Transmisiones_Total,Palencia,Auto-ARIMA,71.683,4333.987
+Transmisiones_Total,Palencia,ETS-HoltWinters,71.988,5312.586
+Transmisiones_Total,Palencia,MA-4Q,49.76,4953.937
+Transmisiones_Total,Pontevedra,SeasNaive+Drift,46.278,3086.002
+Transmisiones_Total,Pontevedra,Auto-ARIMA,22.583,1596.452
+Transmisiones_Total,Pontevedra,ETS-HoltWinters,22.534,1515.188
+Transmisiones_Total,Pontevedra,MA-4Q,23.092,1583.997
+Transmisiones_Total,Principado de Asturias,SeasNaive+Drift,33.914,4353.858
+Transmisiones_Total,Principado de Asturias,Auto-ARIMA,18.93,2823.634
+Transmisiones_Total,Principado de Asturias,ETS-HoltWinters,18.17,2496.674
+Transmisiones_Total,Principado de Asturias,MA-4Q,18.618,2653.6
+Transmisiones_Total,Región de Murcia,SeasNaive+Drift,18.953,4008.307
+Transmisiones_Total,Región de Murcia,Auto-ARIMA,16.21,2970.012
+Transmisiones_Total,Región de Murcia,ETS-HoltWinters,17.082,3329.967
+Transmisiones_Total,Región de Murcia,MA-4Q,17.023,3148.049
+Transmisiones_Total,Salamanca,SeasNaive+Drift,39.687,2686.32
+Transmisiones_Total,Salamanca,Auto-ARIMA,22.703,1656.594
+Transmisiones_Total,Salamanca,ETS-HoltWinters,27.194,1829.323
+Transmisiones_Total,Salamanca,MA-4Q,33.226,2286.844
+Transmisiones_Total,Santa Cruz de Tenerife,SeasNaive+Drift,42.116,3979.758
+Transmisiones_Total,Santa Cruz de Tenerife,Auto-ARIMA,13.467,1184.587
+Transmisiones_Total,Santa Cruz de Tenerife,ETS-HoltWinters,16.488,1433.368
+Transmisiones_Total,Santa Cruz de Tenerife,MA-4Q,15.546,1332.23
+Transmisiones_Total,Segovia,SeasNaive+Drift,40.182,1823.941
+Transmisiones_Total,Segovia,Auto-ARIMA,25.136,1150.9
+Transmisiones_Total,Segovia,ETS-HoltWinters,43.995,2164.607
+Transmisiones_Total,Segovia,MA-4Q,25.18,1188.933
+Transmisiones_Total,Sevilla,SeasNaive+Drift,20.949,3189.272
+Transmisiones_Total,Sevilla,Auto-ARIMA,22.891,3231.369
+Transmisiones_Total,Sevilla,ETS-HoltWinters,29.998,4425.504
+Transmisiones_Total,Sevilla,MA-4Q,26.769,3746.689
+Transmisiones_Total,Soria,SeasNaive+Drift,148.417,13657.754
+Transmisiones_Total,Soria,Auto-ARIMA,106.825,9457.748
+Transmisiones_Total,Soria,ETS-HoltWinters,137.435,11983.871
+Transmisiones_Total,Soria,MA-4Q,111.108,9893.818
+Transmisiones_Total,Tarragona,SeasNaive+Drift,18.919,2137.419
+Transmisiones_Total,Tarragona,Auto-ARIMA,16.708,1603.257
+Transmisiones_Total,Tarragona,ETS-HoltWinters,30.796,2984.813
+Transmisiones_Total,Tarragona,MA-4Q,22.905,2204.824
+Transmisiones_Total,Teruel,SeasNaive+Drift,169.487,11276.685
+Transmisiones_Total,Teruel,Auto-ARIMA,132.48,6937.058
+Transmisiones_Total,Teruel,ETS-HoltWinters,104.14,5905.08
+Transmisiones_Total,Teruel,MA-4Q,93.961,5990.272
+Transmisiones_Total,Toledo,SeasNaive+Drift,22.191,3165.973
+Transmisiones_Total,Toledo,Auto-ARIMA,18.559,2628.31
+Transmisiones_Total,Toledo,ETS-HoltWinters,18.966,2311.913
+Transmisiones_Total,Toledo,MA-4Q,18.248,2371.214
+Transmisiones_Total,Valencia,SeasNaive+Drift,23.215,8310.181
+Transmisiones_Total,Valencia,Auto-ARIMA,31.709,8022.864
+Transmisiones_Total,Valencia,ETS-HoltWinters,41.984,10252.758
+Transmisiones_Total,Valencia,MA-4Q,41.957,9978.223
+Transmisiones_Total,Valladolid,SeasNaive+Drift,34.096,2181.454
+Transmisiones_Total,Valladolid,Auto-ARIMA,22.009,1269.35
+Transmisiones_Total,Valladolid,ETS-HoltWinters,19.889,1124.017
+Transmisiones_Total,Valladolid,MA-4Q,23.009,1324.257
+Transmisiones_Total,Vizcaya,SeasNaive+Drift,51.298,6523.861
+Transmisiones_Total,Vizcaya,Auto-ARIMA,20.386,2863.624
+Transmisiones_Total,Vizcaya,ETS-HoltWinters,17.175,2120.345
+Transmisiones_Total,Vizcaya,MA-4Q,17.369,1811.885
+Transmisiones_Total,Zamora,SeasNaive+Drift,235.037,9155.338
+Transmisiones_Total,Zamora,Auto-ARIMA,90.383,3301.484
+Transmisiones_Total,Zamora,ETS-HoltWinters,107.122,3802.539
+Transmisiones_Total,Zamora,MA-4Q,59.258,2726.311
+Transmisiones_Total,Zaragoza,SeasNaive+Drift,63.303,6399.549
+Transmisiones_Total,Zaragoza,Auto-ARIMA,32.3,3265.389
+Transmisiones_Total,Zaragoza,ETS-HoltWinters,36.732,3452.586
+Transmisiones_Total,Zaragoza,MA-4Q,31.655,3160.389
+Transmisiones_Total,Álava,SeasNaive+Drift,49.438,3606.183
+Transmisiones_Total,Álava,Auto-ARIMA,53.309,5111.421
+Transmisiones_Total,Álava,ETS-HoltWinters,92.108,6697.065
+Transmisiones_Total,Álava,MA-4Q,61.889,5580.59
+Transmisiones_Total,Ávila,SeasNaive+Drift,167.565,8569.718
+Transmisiones_Total,Ávila,Auto-ARIMA,150.657,7164.743
+Transmisiones_Total,Ávila,ETS-HoltWinters,139.731,6866.114
+Transmisiones_Total,Ávila,MA-4Q,118.981,5706.912
+Poblacion,A Coruña,SeasNaive+Drift,0.995,12439.803
+Poblacion,A Coruña,Auto-ARIMA,0.897,11245.567
+Poblacion,A Coruña,ETS-HoltWinters,1.094,13637.149
+Poblacion,A Coruña,MA-4Q,0.897,11245.567
+Poblacion,Albacete,SeasNaive+Drift,0.954,4026.928
+Poblacion,Albacete,Auto-ARIMA,0.808,3413.459
+Poblacion,Albacete,ETS-HoltWinters,1.177,4967.971
+Poblacion,Albacete,MA-4Q,0.808,3413.459
+Poblacion,Alicante,SeasNaive+Drift,2.85,60527.02
+Poblacion,Alicante,Auto-ARIMA,4.316,92262.824
+Poblacion,Alicante,ETS-HoltWinters,2.504,53075.019
+Poblacion,Alicante,MA-4Q,4.316,92262.824
+Poblacion,Almería,SeasNaive+Drift,1.733,13668.857
+Poblacion,Almería,Auto-ARIMA,2.561,20427.574
+Poblacion,Almería,ETS-HoltWinters,1.013,7825.805
+Poblacion,Almería,MA-4Q,2.892,23179.204
+Poblacion,Badajoz,SeasNaive+Drift,0.103,703.358
+Poblacion,Badajoz,Auto-ARIMA,0.316,2147.503
+Poblacion,Badajoz,ETS-HoltWinters,0.31,2467.39
+Poblacion,Badajoz,MA-4Q,0.316,2147.503
+Poblacion,Barcelona,SeasNaive+Drift,3.321,209314.689
+Poblacion,Barcelona,Auto-ARIMA,3.028,190649.036
+Poblacion,Barcelona,ETS-HoltWinters,1.867,116646.818
+Poblacion,Barcelona,MA-4Q,3.028,190649.036
+Poblacion,Burgos,SeasNaive+Drift,1.79,7012.454
+Poblacion,Burgos,Auto-ARIMA,1.407,5520.486
+Poblacion,Burgos,ETS-HoltWinters,1.965,7698.696
+Poblacion,Burgos,MA-4Q,1.407,5520.486
+Poblacion,Cantabria,SeasNaive+Drift,0.748,4740.909
+Poblacion,Cantabria,Auto-ARIMA,0.93,5904.651
+Poblacion,Cantabria,ETS-HoltWinters,0.568,3589.545
+Poblacion,Cantabria,MA-4Q,0.93,5904.651
+Poblacion,Castellón,SeasNaive+Drift,3.147,20933.298
+Poblacion,Castellón,Auto-ARIMA,3.929,26161.427
+Poblacion,Castellón,ETS-HoltWinters,2.737,18190.554
+Poblacion,Castellón,MA-4Q,3.929,26161.427
+Poblacion,Ceuta,SeasNaive+Drift,0.896,863.452
+Poblacion,Ceuta,Auto-ARIMA,0.245,293.502
+Poblacion,Ceuta,ETS-HoltWinters,1.543,1440.276
+Poblacion,Ceuta,MA-4Q,0.258,306.942
+Poblacion,Ciudad Real,SeasNaive+Drift,0.844,4608.29
+Poblacion,Ciudad Real,Auto-ARIMA,0.464,2591.07
+Poblacion,Ciudad Real,ETS-HoltWinters,1.175,6376.096
+Poblacion,Ciudad Real,MA-4Q,0.464,2591.07
+Poblacion,Comunidad Foral de Navarra,SeasNaive+Drift,1.5,10746.624
+Poblacion,Comunidad Foral de Navarra,Auto-ARIMA,2.001,14415.099
+Poblacion,Comunidad Foral de Navarra,ETS-HoltWinters,1.19,8464.509
+Poblacion,Comunidad Foral de Navarra,MA-4Q,2.001,14415.099
+Poblacion,Comunidad de Madrid,SeasNaive+Drift,3.756,283534.095
+Poblacion,Comunidad de Madrid,Auto-ARIMA,3.626,273667.738
+Poblacion,Comunidad de Madrid,ETS-HoltWinters,3.21,243583.308
+Poblacion,Comunidad de Madrid,MA-4Q,3.626,273667.738
+Poblacion,Cuenca,SeasNaive+Drift,0.594,1184.853
+Poblacion,Cuenca,Auto-ARIMA,1.238,2534.811
+Poblacion,Cuenca,ETS-HoltWinters,0.413,837.77
+Poblacion,Cuenca,MA-4Q,1.238,2534.811
+Poblacion,Cáceres,SeasNaive+Drift,0.086,337.776
+Poblacion,Cáceres,Auto-ARIMA,0.152,624.85
+Poblacion,Cáceres,ETS-HoltWinters,0.44,1955.241
+Poblacion,Cáceres,MA-4Q,0.152,624.85
+Poblacion,Cádiz,SeasNaive+Drift,0.203,2624.033
+Poblacion,Cádiz,Auto-ARIMA,0.619,8244.814
+Poblacion,Cádiz,ETS-HoltWinters,0.042,576.755
+Poblacion,Cádiz,MA-4Q,0.619,8244.814
+Poblacion,Córdoba,SeasNaive+Drift,0.125,974.814
+Poblacion,Córdoba,Auto-ARIMA,0.123,1216.235
+Poblacion,Córdoba,ETS-HoltWinters,0.484,3928.532
+Poblacion,Córdoba,MA-4Q,0.123,1216.235
+Poblacion,Girona,SeasNaive+Drift,3.07,26241.004
+Poblacion,Girona,Auto-ARIMA,3.603,30948.746
+Poblacion,Girona,ETS-HoltWinters,2.642,22444.546
+Poblacion,Girona,MA-4Q,3.603,30948.746
+Poblacion,Granada,SeasNaive+Drift,0.903,8891.244
+Poblacion,Granada,Auto-ARIMA,1.471,14655.072
+Poblacion,Granada,ETS-HoltWinters,0.633,6170.909
+Poblacion,Granada,MA-4Q,1.471,14655.072
+Poblacion,Guadalajara,SeasNaive+Drift,3.102,9267.899
+Poblacion,Guadalajara,Auto-ARIMA,3.864,11570.849
+Poblacion,Guadalajara,ETS-HoltWinters,2.136,6323.804
+Poblacion,Guadalajara,MA-4Q,4.246,12750.637
+Poblacion,Guipúzcoa,SeasNaive+Drift,1.342,10569.383
+Poblacion,Guipúzcoa,Auto-ARIMA,0.906,7123.194
+Poblacion,Guipúzcoa,ETS-HoltWinters,0.835,6618.795
+Poblacion,Guipúzcoa,MA-4Q,0.906,7123.194
+Poblacion,Huelva,SeasNaive+Drift,0.168,1098.703
+Poblacion,Huelva,Auto-ARIMA,0.951,5467.563
+Poblacion,Huelva,ETS-HoltWinters,0.547,3262.371
+Poblacion,Huelva,MA-4Q,0.951,5467.563
+Poblacion,Huesca,SeasNaive+Drift,0.973,2392.451
+Poblacion,Huesca,Auto-ARIMA,1.439,3546.547
+Poblacion,Huesca,ETS-HoltWinters,0.519,1266.17
+Poblacion,Huesca,MA-4Q,1.439,3546.547
+Poblacion,Islas Baleares,SeasNaive+Drift,2.218,29120.491
+Poblacion,Islas Baleares,Auto-ARIMA,3.515,46429.186
+Poblacion,Islas Baleares,ETS-HoltWinters,1.648,21487.155
+Poblacion,Islas Baleares,MA-4Q,3.515,46429.186
+Poblacion,Jaén,SeasNaive+Drift,0.24,1541.456
+Poblacion,Jaén,Auto-ARIMA,0.794,5019.552
+Poblacion,Jaén,ETS-HoltWinters,0.279,2189.46
+Poblacion,Jaén,MA-4Q,0.794,5019.552
+Poblacion,La Rioja,SeasNaive+Drift,1.541,5371.799
+Poblacion,La Rioja,Auto-ARIMA,1.451,5055.687
+Poblacion,La Rioja,ETS-HoltWinters,1.284,4478.226
+Poblacion,La Rioja,MA-4Q,1.478,5150.997
+Poblacion,Las Palmas,SeasNaive+Drift,1.67,21041.65
+Poblacion,Las Palmas,Auto-ARIMA,2.18,27451.408
+Poblacion,Las Palmas,ETS-HoltWinters,1.471,18539.677
+Poblacion,Las Palmas,MA-4Q,2.18,27451.408
+Poblacion,León,SeasNaive+Drift,0.368,1900.437
+Poblacion,León,Auto-ARIMA,0.163,854.483
+Poblacion,León,ETS-HoltWinters,1.142,5627.517
+Poblacion,León,MA-4Q,0.253,1180.174
+Poblacion,Lleida,SeasNaive+Drift,2.251,10953.033
+Poblacion,Lleida,Auto-ARIMA,2.542,12378.344
+Poblacion,Lleida,ETS-HoltWinters,2.019,9807.672
+Poblacion,Lleida,MA-4Q,2.542,12378.344
+Poblacion,Lugo,SeasNaive+Drift,0.891,3284.369
+Poblacion,Lugo,Auto-ARIMA,0.316,1135.618
+Poblacion,Lugo,ETS-HoltWinters,1.374,4976.719
+Poblacion,Lugo,MA-4Q,0.268,1129.766
+Poblacion,Melilla,SeasNaive+Drift,3.201,3046.04
+Poblacion,Melilla,Auto-ARIMA,1.067,1055.096
+Poblacion,Melilla,ETS-HoltWinters,3.701,3511.312
+Poblacion,Melilla,MA-4Q,1.444,1412.062
+Poblacion,Málaga,SeasNaive+Drift,2.001,36158.811
+Poblacion,Málaga,Auto-ARIMA,3.25,59871.109
+Poblacion,Málaga,ETS-HoltWinters,1.313,23389.657
+Poblacion,Málaga,MA-4Q,3.25,59871.109
+Poblacion,Ourense,SeasNaive+Drift,0.554,1863.958
+Poblacion,Ourense,Auto-ARIMA,0.166,558.377
+Poblacion,Ourense,ETS-HoltWinters,0.88,2935.255
+Poblacion,Ourense,MA-4Q,0.179,655.276
+Poblacion,Palencia,SeasNaive+Drift,0.936,1736.751
+Poblacion,Palencia,Auto-ARIMA,0.345,722.571
+Poblacion,Palencia,ETS-HoltWinters,1.528,2739.066
+Poblacion,Palencia,MA-4Q,0.207,428.181
+Poblacion,Pontevedra,SeasNaive+Drift,0.128,1246.08
+Poblacion,Pontevedra,Auto-ARIMA,0.239,2329.863
+Poblacion,Pontevedra,ETS-HoltWinters,0.127,1240.855
+Poblacion,Pontevedra,MA-4Q,0.239,2329.863
+Poblacion,Principado de Asturias,SeasNaive+Drift,1.295,14817.807
+Poblacion,Principado de Asturias,Auto-ARIMA,0.523,6483.789
+Poblacion,Principado de Asturias,ETS-HoltWinters,1.839,20730.965
+Poblacion,Principado de Asturias,MA-4Q,0.523,6483.789
+Poblacion,Región de Murcia,SeasNaive+Drift,1.692,28177.975
+Poblacion,Región de Murcia,Auto-ARIMA,2.503,41954.024
+Poblacion,Región de Murcia,ETS-HoltWinters,1.168,19257.324
+Poblacion,Región de Murcia,MA-4Q,2.503,41954.024
+Poblacion,Salamanca,SeasNaive+Drift,0.797,2817.17
+Poblacion,Salamanca,Auto-ARIMA,0.43,1518.95
+Poblacion,Salamanca,ETS-HoltWinters,1.215,4297.431
+Poblacion,Salamanca,MA-4Q,0.43,1518.95
+Poblacion,Santa Cruz de Tenerife,SeasNaive+Drift,1.609,18026.351
+Poblacion,Santa Cruz de Tenerife,Auto-ARIMA,2.398,27196.002
+Poblacion,Santa Cruz de Tenerife,ETS-HoltWinters,1.341,14914.594
+Poblacion,Santa Cruz de Tenerife,MA-4Q,2.398,27196.002
+Poblacion,Segovia,SeasNaive+Drift,1.861,3148.216
+Poblacion,Segovia,Auto-ARIMA,1.911,3232.126
+Poblacion,Segovia,ETS-HoltWinters,1.76,2978.462
+Poblacion,Segovia,MA-4Q,1.911,3232.126
+Poblacion,Sevilla,SeasNaive+Drift,0.865,18308.39
+Poblacion,Sevilla,Auto-ARIMA,0.964,20414.1
+Poblacion,Sevilla,ETS-HoltWinters,0.845,17877.401
+Poblacion,Sevilla,MA-4Q,0.964,20414.1
+Poblacion,Soria,SeasNaive+Drift,2.305,2127.855
+Poblacion,Soria,Auto-ARIMA,1.776,1623.459
+Poblacion,Soria,ETS-HoltWinters,2.539,2350.864
+Poblacion,Soria,MA-4Q,1.776,1623.459
+Poblacion,Tarragona,SeasNaive+Drift,2.452,22344.953
+Poblacion,Tarragona,Auto-ARIMA,3.587,32939.734
+Poblacion,Tarragona,ETS-HoltWinters,1.734,15643.364
+Poblacion,Tarragona,MA-4Q,3.587,32939.734
+Poblacion,Teruel,SeasNaive+Drift,1.343,1928.263
+Poblacion,Teruel,Auto-ARIMA,0.995,1421.08
+Poblacion,Teruel,ETS-HoltWinters,1.384,1987.483
+Poblacion,Teruel,MA-4Q,0.995,1421.08
+Poblacion,Toledo,SeasNaive+Drift,2.535,20023.936
+Poblacion,Toledo,Auto-ARIMA,3.591,28540.273
+Poblacion,Toledo,ETS-HoltWinters,1.803,14131.78
+Poblacion,Toledo,MA-4Q,3.591,28540.273
+Poblacion,Valencia,SeasNaive+Drift,2.871,85580.408
+Poblacion,Valencia,Auto-ARIMA,3.709,110274.672
+Poblacion,Valencia,ETS-HoltWinters,2.635,78632.402
+Poblacion,Valencia,MA-4Q,3.709,110274.672
+Poblacion,Valladolid,SeasNaive+Drift,1.567,8978.016
+Poblacion,Valladolid,Auto-ARIMA,1.306,7493.343
+Poblacion,Valladolid,ETS-HoltWinters,1.679,9612.499
+Poblacion,Valladolid,MA-4Q,1.306,7493.343
+Poblacion,Vizcaya,SeasNaive+Drift,1.527,19613.202
+Poblacion,Vizcaya,Auto-ARIMA,0.97,12646.853
+Poblacion,Vizcaya,ETS-HoltWinters,0.997,13026.405
+Poblacion,Vizcaya,MA-4Q,0.97,12646.853
+Poblacion,Zamora,SeasNaive+Drift,0.386,659.443
+Poblacion,Zamora,Auto-ARIMA,1.218,2182.898
+Poblacion,Zamora,ETS-HoltWinters,0.621,1161.472
+Poblacion,Zamora,MA-4Q,0.976,1712.904
+Poblacion,Zaragoza,SeasNaive+Drift,1.816,19367.533
+Poblacion,Zaragoza,Auto-ARIMA,1.981,21134.51
+Poblacion,Zaragoza,ETS-HoltWinters,1.748,18669.552
+Poblacion,Zaragoza,MA-4Q,1.981,21134.51
+Poblacion,Álava,SeasNaive+Drift,1.389,5207.459
+Poblacion,Álava,Auto-ARIMA,1.484,5554.86
+Poblacion,Álava,ETS-HoltWinters,0.696,2702.191
+Poblacion,Álava,MA-4Q,1.484,5554.86
+Poblacion,Ávila,SeasNaive+Drift,0.275,459.553
+Poblacion,Ávila,Auto-ARIMA,0.76,1286.735
+Poblacion,Ávila,ETS-HoltWinters,0.081,157.643
+Poblacion,Ávila,MA-4Q,0.76,1286.735
+Edad_Media,A Coruña,SeasNaive+Drift,0.055,0.028
+Edad_Media,A Coruña,Auto-ARIMA,0.411,0.243
+Edad_Media,A Coruña,ETS-HoltWinters,0.449,0.23
+Edad_Media,A Coruña,MA-4Q,0.631,0.332
+Edad_Media,Albacete,SeasNaive+Drift,0.258,0.132
+Edad_Media,Albacete,Auto-ARIMA,0.93,0.471
+Edad_Media,Albacete,ETS-HoltWinters,0.155,0.07
+Edad_Media,Albacete,MA-4Q,1.0,0.489
+Edad_Media,Alicante,SeasNaive+Drift,0.739,0.345
+Edad_Media,Alicante,Auto-ARIMA,0.207,0.101
+Edad_Media,Alicante,ETS-HoltWinters,1.361,0.642
+Edad_Media,Alicante,MA-4Q,0.188,0.105
+Edad_Media,Almería,SeasNaive+Drift,0.37,0.185
+Edad_Media,Almería,Auto-ARIMA,0.705,0.36
+Edad_Media,Almería,ETS-HoltWinters,0.147,0.063
+Edad_Media,Almería,MA-4Q,0.897,0.417
+Edad_Media,Badajoz,SeasNaive+Drift,0.528,0.259
+Edad_Media,Badajoz,Auto-ARIMA,1.09,0.558
+Edad_Media,Badajoz,ETS-HoltWinters,0.026,0.014
+Edad_Media,Badajoz,MA-4Q,1.291,0.63
+Edad_Media,Barcelona,SeasNaive+Drift,0.178,0.078
+Edad_Media,Barcelona,Auto-ARIMA,0.343,0.177
+Edad_Media,Barcelona,ETS-HoltWinters,0.59,0.265
+Edad_Media,Barcelona,MA-4Q,0.451,0.23
+Edad_Media,Burgos,SeasNaive+Drift,0.273,0.136
+Edad_Media,Burgos,Auto-ARIMA,0.378,0.215
+Edad_Media,Burgos,ETS-HoltWinters,0.59,0.298
+Edad_Media,Burgos,MA-4Q,0.45,0.235
+Edad_Media,Cantabria,SeasNaive+Drift,0.183,0.108
+Edad_Media,Cantabria,Auto-ARIMA,0.788,0.441
+Edad_Media,Cantabria,ETS-HoltWinters,0.361,0.173
+Edad_Media,Cantabria,MA-4Q,0.959,0.499
+Edad_Media,Castellón,SeasNaive+Drift,0.147,0.065
+Edad_Media,Castellón,Auto-ARIMA,0.34,0.18
+Edad_Media,Castellón,ETS-HoltWinters,0.606,0.278
+Edad_Media,Castellón,MA-4Q,0.422,0.217
+Edad_Media,Ceuta,SeasNaive+Drift,0.778,0.337
+Edad_Media,Ceuta,Auto-ARIMA,1.514,0.667
+Edad_Media,Ceuta,ETS-HoltWinters,0.129,0.058
+Edad_Media,Ceuta,MA-4Q,1.657,0.707
+Edad_Media,Ciudad Real,SeasNaive+Drift,0.281,0.136
+Edad_Media,Ciudad Real,Auto-ARIMA,0.95,0.477
+Edad_Media,Ciudad Real,ETS-HoltWinters,0.081,0.042
+Edad_Media,Ciudad Real,MA-4Q,0.992,0.482
+Edad_Media,Comunidad Foral de Navarra,SeasNaive+Drift,0.117,0.058
+Edad_Media,Comunidad Foral de Navarra,Auto-ARIMA,0.518,0.283
+Edad_Media,Comunidad Foral de Navarra,ETS-HoltWinters,0.312,0.14
+Edad_Media,Comunidad Foral de Navarra,MA-4Q,0.68,0.336
+Edad_Media,Comunidad de Madrid,SeasNaive+Drift,0.253,0.11
+Edad_Media,Comunidad de Madrid,Auto-ARIMA,0.418,0.225
+Edad_Media,Comunidad de Madrid,ETS-HoltWinters,0.759,0.341
+Edad_Media,Comunidad de Madrid,MA-4Q,0.538,0.269
+Edad_Media,Cuenca,SeasNaive+Drift,0.078,0.04
+Edad_Media,Cuenca,Auto-ARIMA,0.246,0.135
+Edad_Media,Cuenca,ETS-HoltWinters,0.29,0.143
+Edad_Media,Cuenca,MA-4Q,0.316,0.163
+Edad_Media,Cáceres,SeasNaive+Drift,0.361,0.192
+Edad_Media,Cáceres,Auto-ARIMA,0.829,0.459
+Edad_Media,Cáceres,ETS-HoltWinters,0.119,0.057
+Edad_Media,Cáceres,MA-4Q,1.01,0.525
+Edad_Media,Cádiz,SeasNaive+Drift,0.728,0.346
+Edad_Media,Cádiz,Auto-ARIMA,1.346,0.671
+Edad_Media,Cádiz,ETS-HoltWinters,0.029,0.018
+Edad_Media,Cádiz,MA-4Q,1.647,0.778
+Edad_Media,Córdoba,SeasNaive+Drift,0.414,0.211
+Edad_Media,Córdoba,Auto-ARIMA,0.922,0.487
+Edad_Media,Córdoba,ETS-HoltWinters,0.141,0.063
+Edad_Media,Córdoba,MA-4Q,1.154,0.568
+Edad_Media,Girona,SeasNaive+Drift,0.188,0.089
+Edad_Media,Girona,Auto-ARIMA,0.442,0.24
+Edad_Media,Girona,ETS-HoltWinters,0.662,0.289
+Edad_Media,Girona,MA-4Q,0.503,0.267
+Edad_Media,Granada,SeasNaive+Drift,0.396,0.193
+Edad_Media,Granada,Auto-ARIMA,0.96,0.483
+Edad_Media,Granada,ETS-HoltWinters,0.103,0.045
+Edad_Media,Granada,MA-4Q,1.128,0.539
+Edad_Media,Guadalajara,SeasNaive+Drift,0.055,0.024
+Edad_Media,Guadalajara,Auto-ARIMA,0.752,0.377
+Edad_Media,Guadalajara,ETS-HoltWinters,0.439,0.195
+Edad_Media,Guadalajara,MA-4Q,0.76,0.357
+Edad_Media,Guipúzcoa,SeasNaive+Drift,0.071,0.044
+Edad_Media,Guipúzcoa,Auto-ARIMA,0.563,0.308
+Edad_Media,Guipúzcoa,ETS-HoltWinters,0.166,0.078
+Edad_Media,Guipúzcoa,MA-4Q,0.688,0.349
+Edad_Media,Huelva,SeasNaive+Drift,0.635,0.305
+Edad_Media,Huelva,Auto-ARIMA,1.02,0.518
+Edad_Media,Huelva,ETS-HoltWinters,0.069,0.031
+Edad_Media,Huelva,MA-4Q,1.297,0.613
+Edad_Media,Huesca,SeasNaive+Drift,0.152,0.07
+Edad_Media,Huesca,Auto-ARIMA,0.252,0.139
+Edad_Media,Huesca,ETS-HoltWinters,0.36,0.168
+Edad_Media,Huesca,MA-4Q,0.247,0.14
+Edad_Media,Islas Baleares,SeasNaive+Drift,0.136,0.06
+Edad_Media,Islas Baleares,Auto-ARIMA,0.449,0.236
+Edad_Media,Islas Baleares,ETS-HoltWinters,0.728,0.331
+Edad_Media,Islas Baleares,MA-4Q,0.699,0.323
+Edad_Media,Jaén,SeasNaive+Drift,0.517,0.248
+Edad_Media,Jaén,Auto-ARIMA,1.009,0.516
+Edad_Media,Jaén,ETS-HoltWinters,0.023,0.011
+Edad_Media,Jaén,MA-4Q,1.255,0.606
+Edad_Media,La Rioja,SeasNaive+Drift,0.191,0.104
+Edad_Media,La Rioja,Auto-ARIMA,0.627,0.337
+Edad_Media,La Rioja,ETS-HoltWinters,0.14,0.064
+Edad_Media,La Rioja,MA-4Q,0.72,0.362
+Edad_Media,Las Palmas,SeasNaive+Drift,0.237,0.11
+Edad_Media,Las Palmas,Auto-ARIMA,1.043,0.532
+Edad_Media,Las Palmas,ETS-HoltWinters,0.597,0.284
+Edad_Media,Las Palmas,MA-4Q,1.386,0.653
+Edad_Media,León,SeasNaive+Drift,0.049,0.027
+Edad_Media,León,Auto-ARIMA,0.621,0.352
+Edad_Media,León,ETS-HoltWinters,0.323,0.174
+Edad_Media,León,MA-4Q,0.646,0.352
+Edad_Media,Lleida,SeasNaive+Drift,0.072,0.037
+Edad_Media,Lleida,Auto-ARIMA,0.388,0.205
+Edad_Media,Lleida,ETS-HoltWinters,0.277,0.127
+Edad_Media,Lleida,MA-4Q,0.409,0.207
+Edad_Media,Lugo,SeasNaive+Drift,0.367,0.204
+Edad_Media,Lugo,Auto-ARIMA,0.051,0.031
+Edad_Media,Lugo,ETS-HoltWinters,0.678,0.374
+Edad_Media,Lugo,MA-4Q,0.086,0.044
+Edad_Media,Melilla,SeasNaive+Drift,1.009,0.411
+Edad_Media,Melilla,Auto-ARIMA,1.855,0.775
+Edad_Media,Melilla,ETS-HoltWinters,0.212,0.09
+Edad_Media,Melilla,MA-4Q,2.14,0.867
+Edad_Media,Málaga,SeasNaive+Drift,0.099,0.051
+Edad_Media,Málaga,Auto-ARIMA,0.708,0.374
+Edad_Media,Málaga,ETS-HoltWinters,0.558,0.251
+Edad_Media,Málaga,MA-4Q,0.907,0.438
+Edad_Media,Ourense,SeasNaive+Drift,0.272,0.147
+Edad_Media,Ourense,Auto-ARIMA,0.169,0.098
+Edad_Media,Ourense,ETS-HoltWinters,0.589,0.323
+Edad_Media,Ourense,MA-4Q,0.24,0.138
+Edad_Media,Palencia,SeasNaive+Drift,0.054,0.035
+Edad_Media,Palencia,Auto-ARIMA,0.547,0.295
+Edad_Media,Palencia,ETS-HoltWinters,0.433,0.238
+Edad_Media,Palencia,MA-4Q,0.585,0.304
+Edad_Media,Pontevedra,SeasNaive+Drift,0.401,0.21
+Edad_Media,Pontevedra,Auto-ARIMA,0.948,0.518
+Edad_Media,Pontevedra,ETS-HoltWinters,0.163,0.078
+Edad_Media,Pontevedra,MA-4Q,1.152,0.593
+Edad_Media,Principado de Asturias,SeasNaive+Drift,0.123,0.067
+Edad_Media,Principado de Asturias,Auto-ARIMA,0.432,0.254
+Edad_Media,Principado de Asturias,ETS-HoltWinters,0.581,0.311
+Edad_Media,Principado de Asturias,MA-4Q,0.593,0.317
+Edad_Media,Región de Murcia,SeasNaive+Drift,0.356,0.175
+Edad_Media,Región de Murcia,Auto-ARIMA,0.842,0.413
+Edad_Media,Región de Murcia,ETS-HoltWinters,0.125,0.053
+Edad_Media,Región de Murcia,MA-4Q,0.96,0.445
+Edad_Media,Salamanca,SeasNaive+Drift,0.109,0.059
+Edad_Media,Salamanca,Auto-ARIMA,0.509,0.303
+Edad_Media,Salamanca,ETS-HoltWinters,0.447,0.225
+Edad_Media,Salamanca,MA-4Q,0.543,0.307
+Edad_Media,Santa Cruz de Tenerife,SeasNaive+Drift,0.097,0.05
+Edad_Media,Santa Cruz de Tenerife,Auto-ARIMA,0.807,0.438
+Edad_Media,Santa Cruz de Tenerife,ETS-HoltWinters,0.688,0.328
+Edad_Media,Santa Cruz de Tenerife,MA-4Q,1.174,0.568
+Edad_Media,Segovia,SeasNaive+Drift,0.123,0.068
+Edad_Media,Segovia,Auto-ARIMA,0.535,0.28
+Edad_Media,Segovia,ETS-HoltWinters,0.265,0.137
+Edad_Media,Segovia,MA-4Q,0.515,0.261
+Edad_Media,Sevilla,SeasNaive+Drift,0.564,0.266
+Edad_Media,Sevilla,Auto-ARIMA,1.076,0.533
+Edad_Media,Sevilla,ETS-HoltWinters,0.032,0.015
+Edad_Media,Sevilla,MA-4Q,1.338,0.623
+Edad_Media,Soria,SeasNaive+Drift,0.569,0.274
+Edad_Media,Soria,Auto-ARIMA,0.227,0.136
+Edad_Media,Soria,ETS-HoltWinters,0.56,0.269
+Edad_Media,Soria,MA-4Q,0.14,0.073
+Edad_Media,Tarragona,SeasNaive+Drift,0.118,0.062
+Edad_Media,Tarragona,Auto-ARIMA,0.588,0.317
+Edad_Media,Tarragona,ETS-HoltWinters,0.327,0.146
+Edad_Media,Tarragona,MA-4Q,0.702,0.342
+Edad_Media,Teruel,SeasNaive+Drift,0.162,0.081
+Edad_Media,Teruel,Auto-ARIMA,0.216,0.107
+Edad_Media,Teruel,ETS-HoltWinters,0.288,0.139
+Edad_Media,Teruel,MA-4Q,0.164,0.081
+Edad_Media,Toledo,SeasNaive+Drift,0.125,0.063
+Edad_Media,Toledo,Auto-ARIMA,0.711,0.352
+Edad_Media,Toledo,ETS-HoltWinters,0.223,0.101
+Edad_Media,Toledo,MA-4Q,0.736,0.346
+Edad_Media,Valencia,SeasNaive+Drift,0.227,0.103
+Edad_Media,Valencia,Auto-ARIMA,0.219,0.111
+Edad_Media,Valencia,ETS-HoltWinters,0.677,0.316
+Edad_Media,Valencia,MA-4Q,0.318,0.158
+Edad_Media,Valladolid,SeasNaive+Drift,0.028,0.015
+Edad_Media,Valladolid,Auto-ARIMA,0.677,0.369
+Edad_Media,Valladolid,ETS-HoltWinters,0.446,0.222
+Edad_Media,Valladolid,MA-4Q,0.75,0.388
+Edad_Media,Vizcaya,SeasNaive+Drift,0.094,0.044
+Edad_Media,Vizcaya,Auto-ARIMA,0.375,0.217
+Edad_Media,Vizcaya,ETS-HoltWinters,0.533,0.263
+Edad_Media,Vizcaya,MA-4Q,0.54,0.281
+Edad_Media,Zamora,SeasNaive+Drift,0.045,0.03
+Edad_Media,Zamora,Auto-ARIMA,0.566,0.322
+Edad_Media,Zamora,ETS-HoltWinters,0.383,0.221
+Edad_Media,Zamora,MA-4Q,0.585,0.321
+Edad_Media,Zaragoza,SeasNaive+Drift,0.15,0.07
+Edad_Media,Zaragoza,Auto-ARIMA,0.371,0.201
+Edad_Media,Zaragoza,ETS-HoltWinters,0.527,0.249
+Edad_Media,Zaragoza,MA-4Q,0.457,0.235
+Edad_Media,Álava,SeasNaive+Drift,0.172,0.089
+Edad_Media,Álava,Auto-ARIMA,0.748,0.393
+Edad_Media,Álava,ETS-HoltWinters,0.345,0.166
+Edad_Media,Álava,MA-4Q,0.9,0.446
+Edad_Media,Ávila,SeasNaive+Drift,0.302,0.163
+Edad_Media,Ávila,Auto-ARIMA,0.383,0.212
+Edad_Media,Ávila,ETS-HoltWinters,0.587,0.312
+Edad_Media,Ávila,MA-4Q,0.406,0.209
+Pob_Ext,A Coruña,SeasNaive+Drift,11.503,6793.386
+Pob_Ext,A Coruña,Auto-ARIMA,14.922,8884.699
+Pob_Ext,A Coruña,ETS-HoltWinters,8.545,4980.305
+Pob_Ext,A Coruña,MA-4Q,16.705,9991.03
+Pob_Ext,Albacete,SeasNaive+Drift,31.308,13053.808
+Pob_Ext,Albacete,Auto-ARIMA,32.434,13545.55
+Pob_Ext,Albacete,ETS-HoltWinters,29.872,12431.205
+Pob_Ext,Albacete,MA-4Q,33.372,13953.216
+Pob_Ext,Alicante,SeasNaive+Drift,15.721,77732.657
+Pob_Ext,Alicante,Auto-ARIMA,19.291,96341.051
+Pob_Ext,Alicante,ETS-HoltWinters,14.576,71838.969
+Pob_Ext,Alicante,MA-4Q,19.291,96341.051
+Pob_Ext,Almería,SeasNaive+Drift,22.548,49435.78
+Pob_Ext,Almería,Auto-ARIMA,25.518,56246.157
+Pob_Ext,Almería,ETS-HoltWinters,20.922,45742.33
+Pob_Ext,Almería,MA-4Q,25.518,56246.157
+Pob_Ext,Badajoz,SeasNaive+Drift,40.109,14372.668
+Pob_Ext,Badajoz,Auto-ARIMA,39.663,14207.353
+Pob_Ext,Badajoz,ETS-HoltWinters,38.494,13775.044
+Pob_Ext,Badajoz,MA-4Q,40.191,14403.247
+Pob_Ext,Barcelona,SeasNaive+Drift,15.764,173772.129
+Pob_Ext,Barcelona,Auto-ARIMA,16.752,185186.579
+Pob_Ext,Barcelona,ETS-HoltWinters,14.282,156671.895
+Pob_Ext,Barcelona,MA-4Q,17.323,191819.088
+Pob_Ext,Burgos,SeasNaive+Drift,26.894,11296.438
+Pob_Ext,Burgos,Auto-ARIMA,28.092,11819.587
+Pob_Ext,Burgos,ETS-HoltWinters,24.984,10466.826
+Pob_Ext,Burgos,MA-4Q,28.94,12192.947
+Pob_Ext,Cantabria,SeasNaive+Drift,17.481,8257.06
+Pob_Ext,Cantabria,Auto-ARIMA,18.887,8951.095
+Pob_Ext,Cantabria,ETS-HoltWinters,16.006,7528.024
+Pob_Ext,Cantabria,MA-4Q,19.99,9502.782
+Pob_Ext,Castellón,SeasNaive+Drift,20.264,23908.775
+Pob_Ext,Castellón,Auto-ARIMA,21.987,26038.896
+Pob_Ext,Castellón,ETS-HoltWinters,19.046,22410.744
+Pob_Ext,Castellón,MA-4Q,21.987,26038.896
+Pob_Ext,Ceuta,SeasNaive+Drift,41.684,3285.322
+Pob_Ext,Ceuta,Auto-ARIMA,34.961,2729.887
+Pob_Ext,Ceuta,ETS-HoltWinters,40.388,3190.373
+Pob_Ext,Ceuta,MA-4Q,34.961,2729.887
+Pob_Ext,Ciudad Real,SeasNaive+Drift,27.376,12171.231
+Pob_Ext,Ciudad Real,Auto-ARIMA,28.39,12640.6
+Pob_Ext,Ciudad Real,ETS-HoltWinters,25.939,11511.087
+Pob_Ext,Ciudad Real,MA-4Q,28.422,12654.893
+Pob_Ext,Comunidad Foral de Navarra,SeasNaive+Drift,5.601,4738.136
+Pob_Ext,Comunidad Foral de Navarra,Auto-ARIMA,8.463,7239.193
+Pob_Ext,Comunidad Foral de Navarra,ETS-HoltWinters,2.914,2414.654
+Pob_Ext,Comunidad Foral de Navarra,MA-4Q,8.463,7239.193
+Pob_Ext,Comunidad de Madrid,SeasNaive+Drift,17.153,200477.06
+Pob_Ext,Comunidad de Madrid,Auto-ARIMA,16.643,194240.966
+Pob_Ext,Comunidad de Madrid,ETS-HoltWinters,17.507,204640.309
+Pob_Ext,Comunidad de Madrid,MA-4Q,16.643,194240.966
+Pob_Ext,Cuenca,SeasNaive+Drift,29.902,9937.353
+Pob_Ext,Cuenca,Auto-ARIMA,30.616,10182.674
+Pob_Ext,Cuenca,ETS-HoltWinters,29.021,9633.759
+Pob_Ext,Cuenca,MA-4Q,31.255,10403.993
+Pob_Ext,Cáceres,SeasNaive+Drift,27.54,5398.672
+Pob_Ext,Cáceres,Auto-ARIMA,28.851,5666.835
+Pob_Ext,Cáceres,ETS-HoltWinters,27.011,5290.637
+Pob_Ext,Cáceres,MA-4Q,28.851,5666.835
+Pob_Ext,Cádiz,SeasNaive+Drift,26.783,19901.988
+Pob_Ext,Cádiz,Auto-ARIMA,27.931,20792.383
+Pob_Ext,Cádiz,ETS-HoltWinters,24.841,18408.065
+Pob_Ext,Cádiz,MA-4Q,29.251,21814.945
+Pob_Ext,Córdoba,SeasNaive+Drift,46.446,18542.639
+Pob_Ext,Córdoba,Auto-ARIMA,45.737,18249.943
+Pob_Ext,Córdoba,ETS-HoltWinters,46.815,18694.837
+Pob_Ext,Córdoba,MA-4Q,45.673,18223.329
+Pob_Ext,Girona,SeasNaive+Drift,12.972,24773.594
+Pob_Ext,Girona,Auto-ARIMA,14.366,27537.812
+Pob_Ext,Girona,ETS-HoltWinters,12.361,23567.501
+Pob_Ext,Girona,MA-4Q,14.366,27537.812
+Pob_Ext,Granada,SeasNaive+Drift,30.828,31901.6
+Pob_Ext,Granada,Auto-ARIMA,31.645,32781.683
+Pob_Ext,Granada,ETS-HoltWinters,28.613,29534.204
+Pob_Ext,Granada,MA-4Q,32.783,34005.466
+Pob_Ext,Guadalajara,SeasNaive+Drift,18.322,8808.73
+Pob_Ext,Guadalajara,Auto-ARIMA,19.177,9243.136
+Pob_Ext,Guadalajara,ETS-HoltWinters,16.572,7925.222
+Pob_Ext,Guadalajara,MA-4Q,20.672,9997.988
+Pob_Ext,Guipúzcoa,SeasNaive+Drift,4.242,2892.723
+Pob_Ext,Guipúzcoa,Auto-ARIMA,6.131,3854.654
+Pob_Ext,Guipúzcoa,ETS-HoltWinters,4.989,3398.896
+Pob_Ext,Guipúzcoa,MA-4Q,4.219,2770.011
+Pob_Ext,Huelva,SeasNaive+Drift,41.748,39817.453
+Pob_Ext,Huelva,Auto-ARIMA,43.584,41670.28
+Pob_Ext,Huelva,ETS-HoltWinters,40.336,38393.45
+Pob_Ext,Huelva,MA-4Q,45.153,43264.071
+Pob_Ext,Huesca,SeasNaive+Drift,24.624,10218.63
+Pob_Ext,Huesca,Auto-ARIMA,27.275,11375.394
+Pob_Ext,Huesca,ETS-HoltWinters,22.418,9262.406
+Pob_Ext,Huesca,MA-4Q,27.275,11375.394
+Pob_Ext,Islas Baleares,SeasNaive+Drift,26.227,80406.414
+Pob_Ext,Islas Baleares,Auto-ARIMA,26.48,81212.425
+Pob_Ext,Islas Baleares,ETS-HoltWinters,25.937,79465.816
+Pob_Ext,Islas Baleares,MA-4Q,26.866,82451.109
+Pob_Ext,Jaén,SeasNaive+Drift,39.094,11949.405
+Pob_Ext,Jaén,Auto-ARIMA,41.923,12849.115
+Pob_Ext,Jaén,ETS-HoltWinters,37.39,11411.756
+Pob_Ext,Jaén,MA-4Q,41.923,12849.115
+Pob_Ext,La Rioja,SeasNaive+Drift,19.978,10707.259
+Pob_Ext,La Rioja,Auto-ARIMA,21.147,11354.192
+Pob_Ext,La Rioja,ETS-HoltWinters,17.836,9534.178
+Pob_Ext,La Rioja,MA-4Q,21.811,11723.924
+Pob_Ext,Las Palmas,SeasNaive+Drift,28.388,56475.91
+Pob_Ext,Las Palmas,Auto-ARIMA,27.775,55215.01
+Pob_Ext,Las Palmas,ETS-HoltWinters,29.107,57951.769
+Pob_Ext,Las Palmas,MA-4Q,27.775,55215.01
+Pob_Ext,León,SeasNaive+Drift,27.904,8116.733
+Pob_Ext,León,Auto-ARIMA,28.605,8331.721
+Pob_Ext,León,ETS-HoltWinters,27.645,8035.872
+Pob_Ext,León,MA-4Q,28.654,8345.561
+Pob_Ext,Lleida,SeasNaive+Drift,20.688,22545.783
+Pob_Ext,Lleida,Auto-ARIMA,22.6,24735.022
+Pob_Ext,Lleida,ETS-HoltWinters,19.053,20690.305
+Pob_Ext,Lleida,MA-4Q,22.679,24819.136
+Pob_Ext,Lugo,SeasNaive+Drift,13.608,3023.648
+Pob_Ext,Lugo,Auto-ARIMA,15.536,3450.693
+Pob_Ext,Lugo,ETS-HoltWinters,11.915,2645.401
+Pob_Ext,Lugo,MA-4Q,15.536,3450.693
+Pob_Ext,Melilla,SeasNaive+Drift,54.385,12639.804
+Pob_Ext,Melilla,Auto-ARIMA,55.761,12962.934
+Pob_Ext,Melilla,ETS-HoltWinters,56.275,13081.709
+Pob_Ext,Melilla,MA-4Q,49.766,11569.884
+Pob_Ext,Málaga,SeasNaive+Drift,20.519,79499.608
+Pob_Ext,Málaga,Auto-ARIMA,23.988,93653.683
+Pob_Ext,Málaga,ETS-HoltWinters,19.037,73516.829
+Pob_Ext,Málaga,MA-4Q,24.734,96732.278
+Pob_Ext,Ourense,SeasNaive+Drift,14.933,3153.289
+Pob_Ext,Ourense,Auto-ARIMA,16.218,3447.529
+Pob_Ext,Ourense,ETS-HoltWinters,13.034,2734.143
+Pob_Ext,Ourense,MA-4Q,17.545,3727.16
+Pob_Ext,Palencia,SeasNaive+Drift,32.944,3806.627
+Pob_Ext,Palencia,Auto-ARIMA,32.981,3813.973
+Pob_Ext,Palencia,ETS-HoltWinters,31.752,3661.518
+Pob_Ext,Palencia,MA-4Q,34.332,3975.349
+Pob_Ext,Pontevedra,SeasNaive+Drift,13.212,6324.443
+Pob_Ext,Pontevedra,Auto-ARIMA,15.151,7292.503
+Pob_Ext,Pontevedra,ETS-HoltWinters,12.174,5801.313
+Pob_Ext,Pontevedra,MA-4Q,15.151,7292.503
+Pob_Ext,Principado de Asturias,SeasNaive+Drift,19.651,12030.064
+Pob_Ext,Principado de Asturias,Auto-ARIMA,19.446,11897.173
+Pob_Ext,Principado de Asturias,ETS-HoltWinters,18.947,11575.075
+Pob_Ext,Principado de Asturias,MA-4Q,20.012,12257.738
+Pob_Ext,Región de Murcia,SeasNaive+Drift,9.451,24609.168
+Pob_Ext,Región de Murcia,Auto-ARIMA,11.414,29973.137
+Pob_Ext,Región de Murcia,ETS-HoltWinters,8.522,22082.157
+Pob_Ext,Región de Murcia,MA-4Q,11.414,29973.137
+Pob_Ext,Salamanca,SeasNaive+Drift,28.564,6652.85
+Pob_Ext,Salamanca,Auto-ARIMA,31.422,7348.494
+Pob_Ext,Salamanca,ETS-HoltWinters,25.706,5964.225
+Pob_Ext,Salamanca,MA-4Q,31.422,7348.494
+Pob_Ext,Santa Cruz de Tenerife,SeasNaive+Drift,24.318,48049.873
+Pob_Ext,Santa Cruz de Tenerife,Auto-ARIMA,25.319,50120.892
+Pob_Ext,Santa Cruz de Tenerife,ETS-HoltWinters,23.858,47090.388
+Pob_Ext,Santa Cruz de Tenerife,MA-4Q,25.319,50120.892
+Pob_Ext,Segovia,SeasNaive+Drift,37.738,11204.321
+Pob_Ext,Segovia,Auto-ARIMA,37.929,11262.693
+Pob_Ext,Segovia,ETS-HoltWinters,36.458,10815.813
+Pob_Ext,Segovia,MA-4Q,38.488,11432.95
+Pob_Ext,Sevilla,SeasNaive+Drift,22.871,24929.85
+Pob_Ext,Sevilla,Auto-ARIMA,25.496,27942.268
+Pob_Ext,Sevilla,ETS-HoltWinters,20.853,22636.631
+Pob_Ext,Sevilla,MA-4Q,25.611,28064.517
+Pob_Ext,Soria,SeasNaive+Drift,25.408,3051.46
+Pob_Ext,Soria,Auto-ARIMA,26.667,3210.446
+Pob_Ext,Soria,ETS-HoltWinters,23.762,2844.151
+Pob_Ext,Soria,MA-4Q,25.797,3100.412
+Pob_Ext,Tarragona,SeasNaive+Drift,18.62,32699.602
+Pob_Ext,Tarragona,Auto-ARIMA,19.949,35130.172
+Pob_Ext,Tarragona,ETS-HoltWinters,17.953,31478.958
+Pob_Ext,Tarragona,MA-4Q,19.949,35130.172
+Pob_Ext,Teruel,SeasNaive+Drift,23.182,4930.218
+Pob_Ext,Teruel,Auto-ARIMA,23.618,5040.185
+Pob_Ext,Teruel,ETS-HoltWinters,21.286,4507.97
+Pob_Ext,Teruel,MA-4Q,25.146,5370.004
+Pob_Ext,Toledo,SeasNaive+Drift,18.421,17294.281
+Pob_Ext,Toledo,Auto-ARIMA,19.141,17994.513
+Pob_Ext,Toledo,ETS-HoltWinters,17.231,16133.748
+Pob_Ext,Toledo,MA-4Q,20.076,18913.951
+Pob_Ext,Valencia,SeasNaive+Drift,17.926,75556.608
+Pob_Ext,Valencia,Auto-ARIMA,21.477,91012.149
+Pob_Ext,Valencia,ETS-HoltWinters,16.002,67175.743
+Pob_Ext,Valencia,MA-4Q,22.371,94911.835
+Pob_Ext,Valladolid,SeasNaive+Drift,33.836,15525.692
+Pob_Ext,Valladolid,Auto-ARIMA,34.235,15715.97
+Pob_Ext,Valladolid,ETS-HoltWinters,30.816,14084.811
+Pob_Ext,Valladolid,MA-4Q,35.233,16196.633
+Pob_Ext,Vizcaya,SeasNaive+Drift,1.946,2139.387
+Pob_Ext,Vizcaya,Auto-ARIMA,1.865,2241.535
+Pob_Ext,Vizcaya,ETS-HoltWinters,1.844,2225.619
+Pob_Ext,Vizcaya,MA-4Q,2.485,2413.228
+Pob_Ext,Zamora,SeasNaive+Drift,51.578,6904.294
+Pob_Ext,Zamora,Auto-ARIMA,51.83,6939.824
+Pob_Ext,Zamora,ETS-HoltWinters,50.372,6737.797
+Pob_Ext,Zamora,MA-4Q,52.388,7016.889
+Pob_Ext,Zaragoza,SeasNaive+Drift,25.114,40525.724
+Pob_Ext,Zaragoza,Auto-ARIMA,25.877,41786.948
+Pob_Ext,Zaragoza,ETS-HoltWinters,23.481,37844.011
+Pob_Ext,Zaragoza,MA-4Q,25.877,41786.948
+Pob_Ext,Álava,SeasNaive+Drift,1.922,731.334
+Pob_Ext,Álava,Auto-ARIMA,2.808,1073.347
+Pob_Ext,Álava,ETS-HoltWinters,1.906,741.395
+Pob_Ext,Álava,MA-4Q,2.808,1073.347
+Pob_Ext,Ávila,SeasNaive+Drift,38.444,6593.155
+Pob_Ext,Ávila,Auto-ARIMA,37.967,6508.024
+Pob_Ext,Ávila,ETS-HoltWinters,36.777,6297.047
+Pob_Ext,Ávila,MA-4Q,38.252,6558.805
+IPC,A Coruña,SeasNaive+Drift,511.755,13.998
+IPC,A Coruña,Auto-ARIMA,49.753,1.425
+IPC,A Coruña,ETS-HoltWinters,179.639,4.843
+IPC,A Coruña,MA-4Q,226.446,6.126
+IPC,Albacete,SeasNaive+Drift,621.568,16.185
+IPC,Albacete,Auto-ARIMA,41.494,1.639
+IPC,Albacete,ETS-HoltWinters,219.234,5.61
+IPC,Albacete,MA-4Q,283.599,7.294
+IPC,Alicante,SeasNaive+Drift,410.648,12.296
+IPC,Alicante,Auto-ARIMA,34.107,1.246
+IPC,Alicante,ETS-HoltWinters,131.296,3.825
+IPC,Alicante,MA-4Q,185.401,5.408
+IPC,Almería,SeasNaive+Drift,465.475,13.449
+IPC,Almería,Auto-ARIMA,51.29,2.283
+IPC,Almería,ETS-HoltWinters,159.263,4.517
+IPC,Almería,MA-4Q,198.59,5.641
+IPC,Badajoz,SeasNaive+Drift,497.347,13.886
+IPC,Badajoz,Auto-ARIMA,52.375,1.906
+IPC,Badajoz,ETS-HoltWinters,180.03,4.88
+IPC,Badajoz,MA-4Q,225.148,6.107
+IPC,Barcelona,SeasNaive+Drift,434.984,11.999
+IPC,Barcelona,Auto-ARIMA,27.18,1.05
+IPC,Barcelona,ETS-HoltWinters,133.558,3.63
+IPC,Barcelona,MA-4Q,189.448,5.157
+IPC,Burgos,SeasNaive+Drift,556.879,14.966
+IPC,Burgos,Auto-ARIMA,44.376,1.231
+IPC,Burgos,ETS-HoltWinters,197.368,5.188
+IPC,Burgos,MA-4Q,251.633,6.632
+IPC,Cantabria,SeasNaive+Drift,449.919,12.36
+IPC,Cantabria,Auto-ARIMA,39.109,1.084
+IPC,Cantabria,ETS-HoltWinters,145.299,3.923
+IPC,Cantabria,MA-4Q,197.708,5.357
+IPC,Castellón,SeasNaive+Drift,410.648,12.296
+IPC,Castellón,Auto-ARIMA,34.107,1.246
+IPC,Castellón,ETS-HoltWinters,131.296,3.825
+IPC,Castellón,MA-4Q,185.401,5.408
+IPC,Ceuta,SeasNaive+Drift,435.469,11.765
+IPC,Ceuta,Auto-ARIMA,53.145,2.313
+IPC,Ceuta,ETS-HoltWinters,157.364,4.04
+IPC,Ceuta,MA-4Q,178.159,4.588
+IPC,Ciudad Real,SeasNaive+Drift,621.568,16.185
+IPC,Ciudad Real,Auto-ARIMA,41.494,1.639
+IPC,Ciudad Real,ETS-HoltWinters,219.234,5.61
+IPC,Ciudad Real,MA-4Q,283.599,7.294
+IPC,Comunidad Foral de Navarra,SeasNaive+Drift,506.389,14.003
+IPC,Comunidad Foral de Navarra,Auto-ARIMA,71.46,1.969
+IPC,Comunidad Foral de Navarra,ETS-HoltWinters,187.704,5.101
+IPC,Comunidad Foral de Navarra,MA-4Q,217.933,5.931
+IPC,Comunidad de Madrid,SeasNaive+Drift,392.67,11.082
+IPC,Comunidad de Madrid,Auto-ARIMA,64.665,2.18
+IPC,Comunidad de Madrid,ETS-HoltWinters,541.359,17.719
+IPC,Comunidad de Madrid,MA-4Q,172.063,4.701
+IPC,Cuenca,SeasNaive+Drift,621.568,16.185
+IPC,Cuenca,Auto-ARIMA,41.494,1.639
+IPC,Cuenca,ETS-HoltWinters,219.234,5.61
+IPC,Cuenca,MA-4Q,283.599,7.294
+IPC,Cáceres,SeasNaive+Drift,497.347,13.886
+IPC,Cáceres,Auto-ARIMA,52.375,1.906
+IPC,Cáceres,ETS-HoltWinters,180.03,4.88
+IPC,Cáceres,MA-4Q,225.148,6.107
+IPC,Cádiz,SeasNaive+Drift,465.475,13.449
+IPC,Cádiz,Auto-ARIMA,51.29,2.283
+IPC,Cádiz,ETS-HoltWinters,159.263,4.517
+IPC,Cádiz,MA-4Q,198.59,5.641
+IPC,Córdoba,SeasNaive+Drift,465.475,13.449
+IPC,Córdoba,Auto-ARIMA,51.29,2.283
+IPC,Córdoba,ETS-HoltWinters,159.263,4.517
+IPC,Córdoba,MA-4Q,198.59,5.641
+IPC,Girona,SeasNaive+Drift,434.984,11.999
+IPC,Girona,Auto-ARIMA,27.18,1.05
+IPC,Girona,ETS-HoltWinters,133.558,3.63
+IPC,Girona,MA-4Q,189.448,5.157
+IPC,Granada,SeasNaive+Drift,465.475,13.449
+IPC,Granada,Auto-ARIMA,51.29,2.283
+IPC,Granada,ETS-HoltWinters,159.263,4.517
+IPC,Granada,MA-4Q,198.59,5.641
+IPC,Guadalajara,SeasNaive+Drift,621.568,16.185
+IPC,Guadalajara,Auto-ARIMA,41.494,1.639
+IPC,Guadalajara,ETS-HoltWinters,219.234,5.61
+IPC,Guadalajara,MA-4Q,283.599,7.294
+IPC,Guipúzcoa,SeasNaive+Drift,364.925,11.574
+IPC,Guipúzcoa,Auto-ARIMA,36.971,1.339
+IPC,Guipúzcoa,ETS-HoltWinters,112.827,3.505
+IPC,Guipúzcoa,MA-4Q,156.979,4.87
+IPC,Huelva,SeasNaive+Drift,465.475,13.449
+IPC,Huelva,Auto-ARIMA,51.29,2.283
+IPC,Huelva,ETS-HoltWinters,159.263,4.517
+IPC,Huelva,MA-4Q,198.59,5.641
+IPC,Huesca,SeasNaive+Drift,489.246,13.66
+IPC,Huesca,Auto-ARIMA,32.172,0.993
+IPC,Huesca,ETS-HoltWinters,166.471,4.498
+IPC,Huesca,MA-4Q,228.397,6.174
+IPC,Islas Baleares,SeasNaive+Drift,358.38,11.604
+IPC,Islas Baleares,Auto-ARIMA,34.011,1.3
+IPC,Islas Baleares,ETS-HoltWinters,110.864,3.509
+IPC,Islas Baleares,MA-4Q,153.494,4.853
+IPC,Jaén,SeasNaive+Drift,465.475,13.449
+IPC,Jaén,Auto-ARIMA,51.29,2.283
+IPC,Jaén,ETS-HoltWinters,159.263,4.517
+IPC,Jaén,MA-4Q,198.59,5.641
+IPC,La Rioja,SeasNaive+Drift,528.993,13.998
+IPC,La Rioja,Auto-ARIMA,32.893,1.257
+IPC,La Rioja,ETS-HoltWinters,174.549,4.553
+IPC,La Rioja,MA-4Q,235.05,6.147
+IPC,Las Palmas,SeasNaive+Drift,479.709,12.55
+IPC,Las Palmas,Auto-ARIMA,86.951,2.298
+IPC,Las Palmas,ETS-HoltWinters,157.359,4.088
+IPC,Las Palmas,MA-4Q,174.872,4.547
+IPC,León,SeasNaive+Drift,556.879,14.966
+IPC,León,Auto-ARIMA,44.376,1.231
+IPC,León,ETS-HoltWinters,197.368,5.188
+IPC,León,MA-4Q,251.633,6.632
+IPC,Lleida,SeasNaive+Drift,434.984,11.999
+IPC,Lleida,Auto-ARIMA,27.18,1.05
+IPC,Lleida,ETS-HoltWinters,133.558,3.63
+IPC,Lleida,MA-4Q,189.448,5.157
+IPC,Lugo,SeasNaive+Drift,511.755,13.998
+IPC,Lugo,Auto-ARIMA,49.753,1.425
+IPC,Lugo,ETS-HoltWinters,179.639,4.843
+IPC,Lugo,MA-4Q,226.446,6.126
+IPC,Melilla,SeasNaive+Drift,457.129,11.976
+IPC,Melilla,Auto-ARIMA,122.799,3.12
+IPC,Melilla,ETS-HoltWinters,183.637,4.71
+IPC,Melilla,MA-4Q,213.427,5.492
+IPC,Málaga,SeasNaive+Drift,465.475,13.449
+IPC,Málaga,Auto-ARIMA,51.29,2.283
+IPC,Málaga,ETS-HoltWinters,159.263,4.517
+IPC,Málaga,MA-4Q,198.59,5.641
+IPC,Ourense,SeasNaive+Drift,511.755,13.998
+IPC,Ourense,Auto-ARIMA,49.753,1.425
+IPC,Ourense,ETS-HoltWinters,179.639,4.843
+IPC,Ourense,MA-4Q,226.446,6.126
+IPC,Palencia,SeasNaive+Drift,556.879,14.966
+IPC,Palencia,Auto-ARIMA,44.376,1.231
+IPC,Palencia,ETS-HoltWinters,197.368,5.188
+IPC,Palencia,MA-4Q,251.633,6.632
+IPC,Pontevedra,SeasNaive+Drift,511.755,13.998
+IPC,Pontevedra,Auto-ARIMA,49.753,1.425
+IPC,Pontevedra,ETS-HoltWinters,179.639,4.843
+IPC,Pontevedra,MA-4Q,226.446,6.126
+IPC,Principado de Asturias,SeasNaive+Drift,432.708,12.764
+IPC,Principado de Asturias,Auto-ARIMA,39.755,1.368
+IPC,Principado de Asturias,ETS-HoltWinters,143.944,4.143
+IPC,Principado de Asturias,MA-4Q,188.872,5.43
+IPC,Región de Murcia,SeasNaive+Drift,580.721,14.151
+IPC,Región de Murcia,Auto-ARIMA,77.23,1.912
+IPC,Región de Murcia,ETS-HoltWinters,206.948,5.007
+IPC,Región de Murcia,MA-4Q,249.534,6.075
+IPC,Salamanca,SeasNaive+Drift,556.879,14.966
+IPC,Salamanca,Auto-ARIMA,44.376,1.231
+IPC,Salamanca,ETS-HoltWinters,197.368,5.188
+IPC,Salamanca,MA-4Q,251.633,6.632
+IPC,Santa Cruz de Tenerife,SeasNaive+Drift,479.709,12.55
+IPC,Santa Cruz de Tenerife,Auto-ARIMA,86.951,2.298
+IPC,Santa Cruz de Tenerife,ETS-HoltWinters,157.359,4.088
+IPC,Santa Cruz de Tenerife,MA-4Q,174.872,4.547
+IPC,Segovia,SeasNaive+Drift,556.879,14.966
+IPC,Segovia,Auto-ARIMA,44.376,1.231
+IPC,Segovia,ETS-HoltWinters,197.368,5.188
+IPC,Segovia,MA-4Q,251.633,6.632
+IPC,Sevilla,SeasNaive+Drift,465.475,13.449
+IPC,Sevilla,Auto-ARIMA,51.29,2.283
+IPC,Sevilla,ETS-HoltWinters,159.263,4.517
+IPC,Sevilla,MA-4Q,198.59,5.641
+IPC,Soria,SeasNaive+Drift,556.879,14.966
+IPC,Soria,Auto-ARIMA,44.376,1.231
+IPC,Soria,ETS-HoltWinters,197.368,5.188
+IPC,Soria,MA-4Q,251.633,6.632
+IPC,Tarragona,SeasNaive+Drift,434.984,11.999
+IPC,Tarragona,Auto-ARIMA,27.18,1.05
+IPC,Tarragona,ETS-HoltWinters,133.558,3.63
+IPC,Tarragona,MA-4Q,189.448,5.157
+IPC,Teruel,SeasNaive+Drift,489.246,13.66
+IPC,Teruel,Auto-ARIMA,32.172,0.993
+IPC,Teruel,ETS-HoltWinters,166.471,4.498
+IPC,Teruel,MA-4Q,228.397,6.174
+IPC,Toledo,SeasNaive+Drift,621.568,16.185
+IPC,Toledo,Auto-ARIMA,41.494,1.639
+IPC,Toledo,ETS-HoltWinters,219.234,5.61
+IPC,Toledo,MA-4Q,283.599,7.294
+IPC,Valencia,SeasNaive+Drift,410.648,12.296
+IPC,Valencia,Auto-ARIMA,34.107,1.246
+IPC,Valencia,ETS-HoltWinters,131.296,3.825
+IPC,Valencia,MA-4Q,185.401,5.408
+IPC,Valladolid,SeasNaive+Drift,556.879,14.966
+IPC,Valladolid,Auto-ARIMA,44.376,1.231
+IPC,Valladolid,ETS-HoltWinters,197.368,5.188
+IPC,Valladolid,MA-4Q,251.633,6.632
+IPC,Vizcaya,SeasNaive+Drift,364.925,11.574
+IPC,Vizcaya,Auto-ARIMA,36.971,1.339
+IPC,Vizcaya,ETS-HoltWinters,112.827,3.505
+IPC,Vizcaya,MA-4Q,156.979,4.87
+IPC,Zamora,SeasNaive+Drift,556.879,14.966
+IPC,Zamora,Auto-ARIMA,44.376,1.231
+IPC,Zamora,ETS-HoltWinters,197.368,5.188
+IPC,Zamora,MA-4Q,251.633,6.632
+IPC,Zaragoza,SeasNaive+Drift,489.246,13.66
+IPC,Zaragoza,Auto-ARIMA,32.172,0.993
+IPC,Zaragoza,ETS-HoltWinters,166.471,4.498
+IPC,Zaragoza,MA-4Q,228.397,6.174
+IPC,Álava,SeasNaive+Drift,364.925,11.574
+IPC,Álava,Auto-ARIMA,36.971,1.339
+IPC,Álava,ETS-HoltWinters,112.827,3.505
+IPC,Álava,MA-4Q,156.979,4.87
+IPC,Ávila,SeasNaive+Drift,556.879,14.966
+IPC,Ávila,Auto-ARIMA,44.376,1.231
+IPC,Ávila,ETS-HoltWinters,197.368,5.188
+IPC,Ávila,MA-4Q,251.633,6.632

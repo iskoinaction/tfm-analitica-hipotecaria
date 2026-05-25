@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFM Analítica Inmobiliaria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <header class="header-main">
+        <div class="header-top">
+            <ul>
+                <li><a href="#" class="active">Particulares</a></li>
+            </ul>
+        </div>
+        <div class="header-middle">
+            <div class="logo">
+                <a href="/">
+                    <img src="https://www.caixabank.es/deployedfiles/common/R2016/Estaticos/images/gif/logo_laCaixa_principal.gif"
+                        alt="CaixaBank Logo">
+                </a>
+            </div>
+            <div class="header-actions">
+                <a href="/test-hipoteca" class="button button--ocher">Simulador Hipoteca</a>
+                <a href="/login_admin" class="button button--blue">Acceso Admin</a>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <ul>
+                <li><a href="/business_case">Business Case</a></li>
+                <li><a href="/" class="active">Dashboard Analítico</a></li>
+                <li><a href="/test-hipoteca">Test Viabilidad</a></li>
+                <li><a href="/hipotecas">Hipotecas</a></li>
+                <li><a href="/demanda">Demanda</a></li>
+                <li><a href="/econometria">Econometría VAR</a></li>
+                <li><a href="/vecm">VECM</a></li>
+                <li><a href="/webscrapping">WebScrapping</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Análisis Preferente del Mercado Inmobiliario</h1>
+            <p>Herramienta avanzada de reporting basada en el dataset TFM.</p>
+        </header>
+
+        <!-- Reporting Filter Bar -->
+        <div class="filter-bar">
+            <span><strong>Filtros Globales:</strong></span>
+            <label for="yearFrom" style="font-size:0.9rem;color:#555;">Desde</label>
+            <select id="yearFrom" onchange="applyYearFilter()" class="styled-select">
+                <option value="">--</option>
+            </select>
+            <label for="yearTo" style="font-size:0.9rem;color:#555;">Hasta</label>
+            <select id="yearTo" onchange="applyYearFilter()" class="styled-select">
+                <option value="">--</option>
+            </select>
+            <button onclick="resetYearFilter()" class="btn-filter-reset" title="Mostrar todos los años">✕ Todos</button>
+        </div>
+
+        <section class="charts-section">
+            <div class="chart-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+                    <h3 id="barChartTitle" style="margin:0;">Precio Medio Histórico por Provincia (€/m²)</h3>
+                    <div style="font-size:0.9rem;">
+                        <label for="specificYearFilter" style="color:#555;">Filtro específico:</label>
+                        <select id="specificYearFilter" onchange="applySpecificYearFilter()" class="styled-select"
+                            style="margin-left: 5px; padding: 3px 8px;">
+                            <option value="">Todos los años</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="barChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+                    <h3 style="margin:0;">Evolución: Euribor vs Spread Hipotecas (%)</h3>
+                    <div style="font-size:0.9rem;">
+                        <label for="filterLineChart" style="color:#555;">Año:</label>
+                        <select id="filterLineChart" onchange="applySpecificYearFilter('lineChart')"
+                            class="styled-select" style="margin-left:5px; padding:3px 8px;">
+                            <option value="">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="lineChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+                    <h3 style="margin:0;">Evolución Macro: Tasa de Paro vs IPC (%)</h3>
+                    <div style="font-size:0.9rem;">
+                        <label for="filterMacroChart" style="color:#555;">Año:</label>
+                        <select id="filterMacroChart" onchange="applySpecificYearFilter('macroChart')"
+                            class="styled-select" style="margin-left:5px; padding:3px 8px;">
+                            <option value="">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="macroChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+                    <h3 style="margin:0;">Volumen Hipotecario Nac. (trimestral)</h3>
+                    <div style="font-size:0.9rem;">
+                        <label for="filterHipotecasNac" style="color:#555;">Año:</label>
+                        <select id="filterHipotecasNac" onchange="applySpecificYearFilter('hipotecasNac')"
+                            class="styled-select" style="margin-left:5px; padding:3px 8px;">
+                            <option value="">Todos</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="hipotecasNacChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+                    <h3 style="margin:0;">Top 10 Provincias por Volumen</h3>
+                    <div style="font-size:0.9rem;">
+                        <label for="filterTopProv" style="color:#555;">Año:</label>
+                        <select id="filterTopProv" onchange="applySpecificYearFilter('topProv')" class="styled-select"
+                            style="margin-left:5px; padding:3px 8px;">
+                            <option value="">Último disp</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="topProvDashChart"></canvas>
+            </div>
+            </div>
+
+            <div class="chart-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+                    <h3 style="margin:0;">Mapa de Tension del Mercado Inmobiliario</h3>
+                </div>
+                <div id="mapTensionContainer"
+                    style="width:100%; min-height: 300px; display:flex; justify-content:center; align-items:center;">
+                    <span style="color:#888;">Cargando mapa...</span>
+                </div>
+            </div>
+
+            <!-- ─── NUEVOS GRÁFICOS ─── -->
+
+            <!-- Precio m2 por provincia (tendencia temporal) -->
+            <div class="chart-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+                    <h3 style="margin:0;">Precio m² — Evolución Provincial</h3>
+                    <div style="font-size:0.9rem; display:flex; gap:8px; align-items:center;">
+                        <label style="color:#555;">Provincia:</label>
+                        <select id="filterPrecioProvSelect" class="styled-select" style="padding:3px 8px;" onchange="updatePrecioProvChart()">
+                            <option value="">Top 5 provincias</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="precioProvChart"></canvas>
+            </div>
+
+            <!-- PIB per cápita evolución + filtro provincia -->
+            <div class="chart-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+                    <h3 style="margin:0;">PIB per cápita — Evolución Histórica</h3>
+                    <div style="font-size:0.9rem; display:flex; gap:8px; align-items:center;">
+                        <label style="color:#555;">Provincia:</label>
+                        <select id="filterPibProvSelect" class="styled-select" style="padding:3px 8px;" onchange="updatePibChart()">
+                            <option value="">Nacional (media)</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="pibProvChart"></canvas>
+            </div>
+
+            <!-- Tasa de paro histórica por provincia -->
+            <div class="chart-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+                    <h3 style="margin:0;">Tasa de Paro — Evolución por Provincia</h3>
+                    <div style="font-size:0.9rem; display:flex; gap:8px; align-items:center;">
+                        <label style="color:#555;">Provincia:</label>
+                        <select id="filterParoProvSelect" class="styled-select" style="padding:3px 8px;" onchange="updateParoChart()">
+                            <option value="">Nacional (media)</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="paroProvChart"></canvas>
+            </div>
+
+            <!-- Dispersión Precio m2 vs PIB_pc por provincia (último año) -->
+            <div class="chart-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 10px;">
+                    <h3 style="margin:0;">Accesibilidad: Precio m² vs PIB per cápita</h3>
+                    <div style="font-size:0.9rem; display:flex; gap:8px; align-items:center;">
+                        <label style="color:#555;">Año:</label>
+                        <select id="filterScatterYear" class="styled-select" style="padding:3px 8px;" onchange="updateScatterChart()">
+                            <option value="">Último disponible</option>
+                        </select>
+                    </div>
+                </div>
+                <canvas id="scatterAccessChart"></canvas>
+            </div>
+
+        </section>
+
+        <!-- Custom Charts Section -->
+        <section id="custom-charts-section" style="margin-top:1.5rem;display:none;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+                <h2 style="font-size:1.1rem;color:#003366;margin:0;">Analisis Personalizados</h2>
+            </div>
+            <div id="customChartsGrid" class="charts-section"></div>
+        </section>
+
+    </main>
+
+    <style>
+        /* Botón eliminar en custom chart cards (Chart.js) */
+        .btn-cc-delete {
+            background: transparent;
+            color: #aaa;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0 0.2rem;
+            transition: color .15s;
+        }
+
+        .btn-cc-delete:hover {
+            color: #dc3545;
+        }
+
+        /* Fallback PNG cards */
+        .custom-chart-card {
+            background: #fff;
+            border: 1px solid #d8dde6;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .05);
+            position: relative;
+        }
+
+        .custom-chart-card img {
+            width: 100%;
+            display: block;
+        }
+
+        .custom-chart-card .cc-footer {
+            padding: .75rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .custom-chart-card .cc-desc {
+            font-size: .85rem;
+            color: #333;
+        }
+    </style>
+
+    <!-- AI Chatbot UI -->
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header" onclick="toggleChat()">
+            <span>Asistente AI (TFM)</span>
+            <span class="toggle-icon">^</span>
+        </div>
+        <div class="chatbot-body" id="chatBody">
+            <div class="chat-message bot">Hola. Soy tu Asistente de Reporting. Puedes preguntarme sobre datos de
+                mercado, beneficios de CaixaBank o cruzar info de internet con nuestro dataset.
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Escribe tu pregunta..." onkeypress="handleKey(event)">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+        <div
+            style="font-size: 0.7rem; color: #888; text-align: center; padding: 4px 8px; background: #fff; border-top: 1px solid #eee; border-radius: 0 0 8px 8px;">
+            Nota: La IA puede cometer errores. Por favor, verifica la información importante.
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

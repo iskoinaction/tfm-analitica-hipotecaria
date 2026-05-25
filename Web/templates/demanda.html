@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción de Demanda | CaixaBank</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .demanda-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .demanda-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .demanda-header h1 {
+            font-size: 1.6rem;
+            color: #003366;
+            margin-bottom: 0.3rem;
+        }
+
+        .demanda-header p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* KPI Cards */
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .kpi-card {
+            background: #fff;
+            border: 1px solid #d8dde6;
+            border-radius: 10px;
+            padding: 1.3rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
+            transition: transform .15s;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .kpi-card .kpi-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #003366;
+            display: block;
+        }
+
+        .kpi-card .kpi-label {
+            font-size: 0.82rem;
+            color: #888;
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        .kpi-card .kpi-badge {
+            display: inline-block;
+            margin-top: 0.4rem;
+            padding: 0.15rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .kpi-badge.up {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .kpi-badge.down {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .kpi-badge.neutral {
+            background: #e8f3fc;
+            color: #004085;
+        }
+
+        /* Chart Grid */
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 800px) {
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chart-panel {
+            background: #fff;
+            border: 1px solid #d8dde6;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
+        }
+
+        .chart-panel h3 {
+            font-size: 1rem;
+            color: #003366;
+            margin: 0 0 0.8rem 0;
+        }
+
+        .chart-panel.full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* Stress Test Cards */
+        .stress-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+
+        @media (max-width: 600px) {
+            .stress-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stress-card {
+            border-radius: 8px;
+            padding: 1.2rem;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stress-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, .08);
+            z-index: 0;
+        }
+
+        .stress-card .sc-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .stress-card .sc-euribor {
+            font-size: 0.78rem;
+            opacity: 0.7;
+            position: relative;
+        }
+
+        .stress-card .sc-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 0.5rem 0 0.2rem;
+            position: relative;
+        }
+
+        .stress-card .sc-diff {
+            font-size: 0.82rem;
+            opacity: 0.85;
+            position: relative;
+        }
+
+        /* Benchmark Table */
+        .benchmark-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .benchmark-table th {
+            background: #003366;
+            color: #fff;
+            padding: 0.7rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .benchmark-table td {
+            padding: 0.6rem 0.7rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .benchmark-table tr:nth-child(even) {
+            background: #f9fbfd;
+        }
+
+        .badge-ml {
+            background: #007BC0;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+
+        .badge-ts {
+            background: #FF6600;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+
+        .badge-econ {
+            background: #6c757d;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+
+        /* Loading skeleton */
+        .loading-placeholder {
+            text-align: center;
+            color: #999;
+            padding: 3rem;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header-main">
+        <div class="header-top">
+            <ul>
+                <li><a href="#" class="active">Particulares</a></li>
+            </ul>
+        </div>
+        <div class="header-middle">
+            <div class="logo">
+                <a href="/">
+                    <img src="https://www.caixabank.es/deployedfiles/common/R2016/Estaticos/images/gif/logo_laCaixa_principal.gif"
+                        alt="CaixaBank Logo">
+                </a>
+            </div>
+            <div class="header-actions">
+                <a href="/hipotecas" class="button button--ocher">Simulador Hipoteca</a>
+                <a href="/login_admin" class="button button--blue">Acceso Admin</a>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <ul>
+                <li><a href="/business_case">Business Case</a></li>
+                <li><a href="/">Dashboard Analítico</a></li>
+                <li><a href="/test-hipoteca">Test Viabilidad</a></li>
+                <li><a href="/hipotecas">Hipotecas</a></li>
+                <li><a href="/demanda" class="active">Demanda</a></li>
+                <li><a href="/econometria">Econometría VAR</a></li>
+                <li><a href="/vecm">VECM</a></li>
+                <li><a href="/webscrapping">WebScrapping</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="demanda-container">
+        <header class="demanda-header">
+            <h1>Prediccion de Demanda Hipotecaria</h1>
+            <p>Analisis predictivo para directivos — RF_Nac, RF provincial y Stress Test BCE</p>
+            <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; align-items: center;">
+
+                <div>
+                    <label for="provFilter" style="font-size: 0.9rem; color: #555;">Ámbito:</label>
+                    <select id="provFilter" onchange="loadDemandaData()" class="styled-select"
+                        style="padding: 4px 10px; border-radius: 4px; border: 1px solid #ccc;">
+                        <option value="">Nacional</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="yearFilter" style="font-size: 0.9rem; color: #555;">Trimestre a predecir:</label>
+                    <select id="yearFilter" onchange="loadDemandaData()" class="styled-select"
+                        style="padding: 4px 10px; border-radius: 4px; border: 1px solid #ccc;">
+                        <option value="">Último disponible</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <!-- KPI Row -->
+        <div class="kpi-row" id="kpiRow">
+            <div class="kpi-card">
+                <span class="kpi-value" id="kpiTotal">—</span>
+                <span class="kpi-label" id="kpiHipotecasTitle">Hipotecas (Nacional)</span>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-value" id="kpiYoy">—</span>
+                <span class="kpi-label">Crecimiento interanual</span>
+                <span class="kpi-badge neutral" id="kpiYoyBadge"></span>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-value" id="kpiMape">—</span>
+                <span class="kpi-label">MAPE del modelo RF</span>
+                <span class="kpi-badge neutral">Precisión</span>
+            </div>
+            <div class="kpi-card">
+                <span class="kpi-value" id="kpiFeatures">—</span>
+                <span class="kpi-label">Variables predictoras</span>
+                <span class="kpi-badge neutral">Con lags anti-leakage</span>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div id="loadingMsg" class="loading-placeholder">
+            Entrenando RF_Nac y Random Forest provincial... Esto puede tardar unos segundos.
+        </div>
+
+        <!-- Charts (hidden until loaded) -->
+        <div id="chartsArea" style="display:none;">
+
+            <!-- Row 1: Histórico + Forecast | Feature Importance -->
+            <div class="chart-grid">
+                <div class="chart-panel">
+                    <h3>Evolucion Nacional + Forecast RF (2026-2030)</h3>
+                    <canvas id="forecastChart" height="220"></canvas>
+                </div>
+                <div class="chart-panel">
+                    <h3>Importancia de Variables (Random Forest)</h3>
+                    <canvas id="importanceChart" height="220"></canvas>
+                </div>
+            </div>
+
+            <!-- Stress Test -->
+            <div class="chart-grid">
+                <div class="chart-panel full-width">
+                    <h3>Stress Test — Destruccion de Demanda por Euribor</h3>
+                    <p style="color:#666;font-size:0.85rem;margin-top:-0.3rem;">
+                        Impacto simulado sobre la demanda nacional al variar el Euribor (ceteris paribus).
+                    </p>
+                    <div class="stress-grid" id="stressGrid"></div>
+                </div>
+            </div>
+
+            <!-- Row 2: Top Provincias | Benchmark -->
+            <div class="chart-grid">
+                <div class="chart-panel">
+                    <h3 id="topProvTitle">Top 10 Provincias por Volumen</h3>
+                    <canvas id="topProvChart" height="220"></canvas>
+                </div>
+                <div class="chart-panel">
+                    <h3>Benchmark: ML vs Econometria</h3>
+                    <table class="benchmark-table" id="benchmarkTable">
+                        <thead>
+                            <tr>
+                                <th>Modelo</th>
+                                <th>Tipo</th>
+                                <th>MAPE</th>
+                                <th>Ventaja</th>
+                            </tr>
+                        </thead>
+                        <tbody id="benchmarkBody"></tbody>
+                    </table>
+                    <p style="color:#888;font-size:0.8rem;margin-top:0.8rem;">
+                        MAPE = Mean Absolute Percentage Error. Menor es mejor.
+                        Los modelos están documentados en el notebook <em>data_science_provincial.ipynb</em>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Methodology Note -->
+            <div
+                style="background:#e8f3fc;border-left:4px solid #007BC0;padding:1rem;margin:1rem 0;font-size:0.88rem;border-radius:4px;color:#003366;">
+                <strong>Metodología (data_science_provincial.ipynb):</strong><br>
+                <ul style="margin:0.5rem 0 0 1.2rem;padding:0;">
+                    <li><strong>Modelos de demanda:</strong> RF_Nac para el total nacional y Random Forest provincial con features de lags
+                        temporales para evitar data leakage.</li>
+                    <li><strong>Stress Test:</strong> Se varia el Euribor manteniendo el resto de variables constantes
+                        (ceteris paribus) para medir la elasticidad de la demanda.</li>
+                    <li><strong>Forecast:</strong> Proyeccion a 20 trimestres (2026-2030) usando la ultima observacion
+                        de cada
+                        provincia como base.</li>
+                    <li><strong>Variables lag1:</strong> Precio_m2, Spread, Población, Edad Media, Transmisiones, Paro,
+                        Ahorro, PIB pc, Pob. Extranjera + Inercia (Hipotecas_lag1) + Trimestre.</li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // CaixaBank Colors
+        const CB = {
+            blue: '#007BC0', orange: '#FF6600', dark: '#003366',
+            light: '#66C4E8', cyan: '#00A8E0', gray: '#7f8c8d',
+        };
+
+        let forecastChart = null;
+        let importanceChart = null;
+        let topProvChart = null;
+
+        async function loadDemandaData() {
+            const year = document.getElementById('yearFilter').value;
+            const provFilterEl = document.getElementById('provFilter');
+            const prov = provFilterEl ? provFilterEl.value : "";
+
+            try {
+                // Show loading if it's the first load or if charts were already visible
+                document.getElementById('loadingMsg').style.display = 'block';
+                document.getElementById('chartsArea').style.opacity = '0.5';
+
+                const url = new URL('/api/demanda-data', window.location.origin);
+                if (year) url.searchParams.append('year', year);
+                if (prov) url.searchParams.append('provincia', prov);
+
+                const res = await fetch(url);
+                const data = await res.json();
+                document.getElementById('loadingMsg').style.display = 'none';
+                document.getElementById('chartsArea').style.display = 'block';
+                document.getElementById('chartsArea').style.opacity = '1';
+
+                // Poblar dropdown de años
+                if (data.available_years && document.getElementById('yearFilter').options.length <= 1) {
+                    const sel = document.getElementById('yearFilter');
+                    sel.innerHTML = '<option value="">Último disponible</option>';
+                    data.available_years.forEach(y => {
+                        const opt = document.createElement('option');
+                        opt.value = y;
+                        opt.textContent = y;
+                        sel.appendChild(opt);
+                    });
+                    if (year) sel.value = year;
+                }
+
+                // Poblar dropdown de provincias
+                if (data.available_provs && document.getElementById('provFilter').options.length <= 1) {
+                    const selP = document.getElementById('provFilter');
+                    data.available_provs.forEach(p => {
+                        const opt = document.createElement('option');
+                        opt.value = p;
+                        opt.textContent = p;
+                        selP.appendChild(opt);
+                    });
+                    if (prov) selP.value = prov;
+                }
+
+                if (data.error) {
+                    document.getElementById('chartsArea').innerHTML =
+                        `<div class="loading-placeholder" style="color:#dc3545;">Error: ${data.error}</div>`;
+                    return;
+                }
+
+                // Title adjustments based on province
+                const provName = prov ? prov : "Nacional";
+                document.getElementById('kpiHipotecasTitle').textContent = `Hipotecas (${provName})`;
+
+                // KPIs
+                if (data.kpis) {
+                    const k = data.kpis;
+                    document.getElementById('kpiTotal').textContent = k.hipotecas_total ? k.hipotecas_total.toLocaleString('es') : '—';
+                    document.getElementById('kpiYoy').textContent = k.crecimiento_interanual !== undefined ? k.crecimiento_interanual + '%' : '—';
+                    const badge = document.getElementById('kpiYoyBadge');
+                    if (k.crecimiento_interanual > 0) { badge.textContent = 'Sube'; badge.className = 'kpi-badge up'; }
+                    else if (k.crecimiento_interanual < 0) { badge.textContent = 'Baja'; badge.className = 'kpi-badge down'; }
+                    else { badge.textContent = 'Estable'; badge.className = 'kpi-badge neutral'; }
+                    document.getElementById('kpiMape').textContent = k.mape_modelo !== undefined ? k.mape_modelo + '%' : '—';
+                    document.getElementById('kpiFeatures').textContent = k.n_features || '—';
+                }
+
+                // Forecast Chart (histórico + predicción)
+                if (data.serie_historica && data.forecast) {
+                    if (forecastChart) forecastChart.destroy();
+                    forecastChart = new Chart(document.getElementById('forecastChart'), {
+                        type: 'line',
+                        data: {
+                            labels: [...data.serie_historica.labels, ...data.forecast.labels],
+                            datasets: [
+                                {
+                                    label: 'Histórico',
+                                    data: [...data.serie_historica.values, ...Array(data.forecast.values.length).fill(null)],
+                                    borderColor: CB.dark, backgroundColor: CB.dark + '15',
+                                    fill: true, tension: 0.3, pointRadius: 0, borderWidth: 2,
+                                },
+                                {
+                                    label: 'Forecast RF',
+                                    data: [...Array(data.serie_historica.values.length).fill(null), ...data.forecast.values],
+                                    borderColor: CB.orange, borderDash: [6, 3],
+                                    fill: false, tension: 0.3, pointRadius: 4, borderWidth: 2.5,
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                title: { display: true, text: `Evolución ${provName}` },
+                                legend: { position: 'top', labels: { font: { family: 'Open Sans' } } },
+                            },
+                            scales: {
+                                x: { ticks: { maxTicksLimit: 12, font: { size: 10 } } },
+                                y: { title: { display: true, text: 'Hipotecas Totales' } }
+                            }
+                        }
+                    });
+                }
+
+                // Feature Importance Chart
+                if (data.feature_importance) {
+                    const fi = data.feature_importance;
+                    if (importanceChart) importanceChart.destroy();
+                    importanceChart = new Chart(document.getElementById('importanceChart'), {
+                        type: 'bar',
+                        data: {
+                            labels: fi.labels,
+                            datasets: [{
+                                label: 'Importancia',
+                                data: fi.values,
+                                backgroundColor: fi.labels.map((_, i) =>
+                                    i === 0 ? CB.blue : i < 3 ? CB.cyan : CB.light + '88'),
+                                borderRadius: 4,
+                            }]
+                        },
+                        options: {
+                            indexAxis: 'y',
+                            responsive: true,
+                            plugins: { legend: { display: false } },
+                            scales: {
+                                x: { title: { display: true, text: 'Gini Importance' } },
+                                y: { ticks: { font: { size: 10 } } }
+                            }
+                        }
+                    });
+                }
+
+                // Stress Test
+                if (data.stress_test) {
+                    const grid = document.getElementById('stressGrid');
+                    grid.innerHTML = '';
+                    // Update header if national or provincial
+                    grid.parentElement.querySelector('h3').textContent = `Stress Test BCE — Impacto Euribor en ${provName}`;
+                    data.stress_test.forEach(sc => {
+                        const arrow = sc.diff_pct > 0 ? '▲' : sc.diff_pct < 0 ? '▼' : '—';
+                        grid.innerHTML += `
+                            <div class="stress-card" style="background:${sc.color};">
+                                <div class="sc-name">${sc.name}</div>
+                                <div class="sc-euribor">Euribor: ${sc.euribor}%</div>
+                                <div class="sc-value">${sc.hipotecas.toLocaleString('es')}</div>
+                                <div class="sc-diff">${arrow} ${sc.diff_pct}% vs actual</div>
+                            </div>`;
+                    });
+                }
+
+                // Top Provincias
+                if (data.top_provincias) {
+                    const tp = data.top_provincias;
+                    document.getElementById('topProvTitle').textContent = `Top Provincias por Volumen (${data.kpis.ultimo_trimestre || ''})`;
+                    if (topProvChart) topProvChart.destroy();
+                    topProvChart = new Chart(document.getElementById('topProvChart'), {
+                        type: 'bar',
+                        data: {
+                            labels: tp.labels,
+                            datasets: [{
+                                label: 'Hipotecas',
+                                data: tp.values,
+                                backgroundColor: tp.labels.map((_, i) =>
+                                    i < 3 ? CB.blue : CB.light),
+                                borderRadius: 4,
+                            }]
+                        },
+                        options: {
+                            indexAxis: 'y',
+                            responsive: true,
+                            plugins: { legend: { display: false } },
+                            scales: {
+                                x: { title: { display: true, text: 'Total hipotecas (últ. trimestre)' } },
+                                y: { ticks: { font: { size: 10 } } }
+                            }
+                        }
+                    });
+                }
+
+                // Benchmark
+                if (data.benchmark) {
+                    const tb = document.getElementById('benchmarkBody');
+                    tb.innerHTML = '';
+                    const badges = { 'ML Provincial': 'badge-ml', 'Serie Temporal': 'badge-ts', 'Econométrico': 'badge-econ' };
+                    data.benchmark.modelos.forEach(m => {
+                        tb.innerHTML += `<tr>
+                            <td><strong>${m.nombre}</strong></td>
+                            <td><span class="${badges[m.tipo] || 'badge-ml'}">${m.tipo}</span></td>
+                            <td>${typeof m.mape === 'number' ? m.mape + '%' : m.mape}</td>
+                            <td>${m.ventaja}</td>
+                        </tr>`;
+                    });
+                }
+
+            } catch (e) {
+                document.getElementById('loadingMsg').innerHTML =
+                    `<span style="color:#dc3545;">Error de red: ${e.message}</span>`;
+            }
+        }
+
+        loadDemandaData();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+Variable,Importancia_pct,Color
+Transmisiones_lag1,68.94,PRINCIPAL
+Tasa_Paro_lag1,9.11,PRINCIPAL
+Precio_m2_lag1,7.92,PRINCIPAL
+IndManoObra_lag1,7.22,PRINCIPAL
+Poblacion_lag1,1.62,SECUNDARIO
+Edad_Media_lag1,1.5,SECUNDARIO
+PIB_pc_lag1,1.18,SECUNDARIO
+Pob_Ext_lag1,0.73,TERCIARIO
+IndMateriales_lag1,0.47,TERCIARIO
+Spread_lag1,0.42,TERCIARIO
+Euribor,0.33,TERCIARIO
+IPC_lag1,0.31,TERCIARIO
+tasa_ahorro_lag1,0.26,TERCIARIO

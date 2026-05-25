@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodología Web Scraping | CaixaBank TFM</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .ws-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        .ws-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #003366 0%, #007ebb 100%);
+            border-radius: 12px;
+            color: #fff;
+        }
+
+        .ws-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .ws-header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .phase-card {
+            background: #fff;
+            border: 1px solid #d8dde6;
+            border-radius: 10px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,.05);
+        }
+
+        .phase-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #007ebb;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.3rem;
+        }
+
+        .phase-card h2 {
+            font-size: 1.25rem;
+            color: #003366;
+            margin: 0 0 1.2rem 0;
+            border-bottom: 2px solid #e5f2f8;
+            padding-bottom: 0.6rem;
+        }
+
+        .phase-card p, .phase-card li {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .phase-card ul {
+            margin: 0.8rem 0 0 1.2rem;
+            padding: 0;
+        }
+
+        .phase-card li {
+            margin-bottom: 0.4rem;
+        }
+
+        .code-block {
+            background: #f4f6f9;
+            border-left: 4px solid #007ebb;
+            border-radius: 6px;
+            padding: 1rem 1.2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #1a3a5c;
+            margin: 1rem 0;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .data-table th {
+            background: #003366;
+            color: #fff;
+            padding: 0.6rem 0.9rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 0.55rem 0.9rem;
+            border-bottom: 1px solid #e8ecf0;
+            color: #444;
+        }
+
+        .data-table tr:nth-child(even) td {
+            background: #f8fafc;
+        }
+
+        .highlight-box {
+            background: #e5f2f8;
+            border-left: 4px solid #007ebb;
+            border-radius: 6px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #003366;
+            font-weight: 500;
+        }
+
+        .phase-flow {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+            align-items: center;
+        }
+
+        .flow-step {
+            background: #003366;
+            color: #fff;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .flow-arrow {
+            color: #007ebb;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .file-badge {
+            display: inline-block;
+            background: #f0f7ff;
+            border: 1px solid #b8d8f0;
+            border-radius: 4px;
+            padding: 0.1rem 0.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.82rem;
+            color: #004c70;
+            margin: 0 2px;
+        }
+
+        .section-divider {
+            border: 0;
+            height: 1px;
+            background: #e0e8f0;
+            margin: 0.5rem 0 2rem;
+        }
+
+        .tag-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 0.6rem;
+            margin: 1rem 0;
+        }
+
+        .tag-item {
+            background: #f5f6f7;
+            border: 1px solid #dce3ec;
+            border-radius: 6px;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.83rem;
+            color: #333;
+            text-align: center;
+        }
+
+        .tag-item strong {
+            display: block;
+            color: #003366;
+            font-size: 0.88rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header-main">
+        <div class="header-top">
+            <ul>
+                <li><a href="#" class="active">Particulares</a></li>
+            </ul>
+        </div>
+        <div class="header-middle">
+            <div class="logo">
+                <a href="/">
+                    <img src="https://www.caixabank.es/deployedfiles/common/R2016/Estaticos/images/gif/logo_laCaixa_principal.gif" alt="CaixaBank Logo">
+                </a>
+            </div>
+            <div class="header-actions">
+                <a href="/test-hipoteca" class="button button--ocher">Simulador Hipoteca</a>
+                <a href="/login_admin" class="button button--blue">Acceso Admin</a>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <ul>
+                <li><a href="/business_case">Business Case</a></li>
+                <li><a href="/">Dashboard Analítico</a></li>
+                <li><a href="/test-hipoteca">Test Viabilidad</a></li>
+                <li><a href="/hipotecas">Hipotecas</a></li>
+                <li><a href="/demanda">Demanda</a></li>
+                <li><a href="/econometria">Econometría VAR</a></li>
+                <li><a href="/vecm">VECM</a></li>
+                <li><a href="/webscrapping" class="active">WebScrapping</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+    <div class="ws-container">
+
+        <div class="ws-header">
+            <h1>Metodología de Construcción del Portal</h1>
+            <p>Técnicas de extracción de datos, replicación de diseño y arquitectura web del TFM</p>
+        </div>
+
+        <!-- FASE 1: FRONTEND -->
+        <div class="phase-card">
+            <div class="phase-label">Fase 1</div>
+            <h2>Replicación del Diseño Corporativo de CaixaBank</h2>
+            <p>El portal replica fielmente la estética del sitio público de CaixaBank para situar el TFM en un contexto bancario real y profesional. Se utilizaron las herramientas de desarrollador del navegador (<strong>F12 → Inspector de elementos</strong>) sobre <code>caixabank.es</code> para identificar y extraer los componentes visuales del front-end.</p>
+
+            <div class="phase-flow">
+                <span class="flow-step">Inspección F12</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step">Extracción CSS</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step">Adaptación local</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step">Integración Flask</span>
+            </div>
+
+            <p><strong>Elementos extraídos del CDN de CaixaBank:</strong></p>
+            <table class="data-table">
+                <tr>
+                    <th>Elemento</th>
+                    <th>Origen</th>
+                    <th>Archivo local</th>
+                </tr>
+                <tr>
+                    <td>Logotipo SVG/GIF</td>
+                    <td>CDN público de CaixaBank</td>
+                    <td><span class="file-badge">URL externa</span></td>
+                </tr>
+                <tr>
+                    <td>Paleta de colores corporativa</td>
+                    <td>CSS inspeccionado (azul <code>#007ebb</code>, azul oscuro <code>#004c70</code>, ocre <code>#cda434</code>)</td>
+                    <td><span class="file-badge">style.css</span></td>
+                </tr>
+                <tr>
+                    <td>Tipografía</td>
+                    <td>Open Sans (Google Fonts, idéntica a la web de CaixaBank)</td>
+                    <td><span class="file-badge">style.css</span></td>
+                </tr>
+                <tr>
+                    <td>Estructura del header (3 niveles)</td>
+                    <td>HTML inspeccionado: header-top, header-middle, header-bottom</td>
+                    <td><span class="file-badge">style.css</span></td>
+                </tr>
+                <tr>
+                    <td>Botones pill (<code>border-radius: 50px</code>)</td>
+                    <td>Clase <code>.button</code> extraída del CSS de producción</td>
+                    <td><span class="file-badge">style.css</span></td>
+                </tr>
+            </table>
+
+            <div class="highlight-box">
+                <p>Archivo de referencia: <span class="file-badge">notebooks acabados/6. pasos_web.ipynb</span> — Sección 1: "Replicar y adaptar el frontend de CaixaBank"</p>
+            </div>
+        </div>
+
+        <!-- FASE 2: TINSA -->
+        <div class="phase-card">
+            <div class="phase-label">Fase 2</div>
+            <h2>Web Scraping de Precios del m² por Provincia (Tinsa)</h2>
+            <p>La fuente principal de datos de precio del metro cuadrado es <strong>Tinsa</strong>, la mayor tasadora inmobiliaria de España. El portal publica gráficos de evolución histórica por provincia en formato HTML embebido con JavaScript (Highcharts), sin API pública disponible.</p>
+
+            <p><strong>Proceso técnico:</strong></p>
+
+            <div class="phase-flow">
+                <span class="flow-step">Descarga tinsa.es</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step">Extracción URLs provincias</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step">Request por provincia</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step">Parsing regex</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step">CSV unificado</span>
+            </div>
+
+            <p><strong>Paso 1 — Obtención del directorio de provincias:</strong> Se descargó la página principal de Tinsa (<code>https://www.tinsa.es/precio-vivienda/</code>) y se guardó como archivo local <span class="file-badge">tinsa.html</span> para procesarla sin realizar peticiones repetitivas. Se aplicó una expresión regular sobre la llamada JavaScript <code>imieAddLocationToMap()</code> que contiene nombre y URL de cada provincia:</p>
+
+            <div class="code-block">pattern = r'imieAddLocationToMap\([^,]+,\s*"([^"]+)",\s*"Provincia",\s*[^,]+,\s*[^,]+,\s*"([^"]+)"'
+matches = re.findall(pattern, html_content)
+# Resultado: [("Salamanca", "https://www.tinsa.es/precio-vivienda/castilla-leon/salamanca/"), ...]</div>
+
+            <p><strong>Paso 2 — Extracción de datos históricos por provincia:</strong> Para cada URL, se realizó una petición HTTP con User-Agent de navegador. El HTML de respuesta incluye el objeto JavaScript de Highcharts con dos arrays: <code>categories</code> (fechas trimestrales) y <code>data</code> (precios en EUR/m²). Se extraen con regex:</p>
+
+            <div class="code-block">dates_pattern = r"categories:\s*\[(.*?)\]"
+data_pattern  = r"data:\s*\[([\d\.,\s-]+)\]"
+# Heurística de validación: len(data)==len(dates) y todos los valores > 100</div>
+
+            <p><strong>Archivos relevantes:</strong> <span class="file-badge">web scrapping/tinsa_scraper.py</span> · <span class="file-badge">tinsa.html</span></p>
+
+            <p><strong>Output:</strong> CSV con columnas <code>Provincia, Trimestre, Precio_m2</code> — integrado en el dataset principal del TFM (52 provincias, desde 2005).</p>
+
+            <div class="highlight-box">
+                <p>Se respetó un <code>time.sleep(1)</code> entre peticiones para no sobrecargar el servidor de Tinsa.</p>
+            </div>
+        </div>
+
+        <!-- FASE 3: IMPUESTOS -->
+        <div class="phase-card">
+            <div class="phase-label">Fase 3</div>
+            <h2>Scraping de Datos Fiscales por Comunidad Autónoma (financialtools)</h2>
+            <p>El asesor hipotecario del portal calcula los impuestos y gastos de compraventa reales según la Comunidad Autónoma del cliente. Los datos proceden de <code>financialtools.web.app</code>, una calculadora pública de hipotecas cuya lógica fiscal está embebida en un fichero JavaScript.</p>
+
+            <div class="phase-flow">
+                <span class="flow-step">Inspección DevTools</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step">Descarga app.js</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step">Parsing regex JS→Python</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step">Validación manual</span>
+                <span class="flow-arrow">→</span>
+                <span class="flow-step">Integración Flask</span>
+            </div>
+
+            <p><strong>Localización de la fuente:</strong> Mediante las DevTools del navegador (F12 → Red → filtro JS) se identificó que toda la lógica fiscal reside en:</p>
+            <div class="code-block">https://financialtools.web.app/herramientas/calculadora-hipoteca/app.js</div>
+
+            <p><strong>Variables extraídas del fichero JavaScript:</strong></p>
+            <table class="data-table">
+                <tr>
+                    <th>Variable JS</th>
+                    <th>Contenido</th>
+                    <th>Uso en el portal</th>
+                </tr>
+                <tr>
+                    <td><code>itpPorCCAA</code></td>
+                    <td>Tipo ITP por CCAA (4%–10%) — segunda mano</td>
+                    <td>Cálculo de impuesto de transmisiones patrimoniales</td>
+                </tr>
+                <tr>
+                    <td><code>ajdPorCCAA</code></td>
+                    <td>Tipo AJD por CCAA sobre el capital prestado</td>
+                    <td>Actos Jurídicos Documentados de la escritura</td>
+                </tr>
+                <tr>
+                    <td><code>gastosNotaria</code></td>
+                    <td>Tabla de aranceles notariales por tramo de precio</td>
+                    <td>Estimación gastos de notaría</td>
+                </tr>
+                <tr>
+                    <td><code>gastosRegistro</code></td>
+                    <td>Tabla de aranceles registrales por tramo</td>
+                    <td>Estimación gastos de registro de la propiedad</td>
+                </tr>
+            </table>
+
+            <p><strong>Conversión JS → Python:</strong> Los objetos JS no son JSON válido (claves sin comillas, comentarios). Se implementó un parser propio con expresiones regulares: eliminación de comentarios, normalización de claves y parseo con <code>json.loads()</code>.</p>
+
+            <div class="code-block">text = re.sub(r'//[^\n]*', '', js_block)          # Eliminar comentarios de línea
+text = re.sub(r'/\*.*?\*/', '', text, re.DOTALL)   # Eliminar bloques de comentario
+text = re.sub(r'([{,]\s*)(\w+)(:)', r'\1"\2"\3', text)  # Añadir comillas a claves</div>
+
+            <p><strong>Archivos relevantes:</strong> <span class="file-badge">web scrapping/scraping_finantialtools.ipynb</span></p>
+        </div>
+
+        <!-- FASE 4: ARQUITECTURA WEB -->
+        <div class="phase-card">
+            <div class="phase-label">Fase 4</div>
+            <h2>Arquitectura y Evolución del Portal Flask</h2>
+            <p>El portal es una aplicación web <strong>Flask</strong> (Python) que integra todos los modelos, datos y chatbots del TFM en una interfaz profesional de banca digital.</p>
+
+            <p><strong>Estructura del proyecto:</strong></p>
+            <div class="tag-grid">
+                <div class="tag-item"><strong>app.py</strong>2200+ líneas · backend Flask</div>
+                <div class="tag-item"><strong>templates/</strong>11 plantillas HTML</div>
+                <div class="tag-item"><strong>static/style.css</strong>Diseño CaixaBank</div>
+                <div class="tag-item"><strong>static/script.js</strong>Dashboard interactivo</div>
+                <div class="tag-item"><strong>static/img/</strong>Gráficos econométricos</div>
+                <div class="tag-item"><strong>.env</strong>Gemini API Key</div>
+            </div>
+
+            <p><strong>Rutas implementadas:</strong></p>
+            <table class="data-table">
+                <tr>
+                    <th>Ruta</th>
+                    <th>Funcionalidad</th>
+                </tr>
+                <tr><td><code>/</code></td><td>Dashboard analítico con gráficos interactivos Chart.js y chatbot ejecutivo (Gemini + Google Search)</td></tr>
+                <tr><td><code>/hipotecas</code></td><td>Asesor hipotecario completo: GBR+SHAP, simulador de cuotas, chatbot Noa (cliente) y Noa Strategic (gestor)</td></tr>
+                <tr><td><code>/demanda</code></td><td>Predicción de demanda hipotecaria nacional con modelo RF_Nac (MAPE 7.11%)</td></tr>
+                <tr><td><code>/econometria</code></td><td>Análisis VAR + Random Forest: IRF, FEVD, predicciones 2026–2030</td></tr>
+                <tr><td><code>/vecm</code></td><td>Modelo VECM con 5 variables: cointegración, velocidad de ajuste, relación de largo plazo</td></tr>
+                <tr><td><code>/test-hipoteca</code></td><td>Simulador de viabilidad con modelo GBR provincial (Tasa_Paro por ARIMA)</td></tr>
+                <tr><td><code>/webscrapping</code></td><td>Esta página: metodología de extracción de datos y construcción del portal</td></tr>
+                <tr><td><code>/business_case</code></td><td>Business case profesional para el sector bancario</td></tr>
+                <tr><td><code>/admin</code></td><td>Panel de administración protegido: carga de datasets, publicación de gráficos, ejecución de código Python</td></tr>
+            </table>
+
+            <div class="highlight-box">
+                <p>Archivo de referencia: <span class="file-badge">notebooks acabados/6. pasos_web.ipynb</span> — Secciones 3–8: integración del dataset, modelos, tipos reales APRC, lógica DTI, integración Gemini AI y panel de administración.</p>
+            </div>
+        </div>
+
+        <!-- FASE 5: CHATBOTS -->
+        <div class="phase-card">
+            <div class="phase-label">Fase 5</div>
+            <h2>Integración de IA Generativa — Gemini 2.5 Flash</h2>
+            <p>El portal incorpora dos asistentes conversacionales distintos, ambos sobre <strong>Gemini 2.5 Flash</strong> (Google DeepMind), con system prompts diferenciados según el perfil del usuario:</p>
+
+            <table class="data-table">
+                <tr>
+                    <th>Asistente</th>
+                    <th>Endpoint</th>
+                    <th>Audiencia</th>
+                    <th>Contexto inyectado</th>
+                </tr>
+                <tr>
+                    <td><strong>Asistente Ejecutivo</strong></td>
+                    <td><code>/api/chat</code></td>
+                    <td>Directivos CaixaBank</td>
+                    <td>Dataset inmobiliario (muestra), tipos de interés históricos; acceso a Google Search en tiempo real</td>
+                </tr>
+                <tr>
+                    <td><strong>Noa</strong></td>
+                    <td><code>/api/noa-chat</code></td>
+                    <td>Cliente final</td>
+                    <td>Perfil completo del cliente: ingresos, ahorros, DTI, tipo ofrecido, decisión, SHAP contributions</td>
+                </tr>
+                <tr>
+                    <td><strong>Noa Strategic</strong></td>
+                    <td><code>/api/noa-strategic</code></td>
+                    <td>Gestor bancario</td>
+                    <td>Mismo perfil + métricas ML internas (R², RMSE CV, spread base GBR, ajuste por perfil sigmoidal)</td>
+                </tr>
+            </table>
+
+            <p>Los system prompts instruyen a cada asistente a responder en su rol: el asistente ejecutivo declina preguntas fuera del ámbito de macroeconomía y banca; Noa asesora al cliente sobre su hipoteca concreta; Noa Strategic proporciona argumentos de venta y análisis de riesgo al gestor.</p>
+        </div>
+
+    </div>
+    </main>
+</body>
+</html>

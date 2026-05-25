@@ -1,0 +1,8 @@
+Variable,Ganador,MAPE_medio_%,MAPE_mediana_%,Peor_metodo,MAPE_peor_%
+Precio_m2,SeasNaive+Drift,3.26,2.43,MA-4Q,9.23
+Tasa_Paro,Auto-ARIMA,20.02,17.52,SeasNaive+Drift,33.15
+Transmisiones_Total,MA-4Q,35.34,23.62,SeasNaive+Drift,55.97
+Poblacion,ETS-HoltWinters,1.34,1.25,MA-4Q,1.65
+Edad_Media,SeasNaive+Drift,0.27,0.19,MA-4Q,0.77
+Pob_Ext,ETS-HoltWinters,23.14,21.85,MA-4Q,25.78
+IPC,Auto-ARIMA,47.08,44.38,SeasNaive+Drift,490.8

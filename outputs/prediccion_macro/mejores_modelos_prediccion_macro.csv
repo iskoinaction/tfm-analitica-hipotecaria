@@ -1,0 +1,36 @@
+Variable,Metrica,Mejor_estimador,Valor
+APRC_TAE_media,RMSE,RandomForest_lags sobre diferencial,0.37235401241751037
+APRC_TAE_media,MAE,RandomForest_lags sobre diferencial,0.33369593298207145
+APRC_TAE_media,MAPE,RandomForest_lags sobre diferencial,11.297222298494518
+APRC_TAE_media,sMAPE,RandomForest_lags sobre diferencial,12.127436682713821
+APRC_TAE_media,R2,RandomForest_lags sobre diferencial,0.01267257517333531
+Crecim_PIB_pc,RMSE,RandomForest_lags sobre PIB_pc,1.425601462719517
+Crecim_PIB_pc,MAE,RandomForest_lags sobre PIB_pc,0.3844056178732779
+Crecim_PIB_pc,MAPE,RandomForest_lags sobre PIB_pc,8.639661338337323
+Crecim_PIB_pc,sMAPE,RandomForest_lags sobre PIB_pc,7.137507039010541
+Crecim_PIB_pc,R2,RandomForest_lags sobre PIB_pc,0.9296930830489395
+Diferencial_APRC_Eur,RMSE,RandomForest_lags,0.3723540124175102
+Diferencial_APRC_Eur,MAE,RandomForest_lags,0.33369593298207134
+Diferencial_APRC_Eur,MAPE,Ridge_lags,99.57438614362133
+Diferencial_APRC_Eur,sMAPE,RandomForest_lags,126.82848641801925
+Diferencial_APRC_Eur,R2,RandomForest_lags,-0.7755511847628813
+PIB_pc,RMSE,RandomForest_lags,1973.830411264465
+PIB_pc,MAE,RandomForest_lags,1353.8996454302649
+PIB_pc,MAPE,RandomForest_lags,4.1683069784261555
+PIB_pc,sMAPE,RandomForest_lags,4.237865634848019
+PIB_pc,R2,RandomForest_lags,0.8842438698073664
+Precio_m2,RMSE,Ridge_lags,106.61361350324935
+Precio_m2,MAE,Ridge_lags,62.08514855077799
+Precio_m2,MAPE,RandomForest_lags,3.701684588811273
+Precio_m2,sMAPE,RandomForest_lags,3.8292006866290156
+Precio_m2,R2,Ridge_lags,0.9665528955145666
+Tasa_Paro,RMSE,RandomForest_lags,2.0389265128247147
+Tasa_Paro,MAE,RandomForest_lags,1.560676407871509
+Tasa_Paro,MAPE,Ridge_lags,15.581531058875825
+Tasa_Paro,sMAPE,RandomForest_lags,14.369964732854076
+Tasa_Paro,R2,RandomForest_lags,0.8179710790134772
+Transmisiones_Total,RMSE,Ridge_lags,4404.551425793274
+Transmisiones_Total,MAE,Ridge_lags,2732.174342531053
+Transmisiones_Total,MAPE,Naive_estacional,36.88459092614396
+Transmisiones_Total,sMAPE,Ridge_lags,27.04638166265117
+Transmisiones_Total,R2,Ridge_lags,0.780757263500051

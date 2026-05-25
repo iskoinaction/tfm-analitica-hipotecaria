@@ -1,0 +1,6 @@
+Variable,Pct_h20,Color,Descripcion
+Precio m²,53.3,PRINCIPAL,Driver estructural oferta
+Materiales,38.8,PRINCIPAL,Coste construcción
+Inercia Hipotecas,3.0,SECUNDARIO,Inercia propia mercado
+PIB pc,2.6,TERCIARIO,Renta disponible
+Euribor,2.2,ACENTO,"Tipo BCE — solo 2,2% a largo plazo"
