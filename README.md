@@ -34,6 +34,7 @@ TFM/
 │   ├── gen_charts.py
 │   ├── requirements.txt
 │   ├── .env.example
+│   ├── README.md                # Documentación técnica del portal web
 │   ├── static/
 │   └── templates/
 ├── Datos sucios/                # Datos en bruto descargados de fuentes originales
@@ -292,6 +293,20 @@ python app.py
 - Financialtools — scraping de tipos fiscales por CCAA
 - Ministerio de Inclusión — datos de población extranjera 2023–2025
 - Staff Projections del BCE — escenario macroeconómico base 2026–2030
+
+---
+
+## Documentación del portal web
+
+La aplicación Flask está documentada en detalle en [`Web/README.md`](Web/README.md), incluyendo:
+
+- Arquitectura interna de `app.py` y secuencia de arranque
+- Sistema de autenticación y rutas
+- Carga lazy de modelos ML y caché global
+- Flujo completo del asesor hipotecario (13 pasos)
+- API de mapas y generación de coropléticos
+- Los tres chatbots Gemini y su inyección de contexto
+- Panel de administración y ejecución de código
 
 ---
 
