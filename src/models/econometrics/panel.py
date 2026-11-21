@@ -111,8 +111,10 @@ def mg_pmg(df: pd.DataFrame, y: str, xs: list[str], demean: bool) -> dict:
         return -ll
 
     t0 = np.clip(np.median(th, 0), -5, 5)
-    opt = optimize.minimize(negll, t0, method="BFGS")
-    t = opt.x
+    nm = optimize.minimize(negll, t0, method="Nelder-Mead", options={"xatol": 1e-7, "fatol": 1e-8, "maxiter": 4000})
+    opt = optimize.minimize(negll, nm.x, method="BFGS")
+    t = opt.x if opt.fun <= nm.fun else nm.x
+    gnorm = float(np.max(np.abs(optimize.approx_fprime(t, negll, 1e-6))))
     k, h = len(t), 1e-4
     Hm = np.zeros((k, k))
     for a in range(k):
@@ -128,10 +130,13 @@ def mg_pmg(df: pd.DataFrame, y: str, xs: list[str], demean: bool) -> dict:
     d = t - mg_mean
     Vd = np.diag(mg_se ** 2 - se ** 2)
     hs = float(d @ np.linalg.pinv(Vd) @ d)
+    hp = float(1 - stats.chi2.cdf(hs, len(xs))) if hs >= 0 else None
+    if hs < 0:
+        hs = None  # Var(MG) - Var(PMG) no semidefinida positiva: contraste no definido
     return {"variables": xs, "demeaned": demean, "N": N, "T": int(Wy.shape[0]),
             "MG": {x: {"coef": float(a), "se": float(s)} for x, a, s in zip(xs, mg_mean, mg_se)},
             "MG_phi_medio": float(np.mean(ph)),
             "PMG": {x: {"coef": float(a), "se": float(s)} for x, a, s in zip(xs, t, se)},
             "PMG_phi_medio": float(phis.mean()), "PMG_phi_se": float(phis.std(ddof=1) / np.sqrt(N)),
-            "PMG_phi_negativos": int((phis < 0).sum()), "PMG_converge": bool(opt.success),
-            "Hausman_MG_vs_PMG": {"stat": hs, "df": len(xs), "p": float(1 - stats.chi2.cdf(hs, len(xs)))}}
+            "PMG_phi_negativos": int((phis < 0).sum()), "PMG_gradiente_max": gnorm, "PMG_converge": bool(gnorm < 5e-2),
+            "Hausman_MG_vs_PMG": {"stat": hs, "df": len(xs), "p": hp}}

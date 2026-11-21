@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.vercel/
+.DS_Store
+# Capturas sin comprimir generadas por scripts/screenshots.mjs
+docs/screenshots/_raw/

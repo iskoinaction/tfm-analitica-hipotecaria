@@ -1,0 +1,33 @@
+{
+ "source": "BCE",
+ "dataset": "ecb_tipos",
+ "requests": {
+  "euribor_12m": {
+   "url": "https://data-api.ecb.europa.eu/service/data/FM/M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA?format=csvdata&startPeriod=2002-01",
+   "last_modified": "Mon, 2 Nov 2026 08:18:26 GMT",
+   "rows": 298
+  },
+  "tae_vivienda": {
+   "url": "https://data-api.ecb.europa.eu/service/data/MIR/M.ES.B.A2C.A.C.A.2250.EUR.N?format=csvdata&startPeriod=2002-01",
+   "last_modified": "Mon, 2 Nov 2026 09:00:00 GMT",
+   "rows": 285
+  },
+  "tedr_vivienda": {
+   "url": "https://data-api.ecb.europa.eu/service/data/MIR/M.ES.B.A2C.A.R.A.2250.EUR.N?format=csvdata&startPeriod=2002-01",
+   "last_modified": "Mon, 2 Nov 2026 09:00:00 GMT",
+   "rows": 297
+  }
+ },
+ "series_ids": [
+  "FM/M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA",
+  "MIR/M.ES.B.A2C.A.C.A.2250.EUR.N",
+  "MIR/M.ES.B.A2C.A.R.A.2250.EUR.N"
+ ],
+ "retrieved_at": "2026-11-21T19:11:53Z",
+ "licence": "BCE: reutilización permitida citando la fuente",
+ "content_sha256": "d51f41b82e5712ef9d1bff873153aee943af9c34104676ea7f25982386b23ae5",
+ "previous_snapshot": null,
+ "file": "ecb_tipos.json.gz",
+ "file_sha256": "18c56bed4f4ba84e80836fa95febc3febfc6962f57ed085ee91c561f8b0a0b7c",
+ "bytes": 5436
+}

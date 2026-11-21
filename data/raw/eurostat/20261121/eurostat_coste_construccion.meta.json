@@ -1,0 +1,17 @@
+{
+ "source": "Eurostat",
+ "dataset": "eurostat_coste_construccion",
+ "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/sts_copi_q?geo=ES&indic_bt=COST&unit=I21&s_adj=NSA&format=JSON&lang=EN",
+ "updated": "2026-11-21T11:00:00+0100",
+ "label": "Construction producer prices or costs, new residential buildings - quarterly data",
+ "series_ids": [
+  "sts_copi_q:{'geo': 'ES', 'indic_bt': 'COST', 'unit': 'I21', 's_adj': 'NSA'}"
+ ],
+ "retrieved_at": "2026-11-21T19:11:53Z",
+ "licence": "Eurostat: reutilización libre citando la fuente (Decisión 2011/833/UE)",
+ "content_sha256": "244f18bdbb3b3e7067a50b259eaa9b6f1ad865ecec9ee1fe902f1b382793daf9",
+ "previous_snapshot": null,
+ "file": "eurostat_coste_construccion.json.gz",
+ "file_sha256": "482850dac006bbbb4da4ca068a88bbcc1e6d4bda54e3b980af8880d14b96649d",
+ "bytes": 5171
+}

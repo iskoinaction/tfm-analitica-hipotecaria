@@ -43,6 +43,8 @@ SH = {"log_materiales": "materiales", "euribor": "euribor", "log_pib_pc": "pib_p
 
 
 def _f(x, nd=4):
+    if isinstance(x, (bool, np.bool_)):
+        return bool(x)
     if isinstance(x, (float, np.floating)):
         return None if not np.isfinite(x) else round(float(x), nd)
     if isinstance(x, (int, np.integer)):

@@ -66,7 +66,7 @@ def save_snapshot(source: str, dataset: str, payload, meta: dict, content_hash: 
     path = d / fname
     if ext.endswith(".gz"):
         data = payload if isinstance(payload, bytes) else canonical_json(payload)
-        with gzip.open(path, "wb", compresslevel=9, mtime=0) as f:
+        with open(path, "wb") as fh, gzip.GzipFile(fileobj=fh, mode="wb", compresslevel=9, mtime=0) as f:
             f.write(data)
     elif isinstance(payload, bytes):
         path.write_bytes(payload)

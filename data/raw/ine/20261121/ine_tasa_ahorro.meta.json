@@ -1,0 +1,20 @@
+{
+ "source": "INE",
+ "dataset": "ine_tasa_ahorro",
+ "table": "SERIE:CTNFSI11271",
+ "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/<COD>?tip=AM&date=20020101:20351231",
+ "catalog_url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/SERIE:CTNFSI11271?nult=1&tip=AM",
+ "n_series": 1,
+ "n_obs": 98,
+ "series_ids": [
+  "CTNFSI11271"
+ ],
+ "table_last_modified": null,
+ "retrieved_at": "2026-11-21T19:11:55Z",
+ "licence": "INE: reutilización libre citando la fuente (Aviso legal INE)",
+ "content_sha256": "d23637473c11f2db9a58bb00a811a2590b3c9fd17a3fa8f540a0ec2b4f25d3c0",
+ "previous_snapshot": null,
+ "file": "ine_tasa_ahorro.json.gz",
+ "file_sha256": "df13a5b4b36ada18087107bd423564ba2641e0cbae61719d437080527f7de234",
+ "bytes": 1169
+}

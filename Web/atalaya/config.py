@@ -78,9 +78,11 @@ class BaseConfig:
     ASSISTANT_MAX_INPUT_CHARS = 600
     ASSISTANT_MAX_OUTPUT_TOKENS = 700
 
-    # CDN con versión exacta + SRI (verificado contra el paquete npm chart.js@4.5.1)
-    CHARTJS_URL = "https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"
-    CHARTJS_SRI = "sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ"
+    # CDN con versión exacta + SRI. Se usa dist/chart.umd.js (fichero estático del paquete npm,
+    # ya minificado): el ".min.js" de jsDelivr se genera dinámicamente y no admite SRI estable.
+    # Versión recomendada por el sistema de diseño (reports/audit/09_ux.md §5.5).
+    CHARTJS_URL = "https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.js"
+    CHARTJS_SRI = "sha384-zYPBGXwO4633CABX/5Spf6emCKUJCfoOkhOMYyxMsatqQZPnDblmmOewfjsIVWCM"
 
     # HSTS sólo tiene sentido detrás de HTTPS
     HSTS_ENABLED = False

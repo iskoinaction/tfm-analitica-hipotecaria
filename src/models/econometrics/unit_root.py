@@ -63,8 +63,9 @@ def classify(rows: list[dict], alpha=0.05) -> str:
     d1_stat = d1["adf_aic_p"] < alpha or d1["pp_p"] < alpha
     if lvl_stat:
         return "I(0) (tendencia)"
-    if d1_stat and d1["kpss_p"] >= alpha:
-        return "I(1)"
+    if d1_stat:
+        note = "" if d1["kpss_p"] >= alpha else " (KPSS en 1ª dif. rechaza al 5 %: estacionalidad/rupturas)"
+        return "I(1)" + note
     if d2["adf_aic_p"] < alpha:
         return "I(1)/I(2) ambiguo: ADF no rechaza raíz unitaria en 1ª diferencia"
     return "no concluyente"

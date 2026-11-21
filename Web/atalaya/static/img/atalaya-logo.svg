@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="t">
+  <title id="t">Atalaya · Analítica Hipotecaria</title>
+  <rect width="64" height="64" rx="14" fill="#0f766e"/>
+  <!-- Torre de vigilancia (atalaya) estilizada sobre una línea de horizonte -->
+  <path d="M22 16h4v4h4v-4h4v4h4v-4h4v9l-3 3v22H25V28l-3-3z" fill="#ffffff"/>
+  <rect x="30" y="33" width="4" height="7" rx="2" fill="#0f766e"/>
+  <path d="M12 50h40" stroke="#5eead4" stroke-width="3" stroke-linecap="round"/>
+  <path d="M44 18l8-4M44 23l9 0" stroke="#5eead4" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

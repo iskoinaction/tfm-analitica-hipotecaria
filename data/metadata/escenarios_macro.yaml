@@ -1,0 +1,92 @@
+# Escenarios macroeconómicos 2026-2030 para las proyecciones v2 (Atalaya · Analítica Hipotecaria)
+# ---------------------------------------------------------------------------------------------
+# Fichero VERSIONADO de supuestos. Todo valor lleva fuente, URL y fecha de edición o de consulta.
+# Lo que no procede de una fuente se marca como `supuesto: true` con su justificación.
+# Lo consume: src/models/forecasting/scenarios.py (y, a través del pipeline, la app y la web).
+version: "2026-11-21"
+fecha_corte_informacion: "2026-11-21"
+autor: "agente DS (Fase V, implementación v2)"
+
+fuentes:
+  bce_sep2026:
+    nombre: "ECB staff macroeconomic projections for the euro area, September 2026 (supuestos técnicos financieros)"
+    url: "https://www.ecb.europa.eu/press/projections/html/ecb.projections202609_ecbstaff~8e340fc69d.en.html"
+    consultado: "2026-11-21"
+    nota: "Ultima edicion publicada a la fecha de corte; la de diciembre de 2026 aun no se ha publicado. Supuesto EURIBOR 3M (% anual): 2025 2,2; 2026 2,4; 2027 3,0; 2028 3,0."
+  ce_otono2026:
+    nombre: "European Commission, Autumn 2026 Economic Forecast - Spain"
+    url: "https://economy-finance.ec.europa.eu/economic-surveillance-eu-member-states/country-pages-including-country-reports/spain/economic-forecast-spain_en"
+    fecha_edicion: "2026-11-17"
+    consultado: "2026-11-21"
+    nota: "Espana: PIB real 2,6 / 2,1 / 1,9; inflacion IAPC 3,9 / 3,3 / 2,3; paro 9,9 / 9,6 / 9,4 (2026 / 2027 / 2028)."
+  bce_api_euribor:
+    nombre: "BCE Data Portal: EURIBOR 12M y 3M, medias mensuales"
+    url: "https://data-api.ecb.europa.eu/service/data/FM/M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA (y EURIBOR3MD_.HSTA)"
+    consultado: "2026-11-21"
+    ultimo_dato: "2026-10"
+  eurostat_pib:
+    nombre: "Eurostat nama_10_gdp, PIB a precios corrientes (CP_MEUR), Espana"
+    url: "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp?geo=ES&unit=CP_MEUR&na_item=B1GQ"
+    actualizado: "2026-11-11"
+    valores_meur: {2024: 1598588, 2025: 1690012}
+
+# ------------------------------------------------------------------ Euribor 12 meses (%, media del periodo)
+euribor_12m:
+  definicion: "EURIBOR a 12 meses, media trimestral de los datos mensuales del BCE (la misma serie que el panel)"
+  observado_trimestral:   # BCE API, media de los 3 meses
+    2026Q1: 2.3436
+    2026Q2: 2.7829
+    2026Q3: 3.0186
+  observado_mensual_2026: {"2026-01": 2.2451, "2026-02": 2.2207, "2026-03": 2.5651, "2026-04": 2.7468, "2026-05": 2.8042,
+                           "2026-06": 2.7976, "2026-07": 2.8551, "2026-08": 2.9537, "2026-09": 3.2470, "2026-10": 3.2386}
+  metodo_base: >-
+    2027-2028 = supuesto EURIBOR 3M del BCE (sep-2026) + diferencial 12M-3M medio de los ultimos 12 meses
+    observados (nov-2025 a oct-2026 = 0,414 pp, BCE API). 2026Q4 = ultimo dato mensual observado (oct-2026, 3,2386),
+    supuesto: true. 2029-2030 = ultimo valor proyectado (2028) mantenido, supuesto: true.
+  diferencial_12m_3m: 0.414
+  base:
+    2026Q4: 3.2386
+    2027: 3.414
+    2028: 3.414
+    2029: 3.414     # supuesto (se mantiene 2028)
+    2030: 3.414     # supuesto (se mantiene 2028)
+  sensibilidades:   # supuesto: true (sensibilidades propias, no son escenarios institucionales)
+    adverso: {2026Q4: 0.50, desde_2027: 1.50}     # pp sobre la base
+    favorable: {2026Q4: -0.25, desde_2027: -1.00}
+
+# ------------------------------------------------------------------ Inflacion Espana (IAPC, % anual)
+ipc_espana:
+  definicion: "Inflacion IAPC de ESPANA (no zona euro), tasa media anual. El panel usa el IPC autonomico; la proyeccion asigna a todas las provincias la tasa nacional (supuesto)."
+  base: {2026: 3.9, 2027: 3.3, 2028: 2.3, 2029: 2.3, 2030: 2.3}   # 2026-28 CE otono-2026; 2029-30 supuesto (2028 mantenido)
+  sensibilidades:   # supuesto: true
+    adverso: {desde_2027: 1.0}
+    favorable: {desde_2027: -0.5}
+
+# ------------------------------------------------------------------ Paro nacional (% poblacion activa, EPA/Eurostat)
+paro_nacional:
+  base: {2026: 9.9, 2027: 9.6, 2028: 9.4, 2029: 9.4, 2030: 9.4}     # 2026-28 CE otono-2026; 2029-30 supuesto
+  nota: "Ancla nacional para las desviaciones provinciales que revierten (si el modelo seleccionado es el de anclaje). Sin suelos."
+  sensibilidades:   # supuesto: true
+    adverso: {2026: 0.3, desde_2027: 1.5}
+    favorable: {2026: -0.2, desde_2027: -0.75}
+
+# ------------------------------------------------------------------ PIB per capita nominal (crecimiento %, anual)
+pib_pc_nominal:
+  definicion: "Crecimiento nominal per capita = crecimiento del PIB real + deflactor - crecimiento de la poblacion"
+  observado_nacional_2025:
+    pib_nominal: 5.72          # Eurostat nama_10_gdp 2025/2024
+    poblacion: 1.05            # panel (Poblacion 2025/2024, INE)
+    pib_pc_nominal: 4.67       # 5,72 - 1,05
+  supuestos:
+    deflactor: "IAPC de Espana (CE) como aproximacion del deflactor del PIB (supuesto: true; la CE no publica el deflactor en la pagina de pais)"
+    poblacion: "crecimiento de la poblacion = 1,05 % anual (ultimo observado, mantenido; supuesto: true)"
+  base:   # PIB real CE + IAPC CE - 1,05 ; 2029-30 supuesto (2028 mantenido)
+    2025: 4.67
+    2026: 5.45
+    2027: 4.35
+    2028: 3.15
+    2029: 3.15
+    2030: 3.15
+  sensibilidades:   # supuesto: true, pp sobre la base
+    adverso: {2026: -0.5, desde_2027: -2.0}
+    favorable: {2026: 0.25, desde_2027: 1.0}
