@@ -4,6 +4,7 @@ Uso: from _app_loader import load_app; app_mod = load_app()
 import os, sys, types
 
 def load_app():
+    sys.dont_write_bytecode = True  # no dejar Web/__pycache__/app.*.pyc
     root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
     web = os.path.join(root, 'Web')
     os.environ.pop('GEMINI_API_KEY', None)

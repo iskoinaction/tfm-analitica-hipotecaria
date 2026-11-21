@@ -1,0 +1,120 @@
+
+### Tasa_Paro vs INE 65349 (EPA, tasa de paro, ambos sexos)
+ {
+ "n_compared": 4368,
+ "pct_equal(tol=0.005)": 100.0,
+ "max_abs_diff": 0.0,
+ "mean_abs_diff": 0.0,
+ "worst": [
+  {
+   "code": "15",
+   "q": "2005-01-01",
+   "panel": 10.58,
+   "api": 10.58
+  },
+  {
+   "code": "15",
+   "q": "2005-04-01",
+   "panel": 10.68,
+   "api": 10.68
+  },
+  {
+   "code": "15",
+   "q": "2005-07-01",
+   "panel": 8.2,
+   "api": 8.2
+  },
+  {
+   "code": "15",
+   "q": "2005-10-01",
+   "panel": 9.07,
+   "api": 9.07
+  },
+  {
+   "code": "15",
+   "q": "2006-01-01",
+   "panel": 9.55,
+   "api": 9.55
+  }
+ ]
+}
+
+### Hipotecas_Total vs INE 3200 suma trimestral (Base nueva. Mensual.)
+ {
+ "n_compared": 4368,
+ "pct_equal(tol=0.5)": 87.93,
+ "max_abs_diff": 19170.81,
+ "mean_abs_diff": 284.78595009157505,
+ "worst": [
+  {
+   "code": "28",
+   "q": "2022-04-01",
+   "panel": 7155.19,
+   "api": 26326.0
+  },
+  {
+   "code": "28",
+   "q": "2006-01-01",
+   "panel": 37699.16,
+   "api": 56840.0
+  },
+  {
+   "code": "08",
+   "q": "2005-04-01",
+   "panel": 35765.15,
+   "api": 53897.0
+  },
+  {
+   "code": "28",
+   "q": "2005-04-01",
+   "panel": 38903.490000000005,
+   "api": 56376.0
+  },
+  {
+   "code": "28",
+   "q": "2007-04-01",
+   "panel": 32069.05,
+   "api": 49102.0
+  }
+ ]
+}
+
+### Transmisiones_Total vs INE compraventa viviendas (6150, General)
+ {
+ "n_compared": 3952,
+ "pct_equal(tol=0.5)": 96.2,
+ "max_abs_diff": 333.0,
+ "mean_abs_diff": 2.522267206477733,
+ "worst": [
+  {
+   "code": "03",
+   "q": "2025-10-01",
+   "panel": 13592.0,
+   "api": 13259.0
+  },
+  {
+   "code": "08",
+   "q": "2025-04-01",
+   "panel": 17665.0,
+   "api": 17989.0
+  },
+  {
+   "code": "03",
+   "q": "2025-04-01",
+   "panel": 13577.0,
+   "api": 13259.0
+  },
+  {
+   "code": "03",
+   "q": "2025-07-01",
+   "panel": 13585.0,
+   "api": 13268.0
+  },
+  {
+   "code": "29",
+   "q": "2025-04-01",
+   "panel": 9065.0,
+   "api": 8794.0
+  }
+ ]
+}
