@@ -1,0 +1,88 @@
+{
+ "panel_national_vars_unique_per_quarter": true,
+ "euribor_vs_FM.Q_max_abs_diff": 0.011840269230770417,
+ "euribor_FM.Q_vs_mean_of_FM.M_max_abs_diff": 0.028049633333333546,
+ "spread_vs_api_max_abs_diff": 0.011840269230770348,
+ "spread_api_quarters_with_<3_months": [],
+ "spread_last_quarters": [
+  {
+   "Trimestre": "2024-07-01",
+   "Euribor": 3.2183,
+   "eur_q": 3.2183,
+   "aprc": 3.45,
+   "Spread_Hipotecas": 0.2317,
+   "spread_api": 0.2317,
+   "aar_var_1y": 4.0967,
+   "spread_var_api": 0.8784
+  },
+  {
+   "Trimestre": "2024-10-01",
+   "Euribor": 2.5479,
+   "eur_q": 2.5506,
+   "aprc": 3.1667,
+   "Spread_Hipotecas": 0.6188,
+   "spread_api": 0.6161,
+   "aar_var_1y": 3.6133,
+   "spread_var_api": 1.0627
+  },
+  {
+   "Trimestre": "2025-01-01",
+   "Euribor": 2.4455,
+   "eur_q": 2.4454,
+   "aprc": 2.9267,
+   "Spread_Hipotecas": 0.4811,
+   "spread_api": 0.4813,
+   "aar_var_1y": 3.2433,
+   "spread_var_api": 0.7979
+  },
+  {
+   "Trimestre": "2025-04-01",
+   "Euribor": 2.1015,
+   "eur_q": 2.101,
+   "aprc": 2.7967,
+   "Spread_Hipotecas": 0.6951,
+   "spread_api": 0.6957,
+   "aar_var_1y": 3.0367,
+   "spread_var_api": 0.9357
+  },
+  {
+   "Trimestre": "2025-07-01",
+   "Euribor": 2.121,
+   "eur_q": 2.121,
+   "aprc": 2.7233,
+   "Spread_Hipotecas": 0.6024,
+   "spread_api": 0.6024,
+   "aar_var_1y": 2.85,
+   "spread_var_api": 0.729
+  },
+  {
+   "Trimestre": "2025-10-01",
+   "Euribor": 2.224,
+   "eur_q": 2.2228,
+   "aprc": 2.6733,
+   "Spread_Hipotecas": 0.4493,
+   "spread_api": 0.4506,
+   "aar_var_1y": 2.89,
+   "spread_var_api": 0.6673
+  }
+ ],
+ "spread_min_panel": {
+  "Trimestre": "2024-04-01",
+  "Spread_Hipotecas": -0.1290000000000004
+ },
+ "euribor_trim_fixed_csv_vs_api_max_abs_diff": 0.011840269230770417,
+ "aprc_monthly_csv_vs_api": {
+  "n": 252,
+  "max_abs_diff": 0.0,
+  "n_diff>0.005": 0
+ },
+ "aprc_monthly_revised_points": [],
+ "aprc_api_first_last": [
+  "2003-01",
+  "2026-09"
+ ],
+ "euribor_api_last": [
+  "2026-Q3",
+  "2026-10"
+ ]
+}

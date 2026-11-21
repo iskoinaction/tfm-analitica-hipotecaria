@@ -142,3 +142,24 @@ print("  Proporción de varianza total explicada por la provincia (eta² prov, t
       round(eta2(test.Hipotecas_Total, test.Provincia), 3))
 nt = test.groupby("Trimestre")[["Hipotecas_Total", "lag1"]].sum()
 print(f"  Agregado nacional del ingenuo lag1: R² = {r2_score(nt.Hipotecas_Total, nt.lag1):.4f}")
+
+# (d) Importancia espuria: una variable "nacional" de RUIDO PURO (un valor aleatorio por
+# trimestre replicado en las 52 provincias) frente a la misma variable sin replicar.
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.inspection import permutation_importance
+from sklearn.model_selection import train_test_split
+rng = np.random.default_rng(0)
+h = ds.dropna(subset=["Hipotecas_Total", "Precio_m2", "Tasa_Paro", "Poblacion"]).copy()
+h["ly"] = np.log(h.Hipotecas_Total)
+qnoise = pd.Series(rng.normal(size=h.Trimestre.nunique()), index=sorted(h.Trimestre.unique()))
+h["ruido_nacional"] = h.Trimestre.map(qnoise)
+h["ruido_iid"] = rng.normal(size=len(h))
+FE2 = ["Precio_m2", "Tasa_Paro", "Poblacion", "ruido_nacional", "ruido_iid"]
+Xtr, Xte, ytr, yte = train_test_split(h[FE2], h.ly, test_size=0.2, random_state=0, shuffle=True)
+rfm = RandomForestRegressor(n_estimators=200, min_samples_leaf=2, random_state=0, n_jobs=2).fit(Xtr, ytr)
+pi = permutation_importance(rfm, Xte, yte, n_repeats=5, random_state=0, n_jobs=1)
+print("\n(d) RF log(Hipotecas) con partición aleatoria de filas; importancia por permutación (caída de R²):")
+for f, m_, s_ in zip(FE2, pi.importances_mean, pi.importances_std):
+    print(f"  {f:15s} {m_:.4f} ± {s_:.4f}   (impureza: {rfm.feature_importances_[FE2.index(f)]:.3f})")
+rfm2 = RandomForestRegressor(n_estimators=200, min_samples_leaf=2, random_state=0, n_jobs=2).fit(Xtr[FE2[:3]], ytr)
+print(f"  R² test con ruido_nacional: {rfm.score(Xte, yte):.4f} | sin variables de ruido: {rfm2.score(Xte[FE2[:3]], yte):.4f}")

@@ -62,7 +62,7 @@ h = by_prov(h)
 h["q"] = pd.to_datetime(h.fecha).map(quarter_start)
 OUT["hipotecas_series_variants"] = sorted(h.nombre.str.replace(r"^Total fincas\. Número de hipotecas\. [^.]+\. ", "", regex=True).unique().tolist())
 for variant in OUT["hipotecas_series_variants"]:
-    hv = h[h.nombre.str.endswith(variant)]
+    hv = h[h.nombre.str.endswith(variant)].drop_duplicates(["code", "fecha"])
     api = hv.groupby(["code", "q"], as_index=False)["valor"].sum().rename(columns={"valor": "val"})
     nm = hv.groupby(["code", "q"]).size().rename("n").reset_index()
     api = api.merge(nm, on=["code", "q"])
@@ -83,6 +83,7 @@ for tab, pref, label in [(6150, "General. Compraventa. Número", "compraventa vi
         tt = tt[tt.nombre.str.contains("General. Compraventa. Número")]
     else:
         tt = tt[tt.nombre.str.contains("Total fincas") & tt.nombre.str.startswith("Número")]
+    tt = tt.drop_duplicates(["code", "fecha"])  # CCAA uniprovinciales aparecen 2 veces (CCAA y provincia)
     tt["q"] = pd.to_datetime(tt.fecha).map(quarter_start)
     g = tt.groupby(["code", "q"]).agg(val=("valor", "sum"), n=("valor", "size")).reset_index()
     g = g[g.n == 3][["code", "q", "val"]]
@@ -103,7 +104,7 @@ CCAA2PROV = {
 for tab in (50913, 76136):
     ip = ine_table(tab, nult=260)
     ip = ip[ip.nombre.str.contains(r"\. Índice general\. Variación anual", regex=True)]
-    ip["ccaa"] = ip.nombre.str.split(". ").str[0].str.strip()
+    ip["ccaa"] = ip.nombre.str.split(r"\. Índice general", regex=True).str[0].str.strip()
     ip["q"] = pd.to_datetime(ip.fecha).map(quarter_start)
     g = ip.groupby(["ccaa", "q"], as_index=False)["valor"].mean()
     rows = []

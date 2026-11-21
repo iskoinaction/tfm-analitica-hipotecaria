@@ -40,3 +40,6 @@ Web/cookie.txt
 # Archivos grandes
 articles.csv
 *.pkl
+
+# Cachés de descargas de auditoría
+reports/audit/**/cache/

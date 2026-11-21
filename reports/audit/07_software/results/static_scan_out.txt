@@ -1,0 +1,80 @@
+=== 1. Referencias a la marca CaixaBank / laCaixa (fichero: nº de líneas)
+./static/style.css: 1
+./static/script.js: 1
+./README.md: 1
+./templates/metodologia_ml.html: 8
+./templates/hipotecas_provincial.html: 5
+./templates/vecm.html: 2
+./templates/admin.html: 3
+./templates/login_admin.html: 3
+./templates/demanda_provincial.html: 4
+./templates/hipotecas.html: 5
+./templates/econometria.html: 1
+./templates/index.html: 3
+./templates/demanda.html: 4
+./templates/webscrapping.html: 10
+./templates/business_case.html: 5
+./templates/test_hipoteca.html: 2
+./.env.example: 1
+./app.py: 13
+logo.png: (3509, 1123) CMYK
+Hotlinks al CDN de caixabank.es: 12
+Nombre 'Noa' (asistente) en: templates/hipotecas_provincial.html templates/hipotecas.html templates/webscrapping.html templates/business_case.html app.py 
+
+=== 2. Sumideros XSS (innerHTML / |safe) por fichero
+templates/hipotecas_provincial.html:10
+templates/admin.html:13
+templates/demanda_provincial.html:8
+templates/hipotecas.html:11
+templates/demanda.html:7
+static/script.js:27
+-- respuestas del LLM insertadas como HTML:
+templates/hipotecas.html:1449:                th.innerHTML = (await res.json()).reply;
+templates/hipotecas.html:1470:                th.innerHTML = (await res.json()).reply;
+templates/hipotecas_provincial.html:1434:                th.innerHTML = (await res.json()).reply;
+templates/hipotecas_provincial.html:1455:                th.innerHTML = (await res.json()).reply;
+static/script.js:753:            appendMessage(d.reply, 'bot');
+
+=== 3. Dominios externos cargados por las plantillas
+     14 https://fonts.googleapis.com
+     12 https://www.caixabank.es
+      6 https://cdnjs.cloudflare.com
+      6 https://cdn.jsdelivr.net
+-- scripts sin versión fijada / sin SRI:
+templates/hipotecas_provincial.html:10:src="https://cdn.jsdelivr.net/npm/chart.js"
+templates/vecm.html:9:src="https://cdn.jsdelivr.net/npm/chart.js@4"
+templates/demanda_provincial.html:10:src="https://cdn.jsdelivr.net/npm/chart.js"
+templates/hipotecas.html:10:src="https://cdn.jsdelivr.net/npm/chart.js"
+templates/index.html:10:src="https://cdn.jsdelivr.net/npm/chart.js"
+templates/demanda.html:10:src="https://cdn.jsdelivr.net/npm/chart.js"
+(ninguna plantilla usa integrity=)
+
+=== 4. Imports de terceros vs requirements.txt
+ast atexit base datetime demanda_models dotenv flask geopandas google io json math matplotlib numpy os pandas re seaborn shap shutil sklearn statsmodels subprocess sys tempfile traceback unicodedata uuid warnings 
+requirements.txt: Flask pandas werkzeug google-generativeai python-dotenv 
+20:from google import genai
+21:from google.genai import types as genai_types
+329:    import statsmodels.api as sm
+819:        import geopandas as gpd
+865:    import geopandas as gpd
+1124:            import seaborn as sns
+2186:import google.generativeai as _old_genai  # kept for import compat, but logic uses new SDK below
+
+=== 5. bandit (SAST)
+      1 >> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input. Severity: Low Confidence: High Location: ./app.py:2137:17
+      1 >> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input. Severity: Low Confidence: High Location: ./app.py:1962:17
+      1 >> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input. Severity: Low Confidence: High Location: ./app.py:1920:24
+      1 >> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module. Severity: Low Confidence: High Location: ./app.py:9:0
+      1 >> Issue: [B110:try_except_pass] Try, Except, Pass detected. Severity: Low Confidence: High Location: ./app.py:994:4
+      1 >> Issue: [B110:try_except_pass] Try, Except, Pass detected. Severity: Low Confidence: High Location: ./app.py:863:8
+      1 >> Issue: [B110:try_except_pass] Try, Except, Pass detected. Severity: Low Confidence: High Location: ./app.py:417:20
+      1 >> Issue: [B110:try_except_pass] Try, Except, Pass detected. Severity: Low Confidence: High Location: ./app.py:387:20
+      1 >> Issue: [B110:try_except_pass] Try, Except, Pass detected. Severity: Low Confidence: High Location: ./app.py:2039:12
+      1 >> Issue: [B110:try_except_pass] Try, Except, Pass detected. Severity: Low Confidence: High Location: ./app.py:1799:12
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 10
+		Medium: 0
+		High: 0
+	Total issues (by confidence):

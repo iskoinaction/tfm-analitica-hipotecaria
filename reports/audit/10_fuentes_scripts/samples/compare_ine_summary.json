@@ -1,0 +1,771 @@
+{
+ "Tasa_Paro vs INE 65349 (EPA, tasa de paro, ambos sexos)": {
+  "n_compared": 4368,
+  "pct_equal(tol=0.005)": 100.0,
+  "max_abs_diff": 0.0,
+  "mean_abs_diff": 0.0,
+  "worst": [
+   {
+    "code": "15",
+    "q": "2005-01-01",
+    "panel": 10.58,
+    "api": 10.58
+   },
+   {
+    "code": "15",
+    "q": "2005-04-01",
+    "panel": 10.68,
+    "api": 10.68
+   },
+   {
+    "code": "15",
+    "q": "2005-07-01",
+    "panel": 8.2,
+    "api": 8.2
+   },
+   {
+    "code": "15",
+    "q": "2005-10-01",
+    "panel": 9.07,
+    "api": 9.07
+   },
+   {
+    "code": "15",
+    "q": "2006-01-01",
+    "panel": 9.55,
+    "api": 9.55
+   }
+  ]
+ },
+ "hipotecas_series_variants": [
+  "Base nueva. Mensual."
+ ],
+ "Hipotecas_Total vs INE 3200 suma trimestral (Base nueva. Mensual.)": {
+  "n_compared": 4368,
+  "pct_equal(tol=0.5)": 87.93,
+  "max_abs_diff": 19170.81,
+  "mean_abs_diff": 284.78595009157505,
+  "worst": [
+   {
+    "code": "28",
+    "q": "2022-04-01",
+    "panel": 7155.19,
+    "api": 26326.0
+   },
+   {
+    "code": "28",
+    "q": "2006-01-01",
+    "panel": 37699.16,
+    "api": 56840.0
+   },
+   {
+    "code": "08",
+    "q": "2005-04-01",
+    "panel": 35765.15,
+    "api": 53897.0
+   },
+   {
+    "code": "28",
+    "q": "2005-04-01",
+    "panel": 38903.490000000005,
+    "api": 56376.0
+   },
+   {
+    "code": "28",
+    "q": "2007-04-01",
+    "panel": 32069.05,
+    "api": 49102.0
+   }
+  ]
+ },
+ "hipotecas_naturalezas": [
+  "Otros",
+  "Solares",
+  "Tota",
+  "Viviendas"
+ ],
+ "Transmisiones_Total vs INE compraventa viviendas (6150, General)": {
+  "n_compared": 3572,
+  "pct_equal(tol=0.5)": 96.08,
+  "max_abs_diff": 333.0,
+  "mean_abs_diff": 2.7178051511758117,
+  "worst": [
+   {
+    "code": "03",
+    "q": "2025-10-01",
+    "panel": 13592.0,
+    "api": 13259.0
+   },
+   {
+    "code": "08",
+    "q": "2025-04-01",
+    "panel": 17665.0,
+    "api": 17989.0
+   },
+   {
+    "code": "03",
+    "q": "2025-04-01",
+    "panel": 13577.0,
+    "api": 13259.0
+   },
+   {
+    "code": "03",
+    "q": "2025-07-01",
+    "panel": 13585.0,
+    "api": 13268.0
+   },
+   {
+    "code": "29",
+    "q": "2025-04-01",
+    "panel": 9065.0,
+    "api": 8794.0
+   }
+  ]
+ },
+ "etdp_6150_example_names": [
+  "Almería. General. Compraventa. Número.",
+  "Cádiz. General. Compraventa. Número.",
+  "Córdoba. General. Compraventa. Número."
+ ],
+ "Transmisiones_Total vs INE total fincas transmitidas (6146)": {
+  "n_compared": 3572,
+  "pct_equal(tol=0.5)": 0.0,
+  "max_abs_diff": 54397.0,
+  "mean_abs_diff": 7349.558230683091,
+  "worst": [
+   {
+    "code": "28",
+    "q": "2007-01-01",
+    "panel": 24366.0,
+    "api": 78763.0
+   },
+   {
+    "code": "28",
+    "q": "2007-04-01",
+    "panel": 22155.0,
+    "api": 69698.0
+   },
+   {
+    "code": "28",
+    "q": "2022-01-01",
+    "panel": 22465.0,
+    "api": 67951.0
+   },
+   {
+    "code": "28",
+    "q": "2021-04-01",
+    "panel": 20835.0,
+    "api": 65665.0
+   },
+   {
+    "code": "28",
+    "q": "2008-01-01",
+    "panel": 17172.0,
+    "api": 61249.0
+   }
+  ]
+ },
+ "ipc_50913_ccaa_unmatched": [
+  "Asturias",
+  "Balears",
+  "Castill",
+  "Comunita",
+  "Madrid",
+  "Murcia",
+  "Nacional",
+  "Navarra",
+  "Paí",
+  "Rioja"
+ ],
+ "IPC vs INE 50913 (media trimestral de la variación anual del índice general, CCAA)": {
+  "n_compared": 2184,
+  "pct_equal(tol=1e-06)": 100.0,
+  "max_abs_diff": 1.7763568394002505e-15,
+  "mean_abs_diff": 6.501082740922605e-17,
+  "worst": [
+   {
+    "code": "06",
+    "q": "2022-07-01",
+    "panel": 10.8,
+    "api": 10.799999999999999
+   },
+   {
+    "code": "52",
+    "q": "2022-04-01",
+    "panel": 9.2,
+    "api": 9.200000000000001
+   },
+   {
+    "code": "10",
+    "q": "2022-07-01",
+    "panel": 10.8,
+    "api": 10.799999999999999
+   },
+   {
+    "code": "38",
+    "q": "2022-07-01",
+    "panel": 9.033333333333331,
+    "api": 9.033333333333333
+   },
+   {
+    "code": "35",
+    "q": "2022-07-01",
+    "panel": 9.033333333333331,
+    "api": 9.033333333333333
+   }
+  ]
+ },
+ "ipc_76136_ccaa_unmatched": [
+  "Asturias",
+  "Balears",
+  "Castill",
+  "Comunita",
+  "Madrid",
+  "Murcia",
+  "Nacional",
+  "Navarra",
+  "Paí",
+  "Rioja"
+ ],
+ "IPC vs INE 76136 (media trimestral de la variación anual del índice general, CCAA)": {
+  "n_compared": 2184,
+  "pct_equal(tol=1e-06)": 98.81,
+  "max_abs_diff": 0.26666666666666705,
+  "mean_abs_diff": 0.001953601953602015,
+  "worst": [
+   {
+    "code": "50",
+    "q": "2005-01-01",
+    "panel": 3.333333333333333,
+    "api": 3.6
+   },
+   {
+    "code": "22",
+    "q": "2005-01-01",
+    "panel": 3.333333333333333,
+    "api": 3.6
+   },
+   {
+    "code": "44",
+    "q": "2005-01-01",
+    "panel": 3.333333333333333,
+    "api": 3.6
+   },
+   {
+    "code": "52",
+    "q": "2005-01-01",
+    "panel": 3.4333333333333336,
+    "api": 3.2
+   },
+   {
+    "code": "17",
+    "q": "2005-01-01",
+    "panel": 3.8,
+    "api": 4.0
+   }
+  ]
+ },
+ "Indice_Mano_Obra vs INE 8377 (media trimestral, base jul-1980)": {
+  "n_compared": 4212,
+  "pct_equal(tol=1e-06)": 100.0,
+  "max_abs_diff": 5.684341886080802e-14,
+  "mean_abs_diff": 1.1228329651517632e-14,
+  "worst": [
+   {
+    "code": "13",
+    "q": "2022-07-01",
+    "panel": 449.11,
+    "api": 449.10999999999996
+   },
+   {
+    "code": "13",
+    "q": "2022-01-01",
+    "panel": 432.5633333333333,
+    "api": 432.56333333333333
+   },
+   {
+    "code": "13",
+    "q": "2021-01-01",
+    "panel": 405.5966666666666,
+    "api": 405.59666666666664
+   },
+   {
+    "code": "38",
+    "q": "2007-01-01",
+    "panel": 346.7933333333333,
+    "api": 346.79333333333335
+   },
+   {
+    "code": "13",
+    "q": "2020-01-01",
+    "panel": 403.5533333333333,
+    "api": 403.55333333333334
+   }
+  ]
+ },
+ "8377_last_date": "2026-03-01",
+ "8378_series": [
+  "Peninsula y Baleares. Cemento. Índice. Base 1964.",
+  "Peninsula y Baleares. Ceramica. Índice. Base 1964.",
+  "Peninsula y Baleares. Madera. Índice. Base 1964.",
+  "Peninsula y Baleares. Acero. Índice. Base 1964.",
+  "Peninsula y Baleares. Energía. Índice. Base 1964.",
+  "Peninsula y Baleares. Cobre. Índice. Base 1964.",
+  "Peninsula y Baleares. Aluminio. Índice. Base 1964.",
+  "Peninsula y Baleares. Ligantes. Índice. Base 1964.",
+  "Canarias. Cemento. Índice. Base 1964.",
+  "Canarias. Ceramica. Índice. Base 1964.",
+  "Canarias. Madera. Índice. Base 1964.",
+  "Canarias. Acero. Índice. Base 1964.",
+  "Canarias. Energía. Índice. Base 1964.",
+  "Canarias. Cobre. Índice. Base 1964.",
+  "Canarias. Aluminio. Índice. Base 1964.",
+  "Canarias. Ligantes. Índice. Base 1964."
+ ],
+ "Indice_Materiales vs INE 8378 (media de TODAS las series y zonas, como el notebook)": {
+  "n_compared": 4212,
+  "pct_equal(tol=1e-06)": 0.0,
+  "max_abs_diff": 646.3776785714281,
+  "mean_abs_diff": 299.1910604056438,
+  "worst": [
+   {
+    "code": "22",
+    "q": "2022-04-01",
+    "panel": 3274.478571428572,
+    "api": 3920.8562500000003
+   },
+   {
+    "code": "27",
+    "q": "2022-04-01",
+    "panel": 3274.478571428572,
+    "api": 3920.8562500000003
+   },
+   {
+    "code": "50",
+    "q": "2022-04-01",
+    "panel": 3274.478571428572,
+    "api": 3920.8562500000003
+   },
+   {
+    "code": "15",
+    "q": "2022-04-01",
+    "panel": 3274.478571428572,
+    "api": 3920.8562500000003
+   },
+   {
+    "code": "36",
+    "q": "2022-04-01",
+    "panel": 3274.478571428572,
+    "api": 3920.8562500000003
+   }
+  ]
+ },
+ "8378_last_date": "2026-03-01",
+ "Edad_Media vs INE 3199 (anual, a 1 de enero, repetida 4 trimestres)": {
+  "n_compared": 4368,
+  "pct_equal(tol=0.005)": 100.0,
+  "max_abs_diff": 0.0,
+  "mean_abs_diff": 0.0,
+  "worst": [
+   {
+    "code": "15",
+    "q": "2005-01-01",
+    "panel": 43.37,
+    "api": 43.37
+   },
+   {
+    "code": "15",
+    "q": "2005-04-01",
+    "panel": 43.37,
+    "api": 43.37
+   },
+   {
+    "code": "15",
+    "q": "2005-07-01",
+    "panel": 43.37,
+    "api": 43.37
+   },
+   {
+    "code": "15",
+    "q": "2005-10-01",
+    "panel": 43.37,
+    "api": 43.37
+   },
+   {
+    "code": "15",
+    "q": "2006-01-01",
+    "panel": 43.62,
+    "api": 43.62
+   }
+  ]
+ },
+ "Poblacion vs INE 2852 (Padrón, cifras oficiales a 1-ene, hasta 2021)": {
+  "n_compared": 3536,
+  "pct_equal(tol=0.5)": 100.0,
+  "max_abs_diff": 0.0,
+  "mean_abs_diff": 0.0,
+  "worst": [
+   {
+    "code": "15",
+    "q": "2005-01-01",
+    "panel": 1126707.0,
+    "api": 1126707.0
+   },
+   {
+    "code": "15",
+    "q": "2005-04-01",
+    "panel": 1126707.0,
+    "api": 1126707.0
+   },
+   {
+    "code": "15",
+    "q": "2005-07-01",
+    "panel": 1126707.0,
+    "api": 1126707.0
+   },
+   {
+    "code": "15",
+    "q": "2005-10-01",
+    "panel": 1126707.0,
+    "api": 1126707.0
+   },
+   {
+    "code": "15",
+    "q": "2006-01-01",
+    "panel": 1129141.0,
+    "api": 1129141.0
+   }
+  ]
+ },
+ "ecp_59591_n_series_selected": 104,
+ "Poblacion vs INE ECP 59591 (Total, a 1 de enero)": {
+  "n_compared": 4368,
+  "pct_equal(tol=0.5)": 19.05,
+  "max_abs_diff": 97957.0,
+  "mean_abs_diff": 6090.965201465201,
+  "worst": [
+   {
+    "code": "28",
+    "q": "2005-01-01",
+    "panel": 5964143.0,
+    "api": 5866186.0
+   },
+   {
+    "code": "28",
+    "q": "2005-04-01",
+    "panel": 5964143.0,
+    "api": 5866186.0
+   },
+   {
+    "code": "28",
+    "q": "2005-07-01",
+    "panel": 5964143.0,
+    "api": 5866186.0
+   },
+   {
+    "code": "28",
+    "q": "2005-10-01",
+    "panel": 5964143.0,
+    "api": 5866186.0
+   },
+   {
+    "code": "28",
+    "q": "2011-10-01",
+    "panel": 6489680.0,
+    "api": 6394239.0
+   }
+  ]
+ },
+ "Poblacion_vs_ECP_pct_equal_by_year": {
+  "2005": 0.0,
+  "2006": 0.0,
+  "2007": 0.0,
+  "2008": 0.0,
+  "2009": 0.0,
+  "2010": 0.0,
+  "2011": 0.0,
+  "2012": 0.0,
+  "2013": 0.0,
+  "2014": 0.0,
+  "2015": 0.0,
+  "2016": 0.0,
+  "2017": 0.0,
+  "2018": 0.0,
+  "2019": 0.0,
+  "2020": 0.0,
+  "2021": 0.0,
+  "2022": 1.0,
+  "2023": 1.0,
+  "2024": 1.0,
+  "2025": 1.0
+ },
+ "Poblacion_vs_ECP_median_reldiff_by_year_pct": {
+  "2005": 1.323,
+  "2006": 1.202,
+  "2007": 0.692,
+  "2008": 0.735,
+  "2009": 0.784,
+  "2010": 0.671,
+  "2011": 0.65,
+  "2012": 0.537,
+  "2013": 0.409,
+  "2014": 0.312,
+  "2015": 0.09,
+  "2016": 0.038,
+  "2017": -0.052,
+  "2018": -0.027,
+  "2019": 0.028,
+  "2020": 0.03,
+  "2021": -0.076,
+  "2022": 0.0,
+  "2023": 0.0,
+  "2024": 0.0,
+  "2025": 0.0
+ },
+ "Pob_Ext vs INE ECP 59591 (Extranjera, a 1 de enero)": {
+  "n_compared": 4368,
+  "pct_equal(tol=0.5)": 0.0,
+  "max_abs_diff": 96905.0,
+  "mean_abs_diff": 6375.024725274725,
+  "worst": [
+   {
+    "code": "28",
+    "q": "2014-04-01",
+    "panel": 879953.0,
+    "api": 783048.0
+   },
+   {
+    "code": "28",
+    "q": "2014-01-01",
+    "panel": 879953.0,
+    "api": 783048.0
+   },
+   {
+    "code": "28",
+    "q": "2014-07-01",
+    "panel": 879953.0,
+    "api": 783048.0
+   },
+   {
+    "code": "28",
+    "q": "2014-10-01",
+    "panel": 879953.0,
+    "api": 783048.0
+   },
+   {
+    "code": "28",
+    "q": "2011-04-01",
+    "panel": 1067585.0,
+    "api": 972005.0
+   }
+  ]
+ },
+ "Pob_Ext_vs_ECP_pct_equal_by_year": {
+  "2005": 0.0,
+  "2006": 0.0,
+  "2007": 0.0,
+  "2008": 0.0,
+  "2009": 0.0,
+  "2010": 0.0,
+  "2011": 0.0,
+  "2012": 0.0,
+  "2013": 0.0,
+  "2014": 0.0,
+  "2015": 0.0,
+  "2016": 0.0,
+  "2017": 0.0,
+  "2018": 0.0,
+  "2019": 0.0,
+  "2020": 0.0,
+  "2021": 0.0,
+  "2022": 0.0,
+  "2023": 0.0,
+  "2024": 0.0,
+  "2025": 0.0
+ },
+ "Pob_Ext_vs_ECP_median_reldiff_by_year_pct": {
+  "2005": 6.891,
+  "2006": 4.433,
+  "2007": 0.097,
+  "2008": 1.953,
+  "2009": 4.085,
+  "2010": 5.12,
+  "2011": 6.436,
+  "2012": 7.297,
+  "2013": 7.297,
+  "2014": 5.988,
+  "2015": 3.679,
+  "2016": 1.873,
+  "2017": 1.123,
+  "2018": 1.286,
+  "2019": 2.37,
+  "2020": 2.279,
+  "2021": 0.172,
+  "2022": 0.015,
+  "2023": 17.036,
+  "2024": 14.62,
+  "2025": 8.995
+ },
+ "PIB_pc vs INE CRE 82285 (PIB pm per cápita, precios corrientes)": {
+  "n_compared": 3840,
+  "pct_equal(tol=0.5)": 90.0,
+  "max_abs_diff": 2062.0,
+  "mean_abs_diff": 38.72604166666667,
+  "worst": [
+   {
+    "code": "37",
+    "q": "2024-10-01",
+    "panel": 31425.0,
+    "api": 29363.0
+   },
+   {
+    "code": "37",
+    "q": "2024-07-01",
+    "panel": 31425.0,
+    "api": 29363.0
+   },
+   {
+    "code": "37",
+    "q": "2024-04-01",
+    "panel": 31425.0,
+    "api": 29363.0
+   },
+   {
+    "code": "37",
+    "q": "2024-01-01",
+    "panel": 31425.0,
+    "api": 29363.0
+   },
+   {
+    "code": "12",
+    "q": "2024-10-01",
+    "panel": 31289.0,
+    "api": 29474.0
+   }
+  ]
+ },
+ "cre_82285_years": [
+  2000,
+  2025
+ ],
+ "PIB_pc vs INE CRE 80110 (PIB pm per cápita, precios corrientes)": {
+  "n_compared": 3840,
+  "pct_equal(tol=0.5)": 90.0,
+  "max_abs_diff": 2062.0,
+  "mean_abs_diff": 38.72604166666667,
+  "worst": [
+   {
+    "code": "37",
+    "q": "2024-10-01",
+    "panel": 31425.0,
+    "api": 29363.0
+   },
+   {
+    "code": "37",
+    "q": "2024-07-01",
+    "panel": 31425.0,
+    "api": 29363.0
+   },
+   {
+    "code": "37",
+    "q": "2024-04-01",
+    "panel": 31425.0,
+    "api": 29363.0
+   },
+   {
+    "code": "37",
+    "q": "2024-01-01",
+    "panel": 31425.0,
+    "api": 29363.0
+   },
+   {
+    "code": "12",
+    "q": "2024-10-01",
+    "panel": 31289.0,
+    "api": 29474.0
+   }
+  ]
+ },
+ "cre_80110_years": [
+  2000,
+  2025
+ ],
+ "tasa_ahorro vs INE CTNFSI11271 (tasa de ahorro hogares+ISFLSH, no ajustada)": {
+  "n_compared": 4316,
+  "pct_equal(tol=0.05)": 87.95,
+  "max_abs_diff": 0.7000000000000002,
+  "mean_abs_diff": 0.04819277108433734,
+  "worst": [
+   {
+    "code": "28",
+    "q": "2025-01-01",
+    "panel": 4.9,
+    "api": 4.2
+   },
+   {
+    "code": "09",
+    "q": "2025-01-01",
+    "panel": 4.9,
+    "api": 4.2
+   },
+   {
+    "code": "47",
+    "q": "2025-01-01",
+    "panel": 4.9,
+    "api": 4.2
+   },
+   {
+    "code": "44",
+    "q": "2025-01-01",
+    "panel": 4.9,
+    "api": 4.2
+   },
+   {
+    "code": "35",
+    "q": "2025-01-01",
+    "panel": 4.9,
+    "api": 4.2
+   }
+  ]
+ },
+ "CTNFSI11271_last": "2026-04-01",
+ "tasa_ahorro vs INE CTNFSI11270 (tasa de ahorro hogares+ISFLSH, ajustada estac.)": {
+  "n_compared": 4316,
+  "pct_equal(tol=0.05)": 0.0,
+  "max_abs_diff": 12.799999999999999,
+  "mean_abs_diff": 7.2385542168674695,
+  "worst": [
+   {
+    "code": "31",
+    "q": "2009-01-01",
+    "panel": -2.1,
+    "api": 10.7
+   },
+   {
+    "code": "22",
+    "q": "2009-01-01",
+    "panel": -2.1,
+    "api": 10.7
+   },
+   {
+    "code": "27",
+    "q": "2009-01-01",
+    "panel": -2.1,
+    "api": 10.7
+   },
+   {
+    "code": "40",
+    "q": "2009-01-01",
+    "panel": -2.1,
+    "api": 10.7
+   },
+   {
+    "code": "43",
+    "q": "2009-01-01",
+    "panel": -2.1,
+    "api": 10.7
+   }
+  ]
+ },
+ "CTNFSI11270_last": "2026-04-01"
+}

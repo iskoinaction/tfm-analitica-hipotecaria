@@ -1,0 +1,174 @@
+{
+ "tanh_tabla_ratio_ajuste_pp": {
+  "0.00": 0.291,
+  "0.25": 0.2763,
+  "0.50": 0.1904,
+  "0.75": 0.1155,
+  "1.00": -0.0,
+  "1.50": -0.1904,
+  "2.00": -0.241,
+  "3.00": -0.2498,
+  "5.00": -0.25
+ },
+ "salto_discontinuidad_ratio_0_5_pp": 0.05,
+ "mismo_ingreso_distinto_pib": {
+  "pib_44749": 0.1445,
+  "pib_20000": -0.1904
+ },
+ "aranceles": {
+  "100000": {
+   "app_notaria": 675,
+   "app_registro": 445,
+   "arancel_base_notaria_RD1426": 269.14,
+   "arancel_base_registro_RD1427": 126.92
+  },
+  "200000": {
+   "app_notaria": 750,
+   "app_registro": 510,
+   "arancel_base_notaria_RD1426": 340.51,
+   "arancel_base_registro_RD1427": 176.9
+  },
+  "250000": {
+   "app_notaria": 790,
+   "app_registro": 550,
+   "arancel_base_notaria_RD1426": 364.26,
+   "arancel_base_registro_RD1427": 191.15
+  },
+  "400000": {
+   "app_notaria": 850,
+   "app_registro": 630,
+   "arancel_base_notaria_RD1426": 435.51,
+   "arancel_base_registro_RD1427": 233.9
+  },
+  "1000000": {
+   "app_notaria": 850,
+   "app_registro": 630,
+   "arancel_base_notaria_RD1426": 644.71,
+   "arancel_base_registro_RD1427": 367.0
+  }
+ },
+ "itp_app_vs_secundaria": {
+  "Andalucia": {
+   "app": 7.0,
+   "secundaria": "7",
+   "norma": "Ley 5/2021 art. 41",
+   "difiere_tipo_base": false,
+   "app_ignora_tramos": false
+  },
+  "Aragon": {
+   "app": 8.0,
+   "secundaria": "8 hasta 400k; tramos hasta 10",
+   "norma": "DLeg 1/2005 art. 121-1",
+   "difiere_tipo_base": false,
+   "app_ignora_tramos": true
+  },
+  "Asturias": {
+   "app": 8.0,
+   "secundaria": "8 hasta 300k; 9; 10",
+   "norma": "DLeg 2/2014 art. 26",
+   "difiere_tipo_base": false,
+   "app_ignora_tramos": true
+  },
+  "Baleares": {
+   "app": 8.0,
+   "secundaria": "8 hasta 400k; tramos hasta 13",
+   "norma": "DLeg 1/2014 art. 10",
+   "difiere_tipo_base": false,
+   "app_ignora_tramos": true
+  },
+  "Canarias": {
+   "app": 6.5,
+   "secundaria": "6,5",
+   "norma": "DLeg 1/2009 art. 31",
+   "difiere_tipo_base": false,
+   "app_ignora_tramos": false
+  },
+  "Cantabria": {
+   "app": 10.0,
+   "secundaria": "9",
+   "norma": "DLeg 62/2008 art. 9",
+   "difiere_tipo_base": true,
+   "app_ignora_tramos": false
+  },
+  "Castilla-La Mancha": {
+   "app": 9.0,
+   "secundaria": "9",
+   "norma": "Ley 8/2013 art. 19",
+   "difiere_tipo_base": false,
+   "app_ignora_tramos": false
+  },
+  "Castilla y Leon": {
+   "app": 8.0,
+   "secundaria": "8; 10 exceso >250k",
+   "norma": "DLeg 1/2013 arts. 24-25",
+   "difiere_tipo_base": false,
+   "app_ignora_tramos": true
+  },
+  "Cataluna": {
+   "app": 10.0,
+   "secundaria": "10 hasta 600k; tramos hasta 13",
+   "norma": "DLeg 1/2024 art. 641-1",
+   "difiere_tipo_base": false,
+   "app_ignora_tramos": true
+  },
+  "Comunidad Valenciana": {
+   "app": 10.0,
+   "secundaria": "9 (desde 1/6/2026); 11 si >1M",
+   "norma": "Ley 13/1997 art. 13",
+   "difiere_tipo_base": true,
+   "app_ignora_tramos": true
+  },
+  "Extremadura": {
+   "app": 8.0,
+   "secundaria": "8 hasta 360k; 10; 11",
+   "norma": "DLeg 1/2018 art. 36",
+   "difiere_tipo_base": false,
+   "app_ignora_tramos": true
+  },
+  "Galicia": {
+   "app": 10.0,
+   "secundaria": "8",
+   "norma": "DLeg 1/2011 art. 14",
+   "difiere_tipo_base": true,
+   "app_ignora_tramos": false
+  },
+  "Madrid": {
+   "app": 6.0,
+   "secundaria": "6",
+   "norma": "DLeg 1/2010 art. 28",
+   "difiere_tipo_base": false,
+   "app_ignora_tramos": false
+  },
+  "Murcia": {
+   "app": 8.0,
+   "secundaria": "7,75",
+   "norma": "DLeg 1/2010 art. 6",
+   "difiere_tipo_base": true,
+   "app_ignora_tramos": false
+  },
+  "Navarra": {
+   "app": 6.0,
+   "secundaria": "6",
+   "norma": "DFLeg 129/1999 art. 8",
+   "difiere_tipo_base": false,
+   "app_ignora_tramos": false
+  },
+  "Pais Vasco": {
+   "app": 4.0,
+   "secundaria": "4 vivienda (normas forales)",
+   "norma": "Normas forales",
+   "difiere_tipo_base": false,
+   "app_ignora_tramos": false
+  },
+  "La Rioja": {
+   "app": 7.0,
+   "secundaria": "7",
+   "norma": "Ley 10/2017 art. 44",
+   "difiere_tipo_base": false,
+   "app_ignora_tramos": false
+  }
+ },
+ "n_ccaa_tipo_base_distinto": 4,
+ "n_ccaa_con_tramos_ignorados": 7,
+ "fuente_secundaria": "https://bm.consulting/es/insights/tipos-itp-comunidad-autonoma-2026/ (consultada 21/11/2026; NO es boletín oficial)"
+}

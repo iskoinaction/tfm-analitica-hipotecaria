@@ -1,0 +1,5 @@
+secret_key por defecto en uso: True
+credenciales por defecto: caixabank / (len=9) iguales al usuario: True
+POST /admin/execute-code con cookie forjada -> 400 | prueba ejecutada: True
+GET /admin con cookie forjada -> 200
+POST /login_admin con credenciales por defecto -> 302 /admin

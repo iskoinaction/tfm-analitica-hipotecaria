@@ -1,0 +1,6 @@
+Provincias en dataset: 52
+_get_ccaa sin CCAA (-> ITP por defecto 8%, sin financiación joven): 12
+   ['A Coruña', 'Almería', 'Castellón', 'Cáceres', 'Cádiz', 'Córdoba', 'Guipúzcoa', 'Jaén', 'León', 'Málaga', 'Álava', 'Ávila']
+PROV_SARIMA_DUMMY no presentes en dataset: []
+PROV_ARIMA_DUMMY no presentes en dataset: []
+Resueltas por coincidencia difusa (subcadena): {'Comunidad Foral de Navarra': 'Navarra', 'Comunidad de Madrid': 'Madrid', 'Islas Baleares': 'Baleares', 'Principado de Asturias': 'Asturias', 'Región de Murcia': 'Murcia'}

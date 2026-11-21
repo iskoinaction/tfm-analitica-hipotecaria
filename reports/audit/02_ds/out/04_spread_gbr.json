@@ -1,0 +1,60 @@
+{
+  "spread_valores_unicos_por_trimestre_max": 1,
+  "n_filas_modelo_app": 4160,
+  "n_trimestres_distintos": 80,
+  "app_TimeSeriesSplit_sobre_orden_provincial": {
+    "RMSE_cv": 0.1037451216978336,
+    "MAE_cv": 0.07522112827699007,
+    "folds": [
+      {
+        "prov_test": "Burgos..Córdoba",
+        "pct_trimestres_test_presentes_en_train": 100.0
+      },
+      {
+        "prov_test": "Córdoba..Jaén",
+        "pct_trimestres_test_presentes_en_train": 100.0
+      },
+      {
+        "prov_test": "Jaén..Ourense",
+        "pct_trimestres_test_presentes_en_train": 100.0
+      },
+      {
+        "prov_test": "Ourense..Soria",
+        "pct_trimestres_test_presentes_en_train": 100.0
+      },
+      {
+        "prov_test": "Soria..Zaragoza",
+        "pct_trimestres_test_presentes_en_train": 100.0
+      }
+    ]
+  },
+  "app_metricas_hardcodeadas_api": {
+    "r2": 0.8492,
+    "rmse": 0.1543,
+    "mape": "3.2%",
+    "nota": "Web/app.py ~l.1172, literales"
+  },
+  "TimeSeriesSplit_ordenado_por_tiempo_RMSE": 0.5745285443429644,
+  "rolling_origin_nacional": {
+    "h1": {
+      "n": 39,
+      "RMSE_GBR": 0.5469912102377914,
+      "RMSE_naive": 0.2158989867052342,
+      "MAE_GBR": 0.331143276749194,
+      "MAE_naive": 0.13083451170073382
+    },
+    "h4": {
+      "n": 36,
+      "RMSE_GBR": 0.8939665590878974,
+      "RMSE_naive": 0.608276385921701,
+      "MAE_GBR": 0.6296036511017256,
+      "MAE_naive": 0.33041941172007555
+    },
+    "contemporaneo_h0": {
+      "n": 40,
+      "RMSE_GBR": 0.4044331747708439,
+      "RMSE_naive_t-1": 0.2145717345147137
+    }
+  },
+  "periodo_evaluado_desde": "2015-01-01"
+}

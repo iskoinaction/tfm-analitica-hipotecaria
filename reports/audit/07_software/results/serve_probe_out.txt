@@ -1,0 +1,33 @@
+server pid=9685
+startup_to_first_200_s=4.211803310
+login 302
+GET / 200 0.003582s
+GET /hipotecas 200 0.008083s
+GET /api/paro-model-info 200 0.002695s
+GET /api/dashboard-extra 200 0.018537s
+GET /api/hipoteca-context?year=2020 200 7.885283s
+GET /api/hipoteca-context?year=2027 200 0.027508s
+--- petición trivial lanzada mientras /api/demanda-data entrena:
+GET /api/paro-model-info 200 41.850328s
+GET /api/demanda-data 200 42.369465s
+GET /api/demanda-data 200 0.003570s
+GET /api/data 200 0.613864s
+GET /api/data 200 0.830023s
+POST /api/hipoteca-recomendacion 500 3.045184s
+GET /api/mapa/tension 200 0.006988s
+POST /api/chat 200 0.006227s
+--- cabeceras de /:
+HTTP/1.0 200 OK
+Server: Werkzeug/3.1.9 Python/3.13.18
+Date: Sat, 21 Nov 2026 19:00:04 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 13527
+Vary: Cookie
+Connection: close
+
+server killed
+--- RSS/errores en log del servidor:
+tracebacks_in_log=1
+no server left
+
+[exited with code 0]

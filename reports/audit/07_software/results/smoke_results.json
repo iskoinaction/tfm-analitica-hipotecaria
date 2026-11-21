@@ -1,0 +1,841 @@
+{
+  "app_dir": "<SCRATCH>/sandbox/a/run/Web",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/",
+      "status": 200,
+      "elapsed_s": 0.0,
+      "bytes": 13527
+    },
+    {
+      "method": "GET",
+      "path": "/hipotecas",
+      "status": 200,
+      "elapsed_s": 0.011,
+      "bytes": 63684
+    },
+    {
+      "method": "GET",
+      "path": "/demanda",
+      "status": 200,
+      "elapsed_s": 0.004,
+      "bytes": 24445
+    },
+    {
+      "method": "GET",
+      "path": "/demanda-provincial",
+      "status": 200,
+      "elapsed_s": 0.004,
+      "bytes": 24510
+    },
+    {
+      "method": "GET",
+      "path": "/hipotecas-provincial",
+      "status": 200,
+      "elapsed_s": 0.01,
+      "bytes": 62389
+    },
+    {
+      "method": "GET",
+      "path": "/metodologia-ml",
+      "status": 200,
+      "elapsed_s": 0.004,
+      "bytes": 35362
+    },
+    {
+      "method": "GET",
+      "path": "/econometria",
+      "status": 200,
+      "elapsed_s": 0.003,
+      "bytes": 21546
+    },
+    {
+      "method": "GET",
+      "path": "/vecm",
+      "status": 200,
+      "elapsed_s": 0.008,
+      "bytes": 39782
+    },
+    {
+      "method": "GET",
+      "path": "/webscrapping",
+      "status": 200,
+      "elapsed_s": 0.003,
+      "bytes": 20807
+    },
+    {
+      "method": "GET",
+      "path": "/business_case",
+      "status": 200,
+      "elapsed_s": 0.004,
+      "bytes": 34058
+    },
+    {
+      "method": "GET",
+      "path": "/admin",
+      "status": 200,
+      "elapsed_s": 0.0,
+      "bytes": 20330
+    },
+    {
+      "method": "GET",
+      "path": "/test-hipoteca",
+      "status": 200,
+      "elapsed_s": 0.025,
+      "bytes": 11269
+    },
+    {
+      "method": "GET",
+      "path": "/login",
+      "status": 302,
+      "elapsed_s": 0.001,
+      "bytes": 189
+    },
+    {
+      "method": "GET",
+      "path": "/login_admin",
+      "status": 302,
+      "elapsed_s": 0.0,
+      "bytes": 199
+    },
+    {
+      "method": "GET",
+      "path": "/api/custom-charts",
+      "status": 200,
+      "elapsed_s": 0.001,
+      "bytes": 5418
+    },
+    {
+      "method": "GET",
+      "path": "/api/paro-model-info",
+      "status": 200,
+      "elapsed_s": 0.002,
+      "bytes": 15920,
+      "json_keys": [
+        "A Coruña",
+        "Albacete",
+        "Alicante",
+        "Almería",
+        "Badajoz",
+        "Barcelona",
+        "Burgos",
+        "Cantabria",
+        "Castellón",
+        "Ceuta",
+        "Ciudad Real",
+        "Comunidad Foral de Navarra",
+        "Comunidad de Madrid",
+        "Cuenca",
+        "Cáceres",
+        "Cádiz",
+        "Córdoba",
+        "Girona",
+        "Granada",
+        "Guadalajara",
+        "Guipúzcoa",
+        "Huelva",
+        "Huesca",
+        "Islas Baleares",
+        "Jaén"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/paro-model-info?provincia=Badajoz",
+      "status": 200,
+      "elapsed_s": 0.001,
+      "bytes": 232,
+      "json_keys": [
+        "color",
+        "label",
+        "model",
+        "model_short",
+        "reason",
+        "tier"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard-extra",
+      "status": 200,
+      "elapsed_s": 0.031,
+      "bytes": 15171,
+      "json_keys": [
+        "paro_series",
+        "pib_series",
+        "precio_prov_series",
+        "provinces",
+        "scatter",
+        "years"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/dashboard-extra?provincia=Madrid&year=2020",
+      "status": 200,
+      "elapsed_s": 0.013,
+      "bytes": 2874,
+      "json_keys": [
+        "paro_series",
+        "pib_series",
+        "precio_prov_series",
+        "provinces",
+        "scatter",
+        "years"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/hipoteca-context?year=2020",
+      "status": 200,
+      "elapsed_s": 3.0,
+      "bytes": 85943,
+      "json_keys": [
+        "aprc",
+        "corr_img",
+        "data_period",
+        "diferencia",
+        "euribor",
+        "ipc",
+        "is_future",
+        "is_pib_predicted",
+        "metrics",
+        "pib_2025_disclaimer",
+        "pib_growth",
+        "pib_pc",
+        "poblacion",
+        "poblacion_ext",
+        "precio_m2",
+        "provinces",
+        "scope",
+        "tasa_ahorro",
+        "tasa_paro",
+        "time_series",
+        "transmisiones"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/hipoteca-context?year=2028",
+      "status": 200,
+      "elapsed_s": 0.012,
+      "bytes": 85919,
+      "json_keys": [
+        "aprc",
+        "corr_img",
+        "data_period",
+        "diferencia",
+        "euribor",
+        "ipc",
+        "is_future",
+        "is_pib_predicted",
+        "metrics",
+        "pib_2025_disclaimer",
+        "pib_growth",
+        "pib_pc",
+        "poblacion",
+        "poblacion_ext",
+        "precio_m2",
+        "provinces",
+        "scope",
+        "tasa_ahorro",
+        "tasa_paro",
+        "time_series",
+        "transmisiones"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/hipoteca-context?year=2028",
+      "status": 200,
+      "elapsed_s": 0.012,
+      "bytes": 85919,
+      "json_keys": [
+        "aprc",
+        "corr_img",
+        "data_period",
+        "diferencia",
+        "euribor",
+        "ipc",
+        "is_future",
+        "is_pib_predicted",
+        "metrics",
+        "pib_2025_disclaimer",
+        "pib_growth",
+        "pib_pc",
+        "poblacion",
+        "poblacion_ext",
+        "precio_m2",
+        "provinces",
+        "scope",
+        "tasa_ahorro",
+        "tasa_paro",
+        "time_series",
+        "transmisiones"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/hipoteca-context?year=2028&provincia=Madrid",
+      "status": 200,
+      "elapsed_s": 0.003,
+      "bytes": 45,
+      "json_keys": [
+        "error"
+      ],
+      "error": "No hay datos para 2028 en Madrid"
+    },
+    {
+      "method": "GET",
+      "path": "/api/demanda-data",
+      "status": 200,
+      "elapsed_s": 23.742,
+      "bytes": 4374,
+      "json_keys": [
+        "available_provs",
+        "available_years",
+        "benchmark",
+        "feature_importance",
+        "forecast",
+        "kpis",
+        "serie_historica",
+        "stress_test",
+        "top_provincias"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/demanda-data",
+      "status": 200,
+      "elapsed_s": 0.001,
+      "bytes": 4374,
+      "json_keys": [
+        "available_provs",
+        "available_years",
+        "benchmark",
+        "feature_importance",
+        "forecast",
+        "kpis",
+        "serie_historica",
+        "stress_test",
+        "top_provincias"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/demanda-data?year=2028-Q2",
+      "status": 200,
+      "elapsed_s": 0.059,
+      "bytes": 4380,
+      "json_keys": [
+        "available_provs",
+        "available_years",
+        "benchmark",
+        "feature_importance",
+        "forecast",
+        "kpis",
+        "serie_historica",
+        "stress_test",
+        "top_provincias"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/demanda-data?year=2020&provincia=Madrid",
+      "status": 200,
+      "elapsed_s": 0.368,
+      "bytes": 4362,
+      "json_keys": [
+        "available_provs",
+        "available_years",
+        "benchmark",
+        "feature_importance",
+        "forecast",
+        "kpis",
+        "serie_historica",
+        "stress_test",
+        "top_provincias"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/data",
+      "status": 200,
+      "elapsed_s": 0.361,
+      "bytes": 15093,
+      "json_keys": [
+        "availableYears",
+        "barData",
+        "hipotecasNac",
+        "macroSeries",
+        "timeSeries",
+        "topProvHip",
+        "years"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/data",
+      "status": 200,
+      "elapsed_s": 0.465,
+      "bytes": 15093,
+      "json_keys": [
+        "availableYears",
+        "barData",
+        "hipotecasNac",
+        "macroSeries",
+        "timeSeries",
+        "topProvHip",
+        "years"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/data?year_from=2010&year_to=2015",
+      "status": 200,
+      "elapsed_s": 0.263,
+      "bytes": 4679,
+      "json_keys": [
+        "availableYears",
+        "barData",
+        "hipotecasNac",
+        "macroSeries",
+        "timeSeries",
+        "topProvHip",
+        "years"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/hipoteca-recomendacion",
+      "status": 500,
+      "elapsed_s": 1.856,
+      "bytes": 265
+    },
+    {
+      "method": "POST",
+      "path": "/api/hipoteca-recomendacion",
+      "status": 500,
+      "elapsed_s": 0.006,
+      "bytes": 265
+    },
+    {
+      "method": "POST",
+      "path": "/api/hipoteca-recomendacion",
+      "status": 500,
+      "elapsed_s": 1.849,
+      "bytes": 265
+    },
+    {
+      "method": "POST",
+      "path": "/api/hipoteca-recomendacion",
+      "status": 500,
+      "elapsed_s": 0.006,
+      "bytes": 265
+    },
+    {
+      "method": "POST",
+      "path": "/test-hipoteca",
+      "status": 200,
+      "elapsed_s": 0.004,
+      "bytes": 11748
+    },
+    {
+      "method": "GET",
+      "path": "/api/mapa/tension",
+      "status": 200,
+      "elapsed_s": 0.001,
+      "bytes": 79747,
+      "json_keys": [
+        "image"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/mapa/accesibilidad",
+      "status": 200,
+      "elapsed_s": 0.601,
+      "bytes": 96951,
+      "json_keys": [
+        "image"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/mapa/accesibilidad",
+      "status": 200,
+      "elapsed_s": 0.001,
+      "bytes": 96951,
+      "json_keys": [
+        "image"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/mapa/mina_oro",
+      "status": 200,
+      "elapsed_s": 1.643,
+      "bytes": 96227,
+      "json_keys": [
+        "image"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/api/mapa/xyz",
+      "status": 400,
+      "elapsed_s": 0.001,
+      "bytes": 40,
+      "json_keys": [
+        "error"
+      ],
+      "error": "Tipo de mapa no válido"
+    },
+    {
+      "method": "POST",
+      "path": "/api/chat",
+      "status": 200,
+      "elapsed_s": 0.001,
+      "bytes": 65,
+      "json_keys": [
+        "reply"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/noa-chat",
+      "status": 200,
+      "elapsed_s": 0.0,
+      "bytes": 73,
+      "json_keys": [
+        "reply"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/api/noa-strategic",
+      "status": 200,
+      "elapsed_s": 0.0,
+      "bytes": 69,
+      "json_keys": [
+        "reply"
+      ]
+    }
+  ],
+  "security": {
+    "anonymous_access": {
+      "/": {
+        "status": 302,
+        "location": "/login"
+      },
+      "/api/data": {
+        "status": 302,
+        "location": "/login"
+      },
+      "/api/custom-charts": {
+        "status": 302,
+        "location": "/login"
+      },
+      "/admin": {
+        "status": 302,
+        "location": "/login_admin"
+      },
+      "/api/hipoteca-context": {
+        "status": 302,
+        "location": "/login"
+      },
+      "POST /admin/execute-code": {
+        "status": 302,
+        "location": "/login"
+      }
+    },
+    "user_login": {
+      "status": 302,
+      "location": "/",
+      "set_cookie": "session=eyJ1c2VyIjp0cnVlfQ.awHoZA.PnVsgYOboSPt9JpgN5AVXsoOHxk; HttpOnly; Path=/"
+    },
+    "response_headers_on_index": {
+      "Content-Security-Policy": null,
+      "X-Frame-Options": null,
+      "X-Content-Type-Options": null,
+      "Strict-Transport-Security": null,
+      "Referrer-Policy": null,
+      "Permissions-Policy": null,
+      "Server": null
+    },
+    "open_redirect_login": {
+      "status": 302,
+      "location": "https://evil.example/phish"
+    },
+    "bruteforce_30_attempts": {
+      "status_codes": [
+        200
+      ],
+      "total_s": 0.012
+    },
+    "privilege_escalation_same_credentials": {
+      "user_session_execute_code_status": 401,
+      "login_admin_with_user_credentials_status": 302,
+      "login_admin_location": "/admin"
+    },
+    "rce_execute_code": {
+      "status": 400,
+      "elapsed_s": 0.82,
+      "stderr_echo_contains_proof": true,
+      "response_excerpt": "{\"error\": \"No se genero ningun grafico. RCE_PROOF uid=0 cwd=<SCRATCH>/sandbox/a/run/Web py=3.13.18\"}"
+    },
+    "rce_env_access": {
+      "status": 400,
+      "secret_visible_to_user_code": true
+    },
+    "rce_upload_chart": {
+      "status": 400,
+      "proof": true
+    },
+    "path_traversal_admin_upload": {
+      "status": 200,
+      "upload_folder": "<SCRATCH>/sandbox/a/run",
+      "expected_escape_target": "<SCRATCH>/sandbox/a/pt_probe.csv",
+      "file_written_outside_upload_folder": true
+    },
+    "arbitrary_csv_in_repo_root": {
+      "status": 200,
+      "written": true
+    },
+    "csrf_token_present_in_admin_form": false,
+    "delete_chartjs_chart": {
+      "status": 500,
+      "body": "{\"error\":\"'filename'\"}\n"
+    }
+  },
+  "timings": {
+    "import_app_s": 3.9,
+    "caches_after_run": {
+      "MACRO_FORECASTS_keys": [
+        "Diferencia",
+        "EURIBOR_VALUE",
+        "IPC",
+        "PIB_pc",
+        "Precio_m2",
+        "Tasa_Paro",
+        "Transmisiones_Total",
+        "tasa_ahorro"
+      ],
+      "PRICING_CACHE_keys": [
+        "2024",
+        "2028"
+      ],
+      "demanda_artifacts_loaded": true
+    }
+  },
+  "config": {
+    "UPLOAD_FOLDER": "<SCRATCH>/sandbox/a/run",
+    "DATASET_PATH": "<SCRATCH>/sandbox/a/run/notebooks acabados/dataset_final_tfm.csv",
+    "df_shape": [
+      4368,
+      16
+    ],
+    "df_prov_preds_shape": [
+      9568,
+      4
+    ],
+    "df_tipos_shape": [
+      84,
+      5
+    ],
+    "gemini_model_is_none": true,
+    "MACRO_FORECASTS_after_import": false,
+    "PRICING_CACHE_after_import": [],
+    "MAX_CONTENT_LENGTH": null,
+    "SESSION_COOKIE_SECURE": false,
+    "SESSION_COOKIE_SAMESITE": null,
+    "SESSION_COOKIE_HTTPONLY": true,
+    "url_map": [
+      "DELETE /api/custom-charts/<chart_id> -> delete_custom_chart",
+      "GET / -> index",
+      "GET /api/custom-charts -> list_custom_charts",
+      "GET /api/dashboard-extra -> dashboard_extra",
+      "GET /api/data -> get_data",
+      "GET /api/demanda-data -> demanda_data",
+      "GET /api/hipoteca-context -> hipoteca_context",
+      "GET /api/mapa/<tipo> -> generar_mapa",
+      "GET /api/paro-model-info -> paro_model_info",
+      "GET /business_case -> business_case",
+      "GET /demanda -> demanda",
+      "GET /demanda-provincial -> demanda_provincial",
+      "GET /econometria -> econometria",
+      "GET /hipotecas -> hipotecas",
+      "GET /hipotecas-provincial -> hipotecas_provincial",
+      "GET /logout -> logout",
+      "GET /metodologia-ml -> metodologia_ml",
+      "GET /static/<path:filename> -> static",
+      "GET /vecm -> vecm",
+      "GET /webscrapping -> webscrapping",
+      "GET,POST /admin -> admin",
+      "GET,POST /login -> login",
+      "GET,POST /login_admin -> login_admin",
+      "GET,POST /test-hipoteca -> test_hipoteca",
+      "POST /admin/execute-code -> execute_code",
+      "POST /admin/upload-chart -> upload_chart",
+      "POST /api/chat -> chat",
+      "POST /api/hipoteca-recomendacion -> hipoteca_recomendacion",
+      "POST /api/noa-chat -> noa_chat",
+      "POST /api/noa-strategic -> noa_strategic"
+    ],
+    "demanda_artifacts_after_import": false
+  },
+  "demanda_runtime_metrics": {
+    "kpis": {
+      "crecimiento_interanual": 14.9,
+      "hipotecas_total": 170435,
+      "mape_modelo": 6.3,
+      "modelo": "RF_Nac",
+      "n_features": 52,
+      "ultimo_trimestre": "2025-Q4"
+    },
+    "benchmark": {
+      "modelos": [
+        {
+          "mape": "6.3%",
+          "nombre": "RF_Nac",
+          "tipo": "ML Provincial",
+          "ventaja": "Modelo nacional dedicado, no suma errores provinciales"
+        },
+        {
+          "mape": "14.71%",
+          "nombre": "RF Provincial",
+          "tipo": "ML Provincial",
+          "ventaja": "Predicción territorial con encoding provincial y lags"
+        },
+        {
+          "mape": "Referencia",
+          "nombre": "SARIMAX / VAR",
+          "tipo": "Econométrico",
+          "ventaja": "Contraste estructural, shocks e interpretabilidad"
+        }
+      ]
+    }
+  },
+  "robustness": {
+    "data_year_from_texto": {
+      "status": 200,
+      "leaks_traceback": false,
+      "excerpt": "{\"error\":\"No data for this filter.\"}\n"
+    },
+    "demanda_year_texto": {
+      "status": 200,
+      "leaks_traceback": true,
+      "excerpt": "{\"error\":\"invalid literal for int() with base 10: 'abc'\",\"traceback\":\"Traceback (most recent call last):\\n  File \\\"/tmp/claude-0/-home-user-tfm-analitica-hipote"
+    },
+    "demanda_year_sin_datos": {
+      "status": 404,
+      "leaks_traceback": false,
+      "excerpt": "{\"error\":\"No hay datos para el a\\u00f1o 1990\"}\n"
+    },
+    "hipoteca_ctx_year_texto": {
+      "status": 200,
+      "leaks_traceback": false,
+      "excerpt": "{\"error\":\"No hay datos para abc en Nacional\"}\n"
+    },
+    "recomendacion_income_texto": {
+      "status": 500,
+      "leaks_traceback": false,
+      "excerpt": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unabl"
+    },
+    "recomendacion_sin_json": {
+      "status": 415,
+      "leaks_traceback": false,
+      "excerpt": "<!doctype html>\n<html lang=en>\n<title>415 Unsupported Media Type</title>\n<h1>Unsupported Media Type</h1>\n<p>Did not attempt to load JSON data because the reques"
+    },
+    "chat_sin_json": {
+      "status": 415,
+      "leaks_traceback": false,
+      "excerpt": "<!doctype html>\n<html lang=en>\n<title>415 Unsupported Media Type</title>\n<h1>Unsupported Media Type</h1>\n<p>Did not attempt to load JSON data because the reques"
+    },
+    "recomendacion_income_negativo": {
+      "status": 500,
+      "leaks_traceback": false,
+      "excerpt": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unabl"
+    },
+    "recomendacion_age_200": {
+      "status": 500,
+      "leaks_traceback": false,
+      "excerpt": "<!doctype html>\n<html lang=en>\n<title>500 Internal Server Error</title>\n<h1>Internal Server Error</h1>\n<p>The server encountered an internal error and was unabl"
+    }
+  },
+  "macro_forecasts_sample": {
+    "PIB_pc": {
+      "2025": 32886.49,
+      "2026": 34901.64,
+      "2027": 36915.27,
+      "2028": 38929.19,
+      "2029": 40943.05,
+      "2030": 42956.93,
+      "last_real": 30879.5
+    },
+    "Tasa_Paro": {
+      "2025": 10.48,
+      "2026": 10.19,
+      "2027": 10.16,
+      "2028": 10.15,
+      "2029": 10.15,
+      "2030": 10.15,
+      "last_real": 11.139038461538462
+    },
+    "Precio_m2": {
+      "2025": 1500.27,
+      "2026": 1561.76,
+      "2027": 1623.24,
+      "2028": 1684.73,
+      "2029": 1746.21,
+      "2030": 1807.7,
+      "last_real": 1467.6258113400534
+    },
+    "tasa_ahorro": {
+      "2025": 12.03,
+      "2026": 12.03,
+      "2027": 12.04,
+      "2028": 12.04,
+      "2029": 12.04,
+      "2030": 12.04,
+      "last_real": 17.1
+    },
+    "Transmisiones_Total": {
+      "2025": 2850.99,
+      "2026": 2836.42,
+      "2027": 2821.86,
+      "2028": 2807.29,
+      "2029": 2792.72,
+      "2030": 2778.15,
+      "last_real": 3346.2884615384614
+    },
+    "IPC": {
+      "2026": 1.88,
+      "2027": 2.1,
+      "2028": 2.0,
+      "2029": 2.0,
+      "2030": 2.0,
+      "2031": 2.0,
+      "last_real": 2.2576923076923077
+    },
+    "EURIBOR_VALUE": {
+      "2026": 2.0,
+      "2027": 2.1,
+      "2028": 2.3,
+      "2029": 2.15,
+      "2030": 2.15,
+      "2031": 2.15,
+      "last_real": 2.223013581725
+    },
+    "Diferencia": {
+      "2026": 0.719335653394855,
+      "2027": 0.65216015294567,
+      "2028": 0.6799554662852558,
+      "2029": 0.6684545554103131,
+      "2030": 0.6732133055397818,
+      "2031": 0.6712442699528651,
+      "last_real": 0.5569864182750001
+    }
+  }
+}

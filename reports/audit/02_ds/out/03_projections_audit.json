@@ -1,0 +1,189 @@
+{
+  "csv_rows": 9568,
+  "csv_rows_by_var": {
+    "Euribor": 1248,
+    "IPC": 1248,
+    "PIB_pc": 1248,
+    "Pob_Ext": 1040,
+    "Poblacion": 1040,
+    "Precio_m2": 1248,
+    "Tasa_Paro": 1248,
+    "Transmisiones_Total": 1248
+  },
+  "csv_periodos_by_var": {
+    "Euribor": "2025-01..2030-10 (24)",
+    "IPC": "2025-01..2030-10 (24)",
+    "PIB_pc": "2025-01..2030-10 (24)",
+    "Pob_Ext": "2026-01..2030-10 (20)",
+    "Poblacion": "2026-01..2030-10 (20)",
+    "Precio_m2": "2025-01..2030-10 (24)",
+    "Tasa_Paro": "2025-01..2030-10 (24)",
+    "Transmisiones_Total": "2025-01..2030-10 (24)"
+  },
+  "PIB_pc_valores_unicos_por_prov_anio_max": 1,
+  "PIB_pc_nacional_diff_trimestral_no_nula_por_trimestre": {
+    "1": 19,
+    "2": 0,
+    "3": 0,
+    "4": 0
+  },
+  "CSV_PIB_pc_valores_unicos_por_prov_anio_max": 1,
+  "CSV_PIB_pc_valores_unicos_por_prov_anio_mediana": 1.0,
+  "PIB_CSV_coincide_con_replica_desfasada_un_anio_pct_prov": 100.0,
+  "PIB_CSV2030_sobre_2024_mediana": 1.1148039975862711,
+  "PIB_cap_activo_en_mayoria_trimestres_n_prov": 52,
+  "PIB_cagr_hist_min_med_max": [
+    0.01014945223364272,
+    0.02197365370522142,
+    0.03464647574102209
+  ],
+  "PIB_cagr_hist_n_prov_mayor_4pct": 0,
+  "PIB_crec_anual_SARIMA_sin_cap_mediana": 0.05825091470886934,
+  "PIB_crec_anual_final_mediana": 0.01827813031256109,
+  "PIB_cagr_exponente_anios_usados": 20.0,
+  "PIB_backtest": {
+    "MAPE_mediana": 7.177463397658171,
+    "U2_mediana": 0.7494441954552328,
+    "MAPE_sin_cap_mediana": 3.57106088217593,
+    "MAPE_naive_mediana": 9.617215524473169,
+    "MAPE_drift_anual_mediana": 7.012215778721385,
+    "U2_drift_anual_mediana": 0.7344227850246764,
+    "n_valores_distintos_test_max": 2,
+    "pct_prov_drift_anual_mejor_que_SARIMA": 100.0
+  },
+  "Paro_tiers_reproducidos": {
+    "ARIMA": {
+      "n": 33,
+      "MAPE_mediana": 16.9422973310623,
+      "U2_mediana": 1.021220099361229
+    },
+    "ARIMA+dummy": {
+      "n": 17,
+      "MAPE_mediana": 12.864062439889661,
+      "U2_mediana": 0.708923744403054
+    },
+    "SARIMA+dummy": {
+      "n": 2,
+      "MAPE_mediana": 12.911519395489618,
+      "U2_mediana": 0.544612952557453
+    }
+  },
+  "Paro_global": {
+    "MAPE_mediana": 15.694901455420078,
+    "U2_mediana": 0.9440318679334383,
+    "n_prov_U2_mayor_1": 20,
+    "MAPE_naive_mediana": 18.09330512967383
+  },
+  "Paro_seleccion": {
+    "MAPE_mediana_regla_fija_ARIMA": 19.709429727961904,
+    "MAPE_mediana_regla_fija_ARIMA+dummy": 19.22001442113193,
+    "MAPE_mediana_oraculo_min(ARIMA,ARIMA+dummy)": 16.091493495433205,
+    "n_prov_donde_dummy_es_mejor_en_test": 17,
+    "n_prov_asignadas_dummy_y_dummy_mejor": 17,
+    "n_prov_asignadas_sin_dummy_y_dummy_mejor": 0
+  },
+  "Paro_suelo": {
+    "n_prov_con_algun_trim_test(2022-25)_bajo_8.5": 28,
+    "MAPE_mediana_asignado_sin_suelo": 15.997542716779268
+  },
+  "Paro_2025_obs": {
+    "n_prov_media2025_bajo_8.5": 20,
+    "n_prov_2025Q4_bajo_8.5": 23,
+    "n_prov_algun_trim2025_bajo_8.5": 25,
+    "min_2025Q4": 4.69
+  },
+  "CSV_paro_n_prov_con_algun_trim_en_suelo_8.5": 24,
+  "CSV_paro_n_filas_en_suelo": 406,
+  "Paro_salto_2025Q4_a_2026Q1_prov_bajo_suelo": {
+    "A Coruña": 0.97,
+    "Álava": 0.92,
+    "Ávila": 0.87,
+    "Barcelona": 0.58,
+    "Burgos": 1.72,
+    "Cantabria": 1.73,
+    "Comunidad de Madrid": 1.46,
+    "Comunidad Foral de Navarra": 0.4,
+    "Guipúzcoa": 2.11,
+    "Huesca": 3.81,
+    "Islas Baleares": 4.78,
+    "La Rioja": 0.5,
+    "Lleida": 2.77,
+    "Lugo": 1.25,
+    "Ourense": 0.55,
+    "Palencia": 1.04,
+    "Principado de Asturias": 0.08,
+    "Salamanca": 0.44,
+    "Segovia": 1.5,
+    "Soria": 0.87,
+    "Teruel": 1.1,
+    "Vizcaya": 0.39,
+    "Zaragoza": 0.04
+  },
+  "Precio_HW": {
+    "MAPE_mediana": 2.8855368903328875,
+    "U2_mediana": 0.6339290894407653,
+    "pct_prov_HW_mejor_que_SN": 92.3076923076923,
+    "pct_prov_HW_mejor_que_naive": 78.84615384615384,
+    "MAPE_SN_mediana": 6.831417970022625,
+    "MAPE_naive_mediana": 5.2491756738778275,
+    "phi_mediana": 0.9168075888374783
+  },
+  "Precio_duelo_nacional_celda46": {
+    "MAPE_HW": 1.5327272115719235,
+    "MAPE_SN": 7.285876014597208,
+    "mejora_pct": 78.96303466458785
+  },
+  "Euribor_usado": {
+    "2025(csv)": 2.5,
+    "2026": 2.0,
+    "2027": 2.1,
+    "2028": 2.3,
+    "2029": 2.15,
+    "2030": 2.15
+  },
+  "IPC_usado": {
+    "2025(csv)": 2.8,
+    "2026": 1.88,
+    "2027": 2.1,
+    "2028": 2.0,
+    "2029": 2.0,
+    "2030": 2.0
+  },
+  "BCE_dic2025_supuestos_EURIBOR3M": {
+    "2025": 2.2,
+    "2026": 2.0,
+    "2027": 2.1,
+    "2028": 2.3,
+    "fuente": "https://www.ecb.europa.eu/press/projections/html/ecb.projections202512_eurosystemstaff~12ead61977.en.html"
+  },
+  "BCE_dic2025_HICP_zona_euro": {
+    "2025": 2.1,
+    "2026": 1.9,
+    "2027": 1.8,
+    "2028": 2.0
+  },
+  "Euribor_dataset_vs_BCE": {
+    "MAE_vs_12M": 0.0018249228505229258,
+    "MAE_vs_3M": 0.2956904173911617,
+    "media_2025_12M_BCE": 2.222606125,
+    "media_2025_3M_BCE": 2.1792614583333334,
+    "media_2025_dataset": 2.2230135817249996,
+    "fuente": "data-api.ecb.europa.eu FM.M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA / EURIBOR3MD_.HSTA"
+  },
+  "IPC_dataset_media_2025": 2.618589743589744,
+  "Euribor_dataset_media_2025": 2.2230135817250005,
+  "CSV_2025_ffill": [
+    {
+      "var": "Tasa_Paro",
+      "csv_constante_en_2025_pct_prov": 100.0,
+      "csv_2025Q1_igual_obs_2025Q4_pct": 100.0,
+      "MAPE_csv_2025Q1_vs_obs_2025Q1": 15.129415803653053
+    },
+    {
+      "var": "Precio_m2",
+      "csv_constante_en_2025_pct_prov": 100.0,
+      "csv_2025Q1_igual_obs_2025Q4_pct": 100.0,
+      "MAPE_csv_2025Q1_vs_obs_2025Q1": 6.970779027226779
+    }
+  ]
+}
