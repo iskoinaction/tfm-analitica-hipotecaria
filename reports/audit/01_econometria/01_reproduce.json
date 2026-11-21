@@ -1,0 +1,217 @@
+{
+ "muestra": [
+  "2005-01-01",
+  "2025-10-01",
+  84
+ ],
+ "beta_norm (beta'Y=0, normalizado hip=1)": {
+  "Log_Materiales": 1.0907,
+  "Euribor": 0.0968,
+  "Log_PIB_pc": -0.3521,
+  "Log_Precio_m2": -2.4837,
+  "Log_Hipotecas": 1.0
+ },
+ "ecuacion_LP (log H = ...)": {
+  "Log_Materiales": -1.0907,
+  "Euribor": -0.0968,
+  "Log_PIB_pc": 0.3521,
+  "Log_Precio_m2": 2.4837
+ },
+ "alpha": {
+  "Log_Materiales": -0.0432,
+  "Euribor": -0.2332,
+  "Log_PIB_pc": -0.0176,
+  "Log_Precio_m2": -0.0058,
+  "Log_Hipotecas": -0.4377
+ },
+ "alpha_p": {
+  "Log_Materiales": 0.0568,
+  "Euribor": 0.2759,
+  "Log_PIB_pc": 0.3401,
+  "Log_Precio_m2": 0.0058,
+  "Log_Hipotecas": 0.0
+ },
+ "alpha_reescalada_a_beta_norm": {
+  "Log_Materiales": -0.0396,
+  "Euribor": -0.2138,
+  "Log_PIB_pc": -0.0162,
+  "Log_Precio_m2": -0.0053,
+  "Log_Hipotecas": -0.4012
+ },
+ "semivida_trim": {
+  "Log_Materiales": 17.1,
+  "Euribor": 2.9,
+  "Log_PIB_pc": 42.6,
+  "Log_Precio_m2": 130.6,
+  "Log_Hipotecas": 1.4
+ },
+ "ADF_ECT_notebook": [
+  -2.207,
+  0.2038
+ ],
+ "IRF_orth_nivel_h20_sobre_hip": {
+  "Log_Materiales": -0.1117,
+  "Euribor": -0.0193,
+  "Log_PIB_pc": 0.0157,
+  "Log_Precio_m2": 0.1314,
+  "Log_Hipotecas": -0.0183
+ },
+ "IRF_orth_suma_acum_h20 (lo que imprime el nb)": {
+  "Log_Materiales": -1.7023,
+  "Euribor": -0.427,
+  "Log_PIB_pc": 0.4474,
+  "Log_Precio_m2": 2.001,
+  "Log_Hipotecas": 0.0219
+ },
+ "IRF_orth_nivel_h1..h20 precio": [
+  0.026,
+  0.04,
+  0.057,
+  0.069,
+  0.079,
+  0.088,
+  0.095,
+  0.101,
+  0.106,
+  0.11,
+  0.114,
+  0.117,
+  0.12,
+  0.122,
+  0.124,
+  0.126,
+  0.128,
+  0.129,
+  0.13,
+  0.131
+ ],
+ "IRF_orth_nivel_h1..h20 materiales": [
+  -0.008,
+  -0.027,
+  -0.042,
+  -0.057,
+  -0.068,
+  -0.076,
+  -0.082,
+  -0.087,
+  -0.091,
+  -0.095,
+  -0.098,
+  -0.101,
+  -0.103,
+  -0.105,
+  -0.106,
+  -0.108,
+  -0.109,
+  -0.11,
+  -0.111,
+  -0.112
+ ],
+ "FEVD_hip_h20 (indice 19 del nb)": {
+  "Log_Materiales": 38.8,
+  "Euribor": 2.2,
+  "Log_PIB_pc": 2.6,
+  "Log_Precio_m2": 53.3,
+  "Log_Hipotecas": 3.0
+ },
+ "FEVD_hip_h1": {
+  "Log_Materiales": 0.5,
+  "Euribor": 1.1,
+  "Log_PIB_pc": 11.2,
+  "Log_Precio_m2": 1.5,
+  "Log_Hipotecas": 85.7
+ },
+ "Portmanteau_8": [
+  183.8,
+  0.222
+ ],
+ "Normalidad_JB": [
+  230.2,
+  0.0
+ ],
+ "select_order_maxlags6": {
+  "aic": "2",
+  "bic": "2",
+  "hqic": "2",
+  "fpe": "2"
+ },
+ "Johansen_nb4_det0_k1": {
+  "traza": [
+   92.89,
+   46.45,
+   28.45,
+   12.56,
+   0.56
+  ],
+  "cv95_traza": [
+   69.82,
+   47.85,
+   29.8,
+   15.49,
+   3.84
+  ],
+  "maxeig": [
+   46.45,
+   18.0,
+   15.89,
+   12.0,
+   0.56
+  ],
+  "cv95_maxeig": [
+   33.88,
+   27.59,
+   21.13,
+   14.26,
+   3.84
+  ]
+ },
+ "Johansen_nb4_celda44_4vars": {
+  "traza": [
+   39.55,
+   21.47,
+   5.2,
+   0.06
+  ],
+  "cv95": [
+   47.85,
+   29.8,
+   15.49,
+   3.84
+  ]
+ },
+ "VAR_nb4_celda49_FEVD_CrecHip_h12": {
+  "Crec_PIB": 8.0,
+  "Tasa_Paro": 3.5,
+  "Log_Precio_m2": 8.2,
+  "Shock_Euribor": 9.9,
+  "Crec_Hipotecas": 70.3
+ },
+ "VAR_nb4_celda49_FEVD_CrecHip_h4": {
+  "Crec_PIB": 3.2,
+  "Tasa_Paro": 2.2,
+  "Log_Precio_m2": 7.9,
+  "Shock_Euribor": 10.4,
+  "Crec_Hipotecas": 76.3
+ },
+ "VAR_nb4_celda49_obs": 83,
+ "VAR_nb4_celda49_estable": true,
+ "VAR_nb4_celda49_raiz_max_modulo": 0.9864,
+ "VAR4_diff_p1_FEVD_dlogH_h12": {
+  "Log_Hipotecas": 94.8,
+  "Log_Precio_m2": 0.5,
+  "Euribor": 2.2,
+  "Log_PIB_pc": 2.4
+ },
+ "VAR4_diff_p2_FEVD_dlogH_h12": {
+  "Log_Hipotecas": 77.6,
+  "Log_Precio_m2": 15.6,
+  "Euribor": 3.9,
+  "Log_PIB_pc": 2.9
+ },
+ "VAR4_diff_p4_FEVD_dlogH_h12": {
+  "Log_Hipotecas": 75.7,
+  "Log_Precio_m2": 11.0,
+  "Euribor": 5.8,
+  "Log_PIB_pc": 7.5
+ }
+}
