@@ -201,6 +201,8 @@ def recursive_beta(Y: pd.DataFrame, exog, k, case, norm_idx, min_obs=44, window=
     starts_ends = [(0, e) for e in range(min_obs, n + 1)] if window is None else [(s, s + window) for s in range(0, n - window + 1)]
     for s, e in starts_ends:
         ex = None if exog is None else np.asarray(exog)[s:e]
+        if ex is not None:
+            ex = ex[:, np.abs(ex).sum(0) > 0]   # impulsos fuera de la ventana -> columna nula
         f = VECMfit(Y.values[s:e], k, case, ex, 1, norm_idx=norm_idx)
         b = -f.beta[:Y.shape[1], 0]
         rows.append({"fin": str(Y.index[e - 1]), "tipo": "recursivo" if window is None else f"movil{window}",

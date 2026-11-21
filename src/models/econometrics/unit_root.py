@@ -17,6 +17,15 @@ def _za_break(x: pd.Series, trend: str):
         return None
 
 
+def _safe(make, lags=False):
+    try:
+        t = make()
+        out = (float(t.stat), float(t.pvalue))
+        return out + (int(t.lags),) if lags else out
+    except Exception:
+        return (np.nan, np.nan, -1) if lags else (np.nan, np.nan)
+
+
 def battery(name: str, s: pd.Series, max_lags: int = 8) -> list[dict]:
     rows = []
     s = s.dropna()
@@ -29,14 +38,11 @@ def battery(name: str, s: pd.Series, max_lags: int = 8) -> list[dict]:
             for tr in (("c", "ct") if d == 0 else ("c",)):
                 r = {"serie": name, "transf": lab, "det": tr, "T": int(len(x))}
                 for meth in ("aic", "bic"):
-                    a = ADF(x, trend=tr, method=meth, max_lags=max_lags)
-                    r[f"adf_{meth}_stat"], r[f"adf_{meth}_p"], r[f"adf_{meth}_lags"] = float(a.stat), float(a.pvalue), int(a.lags)
-                g = DFGLS(x, trend=tr, method="aic", max_lags=max_lags)
-                r["dfgls_stat"], r["dfgls_p"] = float(g.stat), float(g.pvalue)
-                pp = PhillipsPerron(x, trend=tr)
-                r["pp_stat"], r["pp_p"] = float(pp.stat), float(pp.pvalue)
-                k = KPSS(x, trend=tr)
-                r["kpss_stat"], r["kpss_p"] = float(k.stat), float(k.pvalue)
+                    st, pv, lg = _safe(lambda: ADF(x, trend=tr, method=meth, max_lags=max_lags), lags=True)
+                    r[f"adf_{meth}_stat"], r[f"adf_{meth}_p"], r[f"adf_{meth}_lags"] = st, pv, lg
+                r["dfgls_stat"], r["dfgls_p"] = _safe(lambda: DFGLS(x, trend=tr, method="aic", max_lags=max_lags))
+                r["pp_stat"], r["pp_p"] = _safe(lambda: PhillipsPerron(x, trend=tr))
+                r["kpss_stat"], r["kpss_p"] = _safe(lambda: KPSS(x, trend=tr))
                 if d == 0:
                     for zt in ("c", "t", "ct"):
                         try:
