@@ -1,0 +1,434 @@
+[
+  {
+    "name": "login",
+    "tag": "desktop",
+    "status": 200,
+    "ms": 3016,
+    "scrollW": 1440,
+    "clientW": 1440,
+    "height": 900,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Portal de Analisis"
+    ],
+    "canvases": 0,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": false,
+    "errors": []
+  },
+  {
+    "name": "dashboard",
+    "tag": "desktop",
+    "status": 200,
+    "ms": 4045,
+    "scrollW": 1440,
+    "clientW": 1440,
+    "height": 4358,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Análisis Preferente del Mercado Inmobiliario"
+    ],
+    "canvases": 12,
+    "inputsNoLabel": 5,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "business_case",
+    "tag": "desktop",
+    "status": 200,
+    "ms": 3257,
+    "scrollW": 1440,
+    "clientW": 1440,
+    "height": 7766,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Plataforma de Analítica Avanzadadel Mercado Hipotecario"
+    ],
+    "canvases": 0,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "test_hipoteca",
+    "tag": "desktop",
+    "status": 200,
+    "ms": 3045,
+    "scrollW": 1440,
+    "clientW": 1440,
+    "height": 900,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Test de Esfuerzo Hipotecario"
+    ],
+    "canvases": 0,
+    "inputsNoLabel": 5,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "hipotecas",
+    "tag": "desktop",
+    "status": 200,
+    "ms": 7868,
+    "scrollW": 1440,
+    "clientW": 1440,
+    "height": 900,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Asesor de Hipotecas"
+    ],
+    "canvases": 1,
+    "inputsNoLabel": 11,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "hipotecas_provincial",
+    "tag": "desktop",
+    "status": 200,
+    "ms": 3523,
+    "scrollW": 1440,
+    "clientW": 1440,
+    "height": 900,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Asesor de Hipotecas"
+    ],
+    "canvases": 1,
+    "inputsNoLabel": 10,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "demanda",
+    "tag": "desktop",
+    "status": 200,
+    "ms": 3150,
+    "scrollW": 1440,
+    "clientW": 1440,
+    "height": 2024,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Prediccion de Demanda Hipotecaria"
+    ],
+    "canvases": 3,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "demanda_provincial",
+    "tag": "desktop",
+    "status": 200,
+    "ms": 3039,
+    "scrollW": 1440,
+    "clientW": 1440,
+    "height": 2024,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Prediccion de Demanda Hipotecaria"
+    ],
+    "canvases": 3,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "econometria",
+    "tag": "desktop",
+    "status": 200,
+    "ms": 3051,
+    "scrollW": 1440,
+    "clientW": 1440,
+    "height": 5656,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Metodología Econométrica: VAR + Modelos ML"
+    ],
+    "canvases": 0,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "vecm",
+    "tag": "desktop",
+    "status": 200,
+    "ms": 3593,
+    "scrollW": 1440,
+    "clientW": 1440,
+    "height": 7977,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Modelo de Corrección del Error Vectorial (VECM)"
+    ],
+    "canvases": 6,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "metodologia_ml",
+    "tag": "desktop",
+    "status": 200,
+    "ms": 3403,
+    "scrollW": 1440,
+    "clientW": 1440,
+    "height": 10210,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Transparencia Algorítmica: Informe para Gestores"
+    ],
+    "canvases": 0,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": false,
+    "errors": []
+  },
+  {
+    "name": "webscrapping",
+    "tag": "desktop",
+    "status": 200,
+    "ms": 3056,
+    "scrollW": 1440,
+    "clientW": 1440,
+    "height": 4801,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Metodología de Construcción del Portal"
+    ],
+    "canvases": 0,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "login",
+    "tag": "mobile",
+    "status": 200,
+    "ms": 3021,
+    "scrollW": 390,
+    "clientW": 390,
+    "height": 844,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Portal de Analisis"
+    ],
+    "canvases": 0,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": false,
+    "errors": []
+  },
+  {
+    "name": "dashboard",
+    "tag": "mobile",
+    "status": 200,
+    "ms": 3823,
+    "scrollW": 573,
+    "clientW": 390,
+    "height": 7515,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Análisis Preferente del Mercado Inmobiliario"
+    ],
+    "canvases": 12,
+    "inputsNoLabel": 5,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "business_case",
+    "tag": "mobile",
+    "status": 200,
+    "ms": 3390,
+    "scrollW": 742,
+    "clientW": 390,
+    "height": 18165,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Plataforma de Analítica Avanzadadel Mercado Hipotecario"
+    ],
+    "canvases": 0,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "test_hipoteca",
+    "tag": "mobile",
+    "status": 200,
+    "ms": 3039,
+    "scrollW": 489,
+    "clientW": 390,
+    "height": 998,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Test de Esfuerzo Hipotecario"
+    ],
+    "canvases": 0,
+    "inputsNoLabel": 5,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "hipotecas",
+    "tag": "mobile",
+    "status": 200,
+    "ms": 3363,
+    "scrollW": 489,
+    "clientW": 390,
+    "height": 926,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Asesor de Hipotecas"
+    ],
+    "canvases": 1,
+    "inputsNoLabel": 11,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "hipotecas_provincial",
+    "tag": "mobile",
+    "status": 200,
+    "ms": 3393,
+    "scrollW": 489,
+    "clientW": 390,
+    "height": 844,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Asesor de Hipotecas"
+    ],
+    "canvases": 1,
+    "inputsNoLabel": 10,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "demanda",
+    "tag": "mobile",
+    "status": 200,
+    "ms": 3040,
+    "scrollW": 512,
+    "clientW": 390,
+    "height": 3928,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Prediccion de Demanda Hipotecaria"
+    ],
+    "canvases": 3,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "demanda_provincial",
+    "tag": "mobile",
+    "status": 200,
+    "ms": 3035,
+    "scrollW": 512,
+    "clientW": 390,
+    "height": 3928,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Prediccion de Demanda Hipotecaria"
+    ],
+    "canvases": 3,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "econometria",
+    "tag": "mobile",
+    "status": 200,
+    "ms": 3044,
+    "scrollW": 537,
+    "clientW": 390,
+    "height": 9037,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Metodología Econométrica: VAR + Modelos ML"
+    ],
+    "canvases": 0,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "vecm",
+    "tag": "mobile",
+    "status": 200,
+    "ms": 3345,
+    "scrollW": 554,
+    "clientW": 390,
+    "height": 16480,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Modelo de Corrección del Error Vectorial (VECM)"
+    ],
+    "canvases": 6,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  },
+  {
+    "name": "metodologia_ml",
+    "tag": "mobile",
+    "status": 200,
+    "ms": 3179,
+    "scrollW": 593,
+    "clientW": 390,
+    "height": 19096,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Transparencia Algorítmica: Informe para Gestores"
+    ],
+    "canvases": 0,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": false,
+    "errors": []
+  },
+  {
+    "name": "webscrapping",
+    "tag": "mobile",
+    "status": 200,
+    "ms": 3033,
+    "scrollW": 489,
+    "clientW": 390,
+    "height": 10687,
+    "imgsNoAlt": 0,
+    "h1": [
+      "Metodología de Construcción del Portal"
+    ],
+    "canvases": 0,
+    "inputsNoLabel": 0,
+    "ariaCount": 0,
+    "mainLandmark": true,
+    "errors": []
+  }
+]

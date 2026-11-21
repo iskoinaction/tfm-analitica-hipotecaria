@@ -43,3 +43,4 @@ articles.csv
 
 # Cachés de descargas de auditoría
 reports/audit/**/cache/
+reports/audit/09_ux/screenshots/

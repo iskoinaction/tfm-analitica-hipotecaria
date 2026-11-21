@@ -1,0 +1,92 @@
+Hipoteca Aprobada
+Hipoteca Fija · 2024 · A Coruña
+Modo Gestor / Asesor
+TIPO OPTIMO ML
+4.00%
+TIN fijo sugerido
+RMSE: 0.1037%  |  MAE: 0.0752%  |  SHAP: AI Act
+Transparencia del modelo — GradientBoostingRegressor
+
+SHAP TreeExplainer (AI Act Art. 13-14): el modelo descompone la prediccion en la contribucion exacta de cada variable macroeconomica. Entrenado con 4160 observaciones.
+
+Metrica	Valor	Descripcion
+Spread base (GBR)	0.4553%	Prediccion pura del modelo sin ajuste de perfil
+Ajuste perfil (tanh)	+0.0300%	Basado en income_ratio = 0.94 (ingreso anual / PIB pc provincial)
+Spread final	0.4853%	= Spread base + ajuste perfil
+RMSE CV temporal	0.1037%	Error medio cuadratico (TimeSeriesSplit 5-fold)
+MAE CV temporal	0.0752%	Error medio absoluto (TimeSeriesSplit 5-fold)
+
+Variable mas influyente: Euribor · Fuente macro: Datos históricos
+
+Contribuciones SHAP (valores exactos):
+Euribor: -1.1641%
+PIB_pc: -0.0728%
+IPC: +0.0250%
+tasa_ahorro: +0.0250%
+Tasa_Paro: -0.0061%
+Precio_m2: -0.0031%
+
+Los valores SHAP suman exactamente la diferencia entre la prediccion y la media del modelo (1.6514%).
+
+Contexto de Mercado 2024 · Media anual · datos históricos
+
+IPC (media anual 2024): 2.74%
+
+Tasa de Paro (media anual 2024): 12.02%
+
+Transmisiones anuales (2024): 11.061
+
+Provincia / Ámbito: A Coruña
+
+Plazo: 25 años
+Cuota est.: 439,68 EUR/mes
+DTI: 17.6%
+
+Todos los tipos indicados son sin vinculadores.
+
+Impuestos y gastos de compra (est. en tu CCAA)
+ITP 8% : 8365 EUR
+Notaría (est.): 710 EUR
+Registro (est.): 470 EUR
+
+Total gastos estimados: 9545 EUR
+
+Ahorros netos disponibles tras gastos: 30.455 EUR
+
+Por qué este tipo (Explicación para Gestor)
+
+En hipoteca fija para 2024, la TAE media de mercado era 3.46%. Ajuste por perfil: +0.00%, mas prima de tipo fijo +0.50%. Tipo fijo resultante: 3.96% TIN constante durante toda la vida del prestamo.
+
+Precio viv: 104.559 EUR
+Financiado: 83.647 EUR (80%)
+Contribuciones SHAP (GradientBoosting + TreeExplainer)
+Euribor (3.277)
+-1.164%
+PIB_pc (31927)
+-0.073%
+IPC (2.745)
++0.025%
+tasa_ahorro (12.175)
++0.025%
+Tasa_Paro (12.018)
+-0.006%
+Precio_m2 (1306.991)
+-0.003%
+Diferencial ajustado total
+0.190%
+NOA Strategic — Análisis para Gestor
+
+Habla con NOA sobre el modelo ML, argumentario de persuasión o histórico de rentabilidad.
+
+Ver Metodología Técnica y Rendimiento (ML)
+Noa Strategic (Gestoría Interna)
+Hola. Soy tu Asistente Strategic. Dispongo de los datos del modelo GradientBoosting, el DTI del cliente y la rentabilidad histórica. ¿Qué información necesitas para asegurar esta operación?
+Enviar
+Tienes dudas? Preguntale a Noa
+
+Noa es tu asesora hipotecaria virtual. Ya conoce tu perfil completo y puede resolver cualquier duda sobre tu hipoteca.
+
+Noa — Asesora Hipotecaria CaixaBank
+Hola.Soy Noa, tu asesora hipotecaria de CaixaBank.Tu solicitud de hipoteca fija para 2024 ha sido aprobada con un tipo del 3.96% . Ya conozco todos los detalles de tu perfil.Puedes preguntarme lo que necesites.
+Enviar
+Volver a empezar
