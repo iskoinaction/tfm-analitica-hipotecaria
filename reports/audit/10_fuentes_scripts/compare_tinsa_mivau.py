@@ -11,11 +11,11 @@ import numpy as np
 sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
 from common import *  # noqa: E402,F403
 
-raw = SAMPLES / "raw_mivau" / "VDP006_01.csv"
+raw = SAMPLES / "raw_mivau" / "VDP006_01.csv.gz"
 if not raw.exists():
     raw.parent.mkdir(exist_ok=True)
     r = get("https://cdn.mivau.gob.es/portal-web-mivau/Datos_MIVAU/CSV/VDP006_01.csv", as_json=False)
-    raw.write_bytes(r.content)
+    import gzip; raw.write_bytes(gzip.compress(r.content))
 v = pd.read_csv(raw, sep=";", dtype=str, encoding="utf-8-sig")
 v = v[v["Régimen"] == "Libre"].copy()
 v["Valor"] = pd.to_numeric(v["Valor"].str.replace(",", "."), errors="coerce")

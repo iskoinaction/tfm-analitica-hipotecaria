@@ -1,0 +1,21 @@
+{
+ "source": "INE",
+ "dataset": "ine_cntr_pib",
+ "table": "67821",
+ "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/<COD>?tip=AM&date=20020101:20351231",
+ "catalog_url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/67821?nult=1&tip=AM",
+ "n_series": 2,
+ "n_obs": 198,
+ "series_ids": [
+  "CNTR6548",
+  "CNTR6597"
+ ],
+ "table_last_modified": "Fri Oct 30 09:00:00 CET 2026",
+ "retrieved_at": "2026-11-21T19:14:43Z",
+ "licence": "INE: reutilización libre citando la fuente (Aviso legal INE)",
+ "content_sha256": "fff471e670b4dc6e99159fe5336a4bcfa638a6c8926ee600681299a8a536031f",
+ "previous_snapshot": null,
+ "file": "ine_cntr_pib.json.gz",
+ "file_sha256": "7c5f51c1a8c4fb0f9d72d7e1b4ff0275a03a0abadb306281c48db5899092ed4a",
+ "bytes": 2235
+}

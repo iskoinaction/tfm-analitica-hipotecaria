@@ -1,0 +1,20 @@
+{
+ "source": "INE",
+ "dataset": "ine_mano_obra",
+ "table": "8377",
+ "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/<COD>?tip=AM&date=20020101:20351231",
+ "catalog_url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/8377?nult=1&tip=AM",
+ "n_series": 1,
+ "n_obs": 291,
+ "series_ids": [
+  "IMM1"
+ ],
+ "table_last_modified": null,
+ "retrieved_at": "2026-11-21T19:14:46Z",
+ "licence": "INE: reutilización libre citando la fuente (Aviso legal INE)",
+ "content_sha256": "13dbd46bffbb5c3418a23b3bbfe335e53f81193e952fd4820e433c5d3b774b7e",
+ "previous_snapshot": null,
+ "file": "ine_mano_obra.json.gz",
+ "file_sha256": "d9a3ecff28dc93be2cd8f271d744eb18edf144cff79322a023ef01451b302125",
+ "bytes": 2587
+}
