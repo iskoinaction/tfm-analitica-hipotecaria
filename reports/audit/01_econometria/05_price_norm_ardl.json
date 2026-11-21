@@ -1,0 +1,238 @@
+{
+ "C_auditada_dumest|beta_norm_precio (log P = ...)": {
+  "Log_Precio_m2": [
+   -1.0,
+   0.0,
+   0.0
+  ],
+  "Log_Hipotecas": [
+   0.329,
+   0.0194,
+   0.0
+  ],
+  "Log_PIB_pc": [
+   0.3661,
+   0.1122,
+   0.0011
+  ],
+  "Log_Materiales": [
+   0.2614,
+   0.0725,
+   0.0003
+  ],
+  "Euribor": [
+   0.009,
+   0.005,
+   0.0693
+  ]
+ },
+ "C_auditada_dumest|alpha (norm precio)": {
+  "Log_Precio_m2": [
+   -0.0359,
+   0.0072
+  ],
+  "Log_Hipotecas": [
+   0.4917,
+   0.172
+  ],
+  "Log_PIB_pc": [
+   -0.1145,
+   0.2087
+  ],
+  "Log_Materiales": [
+   0.2216,
+   0.059
+  ],
+  "Euribor": [
+   -1.7046,
+   0.1086
+  ]
+ },
+ "A_original_nb42|beta_norm_precio (log P = ...)": {
+  "Log_Precio_m2": [
+   -1.0,
+   0.0,
+   0.0
+  ],
+  "Log_Hipotecas": [
+   0.4026,
+   0.0369,
+   0.0
+  ],
+  "Log_PIB_pc": [
+   -0.1417,
+   0.1915,
+   0.4591
+  ],
+  "Log_Materiales": [
+   0.4392,
+   0.1282,
+   0.0006
+  ],
+  "Euribor": [
+   0.039,
+   0.0088,
+   0.0
+  ]
+ },
+ "A_original_nb42|alpha (norm precio)": {
+  "Log_Precio_m2": [
+   0.0131,
+   0.0058
+  ],
+  "Log_Hipotecas": [
+   0.9966,
+   0.0
+  ],
+  "Log_PIB_pc": [
+   0.0401,
+   0.3401
+  ],
+  "Log_Materiales": [
+   0.0985,
+   0.0568
+  ],
+  "Euribor": [
+   0.531,
+   0.2759
+  ]
+ },
+ "C|recursivo_norm_precio_min_max": {
+  "Log_Hipotecas": [
+   -3.306,
+   0.923
+  ],
+  "Log_PIB_pc": [
+   -19.888,
+   2.308
+  ],
+  "Log_Materiales": [
+   -39.055,
+   6.507
+  ],
+  "Euribor": [
+   -1.845,
+   0.319
+  ],
+  "alpha_pre": [
+   -0.049,
+   0.028
+  ]
+ },
+ "C|recursivo_norm_precio_desde2016_min_max": {
+  "Log_Hipotecas": [
+   -3.306,
+   0.923
+  ],
+  "Log_PIB_pc": [
+   -19.888,
+   2.308
+  ],
+  "Log_Materiales": [
+   -39.055,
+   6.507
+  ],
+  "Euribor": [
+   -1.845,
+   0.319
+  ]
+ },
+ "ARDL|C|dep=Hipotecas": {
+  "orden_ARDL(BIC)": [
+   1,
+   1,
+   2
+  ],
+  "F_stat": 7.584,
+  "p_I0_I1": [
+   0.0001,
+   0.0005
+  ],
+  "crit_95_I0_I1": [
+   3.229,
+   4.322
+  ],
+  "coef_LP (dep = ...)": {
+   "const": 14.2301,
+   "Log_Precio_m2": 2.4444,
+   "Log_PIB_pc": -2.0335
+  },
+  "ECT_coef(phi)": -0.3942,
+  "ECT_p": 0.0002,
+  "T": 79
+ },
+ "ARDL|A|dep=Hipotecas": {
+  "orden_ARDL(BIC)": [
+   1,
+   1,
+   2
+  ],
+  "F_stat": 5.608,
+  "p_I0_I1": [
+   0.0013,
+   0.0091
+  ],
+  "crit_95_I0_I1": [
+   3.229,
+   4.322
+  ],
+  "coef_LP (dep = ...)": {
+   "const": 11.9699,
+   "Log_Precio_m2": 2.0493,
+   "Log_PIB_pc": -1.491
+  },
+  "ECT_coef(phi)": -0.3047,
+  "ECT_p": 0.0005,
+  "T": 83
+ },
+ "ARDL|C|dep=Precio": {
+  "orden_ARDL(BIC)": [
+   2,
+   0,
+   0,
+   1
+  ],
+  "F_stat": 11.019,
+  "p_I0_I1": [
+   0.0,
+   0.0
+  ],
+  "crit_95_I0_I1": [
+   2.877,
+   4.01
+  ],
+  "coef_LP (dep = ...)": {
+   "const": -4.5389,
+   "Log_Hipotecas": 0.3183,
+   "Log_PIB_pc": 0.7988,
+   "Log_Materiales": 0.0138
+  },
+  "ECT_coef(phi)": -0.0495,
+  "ECT_p": 0.0,
+  "T": 78
+ },
+ "ARDL|A|dep=Precio": {
+  "orden_ARDL(BIC)": [
+   2,
+   0,
+   0
+  ],
+  "F_stat": 11.569,
+  "p_I0_I1": [
+   0.0,
+   0.0
+  ],
+  "crit_95_I0_I1": [
+   3.229,
+   4.322
+  ],
+  "coef_LP (dep = ...)": {
+   "const": -3.636,
+   "Log_Hipotecas": 0.2991,
+   "Log_PIB_pc": 0.7286
+  },
+  "ECT_coef(phi)": -0.023,
+  "ECT_p": 0.0004,
+  "T": 82
+ }
+}

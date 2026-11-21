@@ -1,0 +1,68 @@
+{
+ "n_filas_entrenamiento": 4160,
+ "n_trimestres_unicos": 80,
+ "rango_trimestres": [
+  "2005-01-01",
+  "2024-10-01"
+ ],
+ "n_valores_unicos_target": 80,
+ "n_valores_unicos_por_variable_y_trimestre": {
+  "Euribor": 1.0,
+  "IPC": 14.85,
+  "Tasa_Paro": 51.3125,
+  "Precio_m2": 52.0,
+  "PIB_pc": 51.85,
+  "tasa_ahorro": 1.0,
+  "Spread_Hipotecas": 1.0
+ },
+ "orden_filas_trimestre_monotono": false,
+ "primeras_filas_provincia": [
+  "A Coruña",
+  "A Coruña",
+  "Álava"
+ ],
+ "app_TimeSeriesSplit_sobre_orden_provincial": {
+  "rmse_cv": 0.1037451216978336,
+  "mae_cv": 0.07522112827699007
+ },
+ "notebook_cv5_KFold": {
+  "rmse_cv": 0.0991964719352122
+ },
+ "app_cv_con_solo_Euribor_y_tasa_ahorro": {
+  "rmse_cv": 0.11146392621915199
+ },
+ "r2_train_app": 0.9863849844001127,
+ "backtest_origen_movil": {
+  "periodo": [
+   "2013Q1",
+   "2024Q4"
+  ],
+  "n_trimestres_test": 48,
+  "rmse_gbr_media_52_provincias": 0.3796846542364509,
+  "rmse_persistencia_t_1": 0.19975816666070342,
+  "rmse_media_historica": 1.0074513040052209,
+  "rmse_ols_spread_euribor": 0.5140675370841942,
+  "rango_medio_entre_provincias_pp": 0.06651265128248528
+ },
+ "dispersion_provincial_2024Q4_modelo_app": {
+  "spread_real_nacional": 0.6187878787878782,
+  "pred_min": 0.5458451866016832,
+  "pred_max": 0.7224135521451994,
+  "prov_min": "Álava",
+  "prov_max": "Melilla"
+ },
+ "anios_check": {
+  "2023": {
+   "aprc_menos_euribor_obs": 0.027,
+   "en_entrenamiento": true
+  },
+  "2024": {
+   "aprc_menos_euribor_obs": 0.188,
+   "en_entrenamiento": true
+  },
+  "2025": {
+   "aprc_menos_euribor_obs": 0.557,
+   "en_entrenamiento": false
+  }
+ }
+}

@@ -15,6 +15,7 @@ import numpy as np, pandas as pd
 
 root = pathlib.Path(sys.argv[1]).resolve(); work = pathlib.Path(sys.argv[2]).resolve()
 with_transm = '--with-transm' in sys.argv
+KEEP_UNIPROV = '--keep-uniprov' in sys.argv
 inp = work / 'inputs'
 if inp.exists(): shutil.rmtree(inp)
 shutil.copytree(root / 'Datos ya metidos', inp)
@@ -34,6 +35,14 @@ def build_transm():
     excl = ['TOTAL NACIONAL','Andalucía','Aragón','Asturias (Principado de)','Balears (Illes)','Canarias','Cantabria',
             'Castilla y León','Castilla-La Mancha','Cataluña','Comunitat Valenciana','Extremadura','Galicia',
             'Madrid (Comunidad de)','Murcia (Región de)','Navarra (Comunidad Foral de)','País Vasco','Rioja (La)','Ceuta y Melilla']
+    if KEEP_UNIPROV:
+        # Hipótesis verificada: el CSV de referencia SÍ contiene 2005-2006 para las 7 CCAA uniprovinciales,
+        # que el código del notebook 1 (celda 59) excluye. Se conservan esas filas de CCAA como provincia.
+        uni = {'Asturias (Principado de)': 'Asturias', 'Balears (Illes)': 'Balears, Illes', 'Cantabria': 'Cantabria',
+               'Madrid (Comunidad de)': 'Madrid', 'Murcia (Región de)': 'Murcia',
+               'Navarra (Comunidad Foral de)': 'Navarra', 'Rioja (La)': 'Rioja, La'}
+        excl = [e for e in excl if e not in uni]
+        d['provincia'] = d['provincia'].replace(uni)
     d = d[~d['provincia'].isin(excl)].dropna()
     l = d.melt(id_vars='provincia', var_name='p', value_name='transmisiones')
     l['año'] = l['p'].str[:4].astype(int); l['trimestre'] = l['p'].str[5].astype(int)

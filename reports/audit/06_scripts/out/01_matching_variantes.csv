@@ -1,0 +1,611 @@
+variante,tipo,verdad,destino_nb,ok
+Alava,base,Álava,Álava,True
+ALAVA,mayus,Álava,Álava,True
+01 Alava,prefijo_codigo,Álava,Álava,True
+Alava,mojibake_x1,Álava,Álava,True
+Alava,mojibake_x2,Álava,Álava,True
+Alava,mojibake_x3,Álava,Álava,True
+Álava,base,Álava,Álava,True
+ÁLAVA,mayus,Álava,Álava,True
+01 Álava,prefijo_codigo,Álava,Álava,True
+Ãlava,mojibake_x1,Álava,Álava,True
+ÃÂlava,mojibake_x2,Álava,Álava,True
+ÃÂÃÂlava,mojibake_x3,Álava,Álava,True
+ÁLAVA,base,Álava,Álava,True
+01 ÁLAVA,prefijo_codigo,Álava,Álava,True
+ÃLAVA,mojibake_x1,Álava,Álava,True
+ÃÂLAVA,mojibake_x2,Álava,Álava,True
+ÃÂÃÂLAVA,mojibake_x3,Álava,Álava,True
+Araba,base,Álava,Zaragoza,False
+ARABA,mayus,Álava,Zaragoza,False
+01 Araba,prefijo_codigo,Álava,Zaragoza,False
+Araba,mojibake_x1,Álava,Zaragoza,False
+Araba,mojibake_x2,Álava,Zaragoza,False
+Araba,mojibake_x3,Álava,Zaragoza,False
+Araba/Álava,base,Álava,Álava,True
+ARABA/ÁLAVA,mayus,Álava,Álava,True
+01 Araba/Álava,prefijo_codigo,Álava,Álava,True
+Araba/Ãlava,mojibake_x1,Álava,Álava,True
+Araba/ÃÂlava,mojibake_x2,Álava,Álava,True
+Araba/ÃÂÃÂlava,mojibake_x3,Álava,Álava,True
+Albacete,base,Albacete,Albacete,True
+ALBACETE,mayus,Albacete,Albacete,True
+02 Albacete,prefijo_codigo,Albacete,Albacete,True
+Albacete,mojibake_x1,Albacete,Albacete,True
+Albacete,mojibake_x2,Albacete,Albacete,True
+Albacete,mojibake_x3,Albacete,Albacete,True
+Alacant,base,Alicante,Alicante,True
+ALACANT,mayus,Alicante,Alicante,True
+03 Alacant,prefijo_codigo,Alicante,Alicante,True
+Alacant,mojibake_x1,Alicante,Alicante,True
+Alacant,mojibake_x2,Alicante,Alicante,True
+Alacant,mojibake_x3,Alicante,Alicante,True
+Alicante,base,Alicante,Alicante,True
+ALICANTE,mayus,Alicante,Alicante,True
+03 Alicante,prefijo_codigo,Alicante,Alicante,True
+Alicante,mojibake_x1,Alicante,Alicante,True
+Alicante,mojibake_x2,Alicante,Alicante,True
+Alicante,mojibake_x3,Alicante,Alicante,True
+Alicante/Alacant,base,Alicante,Alicante,True
+ALICANTE/ALACANT,mayus,Alicante,Alicante,True
+03 Alicante/Alacant,prefijo_codigo,Alicante,Alicante,True
+Alicante/Alacant,mojibake_x1,Alicante,Alicante,True
+Alicante/Alacant,mojibake_x2,Alicante,Alicante,True
+Alicante/Alacant,mojibake_x3,Alicante,Alicante,True
+Almería,base,Almería,Almería,True
+ALMERÍA,mayus,Almería,Almería,True
+04 Almería,prefijo_codigo,Almería,Almería,True
+AlmerÃ­a,mojibake_x1,Almería,Almería,True
+AlmerÃÂ­a,mojibake_x2,Almería,Almería,True
+AlmerÃÂÃÂ­a,mojibake_x3,Almería,Almería,True
+Almeria,base,Almería,Almería,True
+ALMERIA,mayus,Almería,Almería,True
+04 Almeria,prefijo_codigo,Almería,Almería,True
+Almeria,mojibake_x1,Almería,Almería,True
+Almeria,mojibake_x2,Almería,Almería,True
+Almeria,mojibake_x3,Almería,Almería,True
+ÁVILA,base,Ávila,Ávila,True
+ÁVILA,mayus,Ávila,Ávila,True
+05 ÁVILA,prefijo_codigo,Ávila,Ávila,True
+ÃVILA,mojibake_x1,Ávila,Ávila,True
+ÃÂVILA,mojibake_x2,Ávila,Ávila,True
+ÃÂÃÂVILA,mojibake_x3,Ávila,Ávila,True
+Avila,base,Ávila,Ávila,True
+AVILA,mayus,Ávila,Ávila,True
+05 Avila,prefijo_codigo,Ávila,Ávila,True
+Avila,mojibake_x1,Ávila,Ávila,True
+Avila,mojibake_x2,Ávila,Ávila,True
+Avila,mojibake_x3,Ávila,Ávila,True
+Ávila,base,Ávila,Ávila,True
+05 Ávila,prefijo_codigo,Ávila,Ávila,True
+Ãvila,mojibake_x1,Ávila,Ávila,True
+ÃÂvila,mojibake_x2,Ávila,Ávila,True
+ÃÂÃÂvila,mojibake_x3,Ávila,Ávila,True
+Badajoz,base,Badajoz,Badajoz,True
+BADAJOZ,mayus,Badajoz,Badajoz,True
+06 Badajoz,prefijo_codigo,Badajoz,Badajoz,True
+Badajoz,mojibake_x1,Badajoz,Badajoz,True
+Badajoz,mojibake_x2,Badajoz,Badajoz,True
+Badajoz,mojibake_x3,Badajoz,Badajoz,True
+Baleares,base,Islas Baleares,Islas Baleares,True
+BALEARES,mayus,Islas Baleares,Islas Baleares,True
+07 Baleares,prefijo_codigo,Islas Baleares,Islas Baleares,True
+Baleares,mojibake_x1,Islas Baleares,Islas Baleares,True
+Baleares,mojibake_x2,Islas Baleares,Islas Baleares,True
+Baleares,mojibake_x3,Islas Baleares,Islas Baleares,True
+Islas Baleares,base,Islas Baleares,Islas Baleares,True
+ISLAS BALEARES,mayus,Islas Baleares,Islas Baleares,True
+07 Islas Baleares,prefijo_codigo,Islas Baleares,Islas Baleares,True
+Islas Baleares,mojibake_x1,Islas Baleares,Islas Baleares,True
+Islas Baleares,mojibake_x2,Islas Baleares,Islas Baleares,True
+Islas Baleares,mojibake_x3,Islas Baleares,Islas Baleares,True
+Illes Balears,base,Islas Baleares,Islas Baleares,True
+ILLES BALEARS,mayus,Islas Baleares,Islas Baleares,True
+07 Illes Balears,prefijo_codigo,Islas Baleares,Islas Baleares,True
+Illes Balears,mojibake_x1,Islas Baleares,Islas Baleares,True
+Illes Balears,mojibake_x2,Islas Baleares,Islas Baleares,True
+Illes Balears,mojibake_x3,Islas Baleares,Islas Baleares,True
+"Balears, Illes",base,Islas Baleares,Islas Baleares,True
+"BALEARS, ILLES",mayus,Islas Baleares,Islas Baleares,True
+"07 Balears, Illes",prefijo_codigo,Islas Baleares,Islas Baleares,True
+"Balears, Illes",mojibake_x1,Islas Baleares,Islas Baleares,True
+"Balears, Illes",mojibake_x2,Islas Baleares,Islas Baleares,True
+"Balears, Illes",mojibake_x3,Islas Baleares,Islas Baleares,True
+Barcelona,base,Barcelona,Barcelona,True
+BARCELONA,mayus,Barcelona,Barcelona,True
+08 Barcelona,prefijo_codigo,Barcelona,Barcelona,True
+Barcelona,mojibake_x1,Barcelona,Barcelona,True
+Barcelona,mojibake_x2,Barcelona,Barcelona,True
+Barcelona,mojibake_x3,Barcelona,Barcelona,True
+Burgos,base,Burgos,Burgos,True
+BURGOS,mayus,Burgos,Burgos,True
+09 Burgos,prefijo_codigo,Burgos,Burgos,True
+Burgos,mojibake_x1,Burgos,Burgos,True
+Burgos,mojibake_x2,Burgos,Burgos,True
+Burgos,mojibake_x3,Burgos,Burgos,True
+Caceres,base,Cáceres,Cáceres,True
+CACERES,mayus,Cáceres,Cáceres,True
+10 Caceres,prefijo_codigo,Cáceres,Cáceres,True
+Caceres,mojibake_x1,Cáceres,Cáceres,True
+Caceres,mojibake_x2,Cáceres,Cáceres,True
+Caceres,mojibake_x3,Cáceres,Cáceres,True
+Cáceres,base,Cáceres,Cáceres,True
+CÁCERES,mayus,Cáceres,Cáceres,True
+10 Cáceres,prefijo_codigo,Cáceres,Cáceres,True
+CÃ¡ceres,mojibake_x1,Cáceres,Cáceres,True
+CÃÂ¡ceres,mojibake_x2,Cáceres,Cáceres,True
+CÃÂÃÂ¡ceres,mojibake_x3,Cáceres,Cáceres,True
+CÁCERES,base,Cáceres,Cáceres,True
+10 CÁCERES,prefijo_codigo,Cáceres,Cáceres,True
+CÃCERES,mojibake_x1,Cáceres,Cáceres,True
+CÃÂCERES,mojibake_x2,Cáceres,Cáceres,True
+CÃÂÃÂCERES,mojibake_x3,Cáceres,Cáceres,True
+CÁDIZ,base,Cádiz,Cádiz,True
+CÁDIZ,mayus,Cádiz,Cádiz,True
+11 CÁDIZ,prefijo_codigo,Cádiz,Cádiz,True
+CÃDIZ,mojibake_x1,Cádiz,Cádiz,True
+CÃÂDIZ,mojibake_x2,Cádiz,Cádiz,True
+CÃÂÃÂDIZ,mojibake_x3,Cádiz,Cádiz,True
+Cádiz,base,Cádiz,Cádiz,True
+11 Cádiz,prefijo_codigo,Cádiz,Cádiz,True
+CÃ¡diz,mojibake_x1,Cádiz,Cádiz,True
+CÃÂ¡diz,mojibake_x2,Cádiz,Cádiz,True
+CÃÂÃÂ¡diz,mojibake_x3,Cádiz,Cádiz,True
+Cadiz,base,Cádiz,Cádiz,True
+CADIZ,mayus,Cádiz,Cádiz,True
+11 Cadiz,prefijo_codigo,Cádiz,Cádiz,True
+Cadiz,mojibake_x1,Cádiz,Cádiz,True
+Cadiz,mojibake_x2,Cádiz,Cádiz,True
+Cadiz,mojibake_x3,Cádiz,Cádiz,True
+Castelló,base,Castellón,Castellón,True
+CASTELLÓ,mayus,Castellón,Castellón,True
+12 Castelló,prefijo_codigo,Castellón,Castellón,True
+CastellÃ³,mojibake_x1,Castellón,Castellón,True
+CastellÃÂ³,mojibake_x2,Castellón,Castellón,True
+CastellÃÂÃÂ³,mojibake_x3,Castellón,Castellón,True
+Castellón,base,Castellón,Castellón,True
+CASTELLÓN,mayus,Castellón,Castellón,True
+12 Castellón,prefijo_codigo,Castellón,Castellón,True
+CastellÃ³n,mojibake_x1,Castellón,Castellón,True
+CastellÃÂ³n,mojibake_x2,Castellón,Castellón,True
+CastellÃÂÃÂ³n,mojibake_x3,Castellón,Castellón,True
+Castellón/Castelló,base,Castellón,Castellón,True
+CASTELLÓN/CASTELLÓ,mayus,Castellón,Castellón,True
+12 Castellón/Castelló,prefijo_codigo,Castellón,Castellón,True
+CastellÃ³n/CastellÃ³,mojibake_x1,Castellón,Castellón,True
+CastellÃÂ³n/CastellÃÂ³,mojibake_x2,Castellón,Castellón,True
+CastellÃÂÃÂ³n/CastellÃÂÃÂ³,mojibake_x3,Castellón,Castellón,True
+Ciudad Real,base,Ciudad Real,Ciudad Real,True
+CIUDAD REAL,mayus,Ciudad Real,Ciudad Real,True
+13 Ciudad Real,prefijo_codigo,Ciudad Real,Ciudad Real,True
+Ciudad Real,mojibake_x1,Ciudad Real,Ciudad Real,True
+Ciudad Real,mojibake_x2,Ciudad Real,Ciudad Real,True
+Ciudad Real,mojibake_x3,Ciudad Real,Ciudad Real,True
+Córdoba,base,Córdoba,Córdoba,True
+CÓRDOBA,mayus,Córdoba,Córdoba,True
+14 Córdoba,prefijo_codigo,Córdoba,Córdoba,True
+CÃ³rdoba,mojibake_x1,Córdoba,Córdoba,True
+CÃÂ³rdoba,mojibake_x2,Córdoba,Córdoba,True
+CÃÂÃÂ³rdoba,mojibake_x3,Córdoba,Córdoba,True
+Cordoba,base,Córdoba,Córdoba,True
+CORDOBA,mayus,Córdoba,Córdoba,True
+14 Cordoba,prefijo_codigo,Córdoba,Córdoba,True
+Cordoba,mojibake_x1,Córdoba,Córdoba,True
+Cordoba,mojibake_x2,Córdoba,Córdoba,True
+Cordoba,mojibake_x3,Córdoba,Córdoba,True
+CÓRDOBA,base,Córdoba,Córdoba,True
+14 CÓRDOBA,prefijo_codigo,Córdoba,Córdoba,True
+CÃRDOBA,mojibake_x1,Córdoba,Córdoba,True
+CÃÂRDOBA,mojibake_x2,Córdoba,Córdoba,True
+CÃÂÃÂRDOBA,mojibake_x3,Córdoba,Córdoba,True
+A Coruña,base,A Coruña,A Coruña,True
+A CORUÑA,mayus,A Coruña,A Coruña,True
+15 A Coruña,prefijo_codigo,A Coruña,A Coruña,True
+A CoruÃ±a,mojibake_x1,A Coruña,A Coruña,True
+A CoruÃÂ±a,mojibake_x2,A Coruña,A Coruña,True
+A CoruÃÂÃÂ±a,mojibake_x3,A Coruña,A Coruña,True
+"Coruña, A",base,A Coruña,A Coruña,True
+"CORUÑA, A",mayus,A Coruña,A Coruña,True
+"15 Coruña, A",prefijo_codigo,A Coruña,A Coruña,True
+"CoruÃ±a, A",mojibake_x1,A Coruña,A Coruña,True
+"CoruÃÂ±a, A",mojibake_x2,A Coruña,A Coruña,True
+"CoruÃÂÃÂ±a, A",mojibake_x3,A Coruña,A Coruña,True
+La Coruña,base,A Coruña,A Coruña,True
+LA CORUÑA,mayus,A Coruña,A Coruña,True
+15 La Coruña,prefijo_codigo,A Coruña,A Coruña,True
+La CoruÃ±a,mojibake_x1,A Coruña,A Coruña,True
+La CoruÃÂ±a,mojibake_x2,A Coruña,A Coruña,True
+La CoruÃÂÃÂ±a,mojibake_x3,A Coruña,A Coruña,True
+Coruña (A),base,A Coruña,A Coruña,True
+CORUÑA (A),mayus,A Coruña,A Coruña,True
+15 Coruña (A),prefijo_codigo,A Coruña,A Coruña,True
+CoruÃ±a (A),mojibake_x1,A Coruña,A Coruña,True
+CoruÃÂ±a (A),mojibake_x2,A Coruña,A Coruña,True
+CoruÃÂÃÂ±a (A),mojibake_x3,A Coruña,A Coruña,True
+Cuenca,base,Cuenca,Cuenca,True
+CUENCA,mayus,Cuenca,Cuenca,True
+16 Cuenca,prefijo_codigo,Cuenca,Cuenca,True
+Cuenca,mojibake_x1,Cuenca,Cuenca,True
+Cuenca,mojibake_x2,Cuenca,Cuenca,True
+Cuenca,mojibake_x3,Cuenca,Cuenca,True
+Girona,base,Girona,Girona,True
+GIRONA,mayus,Girona,Girona,True
+17 Girona,prefijo_codigo,Girona,Girona,True
+Girona,mojibake_x1,Girona,Girona,True
+Girona,mojibake_x2,Girona,Girona,True
+Girona,mojibake_x3,Girona,Girona,True
+Gerona,base,Girona,Girona,True
+GERONA,mayus,Girona,Girona,True
+17 Gerona,prefijo_codigo,Girona,Girona,True
+Gerona,mojibake_x1,Girona,Girona,True
+Gerona,mojibake_x2,Girona,Girona,True
+Gerona,mojibake_x3,Girona,Girona,True
+Granada,base,Granada,Granada,True
+GRANADA,mayus,Granada,Granada,True
+18 Granada,prefijo_codigo,Granada,Granada,True
+Granada,mojibake_x1,Granada,Granada,True
+Granada,mojibake_x2,Granada,Granada,True
+Granada,mojibake_x3,Granada,Granada,True
+Guadalajara,base,Guadalajara,Guadalajara,True
+GUADALAJARA,mayus,Guadalajara,Guadalajara,True
+19 Guadalajara,prefijo_codigo,Guadalajara,Guadalajara,True
+Guadalajara,mojibake_x1,Guadalajara,Guadalajara,True
+Guadalajara,mojibake_x2,Guadalajara,Guadalajara,True
+Guadalajara,mojibake_x3,Guadalajara,Guadalajara,True
+Guipuzcoa,base,Guipúzcoa,Guipúzcoa,True
+GUIPUZCOA,mayus,Guipúzcoa,Guipúzcoa,True
+20 Guipuzcoa,prefijo_codigo,Guipúzcoa,Guipúzcoa,True
+Guipuzcoa,mojibake_x1,Guipúzcoa,Guipúzcoa,True
+Guipuzcoa,mojibake_x2,Guipúzcoa,Guipúzcoa,True
+Guipuzcoa,mojibake_x3,Guipúzcoa,Guipúzcoa,True
+Gipuzkoa,base,Guipúzcoa,Guipúzcoa,True
+GIPUZKOA,mayus,Guipúzcoa,Guipúzcoa,True
+20 Gipuzkoa,prefijo_codigo,Guipúzcoa,Guipúzcoa,True
+Gipuzkoa,mojibake_x1,Guipúzcoa,Guipúzcoa,True
+Gipuzkoa,mojibake_x2,Guipúzcoa,Guipúzcoa,True
+Gipuzkoa,mojibake_x3,Guipúzcoa,Guipúzcoa,True
+Guipúzcoa,base,Guipúzcoa,Guipúzcoa,True
+GUIPÚZCOA,mayus,Guipúzcoa,Guipúzcoa,True
+20 Guipúzcoa,prefijo_codigo,Guipúzcoa,Guipúzcoa,True
+GuipÃºzcoa,mojibake_x1,Guipúzcoa,Guipúzcoa,True
+GuipÃÂºzcoa,mojibake_x2,Guipúzcoa,Guipúzcoa,True
+GuipÃÂÃÂºzcoa,mojibake_x3,Guipúzcoa,Guipúzcoa,True
+Huelva,base,Huelva,Huelva,True
+HUELVA,mayus,Huelva,Huelva,True
+21 Huelva,prefijo_codigo,Huelva,Huelva,True
+Huelva,mojibake_x1,Huelva,Huelva,True
+Huelva,mojibake_x2,Huelva,Huelva,True
+Huelva,mojibake_x3,Huelva,Huelva,True
+Huesca,base,Huesca,Huesca,True
+HUESCA,mayus,Huesca,Huesca,True
+22 Huesca,prefijo_codigo,Huesca,Huesca,True
+Huesca,mojibake_x1,Huesca,Huesca,True
+Huesca,mojibake_x2,Huesca,Huesca,True
+Huesca,mojibake_x3,Huesca,Huesca,True
+Jaen,base,Jaén,Jaén,True
+JAEN,mayus,Jaén,Jaén,True
+23 Jaen,prefijo_codigo,Jaén,Jaén,True
+Jaen,mojibake_x1,Jaén,Jaén,True
+Jaen,mojibake_x2,Jaén,Jaén,True
+Jaen,mojibake_x3,Jaén,Jaén,True
+Jaén,base,Jaén,Jaén,True
+JAÉN,mayus,Jaén,Jaén,True
+23 Jaén,prefijo_codigo,Jaén,Jaén,True
+JaÃ©n,mojibake_x1,Jaén,Jaén,True
+JaÃÂ©n,mojibake_x2,Jaén,Jaén,True
+JaÃÂÃÂ©n,mojibake_x3,Jaén,Jaén,True
+JAÉN,base,Jaén,Jaén,True
+23 JAÉN,prefijo_codigo,Jaén,Jaén,True
+JAÃN,mojibake_x1,Jaén,Jaén,True
+JAÃÂN,mojibake_x2,Jaén,Jaén,True
+JAÃÂÃÂN,mojibake_x3,Jaén,Jaén,True
+León,base,León,León,True
+LEÓN,mayus,León,León,True
+24 León,prefijo_codigo,León,León,True
+LeÃ³n,mojibake_x1,León,León,True
+LeÃÂ³n,mojibake_x2,León,León,True
+LeÃÂÃÂ³n,mojibake_x3,León,León,True
+LEÓN,base,León,León,True
+24 LEÓN,prefijo_codigo,León,León,True
+LEÃN,mojibake_x1,León,León,True
+LEÃÂN,mojibake_x2,León,León,True
+LEÃÂÃÂN,mojibake_x3,León,León,True
+Leon,base,León,León,True
+LEON,mayus,León,León,True
+24 Leon,prefijo_codigo,León,León,True
+Leon,mojibake_x1,León,León,True
+Leon,mojibake_x2,León,León,True
+Leon,mojibake_x3,León,León,True
+Lérida,base,Lleida,Lleida,True
+LÉRIDA,mayus,Lleida,Lleida,True
+25 Lérida,prefijo_codigo,Lleida,Lleida,True
+LÃ©rida,mojibake_x1,Lleida,Lleida,True
+LÃÂ©rida,mojibake_x2,Lleida,Lleida,True
+LÃÂÃÂ©rida,mojibake_x3,Lleida,Lleida,True
+Lleida,base,Lleida,Lleida,True
+LLEIDA,mayus,Lleida,Lleida,True
+25 Lleida,prefijo_codigo,Lleida,Lleida,True
+Lleida,mojibake_x1,Lleida,Lleida,True
+Lleida,mojibake_x2,Lleida,Lleida,True
+Lleida,mojibake_x3,Lleida,Lleida,True
+La Rioja,base,La Rioja,La Rioja,True
+LA RIOJA,mayus,La Rioja,La Rioja,True
+26 La Rioja,prefijo_codigo,La Rioja,La Rioja,True
+La Rioja,mojibake_x1,La Rioja,La Rioja,True
+La Rioja,mojibake_x2,La Rioja,La Rioja,True
+La Rioja,mojibake_x3,La Rioja,La Rioja,True
+"Rioja, La",base,La Rioja,La Rioja,True
+"RIOJA, LA",mayus,La Rioja,La Rioja,True
+"26 Rioja, La",prefijo_codigo,La Rioja,La Rioja,True
+"Rioja, La",mojibake_x1,La Rioja,La Rioja,True
+"Rioja, La",mojibake_x2,La Rioja,La Rioja,True
+"Rioja, La",mojibake_x3,La Rioja,La Rioja,True
+Lugo,base,Lugo,Lugo,True
+LUGO,mayus,Lugo,Lugo,True
+27 Lugo,prefijo_codigo,Lugo,Lugo,True
+Lugo,mojibake_x1,Lugo,Lugo,True
+Lugo,mojibake_x2,Lugo,Lugo,True
+Lugo,mojibake_x3,Lugo,Lugo,True
+"Madrid, Comunidad de",base,Comunidad de Madrid,Comunidad de Madrid,True
+"MADRID, COMUNIDAD DE",mayus,Comunidad de Madrid,Comunidad de Madrid,True
+"28 Madrid, Comunidad de",prefijo_codigo,Comunidad de Madrid,Comunidad de Madrid,True
+"Madrid, Comunidad de",mojibake_x1,Comunidad de Madrid,Comunidad de Madrid,True
+"Madrid, Comunidad de",mojibake_x2,Comunidad de Madrid,Comunidad de Madrid,True
+"Madrid, Comunidad de",mojibake_x3,Comunidad de Madrid,Comunidad de Madrid,True
+Madrid,base,Comunidad de Madrid,Comunidad de Madrid,True
+MADRID,mayus,Comunidad de Madrid,Comunidad de Madrid,True
+28 Madrid,prefijo_codigo,Comunidad de Madrid,Comunidad de Madrid,True
+Madrid,mojibake_x1,Comunidad de Madrid,Comunidad de Madrid,True
+Madrid,mojibake_x2,Comunidad de Madrid,Comunidad de Madrid,True
+Madrid,mojibake_x3,Comunidad de Madrid,Comunidad de Madrid,True
+Comunidad de Madrid,base,Comunidad de Madrid,Comunidad de Madrid,True
+COMUNIDAD DE MADRID,mayus,Comunidad de Madrid,Comunidad de Madrid,True
+28 Comunidad de Madrid,prefijo_codigo,Comunidad de Madrid,Comunidad de Madrid,True
+Comunidad de Madrid,mojibake_x1,Comunidad de Madrid,Comunidad de Madrid,True
+Comunidad de Madrid,mojibake_x2,Comunidad de Madrid,Comunidad de Madrid,True
+Comunidad de Madrid,mojibake_x3,Comunidad de Madrid,Comunidad de Madrid,True
+Málaga,base,Málaga,Málaga,True
+MÁLAGA,mayus,Málaga,Málaga,True
+29 Málaga,prefijo_codigo,Málaga,Málaga,True
+MÃ¡laga,mojibake_x1,Málaga,Málaga,True
+MÃÂ¡laga,mojibake_x2,Málaga,Málaga,True
+MÃÂÃÂ¡laga,mojibake_x3,Málaga,Málaga,True
+MÁLAGA,base,Málaga,Málaga,True
+29 MÁLAGA,prefijo_codigo,Málaga,Málaga,True
+MÃLAGA,mojibake_x1,Málaga,Málaga,True
+MÃÂLAGA,mojibake_x2,Málaga,Málaga,True
+MÃÂÃÂLAGA,mojibake_x3,Málaga,Málaga,True
+Malaga,base,Málaga,Málaga,True
+MALAGA,mayus,Málaga,Málaga,True
+29 Malaga,prefijo_codigo,Málaga,Málaga,True
+Malaga,mojibake_x1,Málaga,Málaga,True
+Malaga,mojibake_x2,Málaga,Málaga,True
+Malaga,mojibake_x3,Málaga,Málaga,True
+"Murcia, Región de",base,Región de Murcia,Región de Murcia,True
+"MURCIA, REGIÓN DE",mayus,Región de Murcia,Región de Murcia,True
+"30 Murcia, Región de",prefijo_codigo,Región de Murcia,Región de Murcia,True
+"Murcia, RegiÃ³n de",mojibake_x1,Región de Murcia,Región de Murcia,True
+"Murcia, RegiÃÂ³n de",mojibake_x2,Región de Murcia,Región de Murcia,True
+"Murcia, RegiÃÂÃÂ³n de",mojibake_x3,Región de Murcia,Región de Murcia,True
+Región de Murcia,base,Región de Murcia,Región de Murcia,True
+REGIÓN DE MURCIA,mayus,Región de Murcia,Región de Murcia,True
+30 Región de Murcia,prefijo_codigo,Región de Murcia,Región de Murcia,True
+RegiÃ³n de Murcia,mojibake_x1,Región de Murcia,Región de Murcia,True
+RegiÃÂ³n de Murcia,mojibake_x2,Región de Murcia,Región de Murcia,True
+RegiÃÂÃÂ³n de Murcia,mojibake_x3,Región de Murcia,Región de Murcia,True
+Murcia,base,Región de Murcia,Región de Murcia,True
+MURCIA,mayus,Región de Murcia,Región de Murcia,True
+30 Murcia,prefijo_codigo,Región de Murcia,Región de Murcia,True
+Murcia,mojibake_x1,Región de Murcia,Región de Murcia,True
+Murcia,mojibake_x2,Región de Murcia,Región de Murcia,True
+Murcia,mojibake_x3,Región de Murcia,Región de Murcia,True
+Nafarroa,base,Comunidad Foral de Navarra,La Rioja,False
+NAFARROA,mayus,Comunidad Foral de Navarra,La Rioja,False
+31 Nafarroa,prefijo_codigo,Comunidad Foral de Navarra,La Rioja,False
+Nafarroa,mojibake_x1,Comunidad Foral de Navarra,La Rioja,False
+Nafarroa,mojibake_x2,Comunidad Foral de Navarra,La Rioja,False
+Nafarroa,mojibake_x3,Comunidad Foral de Navarra,La Rioja,False
+Navarra,base,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+NAVARRA,mayus,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+31 Navarra,prefijo_codigo,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+Navarra,mojibake_x1,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+Navarra,mojibake_x2,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+Navarra,mojibake_x3,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+"Navarra, Comunidad Foral de",base,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+"NAVARRA, COMUNIDAD FORAL DE",mayus,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+"31 Navarra, Comunidad Foral de",prefijo_codigo,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+"Navarra, Comunidad Foral de",mojibake_x1,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+"Navarra, Comunidad Foral de",mojibake_x2,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+"Navarra, Comunidad Foral de",mojibake_x3,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+Comunidad Foral de Navarra,base,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+COMUNIDAD FORAL DE NAVARRA,mayus,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+31 Comunidad Foral de Navarra,prefijo_codigo,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+Comunidad Foral de Navarra,mojibake_x1,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+Comunidad Foral de Navarra,mojibake_x2,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+Comunidad Foral de Navarra,mojibake_x3,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True
+Ourense,base,Ourense,Ourense,True
+OURENSE,mayus,Ourense,Ourense,True
+32 Ourense,prefijo_codigo,Ourense,Ourense,True
+Ourense,mojibake_x1,Ourense,Ourense,True
+Ourense,mojibake_x2,Ourense,Ourense,True
+Ourense,mojibake_x3,Ourense,Ourense,True
+Orense,base,Ourense,Ourense,True
+ORENSE,mayus,Ourense,Ourense,True
+32 Orense,prefijo_codigo,Ourense,Ourense,True
+Orense,mojibake_x1,Ourense,Ourense,True
+Orense,mojibake_x2,Ourense,Ourense,True
+Orense,mojibake_x3,Ourense,Ourense,True
+Asturias,base,Principado de Asturias,Principado de Asturias,True
+ASTURIAS,mayus,Principado de Asturias,Principado de Asturias,True
+33 Asturias,prefijo_codigo,Principado de Asturias,Principado de Asturias,True
+Asturias,mojibake_x1,Principado de Asturias,Principado de Asturias,True
+Asturias,mojibake_x2,Principado de Asturias,Principado de Asturias,True
+Asturias,mojibake_x3,Principado de Asturias,Principado de Asturias,True
+Principado de Asturias,base,Principado de Asturias,Principado de Asturias,True
+PRINCIPADO DE ASTURIAS,mayus,Principado de Asturias,Principado de Asturias,True
+33 Principado de Asturias,prefijo_codigo,Principado de Asturias,Principado de Asturias,True
+Principado de Asturias,mojibake_x1,Principado de Asturias,Principado de Asturias,True
+Principado de Asturias,mojibake_x2,Principado de Asturias,Principado de Asturias,True
+Principado de Asturias,mojibake_x3,Principado de Asturias,Principado de Asturias,True
+"Asturias, Principado de",base,Principado de Asturias,Principado de Asturias,True
+"ASTURIAS, PRINCIPADO DE",mayus,Principado de Asturias,Principado de Asturias,True
+"33 Asturias, Principado de",prefijo_codigo,Principado de Asturias,Principado de Asturias,True
+"Asturias, Principado de",mojibake_x1,Principado de Asturias,Principado de Asturias,True
+"Asturias, Principado de",mojibake_x2,Principado de Asturias,Principado de Asturias,True
+"Asturias, Principado de",mojibake_x3,Principado de Asturias,Principado de Asturias,True
+Palencia,base,Palencia,Palencia,True
+PALENCIA,mayus,Palencia,Palencia,True
+34 Palencia,prefijo_codigo,Palencia,Palencia,True
+Palencia,mojibake_x1,Palencia,Palencia,True
+Palencia,mojibake_x2,Palencia,Palencia,True
+Palencia,mojibake_x3,Palencia,Palencia,True
+Palmas (Las),base,Las Palmas,Las Palmas,True
+PALMAS (LAS),mayus,Las Palmas,Las Palmas,True
+35 Palmas (Las),prefijo_codigo,Las Palmas,Las Palmas,True
+Palmas (Las),mojibake_x1,Las Palmas,Las Palmas,True
+Palmas (Las),mojibake_x2,Las Palmas,Las Palmas,True
+Palmas (Las),mojibake_x3,Las Palmas,Las Palmas,True
+Las Palmas,base,Las Palmas,Las Palmas,True
+LAS PALMAS,mayus,Las Palmas,Las Palmas,True
+35 Las Palmas,prefijo_codigo,Las Palmas,Las Palmas,True
+Las Palmas,mojibake_x1,Las Palmas,Las Palmas,True
+Las Palmas,mojibake_x2,Las Palmas,Las Palmas,True
+Las Palmas,mojibake_x3,Las Palmas,Las Palmas,True
+"Palmas, Las",base,Las Palmas,Las Palmas,True
+"PALMAS, LAS",mayus,Las Palmas,Las Palmas,True
+"35 Palmas, Las",prefijo_codigo,Las Palmas,Las Palmas,True
+"Palmas, Las",mojibake_x1,Las Palmas,Las Palmas,True
+"Palmas, Las",mojibake_x2,Las Palmas,Las Palmas,True
+"Palmas, Las",mojibake_x3,Las Palmas,Las Palmas,True
+Pontevedra,base,Pontevedra,Pontevedra,True
+PONTEVEDRA,mayus,Pontevedra,Pontevedra,True
+36 Pontevedra,prefijo_codigo,Pontevedra,Pontevedra,True
+Pontevedra,mojibake_x1,Pontevedra,Pontevedra,True
+Pontevedra,mojibake_x2,Pontevedra,Pontevedra,True
+Pontevedra,mojibake_x3,Pontevedra,Pontevedra,True
+Salamanca,base,Salamanca,Salamanca,True
+SALAMANCA,mayus,Salamanca,Salamanca,True
+37 Salamanca,prefijo_codigo,Salamanca,Salamanca,True
+Salamanca,mojibake_x1,Salamanca,Salamanca,True
+Salamanca,mojibake_x2,Salamanca,Salamanca,True
+Salamanca,mojibake_x3,Salamanca,Salamanca,True
+Santa Cruz de Tenerife,base,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+SANTA CRUZ DE TENERIFE,mayus,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+38 Santa Cruz de Tenerife,prefijo_codigo,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+Santa Cruz de Tenerife,mojibake_x1,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+Santa Cruz de Tenerife,mojibake_x2,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+Santa Cruz de Tenerife,mojibake_x3,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+Tenerife,base,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+TENERIFE,mayus,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+38 Tenerife,prefijo_codigo,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+Tenerife,mojibake_x1,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+Tenerife,mojibake_x2,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+Tenerife,mojibake_x3,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+S.C. Tenerife,base,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+S.C. TENERIFE,mayus,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+38 S.C. Tenerife,prefijo_codigo,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+S.C. Tenerife,mojibake_x1,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+S.C. Tenerife,mojibake_x2,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+S.C. Tenerife,mojibake_x3,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True
+Cantabria,base,Cantabria,Cantabria,True
+CANTABRIA,mayus,Cantabria,Cantabria,True
+39 Cantabria,prefijo_codigo,Cantabria,Cantabria,True
+Cantabria,mojibake_x1,Cantabria,Cantabria,True
+Cantabria,mojibake_x2,Cantabria,Cantabria,True
+Cantabria,mojibake_x3,Cantabria,Cantabria,True
+Segovia,base,Segovia,Segovia,True
+SEGOVIA,mayus,Segovia,Segovia,True
+40 Segovia,prefijo_codigo,Segovia,Segovia,True
+Segovia,mojibake_x1,Segovia,Segovia,True
+Segovia,mojibake_x2,Segovia,Segovia,True
+Segovia,mojibake_x3,Segovia,Segovia,True
+Sevilla,base,Sevilla,Sevilla,True
+SEVILLA,mayus,Sevilla,Sevilla,True
+41 Sevilla,prefijo_codigo,Sevilla,Sevilla,True
+Sevilla,mojibake_x1,Sevilla,Sevilla,True
+Sevilla,mojibake_x2,Sevilla,Sevilla,True
+Sevilla,mojibake_x3,Sevilla,Sevilla,True
+Soria,base,Soria,Soria,True
+SORIA,mayus,Soria,Soria,True
+42 Soria,prefijo_codigo,Soria,Soria,True
+Soria,mojibake_x1,Soria,Soria,True
+Soria,mojibake_x2,Soria,Soria,True
+Soria,mojibake_x3,Soria,Soria,True
+Tarragona,base,Tarragona,Tarragona,True
+TARRAGONA,mayus,Tarragona,Tarragona,True
+43 Tarragona,prefijo_codigo,Tarragona,Tarragona,True
+Tarragona,mojibake_x1,Tarragona,Tarragona,True
+Tarragona,mojibake_x2,Tarragona,Tarragona,True
+Tarragona,mojibake_x3,Tarragona,Tarragona,True
+Teruel,base,Teruel,Teruel,True
+TERUEL,mayus,Teruel,Teruel,True
+44 Teruel,prefijo_codigo,Teruel,Teruel,True
+Teruel,mojibake_x1,Teruel,Teruel,True
+Teruel,mojibake_x2,Teruel,Teruel,True
+Teruel,mojibake_x3,Teruel,Teruel,True
+Toledo,base,Toledo,Toledo,True
+TOLEDO,mayus,Toledo,Toledo,True
+45 Toledo,prefijo_codigo,Toledo,Toledo,True
+Toledo,mojibake_x1,Toledo,Toledo,True
+Toledo,mojibake_x2,Toledo,Toledo,True
+Toledo,mojibake_x3,Toledo,Toledo,True
+València,base,Valencia,Valencia,True
+VALÈNCIA,mayus,Valencia,Valencia,True
+46 València,prefijo_codigo,Valencia,Valencia,True
+ValÃ¨ncia,mojibake_x1,Valencia,Valencia,True
+ValÃÂ¨ncia,mojibake_x2,Valencia,Valencia,True
+ValÃÂÃÂ¨ncia,mojibake_x3,Valencia,Valencia,True
+Valencia/València,base,Valencia,Valencia,True
+VALENCIA/VALÈNCIA,mayus,Valencia,Valencia,True
+46 Valencia/València,prefijo_codigo,Valencia,Valencia,True
+Valencia/ValÃ¨ncia,mojibake_x1,Valencia,Valencia,True
+Valencia/ValÃÂ¨ncia,mojibake_x2,Valencia,Valencia,True
+Valencia/ValÃÂÃÂ¨ncia,mojibake_x3,Valencia,Valencia,True
+Valencia,base,Valencia,Valencia,True
+VALENCIA,mayus,Valencia,Valencia,True
+46 Valencia,prefijo_codigo,Valencia,Valencia,True
+Valencia,mojibake_x1,Valencia,Valencia,True
+Valencia,mojibake_x2,Valencia,Valencia,True
+Valencia,mojibake_x3,Valencia,Valencia,True
+Valladolid,base,Valladolid,Valladolid,True
+VALLADOLID,mayus,Valladolid,Valladolid,True
+47 Valladolid,prefijo_codigo,Valladolid,Valladolid,True
+Valladolid,mojibake_x1,Valladolid,Valladolid,True
+Valladolid,mojibake_x2,Valladolid,Valladolid,True
+Valladolid,mojibake_x3,Valladolid,Valladolid,True
+Vizcaya,base,Vizcaya,Vizcaya,True
+VIZCAYA,mayus,Vizcaya,Vizcaya,True
+48 Vizcaya,prefijo_codigo,Vizcaya,Vizcaya,True
+Vizcaya,mojibake_x1,Vizcaya,Vizcaya,True
+Vizcaya,mojibake_x2,Vizcaya,Vizcaya,True
+Vizcaya,mojibake_x3,Vizcaya,Vizcaya,True
+Bizkaia,base,Vizcaya,Vizcaya,True
+BIZKAIA,mayus,Vizcaya,Vizcaya,True
+48 Bizkaia,prefijo_codigo,Vizcaya,Vizcaya,True
+Bizkaia,mojibake_x1,Vizcaya,Vizcaya,True
+Bizkaia,mojibake_x2,Vizcaya,Vizcaya,True
+Bizkaia,mojibake_x3,Vizcaya,Vizcaya,True
+Zamora,base,Zamora,Zamora,True
+ZAMORA,mayus,Zamora,Zamora,True
+49 Zamora,prefijo_codigo,Zamora,Zamora,True
+Zamora,mojibake_x1,Zamora,Zamora,True
+Zamora,mojibake_x2,Zamora,Zamora,True
+Zamora,mojibake_x3,Zamora,Zamora,True
+Zaragoza,base,Zaragoza,Zaragoza,True
+ZARAGOZA,mayus,Zaragoza,Zaragoza,True
+50 Zaragoza,prefijo_codigo,Zaragoza,Zaragoza,True
+Zaragoza,mojibake_x1,Zaragoza,Zaragoza,True
+Zaragoza,mojibake_x2,Zaragoza,Zaragoza,True
+Zaragoza,mojibake_x3,Zaragoza,Zaragoza,True
+Ceuta,base,Ceuta,Ceuta,True
+CEUTA,mayus,Ceuta,Ceuta,True
+51 Ceuta,prefijo_codigo,Ceuta,Ceuta,True
+Ceuta,mojibake_x1,Ceuta,Ceuta,True
+Ceuta,mojibake_x2,Ceuta,Ceuta,True
+Ceuta,mojibake_x3,Ceuta,Ceuta,True
+Melilla,base,Melilla,Melilla,True
+MELILLA,mayus,Melilla,Melilla,True
+52 Melilla,prefijo_codigo,Melilla,Melilla,True
+Melilla,mojibake_x1,Melilla,Melilla,True
+Melilla,mojibake_x2,Melilla,Melilla,True
+Melilla,mojibake_x3,Melilla,Melilla,True

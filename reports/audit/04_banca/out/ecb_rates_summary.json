@@ -1,0 +1,171 @@
+{
+  "urls": {
+    "APRC": "https://data-api.ecb.europa.eu/service/data/MIR/M.ES.B.A2C.A.C.A.2250.EUR.N?format=csvdata&startPeriod=2003-01&detail=dataonly",
+    "AAR": "https://data-api.ecb.europa.eu/service/data/MIR/M.ES.B.A2C.A.R.A.2250.EUR.N?format=csvdata&startPeriod=2003-01&detail=dataonly",
+    "AAR_float_1y": "https://data-api.ecb.europa.eu/service/data/MIR/M.ES.B.A2C.F.R.A.2250.EUR.N?format=csvdata&startPeriod=2003-01&detail=dataonly",
+    "EURIBOR12M": "https://data-api.ecb.europa.eu/service/data/FM/M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA?format=csvdata&startPeriod=2003-01&detail=dataonly"
+  },
+  "ecb_last_month": {
+    "APRC": [
+      "2026-09",
+      3.04
+    ],
+    "AAR": [
+      "2026-09",
+      2.99
+    ],
+    "AAR_float_1y": [
+      "2026-09",
+      3.26
+    ],
+    "EURIBOR12M": [
+      "2026-10",
+      3.2385909
+    ]
+  },
+  "csv_rows": 84,
+  "csv_first": "2005Q1",
+  "csv_last": "2025Q4",
+  "max_abs_diff_APRC_csv_vs_ecb": 8.881784197001252e-16,
+  "max_abs_diff_EUR12_csv_vs_ecb": 0.02804963333333088,
+  "annual_selected": {
+    "2013": {
+      "APRC": 3.192,
+      "AAR": 3.044,
+      "AAR_float_1y": 2.861,
+      "EURIBOR12M": 0.536,
+      "APRC_minus_EUR12": 2.656,
+      "AARfloat_minus_EUR12": 2.325,
+      "APRC_minus_AAR": 0.148
+    },
+    "2017": {
+      "APRC": 2.194,
+      "AAR": 1.947,
+      "AAR_float_1y": 1.581,
+      "EURIBOR12M": -0.145,
+      "APRC_minus_EUR12": 2.339,
+      "AARfloat_minus_EUR12": 1.726,
+      "APRC_minus_AAR": 0.247
+    },
+    "2021": {
+      "APRC": 1.619,
+      "AAR": 1.486,
+      "AAR_float_1y": 1.4,
+      "EURIBOR12M": -0.491,
+      "APRC_minus_EUR12": 2.11,
+      "AARfloat_minus_EUR12": 1.891,
+      "APRC_minus_AAR": 0.133
+    },
+    "2022": {
+      "APRC": 2.086,
+      "AAR": 1.974,
+      "AAR_float_1y": 1.937,
+      "EURIBOR12M": 1.088,
+      "APRC_minus_EUR12": 0.998,
+      "AARfloat_minus_EUR12": 0.849,
+      "APRC_minus_AAR": 0.112
+    },
+    "2023": {
+      "APRC": 3.892,
+      "AAR": 3.746,
+      "AAR_float_1y": 4.261,
+      "EURIBOR12M": 3.865,
+      "APRC_minus_EUR12": 0.027,
+      "AARfloat_minus_EUR12": 0.396,
+      "APRC_minus_AAR": 0.146
+    },
+    "2024": {
+      "APRC": 3.465,
+      "AAR": 3.346,
+      "AAR_float_1y": 3.996,
+      "EURIBOR12M": 3.274,
+      "APRC_minus_EUR12": 0.191,
+      "AARfloat_minus_EUR12": 0.722,
+      "APRC_minus_AAR": 0.119
+    },
+    "2025": {
+      "APRC": 2.78,
+      "AAR": 2.715,
+      "AAR_float_1y": 3.005,
+      "EURIBOR12M": 2.223,
+      "APRC_minus_EUR12": 0.557,
+      "AARfloat_minus_EUR12": 0.782,
+      "APRC_minus_AAR": 0.065
+    },
+    "2026": {
+      "APRC": 2.902,
+      "AAR": 2.849,
+      "AAR_float_1y": 3.033,
+      "EURIBOR12M": 2.846,
+      "APRC_minus_EUR12": 0.187,
+      "AARfloat_minus_EUR12": 0.318,
+      "APRC_minus_AAR": 0.053
+    }
+  },
+  "quarters_with_negative_APRC_minus_EUR12": [
+    "2023Q3",
+    "2024Q2"
+  ],
+  "last_quarters": [
+    {
+      "TIME_PERIOD": "2025Q3",
+      "APRC": "2.723",
+      "AAR": "2.657",
+      "AAR_float_1y": "2.85",
+      "EURIBOR12M": "2.121",
+      "APRC_minus_EUR12": "0.602",
+      "AARfloat_minus_EUR12": "0.729",
+      "APRC_minus_AAR": "0.067"
+    },
+    {
+      "TIME_PERIOD": "2025Q4",
+      "APRC": "2.673",
+      "AAR": "2.637",
+      "AAR_float_1y": "2.89",
+      "EURIBOR12M": "2.224",
+      "APRC_minus_EUR12": "0.45",
+      "AARfloat_minus_EUR12": "0.666",
+      "APRC_minus_AAR": "0.037"
+    },
+    {
+      "TIME_PERIOD": "2026Q1",
+      "APRC": "2.773",
+      "AAR": "2.727",
+      "AAR_float_1y": "2.87",
+      "EURIBOR12M": "2.344",
+      "APRC_minus_EUR12": "0.43",
+      "AARfloat_minus_EUR12": "0.526",
+      "APRC_minus_AAR": "0.047"
+    },
+    {
+      "TIME_PERIOD": "2026Q2",
+      "APRC": "2.907",
+      "AAR": "2.847",
+      "AAR_float_1y": "3.013",
+      "EURIBOR12M": "2.783",
+      "APRC_minus_EUR12": "0.124",
+      "AARfloat_minus_EUR12": "0.23",
+      "APRC_minus_AAR": "0.06"
+    },
+    {
+      "TIME_PERIOD": "2026Q3",
+      "APRC": "3.027",
+      "AAR": "2.973",
+      "AAR_float_1y": "3.217",
+      "EURIBOR12M": "3.019",
+      "APRC_minus_EUR12": "0.008",
+      "AARfloat_minus_EUR12": "0.198",
+      "APRC_minus_AAR": "0.053"
+    },
+    {
+      "TIME_PERIOD": "2026Q4",
+      "APRC": NaN,
+      "AAR": NaN,
+      "AAR_float_1y": NaN,
+      "EURIBOR12M": "3.239",
+      "APRC_minus_EUR12": NaN,
+      "AARfloat_minus_EUR12": NaN,
+      "APRC_minus_AAR": NaN
+    }
+  ]
+}

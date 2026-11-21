@@ -1,0 +1,151 @@
+{
+ "lag_selection": {
+  "A_original_nb42|maxlags=4": {
+   "aic": 2,
+   "bic": 2,
+   "hqic": 2,
+   "fpe": 2
+  },
+  "A_original_nb42|maxlags=6": {
+   "aic": 2,
+   "bic": 2,
+   "hqic": 2,
+   "fpe": 2
+  },
+  "B_auditada_NSA|maxlags=4": {
+   "aic": 2,
+   "bic": 2,
+   "hqic": 2,
+   "fpe": 2
+  },
+  "B_auditada_NSA|maxlags=6": {
+   "aic": 2,
+   "bic": 2,
+   "hqic": 2,
+   "fpe": 2
+  },
+  "C_auditada_dumest|maxlags=4": {
+   "aic": 2,
+   "bic": 2,
+   "hqic": 2,
+   "fpe": 2
+  },
+  "C_auditada_dumest|maxlags=6": {
+   "aic": 2,
+   "bic": 2,
+   "hqic": 2,
+   "fpe": 2
+  },
+  "D_auditada_SA|maxlags=4": {
+   "aic": 3,
+   "bic": 2,
+   "hqic": 2,
+   "fpe": 3
+  },
+  "D_auditada_SA|maxlags=6": {
+   "aic": 3,
+   "bic": 2,
+   "hqic": 2,
+   "fpe": 2
+  },
+  "E_auditada_dumest_covid|maxlags=4": {
+   "aic": 2,
+   "bic": 2,
+   "hqic": 2,
+   "fpe": 2
+  },
+  "E_auditada_dumest_covid|maxlags=6": {
+   "aic": 2,
+   "bic": 2,
+   "hqic": 2,
+   "fpe": 2
+  },
+  "F_original_dumest|maxlags=4": {
+   "aic": 2,
+   "bic": 2,
+   "hqic": 2,
+   "fpe": 2
+  },
+  "F_original_dumest|maxlags=6": {
+   "aic": 2,
+   "bic": 2,
+   "hqic": 2,
+   "fpe": 2
+  }
+ },
+ "bootstrap_B": 199,
+ "bootstrap": {
+  "A_original_nb42|case3|k1": {
+   "trace": [
+    92.89,
+    46.45,
+    28.45
+   ],
+   "p_boot": [
+    0.010050251256281407,
+    0.5376884422110553,
+    0.4020100502512563
+   ]
+  },
+  "B_auditada_NSA|case3|k1": {
+   "trace": [
+    87.22,
+    53.23,
+    28.98
+   ],
+   "p_boot": [
+    0.08040201005025126,
+    0.1507537688442211,
+    0.33668341708542715
+   ]
+  },
+  "C_auditada_dumest|case3|k1": {
+   "trace": [
+    85.43,
+    53.64,
+    28.38
+   ],
+   "p_boot": [
+    0.06030150753768844,
+    0.12060301507537688,
+    0.3869346733668342
+   ]
+  },
+  "C_auditada_dumest|case2|k1": {
+   "trace": [
+    96.4,
+    63.68,
+    32.5
+   ],
+   "p_boot": [
+    0.035175879396984924,
+    0.09045226130653267,
+    0.5778894472361809
+   ]
+  },
+  "C_auditada_dumest|case4|k1": {
+   "trace": [
+    105.58,
+    73.71,
+    48.36
+   ],
+   "p_boot": [
+    0.05025125628140704,
+    0.07537688442211055,
+    0.135678391959799
+   ]
+  },
+  "C_auditada_dumest|case3|k2": {
+   "trace": [
+    84.37,
+    52.9,
+    31.89
+   ],
+   "p_boot": [
+    0.135678391959799,
+    0.19597989949748743,
+    0.16080402010050251
+   ]
+  }
+ }
+}

@@ -1,0 +1,15 @@
+variable,n_no_nulos,valores_distintos,nivel_real,celdas_independientes,ratio_vs_4368,distintos_por_trim_med,eta2_trim,eta2_prov,eta2_prov_año,deff_trim,N_eff_trim
+Precio_m2,4368,4368,provincia×T,4368,1.0,52.0,0.177,0.747,0.996,10.0,435
+Euribor,4368,84,nacional (T),84,0.019,1.0,1.0,0.0,0.958,52.0,84
+tasa_ahorro,4316,75,nacional (T),83,0.019,1.0,1.0,0.0,0.118,52.0,83
+Spread_Hipotecas,4368,84,nacional (T),84,0.019,1.0,1.0,0.0,0.935,52.0,84
+Hipotecas_Total,4368,3151,provincia×T,4368,1.0,52.0,0.159,0.577,0.953,9.1,478
+Poblacion,4368,1092,provincia×año,1092,0.25,52.0,0.0,0.998,1.0,1.0,4291
+Edad_Media,4368,715,provincia×año,1092,0.25,51.0,0.179,0.81,1.0,10.1,432
+PIB_pc,4160,1015,provincia×año,1040,0.238,52.0,0.266,0.703,1.0,14.6,285
+Indice_Mano_Obra,4212,81,nacional (T),81,0.019,1.0,1.0,0.0,0.99,52.0,81
+Indice_Materiales,4212,81,nacional (T),81,0.019,1.0,1.0,0.0,0.977,52.0,81
+IPC,4368,337,CCAA×T,1596,0.365,15.0,0.979,0.002,0.88,50.9,86
+Tasa_Paro,4368,2182,provincia×T,4368,1.0,52.0,0.477,0.423,0.961,25.3,172
+Pob_Ext,4368,1086,provincia×año,1092,0.25,52.0,0.009,0.969,1.0,1.5,2991
+Transmisiones_Total,4368,2865,provincia×T,4368,1.0,52.0,0.067,0.82,0.984,4.4,987

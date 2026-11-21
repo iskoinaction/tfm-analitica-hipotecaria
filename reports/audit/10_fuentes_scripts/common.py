@@ -136,3 +136,47 @@ def save_sample(name, obj):
 
 def load_panel():
     return pd.read_csv(ROOT / "notebooks acabados" / "dataset_final_tfm.csv")
+
+
+# ---------------------------------------------------------------------------
+# Provincias: código INE (2 dígitos) <-> nombre INE <-> nombre usado en el panel v1
+# ---------------------------------------------------------------------------
+PROV = {
+    "01": ("Araba/Álava", "Álava"), "02": ("Albacete", "Albacete"), "03": ("Alicante/Alacant", "Alicante"),
+    "04": ("Almería", "Almería"), "05": ("Ávila", "Ávila"), "06": ("Badajoz", "Badajoz"),
+    "07": ("Balears, Illes", "Islas Baleares"), "08": ("Barcelona", "Barcelona"), "09": ("Burgos", "Burgos"),
+    "10": ("Cáceres", "Cáceres"), "11": ("Cádiz", "Cádiz"), "12": ("Castellón/Castelló", "Castellón"),
+    "13": ("Ciudad Real", "Ciudad Real"), "14": ("Córdoba", "Córdoba"), "15": ("Coruña, A", "A Coruña"),
+    "16": ("Cuenca", "Cuenca"), "17": ("Girona", "Girona"), "18": ("Granada", "Granada"),
+    "19": ("Guadalajara", "Guadalajara"), "20": ("Gipuzkoa", "Guipúzcoa"), "21": ("Huelva", "Huelva"),
+    "22": ("Huesca", "Huesca"), "23": ("Jaén", "Jaén"), "24": ("León", "León"), "25": ("Lleida", "Lleida"),
+    "26": ("Rioja, La", "La Rioja"), "27": ("Lugo", "Lugo"), "28": ("Madrid", "Comunidad de Madrid"),
+    "29": ("Málaga", "Málaga"), "30": ("Murcia", "Región de Murcia"), "31": ("Navarra", "Comunidad Foral de Navarra"),
+    "32": ("Ourense", "Ourense"), "33": ("Asturias", "Principado de Asturias"), "34": ("Palencia", "Palencia"),
+    "35": ("Palmas, Las", "Las Palmas"), "36": ("Pontevedra", "Pontevedra"), "37": ("Salamanca", "Salamanca"),
+    "38": ("Santa Cruz de Tenerife", "Santa Cruz de Tenerife"), "39": ("Cantabria", "Cantabria"),
+    "40": ("Segovia", "Segovia"), "41": ("Sevilla", "Sevilla"), "42": ("Soria", "Soria"),
+    "43": ("Tarragona", "Tarragona"), "44": ("Teruel", "Teruel"), "45": ("Toledo", "Toledo"),
+    "46": ("Valencia/València", "Valencia"), "47": ("Valladolid", "Valladolid"), "48": ("Bizkaia", "Vizcaya"),
+    "49": ("Zamora", "Zamora"), "50": ("Zaragoza", "Zaragoza"), "51": ("Ceuta", "Ceuta"), "52": ("Melilla", "Melilla"),
+}
+INE_ALIASES = {"Alacant/Alicante": "03", "A Coruña": "15", "Coruña (A)": "15", "Palmas (Las)": "35",
+               "Rioja (La)": "26", "Balears (Illes)": "07", "Castelló/Castellón": "12", "València/Valencia": "46"}
+PANEL2CODE = {v[1]: k for k, v in PROV.items()}
+INE2CODE = {v[0]: k for k, v in PROV.items()}
+INE2CODE.update(INE_ALIASES)
+
+
+def prov_code_from_ine_name(nombre):
+    """Devuelve el código de provincia si algún token (separado por '. ') es un nombre INE de provincia."""
+    toks = [t.strip().rstrip(".") for t in nombre.split(". ")]
+    for t in toks:
+        t2 = __import__("re").sub(r"^\d{2}\s+", "", t)
+        if t2 in INE2CODE:
+            return INE2CODE[t2]
+    return None
+
+
+def quarter_start(d):
+    d = pd.Timestamp(d)
+    return pd.Timestamp(year=d.year, month=3 * ((d.month - 1) // 3) + 1, day=1)

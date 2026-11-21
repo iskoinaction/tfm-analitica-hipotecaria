@@ -1,0 +1,313 @@
+fuente,nombre_leido,n_filas,destino_nb,verdad,ok,destino_valido
+tinsa_prov_precios_trim.csv,'Álava',100,Álava,Álava,True,True
+tinsa_prov_precios_trim.csv,'Albacete',100,Albacete,Albacete,True,True
+tinsa_prov_precios_trim.csv,'Alicante',100,Alicante,Alicante,True,True
+tinsa_prov_precios_trim.csv,'Almería',100,Almería,Almería,True,True
+tinsa_prov_precios_trim.csv,'Ávila',100,Ávila,Ávila,True,True
+tinsa_prov_precios_trim.csv,'Badajoz',100,Badajoz,Badajoz,True,True
+tinsa_prov_precios_trim.csv,'Barcelona',100,Barcelona,Barcelona,True,True
+tinsa_prov_precios_trim.csv,'Burgos',100,Burgos,Burgos,True,True
+tinsa_prov_precios_trim.csv,'Cáceres',100,Cáceres,Cáceres,True,True
+tinsa_prov_precios_trim.csv,'Cádiz',100,Cádiz,Cádiz,True,True
+tinsa_prov_precios_trim.csv,'Cantabria',100,Cantabria,Cantabria,True,True
+tinsa_prov_precios_trim.csv,'Castellón',100,Castellón,Castellón,True,True
+tinsa_prov_precios_trim.csv,'Ceuta',100,Ceuta,Ceuta,True,True
+tinsa_prov_precios_trim.csv,'Ciudad Real',100,Ciudad Real,Ciudad Real,True,True
+tinsa_prov_precios_trim.csv,'Comunidad Foral de Navarra',100,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True,True
+tinsa_prov_precios_trim.csv,'Córdoba',100,Córdoba,Córdoba,True,True
+tinsa_prov_precios_trim.csv,'A Coruña',100,A Coruña,A Coruña,True,True
+tinsa_prov_precios_trim.csv,'Cuenca',100,Cuenca,Cuenca,True,True
+tinsa_prov_precios_trim.csv,'Girona',100,Girona,Girona,True,True
+tinsa_prov_precios_trim.csv,'Granada',100,Granada,Granada,True,True
+tinsa_prov_precios_trim.csv,'Guadalajara',100,Guadalajara,Guadalajara,True,True
+tinsa_prov_precios_trim.csv,'Guipúzcoa',100,Guipúzcoa,Guipúzcoa,True,True
+tinsa_prov_precios_trim.csv,'Huelva',100,Huelva,Huelva,True,True
+tinsa_prov_precios_trim.csv,'Huesca',100,Huesca,Huesca,True,True
+tinsa_prov_precios_trim.csv,'Islas Baleares',100,Islas Baleares,Islas Baleares,True,True
+tinsa_prov_precios_trim.csv,'Jaén',100,Jaén,Jaén,True,True
+tinsa_prov_precios_trim.csv,'La Rioja',100,La Rioja,La Rioja,True,True
+tinsa_prov_precios_trim.csv,'Las Palmas',100,Las Palmas,Las Palmas,True,True
+tinsa_prov_precios_trim.csv,'León',100,León,León,True,True
+tinsa_prov_precios_trim.csv,'Lleida',100,Lleida,Lleida,True,True
+tinsa_prov_precios_trim.csv,'Lugo',100,Lugo,Lugo,True,True
+tinsa_prov_precios_trim.csv,'Málaga',100,Málaga,Málaga,True,True
+tinsa_prov_precios_trim.csv,'Melilla',100,Melilla,Melilla,True,True
+tinsa_prov_precios_trim.csv,'Ourense',100,Ourense,Ourense,True,True
+tinsa_prov_precios_trim.csv,'Palencia',100,Palencia,Palencia,True,True
+tinsa_prov_precios_trim.csv,'Pontevedra',100,Pontevedra,Pontevedra,True,True
+tinsa_prov_precios_trim.csv,'Principado de Asturias',100,Principado de Asturias,Principado de Asturias,True,True
+tinsa_prov_precios_trim.csv,'Comunidad de Madrid',100,Comunidad de Madrid,Comunidad de Madrid,True,True
+tinsa_prov_precios_trim.csv,'Región de Murcia',100,Región de Murcia,Región de Murcia,True,True
+tinsa_prov_precios_trim.csv,'Salamanca',100,Salamanca,Salamanca,True,True
+tinsa_prov_precios_trim.csv,'Santa Cruz de Tenerife',100,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True,True
+tinsa_prov_precios_trim.csv,'Segovia',100,Segovia,Segovia,True,True
+tinsa_prov_precios_trim.csv,'Sevilla',100,Sevilla,Sevilla,True,True
+tinsa_prov_precios_trim.csv,'Soria',100,Soria,Soria,True,True
+tinsa_prov_precios_trim.csv,'Tarragona',100,Tarragona,Tarragona,True,True
+tinsa_prov_precios_trim.csv,'Teruel',100,Teruel,Teruel,True,True
+tinsa_prov_precios_trim.csv,'Toledo',100,Toledo,Toledo,True,True
+tinsa_prov_precios_trim.csv,'Valencia',100,Valencia,Valencia,True,True
+tinsa_prov_precios_trim.csv,'Valladolid',100,Valladolid,Valladolid,True,True
+tinsa_prov_precios_trim.csv,'Vizcaya',100,Vizcaya,Vizcaya,True,True
+tinsa_prov_precios_trim.csv,'Zamora',100,Zamora,Zamora,True,True
+tinsa_prov_precios_trim.csv,'Zaragoza',100,Zaragoza,Zaragoza,True,True
+hipotecas_por_prov_men.csv,'Albacete',252,Albacete,Albacete,True,True
+hipotecas_por_prov_men.csv,'Alicante/Alacant',252,Alicante,Alicante,True,True
+hipotecas_por_prov_men.csv,'AlmerÃ\xada',252,Almería,Almería,True,True
+hipotecas_por_prov_men.csv,'Araba/Ã\x81lava',252,Álava,Álava,True,True
+hipotecas_por_prov_men.csv,'Asturias',252,Principado de Asturias,Principado de Asturias,True,True
+hipotecas_por_prov_men.csv,'Ã\x81vila',252,Ávila,Ávila,True,True
+hipotecas_por_prov_men.csv,'Badajoz',252,Badajoz,Badajoz,True,True
+hipotecas_por_prov_men.csv,"'Balears, Illes'",252,Islas Baleares,Islas Baleares,True,True
+hipotecas_por_prov_men.csv,'Barcelona',252,Barcelona,Barcelona,True,True
+hipotecas_por_prov_men.csv,'Bizkaia',252,Vizcaya,Vizcaya,True,True
+hipotecas_por_prov_men.csv,'Burgos',252,Burgos,Burgos,True,True
+hipotecas_por_prov_men.csv,'CÃ¡ceres',252,Cáceres,Cáceres,True,True
+hipotecas_por_prov_men.csv,'CÃ¡diz',252,Cádiz,Cádiz,True,True
+hipotecas_por_prov_men.csv,'Cantabria',252,Cantabria,Cantabria,True,True
+hipotecas_por_prov_men.csv,'CastellÃ³n/CastellÃ³',252,Castellón,Castellón,True,True
+hipotecas_por_prov_men.csv,'Ciudad Real',252,Ciudad Real,Ciudad Real,True,True
+hipotecas_por_prov_men.csv,'CÃ³rdoba',252,Córdoba,Córdoba,True,True
+hipotecas_por_prov_men.csv,"'CoruÃ±a, A'",252,A Coruña,A Coruña,True,True
+hipotecas_por_prov_men.csv,'Cuenca',252,Cuenca,Cuenca,True,True
+hipotecas_por_prov_men.csv,'Gipuzkoa',252,Guipúzcoa,Guipúzcoa,True,True
+hipotecas_por_prov_men.csv,'Girona',252,Girona,Girona,True,True
+hipotecas_por_prov_men.csv,'Granada',252,Granada,Granada,True,True
+hipotecas_por_prov_men.csv,'Guadalajara',252,Guadalajara,Guadalajara,True,True
+hipotecas_por_prov_men.csv,'Huelva',252,Huelva,Huelva,True,True
+hipotecas_por_prov_men.csv,'Huesca',252,Huesca,Huesca,True,True
+hipotecas_por_prov_men.csv,'JaÃ©n',252,Jaén,Jaén,True,True
+hipotecas_por_prov_men.csv,'LeÃ³n',252,León,León,True,True
+hipotecas_por_prov_men.csv,'Lleida',252,Lleida,Lleida,True,True
+hipotecas_por_prov_men.csv,'Lugo',252,Lugo,Lugo,True,True
+hipotecas_por_prov_men.csv,'Madrid',252,Comunidad de Madrid,Comunidad de Madrid,True,True
+hipotecas_por_prov_men.csv,'MÃ¡laga',252,Málaga,Málaga,True,True
+hipotecas_por_prov_men.csv,'Murcia',252,Región de Murcia,Región de Murcia,True,True
+hipotecas_por_prov_men.csv,'Navarra',252,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True,True
+hipotecas_por_prov_men.csv,'Ourense',252,Ourense,Ourense,True,True
+hipotecas_por_prov_men.csv,'Palencia',252,Palencia,Palencia,True,True
+hipotecas_por_prov_men.csv,"'Palmas, Las'",252,Las Palmas,Las Palmas,True,True
+hipotecas_por_prov_men.csv,'Pontevedra',252,Pontevedra,Pontevedra,True,True
+hipotecas_por_prov_men.csv,"'Rioja, La'",252,La Rioja,La Rioja,True,True
+hipotecas_por_prov_men.csv,'Salamanca',252,Salamanca,Salamanca,True,True
+hipotecas_por_prov_men.csv,'Santa Cruz de Tenerife',252,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True,True
+hipotecas_por_prov_men.csv,'Segovia',252,Segovia,Segovia,True,True
+hipotecas_por_prov_men.csv,'Sevilla',252,Sevilla,Sevilla,True,True
+hipotecas_por_prov_men.csv,'Soria',252,Soria,Soria,True,True
+hipotecas_por_prov_men.csv,'Tarragona',252,Tarragona,Tarragona,True,True
+hipotecas_por_prov_men.csv,'Teruel',252,Teruel,Teruel,True,True
+hipotecas_por_prov_men.csv,'Toledo',252,Toledo,Toledo,True,True
+hipotecas_por_prov_men.csv,'Valencia/ValÃ¨ncia',252,Valencia,Valencia,True,True
+hipotecas_por_prov_men.csv,'Valladolid',252,Valladolid,Valladolid,True,True
+hipotecas_por_prov_men.csv,'Zamora',252,Zamora,Zamora,True,True
+hipotecas_por_prov_men.csv,'Zaragoza',252,Zaragoza,Zaragoza,True,True
+hipotecas_por_prov_men.csv,'Ceuta',252,Ceuta,Ceuta,True,True
+hipotecas_por_prov_men.csv,'Melilla',252,Melilla,Melilla,True,True
+poblacion_por_prov_combinado.csv,'Albacete',21,Albacete,Albacete,True,True
+poblacion_por_prov_combinado.csv,'Alicante/Alacant',21,Alicante,Alicante,True,True
+poblacion_por_prov_combinado.csv,'AlmerÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â\x83Ã\x83Â\x83Ã\x8,21,Almería,Almería,True,True
+poblacion_por_prov_combinado.csv,'Araba/Ã\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â\x83Ã\x83Â\x83Ã\x,21,Álava,Álava,True,True
+poblacion_por_prov_combinado.csv,'Asturias',21,Principado de Asturias,Principado de Asturias,True,True
+poblacion_por_prov_combinado.csv,'Ã\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â\x83Ã\x83Â\x83Ã\x82Â\x8,21,Ávila,Ávila,True,True
+poblacion_por_prov_combinado.csv,'Badajoz',21,Badajoz,Badajoz,True,True
+poblacion_por_prov_combinado.csv,"'Balears, Illes'",21,Islas Baleares,Islas Baleares,True,True
+poblacion_por_prov_combinado.csv,'Barcelona',21,Barcelona,Barcelona,True,True
+poblacion_por_prov_combinado.csv,'Bizkaia',21,Vizcaya,Vizcaya,True,True
+poblacion_por_prov_combinado.csv,'Burgos',21,Burgos,Burgos,True,True
+poblacion_por_prov_combinado.csv,'CÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â\x83Ã\x83Â\x83Ã\x82Â\x,21,Cáceres,Cáceres,True,True
+poblacion_por_prov_combinado.csv,'CÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â\x83Ã\x83Â\x83Ã\x82Â\x,21,Cádiz,Cádiz,True,True
+poblacion_por_prov_combinado.csv,'Cantabria',21,Cantabria,Cantabria,True,True
+poblacion_por_prov_combinado.csv,'CastellÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â\x83Ã\x83Â\x83Ã\,21,Castellón,Castellón,True,True
+poblacion_por_prov_combinado.csv,'Ciudad Real',21,Ciudad Real,Ciudad Real,True,True
+poblacion_por_prov_combinado.csv,'CÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â\x83Ã\x83Â\x83Ã\x82Â\x,21,Córdoba,Córdoba,True,True
+poblacion_por_prov_combinado.csv,'CoruÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â\x83Ã\x83Â\x83Ã\x82,21,A Coruña,A Coruña,True,True
+poblacion_por_prov_combinado.csv,'Cuenca',21,Cuenca,Cuenca,True,True
+poblacion_por_prov_combinado.csv,'Gipuzkoa',21,Guipúzcoa,Guipúzcoa,True,True
+poblacion_por_prov_combinado.csv,'Girona',21,Girona,Girona,True,True
+poblacion_por_prov_combinado.csv,'Granada',21,Granada,Granada,True,True
+poblacion_por_prov_combinado.csv,'Guadalajara',21,Guadalajara,Guadalajara,True,True
+poblacion_por_prov_combinado.csv,'Huelva',21,Huelva,Huelva,True,True
+poblacion_por_prov_combinado.csv,'Huesca',21,Huesca,Huesca,True,True
+poblacion_por_prov_combinado.csv,'JaÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â\x83Ã\x83Â\x83Ã\x82Â\,21,Jaén,Jaén,True,True
+poblacion_por_prov_combinado.csv,'LeÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â\x83Ã\x83Â\x83Ã\x82Â\,21,León,León,True,True
+poblacion_por_prov_combinado.csv,'Lleida',21,Lleida,Lleida,True,True
+poblacion_por_prov_combinado.csv,'Lugo',21,Lugo,Lugo,True,True
+poblacion_por_prov_combinado.csv,'Madrid',21,Comunidad de Madrid,Comunidad de Madrid,True,True
+poblacion_por_prov_combinado.csv,'MÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â\x83Ã\x83Â\x83Ã\x82Â\x,21,Málaga,Málaga,True,True
+poblacion_por_prov_combinado.csv,'Murcia',21,Región de Murcia,Región de Murcia,True,True
+poblacion_por_prov_combinado.csv,'Navarra',21,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True,True
+poblacion_por_prov_combinado.csv,'Ourense',21,Ourense,Ourense,True,True
+poblacion_por_prov_combinado.csv,'Palencia',21,Palencia,Palencia,True,True
+poblacion_por_prov_combinado.csv,"'Palmas, Las'",21,Las Palmas,Las Palmas,True,True
+poblacion_por_prov_combinado.csv,'Pontevedra',21,Pontevedra,Pontevedra,True,True
+poblacion_por_prov_combinado.csv,"'Rioja, La'",21,La Rioja,La Rioja,True,True
+poblacion_por_prov_combinado.csv,'Salamanca',21,Salamanca,Salamanca,True,True
+poblacion_por_prov_combinado.csv,'Santa Cruz de Tenerife',21,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True,True
+poblacion_por_prov_combinado.csv,'Segovia',21,Segovia,Segovia,True,True
+poblacion_por_prov_combinado.csv,'Sevilla',21,Sevilla,Sevilla,True,True
+poblacion_por_prov_combinado.csv,'Soria',21,Soria,Soria,True,True
+poblacion_por_prov_combinado.csv,'Tarragona',21,Tarragona,Tarragona,True,True
+poblacion_por_prov_combinado.csv,'Teruel',21,Teruel,Teruel,True,True
+poblacion_por_prov_combinado.csv,'Toledo',21,Toledo,Toledo,True,True
+poblacion_por_prov_combinado.csv,'Valencia/ValÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â\x83Ã\x83Â\,21,Valencia,Valencia,True,True
+poblacion_por_prov_combinado.csv,'Valladolid',21,Valladolid,Valladolid,True,True
+poblacion_por_prov_combinado.csv,'Zamora',21,Zamora,Zamora,True,True
+poblacion_por_prov_combinado.csv,'Zaragoza',21,Zaragoza,Zaragoza,True,True
+poblacion_por_prov_combinado.csv,'Ceuta',21,Ceuta,Ceuta,True,True
+poblacion_por_prov_combinado.csv,'Melilla',21,Melilla,Melilla,True,True
+edad_media_provincias_an.csv,'Albacete',21,Albacete,Albacete,True,True
+edad_media_provincias_an.csv,'Alicante/Alacant',21,Alicante,Alicante,True,True
+edad_media_provincias_an.csv,'AlmerÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â\xada',21,Almería,Almería,True,True
+edad_media_provincias_an.csv,'Araba/Ã\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â\x81lava',21,Álava,Álava,True,True
+edad_media_provincias_an.csv,'Asturias',21,Principado de Asturias,Principado de Asturias,True,True
+edad_media_provincias_an.csv,'Ã\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â\x81vila',21,Ávila,Ávila,True,True
+edad_media_provincias_an.csv,'Badajoz',21,Badajoz,Badajoz,True,True
+edad_media_provincias_an.csv,"'Balears, Illes'",21,Islas Baleares,Islas Baleares,True,True
+edad_media_provincias_an.csv,'Barcelona',21,Barcelona,Barcelona,True,True
+edad_media_provincias_an.csv,'Bizkaia',21,Vizcaya,Vizcaya,True,True
+edad_media_provincias_an.csv,'Burgos',21,Burgos,Burgos,True,True
+edad_media_provincias_an.csv,'CÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â¡ceres',21,Cáceres,Cáceres,True,True
+edad_media_provincias_an.csv,'CÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â¡diz',21,Cádiz,Cádiz,True,True
+edad_media_provincias_an.csv,'Cantabria',21,Cantabria,Cantabria,True,True
+edad_media_provincias_an.csv,'CastellÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â³n/CastellÃ\x83Â,21,Castellón,Castellón,True,True
+edad_media_provincias_an.csv,'Ciudad Real',21,Ciudad Real,Ciudad Real,True,True
+edad_media_provincias_an.csv,'CÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â³rdoba',21,Córdoba,Córdoba,True,True
+edad_media_provincias_an.csv,"'CoruÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â±a, A'",21,A Coruña,A Coruña,True,True
+edad_media_provincias_an.csv,'Cuenca',21,Cuenca,Cuenca,True,True
+edad_media_provincias_an.csv,'Gipuzkoa',21,Guipúzcoa,Guipúzcoa,True,True
+edad_media_provincias_an.csv,'Girona',21,Girona,Girona,True,True
+edad_media_provincias_an.csv,'Granada',21,Granada,Granada,True,True
+edad_media_provincias_an.csv,'Guadalajara',21,Guadalajara,Guadalajara,True,True
+edad_media_provincias_an.csv,'Huelva',21,Huelva,Huelva,True,True
+edad_media_provincias_an.csv,'Huesca',21,Huesca,Huesca,True,True
+edad_media_provincias_an.csv,'JaÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â©n',21,Jaén,Jaén,True,True
+edad_media_provincias_an.csv,'LeÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â³n',21,León,León,True,True
+edad_media_provincias_an.csv,'Lleida',21,Lleida,Lleida,True,True
+edad_media_provincias_an.csv,'Lugo',21,Lugo,Lugo,True,True
+edad_media_provincias_an.csv,'Madrid',21,Comunidad de Madrid,Comunidad de Madrid,True,True
+edad_media_provincias_an.csv,'MÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â¡laga',21,Málaga,Málaga,True,True
+edad_media_provincias_an.csv,'Murcia',21,Región de Murcia,Región de Murcia,True,True
+edad_media_provincias_an.csv,'Navarra',21,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True,True
+edad_media_provincias_an.csv,'Ourense',21,Ourense,Ourense,True,True
+edad_media_provincias_an.csv,'Palencia',21,Palencia,Palencia,True,True
+edad_media_provincias_an.csv,"'Palmas, Las'",21,Las Palmas,Las Palmas,True,True
+edad_media_provincias_an.csv,'Pontevedra',21,Pontevedra,Pontevedra,True,True
+edad_media_provincias_an.csv,"'Rioja, La'",21,La Rioja,La Rioja,True,True
+edad_media_provincias_an.csv,'Salamanca',21,Salamanca,Salamanca,True,True
+edad_media_provincias_an.csv,'Santa Cruz de Tenerife',21,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True,True
+edad_media_provincias_an.csv,'Segovia',21,Segovia,Segovia,True,True
+edad_media_provincias_an.csv,'Sevilla',21,Sevilla,Sevilla,True,True
+edad_media_provincias_an.csv,'Soria',21,Soria,Soria,True,True
+edad_media_provincias_an.csv,'Tarragona',21,Tarragona,Tarragona,True,True
+edad_media_provincias_an.csv,'Teruel',21,Teruel,Teruel,True,True
+edad_media_provincias_an.csv,'Toledo',21,Toledo,Toledo,True,True
+edad_media_provincias_an.csv,'Valencia/ValÃ\x83Â\x83Ã\x82Â\x83Ã\x83Â\x82Ã\x82Â¨ncia',21,Valencia,Valencia,True,True
+edad_media_provincias_an.csv,'Valladolid',21,Valladolid,Valladolid,True,True
+edad_media_provincias_an.csv,'Zamora',21,Zamora,Zamora,True,True
+edad_media_provincias_an.csv,'Zaragoza',21,Zaragoza,Zaragoza,True,True
+edad_media_provincias_an.csv,'Ceuta',21,Ceuta,Ceuta,True,True
+edad_media_provincias_an.csv,'Melilla',21,Melilla,Melilla,True,True
+epa_prov.csv,'02 Albacete',84,Albacete,Albacete,True,True
+epa_prov.csv,'03 Alicante/Alacant',84,Alicante,Alicante,True,True
+epa_prov.csv,'04 Almería',84,Almería,Almería,True,True
+epa_prov.csv,'01 Araba/Álava',84,Álava,Álava,True,True
+epa_prov.csv,'33 Asturias',84,Principado de Asturias,Principado de Asturias,True,True
+epa_prov.csv,'05 Ávila',84,Ávila,Ávila,True,True
+epa_prov.csv,'06 Badajoz',84,Badajoz,Badajoz,True,True
+epa_prov.csv,"'07 Balears, Illes'",84,Islas Baleares,Islas Baleares,True,True
+epa_prov.csv,'08 Barcelona',84,Barcelona,Barcelona,True,True
+epa_prov.csv,'48 Bizkaia',84,Vizcaya,Vizcaya,True,True
+epa_prov.csv,'09 Burgos',84,Burgos,Burgos,True,True
+epa_prov.csv,'10 Cáceres',84,Cáceres,Cáceres,True,True
+epa_prov.csv,'11 Cádiz',84,Cádiz,Cádiz,True,True
+epa_prov.csv,'39 Cantabria',84,Cantabria,Cantabria,True,True
+epa_prov.csv,'12 Castellón/Castelló',84,Castellón,Castellón,True,True
+epa_prov.csv,'13 Ciudad Real',84,Ciudad Real,Ciudad Real,True,True
+epa_prov.csv,'14 Córdoba',84,Córdoba,Córdoba,True,True
+epa_prov.csv,"'15 Coruña, A'",84,A Coruña,A Coruña,True,True
+epa_prov.csv,'16 Cuenca',84,Cuenca,Cuenca,True,True
+epa_prov.csv,'20 Gipuzkoa',84,Guipúzcoa,Guipúzcoa,True,True
+epa_prov.csv,'17 Girona',84,Girona,Girona,True,True
+epa_prov.csv,'18 Granada',84,Granada,Granada,True,True
+epa_prov.csv,'19 Guadalajara',84,Guadalajara,Guadalajara,True,True
+epa_prov.csv,'21 Huelva',84,Huelva,Huelva,True,True
+epa_prov.csv,'22 Huesca',84,Huesca,Huesca,True,True
+epa_prov.csv,'23 Jaén',84,Jaén,Jaén,True,True
+epa_prov.csv,'24 León',84,León,León,True,True
+epa_prov.csv,'25 Lleida',84,Lleida,Lleida,True,True
+epa_prov.csv,'27 Lugo',84,Lugo,Lugo,True,True
+epa_prov.csv,'28 Madrid',84,Comunidad de Madrid,Comunidad de Madrid,True,True
+epa_prov.csv,'29 Málaga',84,Málaga,Málaga,True,True
+epa_prov.csv,'30 Murcia',84,Región de Murcia,Región de Murcia,True,True
+epa_prov.csv,'31 Navarra',84,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True,True
+epa_prov.csv,'32 Ourense',84,Ourense,Ourense,True,True
+epa_prov.csv,'34 Palencia',84,Palencia,Palencia,True,True
+epa_prov.csv,"'35 Palmas, Las'",84,Las Palmas,Las Palmas,True,True
+epa_prov.csv,'36 Pontevedra',84,Pontevedra,Pontevedra,True,True
+epa_prov.csv,"'26 Rioja, La'",84,La Rioja,La Rioja,True,True
+epa_prov.csv,'37 Salamanca',84,Salamanca,Salamanca,True,True
+epa_prov.csv,'38 Santa Cruz de Tenerife',84,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True,True
+epa_prov.csv,'40 Segovia',84,Segovia,Segovia,True,True
+epa_prov.csv,'41 Sevilla',84,Sevilla,Sevilla,True,True
+epa_prov.csv,'42 Soria',84,Soria,Soria,True,True
+epa_prov.csv,'43 Tarragona',84,Tarragona,Tarragona,True,True
+epa_prov.csv,'44 Teruel',84,Teruel,Teruel,True,True
+epa_prov.csv,'45 Toledo',84,Toledo,Toledo,True,True
+epa_prov.csv,'46 Valencia/València',84,Valencia,Valencia,True,True
+epa_prov.csv,'47 Valladolid',84,Valladolid,Valladolid,True,True
+epa_prov.csv,'49 Zamora',84,Zamora,Zamora,True,True
+epa_prov.csv,'50 Zaragoza',84,Zaragoza,Zaragoza,True,True
+epa_prov.csv,'51 Ceuta',84,Ceuta,Ceuta,True,True
+epa_prov.csv,'52 Melilla',84,Melilla,Melilla,True,True
+pib_pc_prov_an.xlsx,'Albacete',20,Albacete,Albacete,True,True
+pib_pc_prov_an.xlsx,'Alicante/Alacant',20,Alicante,Alicante,True,True
+pib_pc_prov_an.xlsx,'Almería',20,Almería,Almería,True,True
+pib_pc_prov_an.xlsx,'Araba/Álava',20,Álava,Álava,True,True
+pib_pc_prov_an.xlsx,'Asturias',20,Principado de Asturias,Principado de Asturias,True,True
+pib_pc_prov_an.xlsx,'Badajoz',20,Badajoz,Badajoz,True,True
+pib_pc_prov_an.xlsx,"'Balears, Illes'",20,Islas Baleares,Islas Baleares,True,True
+pib_pc_prov_an.xlsx,'Barcelona',20,Barcelona,Barcelona,True,True
+pib_pc_prov_an.xlsx,'Bizkaia',20,Vizcaya,Vizcaya,True,True
+pib_pc_prov_an.xlsx,'Burgos',20,Burgos,Burgos,True,True
+pib_pc_prov_an.xlsx,'Cantabria',20,Cantabria,Cantabria,True,True
+pib_pc_prov_an.xlsx,'Castellón/Castelló',20,Castellón,Castellón,True,True
+pib_pc_prov_an.xlsx,'Ceuta',20,Ceuta,Ceuta,True,True
+pib_pc_prov_an.xlsx,'Ciudad Real',20,Ciudad Real,Ciudad Real,True,True
+pib_pc_prov_an.xlsx,"'Coruña, A'",20,A Coruña,A Coruña,True,True
+pib_pc_prov_an.xlsx,'Cuenca',20,Cuenca,Cuenca,True,True
+pib_pc_prov_an.xlsx,'Cáceres',20,Cáceres,Cáceres,True,True
+pib_pc_prov_an.xlsx,'Cádiz',20,Cádiz,Cádiz,True,True
+pib_pc_prov_an.xlsx,'Córdoba',20,Córdoba,Córdoba,True,True
+pib_pc_prov_an.xlsx,'Gipuzkoa',20,Guipúzcoa,Guipúzcoa,True,True
+pib_pc_prov_an.xlsx,'Girona',20,Girona,Girona,True,True
+pib_pc_prov_an.xlsx,'Granada',20,Granada,Granada,True,True
+pib_pc_prov_an.xlsx,'Guadalajara',20,Guadalajara,Guadalajara,True,True
+pib_pc_prov_an.xlsx,'Huelva',20,Huelva,Huelva,True,True
+pib_pc_prov_an.xlsx,'Huesca',20,Huesca,Huesca,True,True
+pib_pc_prov_an.xlsx,'Jaén',20,Jaén,Jaén,True,True
+pib_pc_prov_an.xlsx,'León',20,León,León,True,True
+pib_pc_prov_an.xlsx,'Lleida',20,Lleida,Lleida,True,True
+pib_pc_prov_an.xlsx,'Lugo',20,Lugo,Lugo,True,True
+pib_pc_prov_an.xlsx,'Madrid',20,Comunidad de Madrid,Comunidad de Madrid,True,True
+pib_pc_prov_an.xlsx,'Melilla',20,Melilla,Melilla,True,True
+pib_pc_prov_an.xlsx,'Murcia',20,Región de Murcia,Región de Murcia,True,True
+pib_pc_prov_an.xlsx,'Málaga',20,Málaga,Málaga,True,True
+pib_pc_prov_an.xlsx,'Navarra',20,Comunidad Foral de Navarra,Comunidad Foral de Navarra,True,True
+pib_pc_prov_an.xlsx,'Ourense',20,Ourense,Ourense,True,True
+pib_pc_prov_an.xlsx,'Palencia',20,Palencia,Palencia,True,True
+pib_pc_prov_an.xlsx,"'Palmas, Las'",20,Las Palmas,Las Palmas,True,True
+pib_pc_prov_an.xlsx,'Pontevedra',20,Pontevedra,Pontevedra,True,True
+pib_pc_prov_an.xlsx,"'Rioja, La'",20,La Rioja,La Rioja,True,True
+pib_pc_prov_an.xlsx,'Salamanca',20,Salamanca,Salamanca,True,True
+pib_pc_prov_an.xlsx,'Santa Cruz de Tenerife',20,Santa Cruz de Tenerife,Santa Cruz de Tenerife,True,True
+pib_pc_prov_an.xlsx,'Segovia',20,Segovia,Segovia,True,True
+pib_pc_prov_an.xlsx,'Sevilla',20,Sevilla,Sevilla,True,True
+pib_pc_prov_an.xlsx,'Soria',20,Soria,Soria,True,True
+pib_pc_prov_an.xlsx,'Tarragona',20,Tarragona,Tarragona,True,True
+pib_pc_prov_an.xlsx,'Teruel',20,Teruel,Teruel,True,True
+pib_pc_prov_an.xlsx,'Toledo',20,Toledo,Toledo,True,True
+pib_pc_prov_an.xlsx,'Valencia/València',20,Valencia,Valencia,True,True
+pib_pc_prov_an.xlsx,'Valladolid',20,Valladolid,Valladolid,True,True
+pib_pc_prov_an.xlsx,'Zamora',20,Zamora,Zamora,True,True
+pib_pc_prov_an.xlsx,'Zaragoza',20,Zaragoza,Zaragoza,True,True
+pib_pc_prov_an.xlsx,'Ávila',20,Ávila,Ávila,True,True

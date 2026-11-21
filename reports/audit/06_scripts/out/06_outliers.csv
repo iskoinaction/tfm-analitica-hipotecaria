@@ -1,0 +1,13 @@
+variable,Provincia,Trimestre,z,valor
+Precio_m2,Melilla,2006-04-01,6.5,1261.17217062208
+Hipotecas_Total,A Coruña,2006-10-01,-8.4,1301.82
+Hipotecas_Total,A Coruña,2007-01-01,9.4,7135.0
+Hipotecas_Total,Girona,2007-01-01,6.1,12216.0
+Hipotecas_Total,Cádiz,2007-10-01,-6.2,3332.9
+Hipotecas_Total,Lleida,2008-04-01,-7.4,1000.41
+Hipotecas_Total,Girona,2010-10-01,-7.0,935.26
+Hipotecas_Total,Región de Murcia,2023-10-01,-6.3,733.41
+Hipotecas_Total,Región de Murcia,2024-01-01,6.4,3566.0
+Transmisiones_Total,Badajoz,2020-04-01,-6.2,721.0
+Transmisiones_Total,Santa Cruz de Tenerife,2020-04-01,-6.8,1163.0
+Tasa_Paro,Santa Cruz de Tenerife,2008-01-01,6.1,14.22

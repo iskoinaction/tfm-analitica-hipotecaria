@@ -1,0 +1,173 @@
+{
+  "panel_rows": 4108,
+  "n_features_prov": 94,
+  "prov_train_range": [
+    "2006-04-01",
+    "2023-10-01"
+  ],
+  "prov_test_range": [
+    "2024-01-01",
+    "2025-10-01"
+  ],
+  "provincial": {
+    "RF": {
+      "MAPE_prov": 14.713124885691716,
+      "MAPE_nac_agregado": 7.525801977545143
+    },
+    "XGB": {
+      "MAPE_prov": 18.631213726043814,
+      "MAPE_nac_agregado": 15.251237768717282
+    },
+    "LGBM": {
+      "MAPE_prov": 19.80330155179272,
+      "MAPE_nac_agregado": 13.72803478021657
+    },
+    "GBM": {
+      "MAPE_prov": 19.65216469838909,
+      "MAPE_nac_agregado": 15.908200420268145
+    },
+    "ElasticNet": {
+      "MAPE_prov": 54.84417312660022,
+      "MAPE_nac_agregado": 17.238227495323365
+    },
+    "_naive_multistep_notebook": {
+      "MAPE_prov": 28.43945776686373
+    },
+    "_naive_1paso_y_t-1": {
+      "MAPE_prov": 17.910866425876765
+    },
+    "_snaive_1paso_y_t-4": {
+      "MAPE_prov": 21.977893585576926
+    }
+  },
+  "SARIMAX_nac_MAPE": 16.574278184467072,
+  "nac_rows": 74,
+  "nac_n_features": 52,
+  "nac_features": [
+    "Transmisiones_Total_lag1",
+    "Transmisiones_Total_lag4",
+    "Hipotecas_Total_lag1",
+    "Hipotecas_Total_lag4",
+    "Pob_Ext_lag1",
+    "Poblacion_lag1",
+    "Hipotecas_Total_rmean4",
+    "Transmisiones_Total_rmean4",
+    "Hipotecas_Total_yoy",
+    "Transmisiones_Total_yoy",
+    "Hipotecas_Total_diff1",
+    "Euribor",
+    "Q",
+    "Trend",
+    "Euribor_ma4",
+    "Euribor_change",
+    "Hipotecas_Total_rstd4",
+    "Precio_m2_lag1",
+    "Precio_m2_lag2",
+    "Precio_m2_lag4",
+    "Tasa_Paro_lag1",
+    "Tasa_Paro_lag4",
+    "IPC_lag1",
+    "PIB_pc_lag1",
+    "PIB_pc_lag4",
+    "Indice_Mano_Obra_lag1",
+    "Indice_Materiales_lag1",
+    "tasa_ahorro_lag1",
+    "Edad_Media_lag1",
+    "Spread_Hipotecas_lag1",
+    "Spread_Hipotecas_lag2",
+    "Precio_m2_rmean4",
+    "Tasa_Paro_rmean4",
+    "Precio_m2_yoy",
+    "PIB_pc_yoy",
+    "Precio_m2_diff1",
+    "Tasa_Paro_diff1",
+    "Accesibilidad",
+    "Hip_total_lag1_nac",
+    "Hip_total_lag2_nac",
+    "Hip_total_lag4_nac",
+    "Hip_total_rmean4_nac",
+    "Hip_yoy_nac",
+    "Hip_momentum",
+    "Hip_vs_rmean",
+    "Euribor_x_Precio_nac",
+    "Accesibilidad_nac",
+    "Hip_per_cap_nac",
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4"
+  ],
+  "nac_train_range": [
+    "2007-07-01",
+    "2023-10-01"
+  ],
+  "nac_test_range": [
+    "2024-01-01",
+    "2025-10-01"
+  ],
+  "RF_Nac_MAPE_replica": 6.818905856487191,
+  "RF_Nac_RMSE_replica": 12260.694005399226,
+  "RF_Nac_test_real": [
+    129018.17,
+    119597.03,
+    126171.35,
+    148320.63,
+    147060.43,
+    147685.07,
+    158530.12,
+    170434.56
+  ],
+  "RF_Nac_test_pred": [
+    114270.20134563673,
+    121208.31313973576,
+    121169.95616558439,
+    123946.28190062815,
+    133210.66733757072,
+    145707.88618078144,
+    152204.08331427348,
+    159137.15234161477
+  ],
+  "RF_Nac_top10_importances": {
+    "Indice_Mano_Obra_lag1": 0.1156,
+    "Hipotecas_Total_rmean4": 0.0758,
+    "Precio_m2_lag1": 0.0644,
+    "Precio_m2_rmean4": 0.0635,
+    "Trend": 0.0633,
+    "Hipotecas_Total_lag1": 0.0578,
+    "Hipotecas_Total_rstd4": 0.0578,
+    "Hip_total_rmean4_nac": 0.0498,
+    "Hip_total_lag2_nac": 0.0484,
+    "Hip_total_lag4_nac": 0.0475
+  },
+  "XGB_Nac_MAPE": 13.168857461761998,
+  "LGBM_Nac_MAPE": 7.462666771888177,
+  "ElasticNet_Nac_MAPE": 10.136375725640638,
+  "bench_same_test": {
+    "naive_y(t-1)": 7.298105780822498,
+    "seasonal_naive_y(t-4)": 14.259466643607723,
+    "media_movil_4": 10.01832287090173,
+    "naive_multipaso_desde_2023Q4": 22.7474202205214
+  },
+  "RF_Nac_seed_MAPE": {
+    "min": 4.930684477677665,
+    "p25": 6.134239517413512,
+    "median": 6.840514923729032,
+    "p75": 7.495833549273015,
+    "max": 9.899594649415665,
+    "rank_seed42_pct": 48.0
+  },
+  "variantes_leakage": {
+    "sin_Accesibilidad_contemporanea": 6.300764203154725,
+    "sin_Accesibilidad_ni_Euribor_contemporaneos": 6.228847877205547,
+    "replica_media_20_semillas": 6.94028289827704,
+    "sin_acc_media_20_semillas": 6.949044507598624,
+    "sin_acc_eur_media_20_semillas": 7.002019326448621
+  },
+  "features_nac_contemporaneas": [
+    "Euribor",
+    "Euribor_change",
+    "Accesibilidad",
+    "Euribor_x_Precio_nac"
+  ],
+  "PIB_pc_lag1_igual_PIB_mismo_anio_Q2Q4_pct": 100.0
+}
