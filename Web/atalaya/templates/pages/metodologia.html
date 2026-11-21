@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% from "partials/artifact.html" import provenance, empty_state %}
+{% block title %}Metodología{% endblock %}
+{% block content %}
+<div class="prose stack">
+  <p>Atalaya separa estrictamente tres capas, de modo que cualquier cifra de la web se pueda rastrear hasta su origen:</p>
+  <ol>
+    <li><strong>Ingesta y panel maestro</strong> (<code>src/ingestion</code>, <code>src/pipelines/build_master.py</code>): descarga de fuentes oficiales con instantánea fechada y hash, normalización a provincia (código INE de 2 dígitos) y trimestre, y validaciones de calidad.</li>
+    <li><strong>Modelos</strong> (<code>src/models</code>): econometría (VAR/VECM), proyecciones 2026-2030 y modelo de demanda. Se validan con particiones temporales (entrenamiento con datos anteriores al periodo evaluado) y escriben sus resultados en <code>artifacts/</code> con un manifiesto (fuentes, fecha de generación, versión y métricas).</li>
+    <li><strong>Aplicación</strong> (<code>Web/</code>): sólo lee artefactos. No entrena modelos ni teclea cifras; si un artefacto falta, lo indica.</li>
+  </ol>
+  <h2>Principios</h2>
+  <ul>
+    <li>Sin datos futuros en evaluaciones históricas; las métricas publicadas son de validación fuera de muestra.</li>
+    <li>Distinción explícita entre dato observado, estimación y proyección.</li>
+    <li>Asociación estadística no implica causalidad.</li>
+    <li>Fecha de referencia del dato y fecha de publicación se tratan por separado.</li>
+  </ul>
+</div>
+
+<h2>Métricas declaradas por cada artefacto</h2>
+{% for b in bundles %}
+<section class="card" aria-labelledby="m-{{ b.domain }}">
+  <h3 class="card__title" id="m-{{ b.domain }}">{{ b.label }}</h3>
+  {% if b.ok %}
+    {% set metric_views = b.views|selectattr("type", "equalto", "metrics")|list %}
+    {% if metric_views %}
+      <script type="application/json" id="met-{{ b.domain }}-data">{{ metric_views|tojson }}</script>
+      <div class="views" data-views="met-{{ b.domain }}-data"></div>
+    {% else %}
+      <p class="muted">El artefacto no declara vistas de métricas.</p>
+    {% endif %}
+    {{ provenance(b) }}
+  {% else %}
+    {{ empty_state(b) }}
+  {% endif %}
+</section>
+{% endfor %}
+{% endblock %}

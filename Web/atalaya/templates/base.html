@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="description" content="{% block description %}Analítica del mercado hipotecario español: datos observados, proyecciones y modelos econométricos. Proyecto académico.{% endblock %}">
+  <title>{% block title %}Resumen{% endblock %} · Atalaya</title>
+  <link rel="icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/atalaya.css') }}">
+  <script nonce="{{ csp_nonce() }}" src="{{ url_for('static', filename='js/theme.js') }}"></script>
+  {% block head_scripts %}
+  <script nonce="{{ csp_nonce() }}" src="{{ chartjs_url }}" integrity="{{ chartjs_sri }}" crossorigin="anonymous" defer></script>
+  {% endblock %}
+  <script nonce="{{ csp_nonce() }}" src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+  <script nonce="{{ csp_nonce() }}" src="{{ url_for('static', filename='js/views.js') }}" defer></script>
+  <script nonce="{{ csp_nonce() }}" src="{{ url_for('static', filename='js/map.js') }}" defer></script>
+  {% block scripts %}{% endblock %}
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<header class="topbar">
+  <a class="brand" href="{{ url_for('pages.index') }}">
+    <img class="brand__logo" src="{{ url_for('static', filename='img/atalaya-logo.svg') }}" alt="" width="36" height="36">
+    <span><span class="brand__name">Atalaya</span><span class="brand__tag">Analítica Hipotecaria</span></span>
+  </a>
+  <div>
+    <button type="button" class="icon-btn" data-theme-toggle aria-label="Cambiar tema claro/oscuro">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+    <button type="button" class="icon-btn" data-drawer-toggle aria-controls="sidebar" aria-expanded="false" aria-label="Abrir menú">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="app">
+  <aside class="app__sidebar" id="sidebar" aria-label="Navegación principal">
+    <a class="brand" href="{{ url_for('pages.index') }}">
+      <img class="brand__logo" src="{{ url_for('static', filename='img/atalaya-logo.svg') }}" alt="" width="36" height="36">
+      <span><span class="brand__name">Atalaya</span><span class="brand__tag">Analítica Hipotecaria</span></span>
+    </a>
+    <nav>
+      {% for group in nav %}
+        {% if group.group %}<p class="nav__group-label" id="nav-{{ loop.index }}">{{ group.group }}</p>{% endif %}
+        <ul class="nav__list" {% if group.group %}aria-labelledby="nav-{{ loop.index }}"{% endif %}>
+          {% for item in group["items"] %}
+            {% if item.requires != 'assistant' or assistant_enabled %}
+            <li><a class="nav__link" href="{{ url_for(item.endpoint) }}" {% if current_endpoint == item.endpoint %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endfor %}
+    </nav>
+    <div class="sidebar__foot">
+      <p>v{{ app_version }} · Proyecto académico (TFM).</p>
+      <p>Marca ficticia. Las simulaciones y proyecciones son orientativas y no constituyen asesoramiento financiero.</p>
+    </div>
+  </aside>
+  <div class="drawer-backdrop" data-drawer-backdrop></div>
+
+  <main class="app__main" id="main" tabindex="-1">
+    <div class="app__tools">
+      <button type="button" class="btn btn--secondary theme-toggle" data-theme-toggle aria-label="Cambiar tema claro/oscuro">Tema</button>
+    </div>
+    <div class="page-header">
+      <div>
+        <h1>{% block heading %}{{ self.title() }}{% endblock %}</h1>
+        {% block subheading %}{% endblock %}
+      </div>
+      {% block header_meta %}
+        {% if panel_info %}
+        <p class="page-header__meta">Datos observados: {{ panel_info.first_period|period }}–{{ panel_info.last_period|period }}
+          {% if panel_info.is_legacy %}<span class="badge badge--warn">Panel v1 (legado)</span>{% endif %}</p>
+        {% endif %}
+      {% endblock %}
+    </div>
+
+    {% block content %}{% endblock %}
+
+    <footer class="app-footer">
+      <span>{{ app_name }} · v{{ app_version }}</span>
+      <span>Las cifras proceden de los artefactos de los pipelines o del panel de datos. Cada vista indica su fuente y su fecha de generación.</span>
+      <a href="{{ url_for('pages.datos') }}">Datos y fuentes</a>
+    </footer>
+  </main>
+</div>
+</body>
+</html>

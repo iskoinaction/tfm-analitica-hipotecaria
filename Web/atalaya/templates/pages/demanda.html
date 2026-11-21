@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% from "partials/artifact.html" import artifact_section, provenance %}
+{% from "partials/panel.html" import panel_missing, prov_select %}
+{% block title %}Demanda hipotecaria{% endblock %}
+{% block subheading %}<p class="page-header__meta">Número de hipotecas sobre viviendas: serie observada y proyección del modelo de demanda, a escala nacional o provincial.</p>{% endblock %}
+{% block scripts %}<script nonce="{{ csp_nonce() }}" src="{{ url_for('static', filename='js/panel.js') }}" defer></script>
+<script nonce="{{ csp_nonce() }}" src="{{ url_for('static', filename='js/demanda.js') }}" defer></script>{% endblock %}
+{% block content %}
+<div class="toolbar">
+  {{ prov_select("dem-prov", provinces) }}
+</div>
+
+<h2>Serie observada</h2>
+{% if panel_info %}
+<section class="card" aria-labelledby="obs-t">
+  <div class="card__header"><h3 class="card__title" id="obs-t">Hipotecas sobre viviendas (trimestral)</h3></div>
+  <div data-panel-series="hipotecas_total" data-prov-select="dem-prov" id="obs"><div class="skeleton" aria-hidden="true"></div></div>
+</section>
+<p class="provenance">Fuente: {{ panel_info.source }}.</p>
+{% else %}
+  {{ panel_missing() }}
+{% endif %}
+
+<h2>Modelo de demanda: resultados</h2>
+<p class="callout">Las proyecciones dependen de supuestos (Euríbor, renta, precios) y muestran asociación estadística, no causalidad.</p>
+<div data-scope-root data-domain="demand" data-scope="provincial" data-prov-select="dem-prov"
+     data-available="{{ scope_keys|join(',') }}" data-national-label="España">
+  <div data-scope-national>{{ artifact_section(demand, "dem") }}</div>
+  <div data-scope-provincial hidden>
+    <p class="muted small" data-scope-status></p>
+    <div class="views" data-scope-views aria-live="polite"></div>
+  </div>
+</div>
+{% endblock %}

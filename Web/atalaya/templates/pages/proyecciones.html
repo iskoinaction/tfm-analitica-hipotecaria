@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% from "partials/artifact.html" import artifact_section %}
+{% block title %}Proyecciones 2026-2030{% endblock %}
+{% block subheading %}<p class="page-header__meta">Proyecciones de las variables macroeconómicas y del mercado. Euríbor e IPC proceden de supuestos publicados por organismos oficiales, con su fuente y fecha de edición.</p>{% endblock %}
+{% block content %}
+<p class="callout">Una proyección no es una previsión oficial: depende de los supuestos indicados en cada vista. Las series observadas se muestran con línea continua; las proyecciones, con línea discontinua y, cuando existe, su intervalo.</p>
+{{ artifact_section(forecasting, "fc") }}
+{% endblock %}

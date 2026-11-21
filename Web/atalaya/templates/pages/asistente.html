@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Asistente{% endblock %}
+{% block head_scripts %}{% endblock %}
+{% block scripts %}{% if enabled %}<script nonce="{{ csp_nonce() }}" src="{{ url_for('static', filename='js/asistente.js') }}" defer></script>{% endif %}{% endblock %}
+{% block content %}
+<p class="callout callout--warn"><strong>No es asesoramiento financiero.</strong> {{ disclaimer }}</p>
+{% if enabled %}
+<section class="card" aria-labelledby="chat-t">
+  <h2 class="card__title" id="chat-t">Pregunta sobre los resultados del proyecto</h2>
+  <p class="card__subtitle">El asistente sólo conoce los resultados agregados publicados en esta web. No escribas datos personales.</p>
+  <div class="chat-log" id="chat-log" aria-live="polite"></div>
+  <form class="chat-form" id="chat-form" data-endpoint="{{ url_for('api.assistant_ask') }}">
+    <div class="field">
+      <label class="field__label" for="chat-input">Tu pregunta</label>
+      <textarea class="input" id="chat-input" name="message" maxlength="{{ max_chars }}" required aria-describedby="chat-hint"></textarea>
+      <span class="field__hint" id="chat-hint">Máximo {{ max_chars }} caracteres. Número de consultas limitado.</span>
+    </div>
+    <button class="btn btn--primary" type="submit">Enviar</button>
+  </form>
+</section>
+{% else %}
+<div class="empty-state" role="status">
+  <p class="empty-state__title">Asistente desactivado</p>
+  <p>Es una función opcional. Para activarla en un despliegue: <code>ASSISTANT_ENABLED=1</code> y <code>GEMINI_API_KEY</code> en las variables de entorno.</p>
+</div>
+{% endif %}
+{% endblock %}

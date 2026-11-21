@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% from "partials/artifact.html" import artifact_section %}
+{% block title %}Econometría (VAR/VECM){% endblock %}
+{% block subheading %}<p class="page-header__meta">Estacionariedad, cointegración, funciones impulso-respuesta y descomposición de la varianza del error de predicción.</p>{% endblock %}
+{% block content %}
+<p class="callout">Los modelos VAR/VECM describen relaciones dinámicas entre series. Una respuesta a un impulso no demuestra causalidad estructural sin supuestos de identificación adicionales, que se documentan en cada vista.</p>
+{{ artifact_section(econometrics, "eco") }}
+{% endblock %}

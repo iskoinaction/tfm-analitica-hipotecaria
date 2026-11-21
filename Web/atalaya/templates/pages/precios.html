@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% from "partials/panel.html" import panel_missing, map_card, var_select, prov_select %}
+{% block title %}Precios y mapas{% endblock %}
+{% block subheading %}<p class="page-header__meta">Indicadores observados por provincia: precio de la vivienda, compraventas, hipotecas y contexto macroeconómico.</p>{% endblock %}
+{% block scripts %}<script nonce="{{ csp_nonce() }}" src="{{ url_for('static', filename='js/panel.js') }}" defer></script>{% endblock %}
+{% block content %}
+{% if panel_info %}
+<div class="views">
+  {{ map_card("map-p", variables, "precio_m2") }}
+
+  <section class="card" aria-labelledby="ser-t">
+    <div class="card__header">
+      <div>
+        <h2 class="card__title" id="ser-t">Evolución trimestral</h2>
+        <p class="card__subtitle">Selecciona indicador y ámbito. El agregado nacional se indica en el pie del gráfico.</p>
+      </div>
+      <div class="toolbar">
+        {{ var_select("ser-var", variables, "precio_m2") }}
+        {{ prov_select("ser-prov", provinces) }}
+      </div>
+    </div>
+    <div data-panel-series="precio_m2" data-var-select="ser-var" data-prov-select="ser-prov" id="ser">
+      <div class="skeleton" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="rk-t">
+    <div class="card__header">
+      <h2 class="card__title" id="rk-t">Ranking provincial (último trimestre disponible)</h2>
+      {{ var_select("rk-var", variables, "precio_m2", only=["precio_m2", "hipotecas_total", "transmisiones_total", "tasa_paro", "pib_pc"]) }}
+    </div>
+    <div data-panel-ranking="precio_m2" data-var-select="rk-var" data-n="15" id="rk"><div class="skeleton" aria-hidden="true"></div></div>
+  </section>
+</div>
+<p class="provenance">Fuente: {{ panel_info.source }}. Datos observados; no incluyen proyecciones.</p>
+{% else %}
+  {{ panel_missing() }}
+{% endif %}
+{% endblock %}

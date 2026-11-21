@@ -30,8 +30,9 @@ def _common(**kw):
 
 @bp.get("/")
 def index():
+    kpis = panel().kpis() if panel().available() else []
     return render_template("pages/index.html", forecasting=store().get("forecasting"),
-                           demand=store().get("demand"), **_common())
+                           demand=store().get("demand"), kpis=kpis, **_common())
 
 
 @bp.get("/mercado/precios")

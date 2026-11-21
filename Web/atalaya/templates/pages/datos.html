@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% from "partials/artifact.html" import artifact_section %}
+{% block title %}Datos y fuentes{% endblock %}
+{% block subheading %}<p class="page-header__meta">Estado de los artefactos del pipeline, calidad del panel y catálogo de fuentes con sus licencias.</p>{% endblock %}
+{% block content %}
+<h2>Estado del pipeline</h2>
+<div class="table-wrap">
+  <table class="table">
+    <caption>Artefactos que consume la web (directorio <code>artifacts/</code>)</caption>
+    <thead><tr><th scope="col">Artefacto</th><th scope="col">Estado</th><th scope="col">Generado</th><th scope="col">Datos hasta</th><th scope="col">Versión</th><th scope="col">Cómo generarlo</th></tr></thead>
+    <tbody>
+    {% for s in statuses %}
+      <tr>
+        <td>{{ s.label }}</td>
+        <td>{% if s.status == 'ok' %}<span class="badge badge--good">✓ Disponible</span>{% elif s.status == 'missing' %}<span class="badge badge--neutral">○ No generado</span>{% else %}<span class="badge badge--crit">✗ No válido</span><br><span class="small">{{ s.message }}</span>{% endif %}</td>
+        <td>{{ s.generated_at_display or '—' }}</td>
+        <td>{{ (s.data_cutoff|period) if s.data_cutoff else '—' }}</td>
+        <td>{{ s.version or '—' }}</td>
+        <td><code>{{ s.command }}</code></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h2>Panel de datos</h2>
+{% if quality %}
+<p>{{ quality.source }} {% if quality.is_legacy %}<span class="badge badge--warn">Legado: pendiente de sustituir por el panel maestro v2</span>{% endif %}</p>
+<dl class="kv card">
+  <dt>Filas</dt><dd>{{ quality.rows|num }}</dd>
+  <dt>Provincias</dt><dd>{{ quality.provinces|num }}</dd>
+  <dt>Trimestres</dt><dd>{{ quality.periods|num }} ({{ quality.first_period|period }}–{{ quality.last_period|period }})</dd>
+</dl>
+<div class="table-wrap">
+  <table class="table">
+    <caption>Valores ausentes por variable (calculado al vuelo sobre el panel)</caption>
+    <thead><tr><th scope="col">Variable</th><th scope="col" class="num">Valores ausentes</th><th scope="col" class="num">% del panel</th></tr></thead>
+    <tbody>{% for m in quality.missing %}<tr><td>{{ m.variable }}</td><td class="num">{{ m.nan|num }}</td><td class="num">{{ m.pct|num(2) }}</td></tr>{% endfor %}</tbody>
+  </table>
+</div>
+{% else %}
+<div class="empty-state" role="status"><p class="empty-state__title">Panel no disponible</p><code>python -m src.pipelines.build_master</code></div>
+{% endif %}
+
+<h2>Validaciones de calidad</h2>
+{{ artifact_section(data_quality, "dq") }}
+
+<h2>Catálogo de fuentes</h2>
+{% if sources.status == 'ok' and sources.rows %}
+<div class="table-wrap">
+  <table class="table">
+    <caption>Fuente: <code>{{ sources.path }}</code></caption>
+    <thead><tr>{% for c in sources.columns %}<th scope="col">{{ c.label }}</th>{% endfor %}</tr></thead>
+    <tbody>
+    {% for row in sources.rows %}<tr>
+      {% for cell in row %}{% set col = sources.columns[loop.index0].key %}
+        <td>{% if col == 'url' and cell and cell.startswith('http') %}<a href="{{ cell }}" rel="noopener noreferrer" target="_blank">enlace</a>{% else %}{{ cell if cell is not none else '—' }}{% endif %}</td>
+      {% endfor %}</tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="empty-state" role="status">
+  <p class="empty-state__title">{% if sources.status == 'invalid' %}Catálogo no válido{% else %}Catálogo de fuentes no generado{% endif %}</p>
+  {% if sources.message %}<p>{{ sources.message }}</p>{% endif %}
+  <p>Se espera en <code>{{ sources.path }}</code>.</p>
+</div>
+{% endif %}
+
+<h2>Recursos de terceros usados por la web</h2>
+<ul class="prose">
+  <li>Geometrías provinciales: <em>click_that_hood</em> (Code for Germany), simplificadas para el mapa (unión por código INE).</li>
+  <li>Tipografía Inter (SIL Open Font License 1.1), servida desde este sitio.</li>
+  <li>Chart.js (licencia MIT), con versión fija y verificación de integridad.</li>
+</ul>
+{% endblock %}

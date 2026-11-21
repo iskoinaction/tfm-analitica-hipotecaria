@@ -19,6 +19,27 @@ V1_HIP_RAW = ROOT / "Datos ya metidos" / "hipotecas_por_prov_men.csv"
 INE_HPT_VIV = ROOT / "reports" / "audit" / "03_economia" / "data" / "ine_HPT34618.json"   # viviendas, número
 INE_HPT_TOT = ROOT / "reports" / "audit" / "03_economia" / "data" / "ine_HPT34936.json"   # total fincas, número
 
+PANEL_MODELADO_V2 = DATA_PROCESSED / "panel_modelado.csv"
+
+# Mapeo explícito de columnas v2 (data/metadata/data_dictionary.csv). Si el esquema cambia, se cae
+# a las reglas regex de data.resolve_columns y, ante ambigüedad, se lanza error.
+V2_NATIONAL_COLMAP = {
+    "period": "period",
+    "hip_viv": "hipotecas_viviendas_num",            # INE 3200, objetivo principal v2
+    "hip_tot": "hipotecas_fincas_total_num",         # robustez
+    "precio": "precio_m2_tinsa_pond_pob",            # Tinsa IMIE, media provincial ponderada por población
+    "precio_ipv": "ipv_general_indice",              # INE IPV (desde 2007), robustez
+    "pib_nominal_sa": "pib_nominal_meur_sa",         # INE CNTR 67821, nominal, CVEC
+    "poblacion": "poblacion_ecp",                    # INE ECP (stock semestral, sin interpolar)
+    "euribor": "euribor_12m",
+    "materiales": "indice_coste_construccion",       # Eurostat STS sts_copi_q (sustituye a Indice_Materiales v1)
+}
+V2_PANEL_COLMAP = {
+    "prov_code": "prov_code", "period": "period", "hip_viv": "hipotecas_viviendas_num",
+    "hip_tot": "hipotecas_fincas_total_num", "precio": "precio_m2_tinsa", "pib_pc": "pib_pc",
+    "poblacion": "poblacion", "euribor": "euribor_12m", "materiales": "indice_coste_construccion",
+}
+
 ARTIFACTS = ROOT / "artifacts" / "econometrics"
 
 SEED = 20240521
@@ -29,7 +50,7 @@ N_JOBS = 1
 SYSTEM = ["log_materiales", "euribor", "log_pib_pc", "log_precio", "log_hipotecas"]
 TARGET = "log_hipotecas"
 LABELS = {
-    "log_materiales": "Índice de materiales (log)",
+    "log_materiales": "Índice de costes de construcción residencial (log; v1: índice de materiales)",
     "euribor": "Euríbor 12m (%)",
     "log_pib_pc": "PIB per cápita (log)",
     "log_precio": "Precio vivienda m² (log)",

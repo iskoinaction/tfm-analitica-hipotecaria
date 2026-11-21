@@ -1,0 +1,67 @@
+{# Widgets del panel observado. Los hidrata static/js/panel.js a partir de /api/v1/panel/*. #}
+
+{% macro panel_missing() -%}
+<div class="empty-state" role="status">
+  <p class="empty-state__title">Panel de datos no disponible</p>
+  <p>No se encuentra <code>data/processed/panel_trimestral.parquet</code> (ni .csv). Genéralo con:</p>
+  <code>python -m src.pipelines.build_master</code>
+</div>
+{%- endmacro %}
+
+{% macro series_card(id, title, var, subtitle=None, prov_select=None, extra_var=None, span=12) -%}
+<section class="card" data-span="{{ span }}" aria-labelledby="{{ id }}-t">
+  <div class="card__header">
+    <div>
+      <h2 class="card__title" id="{{ id }}-t">{{ title }}</h2>
+      {% if subtitle %}<p class="card__subtitle">{{ subtitle }}</p>{% endif %}
+    </div>
+  </div>
+  <div data-panel-series="{{ var }}" {% if extra_var %}data-extra-var="{{ extra_var }}"{% endif %}
+       {% if prov_select %}data-prov-select="{{ prov_select }}"{% endif %} id="{{ id }}">
+    <div class="skeleton" aria-hidden="true"></div>
+  </div>
+</section>
+{%- endmacro %}
+
+{% macro var_select(id, variables, selected, label="Indicador", only=None) -%}
+<div class="field">
+  <label class="field__label" for="{{ id }}">{{ label }}</label>
+  <select class="select" id="{{ id }}">
+    {% for v in variables %}{% if not only or v.key in only %}
+    <option value="{{ v.key }}" {% if v.key == selected %}selected{% endif %}>{{ v.label }} ({{ v.unit }})</option>
+    {% endif %}{% endfor %}
+  </select>
+</div>
+{%- endmacro %}
+
+{% macro prov_select(id, provinces, label="Ámbito", national_label="España (total nacional)") -%}
+<div class="field">
+  <label class="field__label" for="{{ id }}">{{ label }}</label>
+  <select class="select" id="{{ id }}">
+    <option value="">{{ national_label }}</option>
+    {% for p in provinces %}<option value="{{ p.code }}">{{ p.name }}</option>{% endfor %}
+  </select>
+</div>
+{%- endmacro %}
+
+{% macro map_card(id, variables, selected="precio_m2", span=12) -%}
+<section class="card" data-span="{{ span }}" aria-labelledby="{{ id }}-t">
+  <div class="card__header">
+    <div>
+      <h2 class="card__title" id="{{ id }}-t">Mapa provincial</h2>
+      <p class="card__subtitle">Último trimestre con datos de al menos la mitad de las provincias. Canarias en recuadro.</p>
+    </div>
+    {{ var_select(id ~ "-var", variables, selected, only=["precio_m2", "hipotecas_total", "transmisiones_total", "tasa_paro", "pib_pc", "ipc"]) }}
+  </div>
+  <div data-panel-map data-var-select="{{ id }}-var" data-geojson="{{ url_for('static', filename='geo/provincias.min.geojson') }}" id="{{ id }}">
+    <div class="skeleton" aria-hidden="true"></div>
+  </div>
+</section>
+{%- endmacro %}
+
+{% macro ranking_card(id, title, var, span=6) -%}
+<section class="card" data-span="{{ span }}" aria-labelledby="{{ id }}-t">
+  <div class="card__header"><h2 class="card__title" id="{{ id }}-t">{{ title }}</h2></div>
+  <div data-panel-ranking="{{ var }}" id="{{ id }}"><div class="skeleton" aria-hidden="true"></div></div>
+</section>
+{%- endmacro %}

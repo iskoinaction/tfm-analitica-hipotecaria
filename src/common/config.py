@@ -153,7 +153,7 @@ DATASETS: list[DatasetSpec] = [
     DatasetSpec(
         "eurostat_coste_construccion", "eurostat", "sts_copi_q", "Q", (),
         (VarSpec("indice_coste_construccion", {"geo": "ES", "indic_bt": "COST", "unit": "I21", "s_adj": "NSA"},
-                 "índice 2021=100", "none", (20, 250),
+                 "índice 2021=100", "none", (5, 250),
                  "Índice general de costes de construcción de edificios residenciales nuevos (STS, Eurostat), sustituye a Indice_Materiales v1."),),
         {}, "Estadísticas coyunturales (STS) de Eurostat, dato remitido por España.", "≈3 meses", "", "https://ec.europa.eu/eurostat/databrowser/view/sts_copi_q/default/table"),
     DatasetSpec(

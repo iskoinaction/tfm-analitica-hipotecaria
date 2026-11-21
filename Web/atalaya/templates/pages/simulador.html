@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% from "partials/artifact.html" import artifact_section %}
+{% block title %}Simulador hipotecario{% endblock %}
+{% block subheading %}<p class="page-header__meta">Simulación orientativa del esfuerzo de una hipoteca con fines académicos. No es una oferta, aprobación ni asesoramiento financiero.</p>{% endblock %}
+{% block scripts %}<script nonce="{{ csp_nonce() }}" src="{{ url_for('static', filename='js/simulador.js') }}" defer></script>{% endblock %}
+{% block content %}
+{% if not engine.available %}
+<div class="callout callout--warn" role="status" id="engine-status">
+  <strong>Motor de cálculo pendiente.</strong> {{ engine.reason }}
+  La simulación se habilitará automáticamente cuando el módulo <code>src.advisor</code> esté disponible.
+</div>
+{% endif %}
+
+<ol class="stepper" aria-label="Pasos de la simulación">
+  <li data-step="1" aria-current="step">Contexto</li>
+  <li data-step="2">Tu perfil</li>
+  <li data-step="3">Resultado</li>
+</ol>
+
+<form id="sim-form" class="card" novalidate data-endpoint="{{ url_for('api.simulator_simulate') }}">
+  <div class="callout callout--crit error-summary" role="alert" tabindex="-1" id="sim-errors" hidden>
+    <strong>Revisa los campos marcados.</strong>
+    <ul class="list-plain" id="sim-errors-list"></ul>
+  </div>
+
+  <fieldset>
+    <legend>1 · Contexto</legend>
+    <div class="form-grid">
+      <div class="field">
+        <label class="field__label" for="prov_code">Provincia</label>
+        <select class="select" id="prov_code" name="prov_code" required aria-describedby="prov_code-err">
+          <option value="">Selecciona una provincia</option>
+          {% for p in provinces %}<option value="{{ p.code }}">{{ p.name }} ({{ p.ccaa }})</option>{% endfor %}
+        </select>
+        <span class="field__error" id="prov_code-err"></span>
+      </div>
+      <div class="field">
+        <label class="field__label" for="anio">Año de la operación</label>
+        <select class="select" id="anio" name="anio" aria-describedby="anio-hint anio-err">
+          <option value="">Último dato disponible</option>
+          {% for y in range(2030, 2004, -1) %}<option value="{{ y }}">{{ y }}{% if y >= 2026 %} (escenario){% endif %}</option>{% endfor %}
+        </select>
+        <span class="field__hint" id="anio-hint">Los años 2026-2030 usan escenarios de proyección.</span>
+        <span class="field__error" id="anio-err"></span>
+      </div>
+      <div class="field">
+        <span class="field__label" id="escenario-l">Escenario (años futuros)</span>
+        <div class="segmented" role="radiogroup" aria-labelledby="escenario-l">
+          <input type="radio" id="esc-base" name="escenario" value="base" checked><label for="esc-base">Base</label>
+          <input type="radio" id="esc-adv" name="escenario" value="adverso"><label for="esc-adv">Adverso</label>
+          <input type="radio" id="esc-fav" name="escenario" value="favorable"><label for="esc-fav">Favorable</label>
+        </div>
+      </div>
+      <div class="field">
+        <span class="field__label" id="tipo-l">Tipo de interés</span>
+        <div class="segmented" role="radiogroup" aria-labelledby="tipo-l">
+          <input type="radio" id="ti-var" name="tipo_interes" value="variable" checked><label for="ti-var">Variable</label>
+          <input type="radio" id="ti-fijo" name="tipo_interes" value="fijo"><label for="ti-fijo">Fijo</label>
+          <input type="radio" id="ti-mixto" name="tipo_interes" value="mixto"><label for="ti-mixto">Mixto</label>
+        </div>
+      </div>
+      <div class="field">
+        <span class="field__label" id="viv-l">Vivienda</span>
+        <div class="segmented" role="radiogroup" aria-labelledby="viv-l">
+          <input type="radio" id="tv-sm" name="tipo_vivienda" value="segunda_mano" checked><label for="tv-sm">Segunda mano</label>
+          <input type="radio" id="tv-nueva" name="tipo_vivienda" value="nueva"><label for="tv-nueva">Nueva</label>
+        </div>
+      </div>
+      <div class="field">
+        <span class="field__label">Uso</span>
+        <label><input type="checkbox" id="primera_vivienda" name="primera_vivienda" checked> Vivienda habitual (primera vivienda)</label>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>2 · Tu perfil</legend>
+    <p class="field__hint">Los datos que introduces se usan sólo para este cálculo: no se guardan, no se registran y no se envían a terceros.</p>
+    <div class="form-grid">
+      {% set fields = [
+        ("precio_vivienda", "Precio de la vivienda", "€", "Opcional si indicas la superficie (se estimaría con el precio medio provincial)."),
+        ("superficie_m2", "Superficie", "m²", "Opcional si indicas el precio."),
+        ("ingresos_netos_mensuales", "Ingresos netos del hogar", "€/mes", None),
+        ("ahorro_disponible", "Ahorro disponible", "€", "Para entrada y gastos de compra."),
+        ("otras_deudas_mensuales", "Otras deudas", "€/mes", "Cuotas de otros préstamos."),
+        ("edad", "Edad del titular de más edad", "años", None),
+        ("plazo_anios", "Plazo", "años", None),
+      ] %}
+      {% for name, label, unit, hint in fields %}
+      <div class="field">
+        <label class="field__label" for="{{ name }}">{{ label }}</label>
+        <div class="input-group">
+          <input class="input" id="{{ name }}" name="{{ name }}" inputmode="decimal" autocomplete="off"
+                 aria-describedby="{% if hint %}{{ name }}-hint {% endif %}{{ name }}-err">
+          <span class="input-group__addon" aria-hidden="true">{{ unit }}</span>
+        </div>
+        {% if hint %}<span class="field__hint" id="{{ name }}-hint">{{ hint }}</span>{% endif %}
+        <span class="field__error" id="{{ name }}-err"></span>
+      </div>
+      {% endfor %}
+    </div>
+  </fieldset>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn--primary" id="sim-submit" {% if not engine.available %}disabled aria-describedby="engine-status"{% endif %}>Calcular</button>
+    <button type="reset" class="btn btn--secondary">Limpiar</button>
+  </div>
+</form>
+
+<section class="card" id="sim-result" aria-live="polite" aria-labelledby="sim-result-t" hidden tabindex="-1">
+  <h2 class="card__title" id="sim-result-t">3 · Resultado</h2>
+  <div id="sim-result-body"></div>
+  <p class="callout callout--warn">Simulación orientativa con fines académicos. No constituye oferta vinculante, aprobación de financiación ni asesoramiento financiero. Consulta la Ficha de Información Precontractual (FIPRE) de cada entidad.</p>
+</section>
+
+<h2>Parámetros y vigencias del asesor</h2>
+{{ artifact_section(advisor, "adv") }}
+{% endblock %}

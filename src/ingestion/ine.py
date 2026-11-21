@@ -13,7 +13,7 @@ from concurrent.futures import ThreadPoolExecutor
 import pandas as pd
 
 from src.common import config, http, io
-from src.common.geography import ccaa_code, province_code
+from src.common.geography import CCAA, ccaa_code, province_code, provinces_of_ccaa
 
 from .base import Connector, FetchResult, log, period_label
 
@@ -29,7 +29,7 @@ def geo_of(series: dict, geo_vars: tuple) -> tuple[str, str] | None:
     """(geo_level, geo_code) a partir de los metadatos; None si la serie no es de un ámbito aceptado."""
     for m in series.get("MetaData", []):
         var = m["T3_Variable"].strip()
-        if var not in geo_vars:
+        if var not in geo_vars and var not in GEO_NATIONAL:
             continue
         if var == "Provincias":
             code = (m.get("Codigo") or "").strip()
@@ -130,5 +130,12 @@ class INEConnector(Connector):
         df = pd.DataFrame(rows)
         if df.empty:
             raise ValueError(f"{spec.key}: parse sin filas")
+        # CCAA uniprovinciales: algunas tablas (p.ej. CRE) solo las publican como CCAA. Si la tabla tiene datos
+        # provinciales, se añade la fila provincial equivalente cuando falta (misma cifra, misma unidad territorial).
+        if (df["geo_level"] == "provincia").any() and (df["geo_level"] == "ccaa").any():
+            uni = {c: provinces_of_ccaa(c)[0] for c in CCAA if len(provinces_of_ccaa(c)) == 1}
+            extra = df[(df["geo_level"] == "ccaa") & df["geo_code"].isin(list(uni))].copy()
+            extra["geo_level"], extra["geo_code"] = "provincia", extra["geo_code"].map(uni)
+            df = pd.concat([df, extra], ignore_index=True)
         # Las CCAA uniprovinciales pueden aparecer dos veces (como CCAA y como provincia): se conserva una.
         return df.drop_duplicates(["variable", "geo_level", "geo_code", "ref_date"])

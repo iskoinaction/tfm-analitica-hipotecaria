@@ -1,0 +1,34 @@
+{# Macros para mostrar artefactos: procedencia, estado vacío honesto y vistas declarativas. #}
+
+{% macro provenance(bundle) -%}
+{% set m = bundle.meta() %}
+<p class="provenance">
+  <span class="provenance__item">Fuente:
+    {% for s in m.sources %}{% if s.url %}<a href="{{ s.url }}" rel="noopener noreferrer" target="_blank">{{ s.name }}</a>{% else %}{{ s.name }}{% endif %}{% if s.series_id %} ({{ s.series_id }}){% endif %}{% if s.published %}, publicado {{ s.published }}{% endif %}{% if not loop.last %}; {% endif %}{% endfor %}
+  </span>
+  <span class="provenance__item">Generado: {{ m.generated_at_display }}</span>
+  {% if m.data_cutoff %}<span class="provenance__item">Datos hasta: {{ m.data_cutoff|period }}</span>{% endif %}
+  {% if m.version %}<span class="provenance__item">Versión {{ m.version }}</span>{% endif %}
+</p>
+{%- endmacro %}
+
+{% macro empty_state(bundle) -%}
+{% set m = bundle.meta() %}
+<div class="empty-state" role="status">
+  <p class="empty-state__title">{% if m.status == 'missing' %}Artefacto no generado{% else %}Artefacto no válido{% endif %}: {{ m.label }}</p>
+  {% if m.status == 'invalid' %}<p class="view-invalid">{{ m.message }}</p>{% endif %}
+  <p>Esta vista no muestra cifras hasta que el pipeline genere <code>artifacts/{{ m.domain }}/manifest.json</code>. Ejecuta:</p>
+  <code>{{ m.command }}</code>
+</div>
+{%- endmacro %}
+
+{% macro artifact_section(bundle, id, span_charts=False) -%}
+{% if bundle.ok %}
+  {{ provenance(bundle) }}
+  {% if bundle.meta().notes %}<p class="callout">{{ bundle.meta().notes }}</p>{% endif %}
+  <script type="application/json" id="{{ id }}-data">{{ bundle.views|tojson }}</script>
+  <div class="views" data-views="{{ id }}-data" {% if span_charts %}data-span-charts="6"{% endif %} aria-live="polite"></div>
+{% else %}
+  {{ empty_state(bundle) }}
+{% endif %}
+{%- endmacro %}

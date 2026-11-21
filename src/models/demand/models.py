@@ -40,7 +40,9 @@ def ml_factories() -> dict:
 
 
 class _FeatureCache:
-    def __init__(self, f: pd.DataFrame):
+    def __init__(self, f: pd.DataFrame, intercept: bool = False, cap_h: int | None = 4):
+        self.intercept = intercept
+        self.cap_h = cap_h  # para h > cap_h se reutilizan las elasticidades estimadas a cap_h (persistencia + escenario)
         self.f = f
         self.idx = list(f.index)
         self.ly = np.log(f["y"].values)
@@ -81,7 +83,9 @@ class ConditionalOLS(ContextForecaster):
 
     cols = ["d_eur", "d_paro", "gap_ma4", "q2", "q3", "q4"]
 
-    def __init__(self, f: pd.DataFrame):
+    def __init__(self, f: pd.DataFrame, intercept: bool = False, cap_h: int | None = 4):
+        self.intercept = intercept
+        self.cap_h = cap_h  # para h > cap_h se reutilizan las elasticidades estimadas a cap_h (persistencia + escenario)
         self.f = f
         self.idx = list(f.index)
         self.ly = np.log(f["y"].values)
@@ -89,15 +93,20 @@ class ConditionalOLS(ContextForecaster):
         self.paro = f["paro_ma4"].values
         self.y = f["y"].values
 
-    def _row(self, j, h, eur_t, paro_t, period_t):
+    def _row(self, j, h, eur_t, paro_t, period_t, eur_j=None, paro_j=None):
         if j < 4:
             return None
-        r = {"d_eur": eur_t - self.eur[j], "d_paro": paro_t - self.paro[j],
+        eur_j = self.eur[j] if eur_j is None else eur_j
+        paro_j = self.paro[j] if paro_j is None else paro_j
+        r = {"d_eur": eur_t - eur_j, "d_paro": paro_t - paro_j,
              "gap_ma4": self.ly[j] - np.log(np.mean(self.y[j - 3:j + 1]))}
-        r = add_target_quarter(r, period_t)
+        for k in (2, 3, 4):  # dummies centradas: sin constante no imponen deriva
+            r[f"q{k}"] = (1.0 if period_t.quarter == k else 0.0) - 0.25
         return r if np.all(np.isfinite(list(r.values()))) else None
 
     def fit_h(self, pos, h):
+        if self.cap_h and h > self.cap_h:
+            h = self.cap_h
         X, t = [], []
         for j in range(0, pos - h + 1):
             r = self._row(j, h, self.eur[j + h], self.paro[j + h], self.idx[j + h])
@@ -106,7 +115,9 @@ class ConditionalOLS(ContextForecaster):
                 t.append(self.ly[j + h] - self.ly[j])
         if len(X) < 20:
             return None
-        X = np.column_stack([np.ones(len(X)), np.asarray(X)])
+        X = np.asarray(X)
+        if self.intercept:
+            X = np.column_stack([np.ones(len(X)), X])
         beta, *_ = np.linalg.lstsq(X, np.asarray(t), rcond=None)
         return beta
 
@@ -119,22 +130,24 @@ class ConditionalOLS(ContextForecaster):
             r = self._row(pos, h, self.eur[pos + h], self.paro[pos + h], self.idx[pos + h])
             if beta is None or r is None:
                 continue
-            x = np.r_[1.0, [r[c] for c in self.cols]]
+            x = np.r_[[1.0] if self.intercept else [], [r[c] for c in self.cols]]
             out[h] = float(np.exp(self.ly[pos] + x @ beta))
         return out
 
-    def forecast_scenario(self, pos, horizons, eur_path: dict, paro_ma4_path: dict, periods: dict):
-        """Producción: exógenas de escenario. eur_path/paro_ma4_path/periods indexados por h."""
+    def forecast_scenario(self, pos, horizons, eur_path: dict, paro_ma4_path: dict, periods: dict,
+                          eur_origin: float, paro_ma4_origin: float):
+        """Producción: exógenas de escenario (indexadas por h). El ajuste usa solo filas con exógenas OBSERVADAS
+        (las del frame original); el origen puede tener exógenas empalmadas con el escenario (eur/paro_origin)."""
         out, coefs = {}, {}
         for h in horizons:
             beta = self.fit_h(pos + 0, h) if pos - h + 1 > 0 else None
             # en producción se entrena con TODA la historia disponible (objetivos <= pos)
             if beta is None:
                 continue
-            r = self._row(pos, h, eur_path[h], paro_ma4_path[h], periods[h])
+            r = self._row(pos, h, eur_path[h], paro_ma4_path[h], periods[h], eur_origin, paro_ma4_origin)
             if r is None:
                 continue
-            x = np.r_[1.0, [r[c] for c in self.cols]]
+            x = np.r_[[1.0] if self.intercept else [], [r[c] for c in self.cols]]
             out[h] = float(np.exp(self.ly[pos] + x @ beta))
-            coefs[h] = dict(zip(["const", *self.cols], map(float, beta)))
+            coefs[h] = dict(zip((["const"] if self.intercept else []) + self.cols, map(float, beta)))
         return out, coefs

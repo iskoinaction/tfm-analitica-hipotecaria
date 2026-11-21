@@ -38,7 +38,7 @@ from .vecm import (VECMfit, beta_inference, diagnostics, exclusion_matrix, linea
                    lr_beta_restriction, lr_weak_exog, recursive_beta)
 
 warnings.filterwarnings("ignore")
-SH = {"log_materiales": "materiales", "euribor": "euribor", "log_pib_pc": "pib_pc",
+SH = {"log_materiales": "coste_construccion", "euribor": "euribor", "log_pib_pc": "pib_pc",
       "log_precio": "precio", "log_hipotecas": "hipotecas"}
 
 
@@ -111,7 +111,7 @@ def vecm_block(Y, ex, k, case, B_irf, H, seed, label):
     p1 = J.Z1.shape[1]
     beta_h, alpha_h = beta_inference(Y, ex, k, case, "log_hipotecas")
     beta_p, alpha_p = beta_inference(Y, ex, k, case, "log_precio")
-    R = np.zeros((1, p1)); R[0, [names.index("log_pib_pc"), ip, names.index("log_materiales")]] = 1
+    R = np.zeros((1, p1)); R[0, [names.index("log_pib_pc"), ip, names.index("log_materiales")]] = 1  # homogeneidad nominal
     ba = fit_h.beta_alpha
     out = {
         "especificacion": {"k_ar_diff": k, "caso_johansen": case, "rango": 1, "T_efectiva": fit_h.T,
@@ -127,7 +127,7 @@ def vecm_block(Y, ex, k, case, B_irf, H, seed, label):
         "LR_exogeneidad_debil": {SH[v]: lr_weak_exog(J, j) for j, v in enumerate(names)},
         "LR_exogeneidad_debil_conjunta_salvo_hipotecas": lr_weak_exog(J, [j for j in range(len(names)) if j != ih]),
         "LR_exogeneidad_debil_conjunta_salvo_precio": lr_weak_exog(J, [j for j in range(len(names)) if j != ip]),
-        "LR_homogeneidad_nominal (b_pib+b_precio+b_mat=0)": lr_beta_restriction(J, linear_restriction_matrix(R)),
+        "LR_homogeneidad_nominal (b_pib+b_precio+b_coste=0)": lr_beta_restriction(J, linear_restriction_matrix(R)),
         "diagnosticos": diagnostics(fit_h),
     }
     ect = Y.values @ fit_h.beta[:len(names), 0]
@@ -335,7 +335,7 @@ def main(argv=None):
     res["antes_despues"] = {
         "v1_documentado": V1_DOCUMENTED,
         "v2_VECM": {"beta_pib_pc": vh["pib_pc"], "beta_precio": vh["precio"], "beta_euribor": vh["euribor"],
-                    "beta_materiales": vh["materiales"],
+                    "beta_materiales": vh["coste_construccion"],
                     "alpha_hipotecas": res["VECM"]["alpha_normalizado_hipotecas"]["hipotecas"],
                     "alpha_precio": res["VECM"]["alpha_normalizado_hipotecas"]["precio"],
                     "traza_r0_r1": [rk["tests"][0]["trace"], rk["tests"][1]["trace"]],

@@ -1,0 +1,1301 @@
+prov_code,year,provincia,ccaa_code,edad_media,pib_pc,poblacion,poblacion_extranjera,edad_media_status,pib_pc_status,poblacion_status,poblacion_extranjera_status
+01,2002,Araba/Álava,16,40.89,25679,286650,6786,Definitivo,Definitivo,Definitivo,Definitivo
+01,2003,Araba/Álava,16,41.12,26841,290746,9879,Definitivo,Definitivo,Definitivo,Definitivo
+01,2004,Araba/Álava,16,41.31,28472,294304,12546,Definitivo,Definitivo,Definitivo,Definitivo
+01,2005,Araba/Álava,16,41.48,30538,298830,15995,Definitivo,Definitivo,Definitivo,Definitivo
+01,2006,Araba/Álava,16,41.66,33477,302481,19043,Definitivo,Definitivo,Definitivo,Definitivo
+01,2007,Araba/Álava,16,41.84,35813,306475,21666,Definitivo,Definitivo,Definitivo,Definitivo
+01,2008,Araba/Álava,16,41.98,37165,310944,25219,Definitivo,Definitivo,Definitivo,Definitivo
+01,2009,Araba/Álava,16,42.12,34115,315280,28285,Definitivo,Definitivo,Definitivo,Definitivo
+01,2010,Araba/Álava,16,42.32,33818,317737,29393,Definitivo,Definitivo,Definitivo,Definitivo
+01,2011,Araba/Álava,16,42.5,33921,319846,29499,Definitivo,Definitivo,Definitivo,Definitivo
+01,2012,Araba/Álava,16,42.74,33082,320566,28237,Definitivo,Definitivo,Definitivo,Definitivo
+01,2013,Araba/Álava,16,43.05,33371,320199,26683,Definitivo,Definitivo,Definitivo,Definitivo
+01,2014,Araba/Álava,16,43.32,34287,320451,24639,Definitivo,Definitivo,Definitivo,Definitivo
+01,2015,Araba/Álava,16,43.56,35074,321541,23555,Definitivo,Definitivo,Definitivo,Definitivo
+01,2016,Araba/Álava,16,43.76,36915,322974,23985,Definitivo,Definitivo,Definitivo,Definitivo
+01,2017,Araba/Álava,16,43.93,37808,325250,24699,Definitivo,Definitivo,Definitivo,Definitivo
+01,2018,Araba/Álava,16,44.1,38711,327763,26638,Definitivo,Definitivo,Definitivo,Definitivo
+01,2019,Araba/Álava,16,44.32,38631,330104,28514,Definitivo,Definitivo,Definitivo,Definitivo
+01,2020,Araba/Álava,16,44.51,35283,332874,31157,Definitivo,Definitivo,Definitivo,Definitivo
+01,2021,Araba/Álava,16,44.76,35924,333485,31945,Definitivo,Definitivo,Definitivo,Definitivo
+01,2022,Araba/Álava,16,45.05,38311,333908,32294,Definitivo,Definitivo,Definitivo,Definitivo
+01,2023,Araba/Álava,16,45.24,41709,336308,35006,Definitivo,Definitivo,Definitivo,Definitivo
+01,2024,Araba/Álava,16,45.47,43303,338594,36940,Definitivo,Provisional,Definitivo,Definitivo
+01,2025,Araba/Álava,16,45.67,,341961,39508,Definitivo,,Definitivo,Definitivo
+01,2026,Araba/Álava,16,,,344598,41238,,,Provisional,Provisional
+02,2002,Albacete,08,39.39,14190,365541,8523,Definitivo,Definitivo,Definitivo,Definitivo
+02,2003,Albacete,08,39.55,14595,370383,12267,Definitivo,Definitivo,Definitivo,Definitivo
+02,2004,Albacete,08,39.71,15409,374717,15493,Definitivo,Definitivo,Definitivo,Definitivo
+02,2005,Albacete,08,39.9,16415,379276,19008,Definitivo,Definitivo,Definitivo,Definitivo
+02,2006,Albacete,08,40.06,17444,383458,22123,Definitivo,Definitivo,Definitivo,Definitivo
+02,2007,Albacete,08,40.18,18122,389127,26056,Definitivo,Definitivo,Definitivo,Definitivo
+02,2008,Albacete,08,40.32,18955,394521,30166,Definitivo,Definitivo,Definitivo,Definitivo
+02,2009,Albacete,08,40.51,18798,397881,31487,Definitivo,Definitivo,Definitivo,Definitivo
+02,2010,Albacete,08,40.73,18691,399448,31140,Definitivo,Definitivo,Definitivo,Definitivo
+02,2011,Albacete,08,40.99,18283,400847,30685,Definitivo,Definitivo,Definitivo,Definitivo
+02,2012,Albacete,08,41.25,17836,401590,30348,Definitivo,Definitivo,Definitivo,Definitivo
+02,2013,Albacete,08,41.54,17802,399093,28802,Definitivo,Definitivo,Definitivo,Definitivo
+02,2014,Albacete,08,41.89,17691,396017,25568,Definitivo,Definitivo,Definitivo,Definitivo
+02,2015,Albacete,08,42.19,18884,394012,24318,Definitivo,Definitivo,Definitivo,Definitivo
+02,2016,Albacete,08,42.53,19370,391865,23831,Definitivo,Definitivo,Definitivo,Definitivo
+02,2017,Albacete,08,42.84,20549,390225,23256,Definitivo,Definitivo,Definitivo,Definitivo
+02,2018,Albacete,08,43.12,21365,388948,23803,Definitivo,Definitivo,Definitivo,Definitivo
+02,2019,Albacete,08,43.41,22251,387818,24203,Definitivo,Definitivo,Definitivo,Definitivo
+02,2020,Albacete,08,43.67,20707,387838,25681,Definitivo,Definitivo,Definitivo,Definitivo
+02,2021,Albacete,08,43.85,22932,386726,26728,Definitivo,Definitivo,Definitivo,Definitivo
+02,2022,Albacete,08,44.14,24633,385967,27544,Definitivo,Definitivo,Definitivo,Definitivo
+02,2023,Albacete,08,44.34,26261,387529,30673,Definitivo,Definitivo,Definitivo,Definitivo
+02,2024,Albacete,08,44.59,28089,389070,33334,Definitivo,Provisional,Definitivo,Definitivo
+02,2025,Albacete,08,44.83,,390751,36435,Definitivo,,Definitivo,Definitivo
+02,2026,Albacete,08,,,392967,39901,,,Provisional,Provisional
+03,2002,Alicante/Alacant,10,39.38,15868,1478299,141178,Definitivo,Definitivo,Definitivo,Definitivo
+03,2003,Alicante/Alacant,10,39.56,16400,1542318,189848,Definitivo,Definitivo,Definitivo,Definitivo
+03,2004,Alicante/Alacant,10,39.73,17216,1602174,234632,Definitivo,Definitivo,Definitivo,Definitivo
+03,2005,Alicante/Alacant,10,39.96,18054,1661660,278634,Definitivo,Definitivo,Definitivo,Definitivo
+03,2006,Alicante/Alacant,10,40.19,18901,1713934,316313,Definitivo,Definitivo,Definitivo,Definitivo
+03,2007,Alicante/Alacant,10,40.38,19313,1766320,353985,Definitivo,Definitivo,Definitivo,Definitivo
+03,2008,Alicante/Alacant,10,40.55,19384,1817519,390967,Definitivo,Definitivo,Definitivo,Definitivo
+03,2009,Alicante/Alacant,10,40.79,18144,1836134,397309,Definitivo,Definitivo,Definitivo,Definitivo
+03,2010,Alicante/Alacant,10,41.14,17881,1840085,390889,Definitivo,Definitivo,Definitivo,Definitivo
+03,2011,Alicante/Alacant,10,41.47,17210,1844439,381745,Definitivo,Definitivo,Definitivo,Definitivo
+03,2012,Alicante/Alacant,10,41.79,16425,1853209,380357,Definitivo,Definitivo,Definitivo,Definitivo
+03,2013,Alicante/Alacant,10,42.11,16346,1852733,376301,Definitivo,Definitivo,Definitivo,Definitivo
+03,2014,Alicante/Alacant,10,42.41,16875,1848236,364237,Definitivo,Definitivo,Definitivo,Definitivo
+03,2015,Alicante/Alacant,10,42.66,17635,1838578,347224,Definitivo,Definitivo,Definitivo,Definitivo
+03,2016,Alicante/Alacant,10,42.87,18474,1837873,342758,Definitivo,Definitivo,Definitivo,Definitivo
+03,2017,Alicante/Alacant,10,43.11,19327,1836715,335318,Definitivo,Definitivo,Definitivo,Definitivo
+03,2018,Alicante/Alacant,10,43.29,19798,1839319,335788,Definitivo,Definitivo,Definitivo,Definitivo
+03,2019,Alicante/Alacant,10,43.47,20263,1855384,349506,Definitivo,Definitivo,Definitivo,Definitivo
+03,2020,Alicante/Alacant,10,43.66,18339,1877627,369434,Definitivo,Definitivo,Definitivo,Definitivo
+03,2021,Alicante/Alacant,10,43.92,20334,1887036,375887,Definitivo,Definitivo,Definitivo,Definitivo
+03,2022,Alicante/Alacant,10,44.28,21715,1907494,392779,Definitivo,Definitivo,Definitivo,Definitivo
+03,2023,Alicante/Alacant,10,44.3,23531,1955268,436502,Definitivo,Definitivo,Definitivo,Definitivo
+03,2024,Alicante/Alacant,10,44.34,24737,1993289,464601,Definitivo,Provisional,Definitivo,Definitivo
+03,2025,Alicante/Alacant,10,44.45,,2033566,497387,Definitivo,,Definitivo,Definitivo
+03,2026,Alicante/Alacant,10,,,2080383,534116,,,Provisional,Provisional
+04,2002,Almería,01,36.55,16970,545531,46936,Definitivo,Definitivo,Definitivo,Definitivo
+04,2003,Almería,01,36.69,17668,560655,57701,Definitivo,Definitivo,Definitivo,Definitivo
+04,2004,Almería,01,36.82,18272,577427,69338,Definitivo,Definitivo,Definitivo,Definitivo
+04,2005,Almería,01,36.87,19070,603215,89190,Definitivo,Definitivo,Definitivo,Definitivo
+04,2006,Almería,01,36.94,19852,627719,107351,Definitivo,Definitivo,Definitivo,Definitivo
+04,2007,Almería,01,37.13,21034,642797,115728,Definitivo,Definitivo,Definitivo,Definitivo
+04,2008,Almería,01,37.3,20995,659443,126550,Definitivo,Definitivo,Definitivo,Definitivo
+04,2009,Almería,01,37.47,19151,673042,135003,Definitivo,Definitivo,Definitivo,Definitivo
+04,2010,Almería,01,37.75,18616,680484,138014,Definitivo,Definitivo,Definitivo,Definitivo
+04,2011,Almería,01,38.05,17294,686448,138734,Definitivo,Definitivo,Definitivo,Definitivo
+04,2012,Almería,01,38.37,17031,689320,137320,Definitivo,Definitivo,Definitivo,Definitivo
+04,2013,Almería,01,38.63,16759,692434,138190,Definitivo,Definitivo,Definitivo,Definitivo
+04,2014,Almería,01,38.91,17515,690750,131089,Definitivo,Definitivo,Definitivo,Definitivo
+04,2015,Almería,01,39.2,18724,694051,130556,Definitivo,Definitivo,Definitivo,Definitivo
+04,2016,Almería,01,39.43,20196,700055,133798,Definitivo,Definitivo,Definitivo,Definitivo
+04,2017,Almería,01,39.69,21467,704871,135403,Definitivo,Definitivo,Definitivo,Definitivo
+04,2018,Almería,01,39.91,21567,707319,136860,Definitivo,Definitivo,Definitivo,Definitivo
+04,2019,Almería,01,40.09,22268,714123,142332,Definitivo,Definitivo,Definitivo,Definitivo
+04,2020,Almería,01,40.32,20335,724003,149818,Definitivo,Definitivo,Definitivo,Definitivo
+04,2021,Almería,01,40.59,20292,730430,154451,Definitivo,Definitivo,Definitivo,Definitivo
+04,2022,Almería,01,40.78,22098,739541,160545,Definitivo,Definitivo,Definitivo,Definitivo
+04,2023,Almería,01,40.91,24082,753364,169446,Definitivo,Definitivo,Definitivo,Definitivo
+04,2024,Almería,01,41.16,25642,760964,172379,Definitivo,Provisional,Definitivo,Definitivo
+04,2025,Almería,01,41.38,,770554,178512,Definitivo,,Definitivo,Definitivo
+04,2026,Almería,01,,,782976,186850,,,Provisional,Provisional
+05,2002,Ávila,07,44.76,13561,163204,2315,Definitivo,Definitivo,Definitivo,Definitivo
+05,2003,Ávila,07,44.96,14157,163549,3345,Definitivo,Definitivo,Definitivo,Definitivo
+05,2004,Ávila,07,45.14,15269,164651,4303,Definitivo,Definitivo,Definitivo,Definitivo
+05,2005,Ávila,07,45.22,15706,166166,5889,Definitivo,Definitivo,Definitivo,Definitivo
+05,2006,Ávila,07,45.22,16832,167950,7535,Definitivo,Definitivo,Definitivo,Definitivo
+05,2007,Ávila,07,45.15,18203,170206,9662,Definitivo,Definitivo,Definitivo,Definitivo
+05,2008,Ávila,07,44.96,18540,173290,13142,Definitivo,Definitivo,Definitivo,Definitivo
+05,2009,Ávila,07,45,17999,173818,14243,Definitivo,Definitivo,Definitivo,Definitivo
+05,2010,Ávila,07,45.16,17998,173370,14147,Definitivo,Definitivo,Definitivo,Definitivo
+05,2011,Ávila,07,45.4,18087,172771,13933,Definitivo,Definitivo,Definitivo,Definitivo
+05,2012,Ávila,07,45.66,17895,171365,13445,Definitivo,Definitivo,Definitivo,Definitivo
+05,2013,Ávila,07,45.91,17565,169373,12837,Definitivo,Definitivo,Definitivo,Definitivo
+05,2014,Ávila,07,46.21,17707,167265,11721,Definitivo,Definitivo,Definitivo,Definitivo
+05,2015,Ávila,07,46.5,18220,165694,10796,Definitivo,Definitivo,Definitivo,Definitivo
+05,2016,Ávila,07,46.81,18459,163669,10251,Definitivo,Definitivo,Definitivo,Definitivo
+05,2017,Ávila,07,47.12,19225,161782,9649,Definitivo,Definitivo,Definitivo,Definitivo
+05,2018,Ávila,07,47.34,20036,160104,9537,Definitivo,Definitivo,Definitivo,Definitivo
+05,2019,Ávila,07,47.63,20760,159237,9693,Definitivo,Definitivo,Definitivo,Definitivo
+05,2020,Ávila,07,47.84,19336,158819,10385,Definitivo,Definitivo,Definitivo,Definitivo
+05,2021,Ávila,07,47.94,20409,158898,10725,Definitivo,Definitivo,Definitivo,Definitivo
+05,2022,Ávila,07,48.24,21756,159102,11074,Definitivo,Definitivo,Definitivo,Definitivo
+05,2023,Ávila,07,48.34,23259,159764,12868,Definitivo,Definitivo,Definitivo,Definitivo
+05,2024,Ávila,07,48.46,24436,160463,14293,Definitivo,Provisional,Definitivo,Definitivo
+05,2025,Ávila,07,48.51,,160738,15477,Definitivo,,Definitivo,Definitivo
+05,2026,Ávila,07,,,162222,17364,,,Provisional,Provisional
+06,2002,Badajoz,11,39.26,11917,655020,5056,Definitivo,Definitivo,Definitivo,Definitivo
+06,2003,Badajoz,11,39.52,12738,656228,6583,Definitivo,Definitivo,Definitivo,Definitivo
+06,2004,Badajoz,11,39.72,13280,659640,8604,Definitivo,Definitivo,Definitivo,Definitivo
+06,2005,Badajoz,11,39.95,14745,664407,11338,Definitivo,Definitivo,Definitivo,Definitivo
+06,2006,Badajoz,11,40.14,15534,668510,13932,Definitivo,Definitivo,Definitivo,Definitivo
+06,2007,Badajoz,11,40.34,16723,674169,16562,Definitivo,Definitivo,Definitivo,Definitivo
+06,2008,Badajoz,11,40.51,17475,680675,20998,Definitivo,Definitivo,Definitivo,Definitivo
+06,2009,Badajoz,11,40.7,16896,684391,21873,Definitivo,Definitivo,Definitivo,Definitivo
+06,2010,Badajoz,11,40.9,16891,687745,22754,Definitivo,Definitivo,Definitivo,Definitivo
+06,2011,Badajoz,11,41.12,16545,689902,23052,Definitivo,Definitivo,Definitivo,Definitivo
+06,2012,Badajoz,11,41.35,15662,691842,23614,Definitivo,Definitivo,Definitivo,Definitivo
+06,2013,Badajoz,11,41.6,15742,690889,23535,Definitivo,Definitivo,Definitivo,Definitivo
+06,2014,Badajoz,11,41.91,15710,688697,21472,Definitivo,Definitivo,Definitivo,Definitivo
+06,2015,Badajoz,11,42.2,16731,686250,20607,Definitivo,Definitivo,Definitivo,Definitivo
+06,2016,Badajoz,11,42.5,17297,682970,19854,Definitivo,Definitivo,Definitivo,Definitivo
+06,2017,Badajoz,11,42.81,18349,679042,18514,Definitivo,Definitivo,Definitivo,Definitivo
+06,2018,Badajoz,11,43.09,18706,675742,18547,Definitivo,Definitivo,Definitivo,Definitivo
+06,2019,Badajoz,11,43.4,19102,673384,19003,Definitivo,Definitivo,Definitivo,Definitivo
+06,2020,Badajoz,11,43.69,17844,672045,20460,Definitivo,Definitivo,Definitivo,Definitivo
+06,2021,Badajoz,11,43.94,19029,671092,21584,Definitivo,Definitivo,Definitivo,Definitivo
+06,2022,Badajoz,11,44.24,20457,667851,21581,Definitivo,Definitivo,Definitivo,Definitivo
+06,2023,Badajoz,11,44.52,22332,666049,23762,Definitivo,Definitivo,Definitivo,Definitivo
+06,2024,Badajoz,11,44.82,23539,666029,26109,Definitivo,Provisional,Definitivo,Definitivo
+06,2025,Badajoz,11,45.12,,665155,27884,Definitivo,,Definitivo,Definitivo
+06,2026,Badajoz,11,,,666514,30794,,,Provisional,Provisional
+07,2002,Illes Balears,04,38.76,21837,845130,73356,Definitivo,Definitivo,Definitivo,Definitivo
+07,2003,Illes Balears,04,38.68,22109,883410,99094,Definitivo,Definitivo,Definitivo,Definitivo
+07,2004,Illes Balears,04,38.73,22975,912964,120761,Definitivo,Definitivo,Definitivo,Definitivo
+07,2005,Illes Balears,04,38.86,24054,940124,140049,Definitivo,Definitivo,Definitivo,Definitivo
+07,2006,Illes Balears,04,38.94,25259,970288,160350,Definitivo,Definitivo,Definitivo,Definitivo
+07,2007,Illes Balears,04,38.99,26092,1005184,183339,Definitivo,Definitivo,Definitivo,Definitivo
+07,2008,Illes Balears,04,39.05,26377,1042855,208767,Definitivo,Definitivo,Definitivo,Definitivo
+07,2009,Illes Balears,04,39.13,24832,1070164,223364,Definitivo,Definitivo,Definitivo,Definitivo
+07,2010,Illes Balears,04,39.35,24638,1083683,226968,Definitivo,Definitivo,Definitivo,Definitivo
+07,2011,Illes Balears,04,39.63,24324,1091656,223858,Definitivo,Definitivo,Definitivo,Definitivo
+07,2012,Illes Balears,04,39.91,23810,1100715,222063,Definitivo,Definitivo,Definitivo,Definitivo
+07,2013,Illes Balears,04,40.16,23719,1105131,217192,Definitivo,Definitivo,Definitivo,Definitivo
+07,2014,Illes Balears,04,40.43,24454,1106617,204677,Definitivo,Definitivo,Definitivo,Definitivo
+07,2015,Illes Balears,04,40.67,25732,1111002,197914,Definitivo,Definitivo,Definitivo,Definitivo
+07,2016,Illes Balears,04,40.88,26922,1117353,196534,Definitivo,Definitivo,Definitivo,Definitivo
+07,2017,Illes Balears,04,41.07,28001,1128492,196235,Definitivo,Definitivo,Definitivo,Definitivo
+07,2018,Illes Balears,04,41.22,28906,1141233,202905,Definitivo,Definitivo,Definitivo,Definitivo
+07,2019,Illes Balears,04,41.35,29458,1157928,211949,Definitivo,Definitivo,Definitivo,Definitivo
+07,2020,Illes Balears,04,41.51,22611,1176816,224688,Definitivo,Definitivo,Definitivo,Definitivo
+07,2021,Illes Balears,04,41.77,25807,1183415,228749,Definitivo,Definitivo,Definitivo,Definitivo
+07,2022,Illes Balears,04,42.08,31030,1187043,230814,Definitivo,Definitivo,Definitivo,Definitivo
+07,2023,Illes Balears,04,42.22,33900,1209906,247669,Definitivo,Definitivo,Definitivo,Definitivo
+07,2024,Illes Balears,04,42.38,36369,1231768,260727,Definitivo,Provisional,Definitivo,Definitivo
+07,2025,Illes Balears,04,42.53,38510,1249844,270891,Definitivo,Avance,Definitivo,Definitivo
+07,2026,Illes Balears,04,,,1260448,275161,,,Provisional,Provisional
+08,2002,Barcelona,09,40.52,21513,4835592,254773,Definitivo,Definitivo,Definitivo,Definitivo
+08,2003,Barcelona,09,40.48,22485,4956072,368387,Definitivo,Definitivo,Definitivo,Definitivo
+08,2004,Barcelona,09,40.47,23586,5052807,460143,Definitivo,Definitivo,Definitivo,Definitivo
+08,2005,Barcelona,09,40.51,25117,5143472,539592,Definitivo,Definitivo,Definitivo,Definitivo
+08,2006,Barcelona,09,40.55,26688,5221848,608540,Definitivo,Definitivo,Definitivo,Definitivo
+08,2007,Barcelona,09,40.61,28112,5297174,674789,Definitivo,Definitivo,Definitivo,Definitivo
+08,2008,Barcelona,09,40.64,28335,5387706,750568,Definitivo,Definitivo,Definitivo,Definitivo
+08,2009,Barcelona,09,40.7,27016,5465841,800551,Definitivo,Definitivo,Definitivo,Definitivo
+08,2010,Barcelona,09,40.9,27119,5488633,795345,Definitivo,Definitivo,Definitivo,Definitivo
+08,2011,Barcelona,09,41.12,26698,5505667,773845,Definitivo,Definitivo,Definitivo,Definitivo
+08,2012,Barcelona,09,41.37,25961,5518276,749576,Definitivo,Definitivo,Definitivo,Definitivo
+08,2013,Barcelona,09,41.65,25975,5500080,719855,Definitivo,Definitivo,Definitivo,Definitivo
+08,2014,Barcelona,09,41.98,26628,5459762,651548,Definitivo,Definitivo,Definitivo,Definitivo
+08,2015,Barcelona,09,42.25,27849,5453143,602860,Definitivo,Definitivo,Definitivo,Definitivo
+08,2016,Barcelona,09,42.46,28906,5472926,609358,Definitivo,Definitivo,Definitivo,Definitivo
+08,2017,Barcelona,09,42.64,30188,5507412,629700,Definitivo,Definitivo,Definitivo,Definitivo
+08,2018,Barcelona,09,42.75,31073,5556273,677441,Definitivo,Definitivo,Definitivo,Definitivo
+08,2019,Barcelona,09,42.86,31903,5622704,751119,Definitivo,Definitivo,Definitivo,Definitivo
+08,2020,Barcelona,09,42.98,28432,5690371,822986,Definitivo,Definitivo,Definitivo,Definitivo
+08,2021,Barcelona,09,43.14,30588,5702262,854573,Definitivo,Definitivo,Definitivo,Definitivo
+08,2022,Barcelona,09,43.38,33270,5699602,855403,Definitivo,Definitivo,Definitivo,Definitivo
+08,2023,Barcelona,09,43.43,35843,5797356,950707,Definitivo,Definitivo,Definitivo,Definitivo
+08,2024,Barcelona,09,43.58,37845,5877672,1015934,Definitivo,Provisional,Definitivo,Definitivo
+08,2025,Barcelona,09,43.72,,5959941,1075119,Definitivo,,Definitivo,Definitivo
+08,2026,Barcelona,09,,,6008506,1110160,,,Provisional,Provisional
+09,2002,Burgos,07,43,19557,349275,7836,Definitivo,Definitivo,Definitivo,Definitivo
+09,2003,Burgos,07,43.16,20855,352086,11084,Definitivo,Definitivo,Definitivo,Definitivo
+09,2004,Burgos,07,43.34,22161,354228,14056,Definitivo,Definitivo,Definitivo,Definitivo
+09,2005,Burgos,07,43.48,23538,357690,17554,Definitivo,Definitivo,Definitivo,Definitivo
+09,2006,Burgos,07,43.57,24580,360694,20841,Definitivo,Definitivo,Definitivo,Definitivo
+09,2007,Burgos,07,43.68,25952,365303,25373,Definitivo,Definitivo,Definitivo,Definitivo
+09,2008,Burgos,07,43.64,26802,372561,32678,Definitivo,Definitivo,Definitivo,Definitivo
+09,2009,Burgos,07,43.75,25414,374808,35073,Definitivo,Definitivo,Definitivo,Definitivo
+09,2010,Burgos,07,44.01,25575,374005,34357,Definitivo,Definitivo,Definitivo,Definitivo
+09,2011,Burgos,07,44.31,25762,373252,33177,Definitivo,Definitivo,Definitivo,Definitivo
+09,2012,Burgos,07,44.57,25468,372190,32262,Definitivo,Definitivo,Definitivo,Definitivo
+09,2013,Burgos,07,44.83,24696,368784,30157,Definitivo,Definitivo,Definitivo,Definitivo
+09,2014,Burgos,07,45.16,24708,365542,27233,Definitivo,Definitivo,Definitivo,Definitivo
+09,2015,Burgos,07,45.45,25585,363328,26108,Definitivo,Definitivo,Definitivo,Definitivo
+09,2016,Burgos,07,45.75,26648,360572,25214,Definitivo,Definitivo,Definitivo,Definitivo
+09,2017,Burgos,07,46.05,28147,358416,24259,Definitivo,Definitivo,Definitivo,Definitivo
+09,2018,Burgos,07,46.28,29444,357165,24837,Definitivo,Definitivo,Definitivo,Definitivo
+09,2019,Burgos,07,46.52,29798,356607,25757,Definitivo,Definitivo,Definitivo,Definitivo
+09,2020,Burgos,07,46.69,26984,357121,27592,Definitivo,Definitivo,Definitivo,Definitivo
+09,2021,Burgos,07,46.85,28841,356042,28722,Definitivo,Definitivo,Definitivo,Definitivo
+09,2022,Burgos,07,47.15,30075,354846,29096,Definitivo,Definitivo,Definitivo,Definitivo
+09,2023,Burgos,07,47.24,31561,357370,33150,Definitivo,Definitivo,Definitivo,Definitivo
+09,2024,Burgos,07,47.37,33782,359740,36123,Definitivo,Provisional,Definitivo,Definitivo
+09,2025,Burgos,07,47.48,,362663,39605,Definitivo,,Definitivo,Definitivo
+09,2026,Burgos,07,,,366607,43422,,,Provisional,Provisional
+10,2002,Cáceres,11,41.25,12137,402775,7253,Definitivo,Definitivo,Definitivo,Definitivo
+10,2003,Cáceres,11,41.55,12841,404127,8661,Definitivo,Definitivo,Definitivo,Definitivo
+10,2004,Cáceres,11,41.8,14144,404734,9793,Definitivo,Definitivo,Definitivo,Definitivo
+10,2005,Cáceres,11,42.09,14672,405687,10525,Definitivo,Definitivo,Definitivo,Definitivo
+10,2006,Cáceres,11,42.36,15736,406420,11185,Definitivo,Definitivo,Definitivo,Definitivo
+10,2007,Cáceres,11,42.65,16673,407706,11891,Definitivo,Definitivo,Definitivo,Definitivo
+10,2008,Cáceres,11,42.88,16909,408975,13212,Definitivo,Definitivo,Definitivo,Definitivo
+10,2009,Cáceres,11,43.09,16489,410300,14099,Definitivo,Definitivo,Definitivo,Definitivo
+10,2010,Cáceres,11,43.32,17049,411860,14858,Definitivo,Definitivo,Definitivo,Definitivo
+10,2011,Cáceres,11,43.59,16585,412397,14981,Definitivo,Definitivo,Definitivo,Definitivo
+10,2012,Cáceres,11,43.86,16442,412501,15170,Definitivo,Definitivo,Definitivo,Definitivo
+10,2013,Cáceres,11,44.15,16511,410135,14847,Definitivo,Definitivo,Definitivo,Definitivo
+10,2014,Cáceres,11,44.46,16633,408011,14139,Definitivo,Definitivo,Definitivo,Definitivo
+10,2015,Cáceres,11,44.8,17435,405967,13421,Definitivo,Definitivo,Definitivo,Definitivo
+10,2016,Cáceres,11,45.12,18158,403183,13104,Definitivo,Definitivo,Definitivo,Definitivo
+10,2017,Cáceres,11,45.45,19461,400066,12440,Definitivo,Definitivo,Definitivo,Definitivo
+10,2018,Cáceres,11,45.76,20499,396979,12603,Definitivo,Definitivo,Definitivo,Definitivo
+10,2019,Cáceres,11,46.1,21163,394541,12898,Definitivo,Definitivo,Definitivo,Definitivo
+10,2020,Cáceres,11,46.43,19222,392925,13573,Definitivo,Definitivo,Definitivo,Definitivo
+10,2021,Cáceres,11,46.66,22653,390544,13873,Definitivo,Definitivo,Definitivo,Definitivo
+10,2022,Cáceres,11,46.93,25328,388957,14059,Definitivo,Definitivo,Definitivo,Definitivo
+10,2023,Cáceres,11,47.15,26529,388257,15680,Definitivo,Definitivo,Definitivo,Definitivo
+10,2024,Cáceres,11,47.41,27975,388652,17119,Definitivo,Provisional,Definitivo,Definitivo
+10,2025,Cáceres,11,47.67,,388190,18672,Definitivo,,Definitivo,Definitivo
+10,2026,Cáceres,11,,,388894,20698,,,Provisional,Provisional
+11,2002,Cádiz,01,36.41,13718,1118783,13171,Definitivo,Definitivo,Definitivo,Definitivo
+11,2003,Cádiz,01,36.71,14409,1130549,16553,Definitivo,Definitivo,Definitivo,Definitivo
+11,2004,Cádiz,01,36.96,15566,1144129,20049,Definitivo,Definitivo,Definitivo,Definitivo
+11,2005,Cádiz,01,37.2,16455,1160689,24983,Definitivo,Definitivo,Definitivo,Definitivo
+11,2006,Cádiz,01,37.42,17473,1176671,30472,Definitivo,Definitivo,Definitivo,Definitivo
+11,2007,Cádiz,01,37.67,18149,1193632,36616,Definitivo,Definitivo,Definitivo,Definitivo
+11,2008,Cádiz,01,37.93,18128,1209067,42321,Definitivo,Definitivo,Definitivo,Definitivo
+11,2009,Cádiz,01,38.19,16899,1221024,45454,Definitivo,Definitivo,Definitivo,Definitivo
+11,2010,Cádiz,01,38.48,17054,1229844,46740,Definitivo,Definitivo,Definitivo,Definitivo
+11,2011,Cádiz,01,38.77,16881,1238923,47368,Definitivo,Definitivo,Definitivo,Definitivo
+11,2012,Cádiz,01,39.09,16196,1245363,47691,Definitivo,Definitivo,Definitivo,Definitivo
+11,2013,Cádiz,01,39.41,15843,1246384,47544,Definitivo,Definitivo,Definitivo,Definitivo
+11,2014,Cádiz,01,39.78,15703,1245504,45166,Definitivo,Definitivo,Definitivo,Definitivo
+11,2015,Cádiz,01,40.15,16255,1245567,44305,Definitivo,Definitivo,Definitivo,Definitivo
+11,2016,Cádiz,01,40.5,16784,1244475,43893,Definitivo,Definitivo,Definitivo,Definitivo
+11,2017,Cádiz,01,40.86,17584,1244090,43542,Definitivo,Definitivo,Definitivo,Definitivo
+11,2018,Cádiz,01,41.23,18079,1243737,44783,Definitivo,Definitivo,Definitivo,Definitivo
+11,2019,Cádiz,01,41.58,18767,1243186,45431,Definitivo,Definitivo,Definitivo,Definitivo
+11,2020,Cádiz,01,41.95,16418,1247160,49657,Definitivo,Definitivo,Definitivo,Definitivo
+11,2021,Cádiz,01,42.31,18313,1249873,52086,Definitivo,Definitivo,Definitivo,Definitivo
+11,2022,Cádiz,01,42.66,20644,1250545,53707,Definitivo,Definitivo,Definitivo,Definitivo
+11,2023,Cádiz,01,43.01,21317,1254866,59681,Definitivo,Definitivo,Definitivo,Definitivo
+11,2024,Cádiz,01,43.37,23006,1258730,63976,Definitivo,Provisional,Definitivo,Definitivo
+11,2025,Cádiz,01,43.75,,1261420,68798,Definitivo,,Definitivo,Definitivo
+11,2026,Cádiz,01,,,1266580,74062,,,Provisional,Provisional
+12,2002,Castellón/Castelló,10,40.28,20011,487557,26320,Definitivo,Definitivo,Definitivo,Definitivo
+12,2003,Castellón/Castelló,10,40.17,20407,504094,38761,Definitivo,Definitivo,Definitivo,Definitivo
+12,2004,Castellón/Castelló,10,40.12,20808,518182,49501,Definitivo,Definitivo,Definitivo,Definitivo
+12,2005,Castellón/Castelló,10,40.1,22550,533625,61202,Definitivo,Definitivo,Definitivo,Definitivo
+12,2006,Castellón/Castelló,10,40.07,23992,548375,72223,Definitivo,Definitivo,Definitivo,Definitivo
+12,2007,Castellón/Castelló,10,39.99,23807,567548,86684,Definitivo,Definitivo,Definitivo,Definitivo
+12,2008,Castellón/Castelló,10,39.93,23492,588015,102736,Definitivo,Definitivo,Definitivo,Definitivo
+12,2009,Castellón/Castelló,10,40.09,22257,594737,106354,Definitivo,Definitivo,Definitivo,Definitivo
+12,2010,Castellón/Castelló,10,40.37,22405,595853,105444,Definitivo,Definitivo,Definitivo,Definitivo
+12,2011,Castellón/Castelló,10,40.72,22764,595574,102947,Definitivo,Definitivo,Definitivo,Definitivo
+12,2012,Castellón/Castelló,10,41.06,21469,593924,99459,Definitivo,Definitivo,Definitivo,Definitivo
+12,2013,Castellón/Castelló,10,41.43,21644,586696,91861,Definitivo,Definitivo,Definitivo,Definitivo
+12,2014,Castellón/Castelló,10,41.81,22025,580349,84854,Definitivo,Definitivo,Definitivo,Definitivo
+12,2015,Castellón/Castelló,10,42.14,23661,577738,81039,Definitivo,Definitivo,Definitivo,Definitivo
+12,2016,Castellón/Castelló,10,42.46,24744,575546,79362,Definitivo,Definitivo,Definitivo,Definitivo
+12,2017,Castellón/Castelló,10,42.76,26989,575433,78940,Definitivo,Definitivo,Definitivo,Definitivo
+12,2018,Castellón/Castelló,10,43.03,27201,576342,80266,Definitivo,Definitivo,Definitivo,Definitivo
+12,2019,Castellón/Castelló,10,43.26,27746,579592,83225,Definitivo,Definitivo,Definitivo,Definitivo
+12,2020,Castellón/Castelló,10,43.48,24497,584201,87144,Definitivo,Definitivo,Definitivo,Definitivo
+12,2021,Castellón/Castelló,10,43.74,26829,587632,88980,Definitivo,Definitivo,Definitivo,Definitivo
+12,2022,Castellón/Castelló,10,43.96,29038,591300,90961,Definitivo,Definitivo,Definitivo,Definitivo
+12,2023,Castellón/Castelló,10,44.01,29047,604086,100968,Definitivo,Definitivo,Definitivo,Definitivo
+12,2024,Castellón/Castelló,10,44.15,29474,615188,109014,Definitivo,Provisional,Definitivo,Definitivo
+12,2025,Castellón/Castelló,10,44.28,,627620,118810,Definitivo,,Definitivo,Definitivo
+12,2026,Castellón/Castelló,10,,,641036,128035,,,Provisional,Provisional
+13,2002,Ciudad Real,08,40.21,14640,479146,8265,Definitivo,Definitivo,Definitivo,Definitivo
+13,2003,Ciudad Real,08,40.38,15922,483315,12548,Definitivo,Definitivo,Definitivo,Definitivo
+13,2004,Ciudad Real,08,40.53,16994,488058,16362,Definitivo,Definitivo,Definitivo,Definitivo
+13,2005,Ciudad Real,08,40.66,17523,494021,20853,Definitivo,Definitivo,Definitivo,Definitivo
+13,2006,Ciudad Real,08,40.71,18651,500916,25904,Definitivo,Definitivo,Definitivo,Definitivo
+13,2007,Ciudad Real,08,40.77,19950,509228,31875,Definitivo,Definitivo,Definitivo,Definitivo
+13,2008,Ciudad Real,08,40.77,20369,519759,40623,Definitivo,Definitivo,Definitivo,Definitivo
+13,2009,Ciudad Real,08,40.9,19341,523964,42715,Definitivo,Definitivo,Definitivo,Definitivo
+13,2010,Ciudad Real,08,41.12,19611,525459,42429,Definitivo,Definitivo,Definitivo,Definitivo
+13,2011,Ciudad Real,08,41.4,19472,526166,41441,Definitivo,Definitivo,Definitivo,Definitivo
+13,2012,Ciudad Real,08,41.64,18894,526281,40755,Definitivo,Definitivo,Definitivo,Definitivo
+13,2013,Ciudad Real,08,41.9,18416,522634,39145,Definitivo,Definitivo,Definitivo,Definitivo
+13,2014,Ciudad Real,08,42.23,18087,518032,35446,Definitivo,Definitivo,Definitivo,Definitivo
+13,2015,Ciudad Real,08,42.56,19744,514152,33769,Definitivo,Definitivo,Definitivo,Definitivo
+13,2016,Ciudad Real,08,42.87,20435,508629,31985,Definitivo,Definitivo,Definitivo,Definitivo
+13,2017,Ciudad Real,08,43.2,21349,504403,30275,Definitivo,Definitivo,Definitivo,Definitivo
+13,2018,Ciudad Real,08,43.52,21974,499168,28495,Definitivo,Definitivo,Definitivo,Definitivo
+13,2019,Ciudad Real,08,43.86,22264,495686,28033,Definitivo,Definitivo,Definitivo,Definitivo
+13,2020,Ciudad Real,08,44.11,20680,494817,30060,Definitivo,Definitivo,Definitivo,Definitivo
+13,2021,Ciudad Real,08,44.25,21334,492900,31066,Definitivo,Definitivo,Definitivo,Definitivo
+13,2022,Ciudad Real,08,44.53,24925,490950,31343,Definitivo,Definitivo,Definitivo,Definitivo
+13,2023,Ciudad Real,08,44.75,25101,491927,34873,Definitivo,Definitivo,Definitivo,Definitivo
+13,2024,Ciudad Real,08,44.99,26169,492948,37441,Definitivo,Provisional,Definitivo,Definitivo
+13,2025,Ciudad Real,08,45.19,,494848,40948,Definitivo,,Definitivo,Definitivo
+13,2026,Ciudad Real,08,,,498061,44847,,,Provisional,Provisional
+14,2002,Córdoba,01,38.87,12006,762179,5651,Definitivo,Definitivo,Definitivo,Definitivo
+14,2003,Córdoba,01,39.11,13095,766005,8230,Definitivo,Definitivo,Definitivo,Definitivo
+14,2004,Córdoba,01,39.32,14160,770517,10404,Definitivo,Definitivo,Definitivo,Definitivo
+14,2005,Córdoba,01,39.55,14955,775835,13321,Definitivo,Definitivo,Definitivo,Definitivo
+14,2006,Córdoba,01,39.75,16267,780679,15759,Definitivo,Definitivo,Definitivo,Definitivo
+14,2007,Córdoba,01,39.96,17401,786384,18032,Definitivo,Definitivo,Definitivo,Definitivo
+14,2008,Córdoba,01,40.14,17529,792681,21916,Definitivo,Definitivo,Definitivo,Definitivo
+14,2009,Córdoba,01,40.34,16816,797328,23640,Definitivo,Definitivo,Definitivo,Definitivo
+14,2010,Córdoba,01,40.6,16641,799757,23871,Definitivo,Definitivo,Definitivo,Definitivo
+14,2011,Córdoba,01,40.89,16403,801792,23960,Definitivo,Definitivo,Definitivo,Definitivo
+14,2012,Córdoba,01,41.16,15479,802717,23882,Definitivo,Definitivo,Definitivo,Definitivo
+14,2013,Córdoba,01,41.45,15710,799934,22845,Definitivo,Definitivo,Definitivo,Definitivo
+14,2014,Córdoba,01,41.77,15846,796830,21252,Definitivo,Definitivo,Definitivo,Definitivo
+14,2015,Córdoba,01,42.08,16862,794359,20314,Definitivo,Definitivo,Definitivo,Definitivo
+14,2016,Córdoba,01,42.36,17197,790749,19921,Definitivo,Definitivo,Definitivo,Definitivo
+14,2017,Córdoba,01,42.66,17967,787735,19524,Definitivo,Definitivo,Definitivo,Definitivo
+14,2018,Córdoba,01,42.96,18275,784079,20005,Definitivo,Definitivo,Definitivo,Definitivo
+14,2019,Córdoba,01,43.27,18225,780982,19879,Definitivo,Definitivo,Definitivo,Definitivo
+14,2020,Córdoba,01,43.56,16851,780825,21733,Definitivo,Definitivo,Definitivo,Definitivo
+14,2021,Córdoba,01,43.85,18710,777622,22258,Definitivo,Definitivo,Definitivo,Definitivo
+14,2022,Córdoba,01,44.14,20022,775110,22835,Definitivo,Definitivo,Definitivo,Definitivo
+14,2023,Córdoba,01,44.37,22144,775002,26005,Definitivo,Definitivo,Definitivo,Definitivo
+14,2024,Córdoba,01,44.65,24189,774313,28190,Definitivo,Provisional,Definitivo,Definitivo
+14,2025,Córdoba,01,44.95,,773163,30226,Definitivo,,Definitivo,Definitivo
+14,2026,Córdoba,01,,,774447,33424,,,Provisional,Provisional
+15,2002,A Coruña,12,42.49,14825,1096079,12270,Definitivo,Definitivo,Definitivo,Definitivo
+15,2003,A Coruña,12,42.8,15812,1100954,16226,Definitivo,Definitivo,Definitivo,Definitivo
+15,2004,A Coruña,12,43.08,16963,1104699,19304,Definitivo,Definitivo,Definitivo,Definitivo
+15,2005,A Coruña,12,43.37,18336,1109955,22308,Definitivo,Definitivo,Definitivo,Definitivo
+15,2006,A Coruña,12,43.62,19678,1115415,25205,Definitivo,Definitivo,Definitivo,Definitivo
+15,2007,A Coruña,12,43.87,21260,1121347,28451,Definitivo,Definitivo,Definitivo,Definitivo
+15,2008,A Coruña,12,44.07,22051,1128599,33387,Definitivo,Definitivo,Definitivo,Definitivo
+15,2009,A Coruña,12,44.28,21594,1135287,36643,Definitivo,Definitivo,Definitivo,Definitivo
+15,2010,A Coruña,12,44.51,21857,1138107,37015,Definitivo,Definitivo,Definitivo,Definitivo
+15,2011,A Coruña,12,44.76,21360,1140069,36732,Definitivo,Definitivo,Definitivo,Definitivo
+15,2012,A Coruña,12,45.02,20548,1141178,37370,Definitivo,Definitivo,Definitivo,Definitivo
+15,2013,A Coruña,12,45.31,20621,1137890,36643,Definitivo,Definitivo,Definitivo,Definitivo
+15,2014,A Coruña,12,45.61,20607,1132596,32801,Definitivo,Definitivo,Definitivo,Definitivo
+15,2015,A Coruña,12,45.91,21843,1127596,30737,Definitivo,Definitivo,Definitivo,Definitivo
+15,2016,A Coruña,12,46.2,22710,1123015,30544,Definitivo,Definitivo,Definitivo,Definitivo
+15,2017,A Coruña,12,46.46,23331,1120302,30482,Definitivo,Definitivo,Definitivo,Definitivo
+15,2018,A Coruña,12,46.7,24319,1120074,33432,Definitivo,Definitivo,Definitivo,Definitivo
+15,2019,A Coruña,12,46.92,24840,1120432,36846,Definitivo,Definitivo,Definitivo,Definitivo
+15,2020,A Coruña,12,47.18,22743,1121994,41457,Definitivo,Definitivo,Definitivo,Definitivo
+15,2021,A Coruña,12,47.46,24627,1120501,43584,Definitivo,Definitivo,Definitivo,Definitivo
+15,2022,A Coruña,12,47.71,27835,1119164,46156,Definitivo,Definitivo,Definitivo,Definitivo
+15,2023,A Coruña,12,47.84,29532,1123884,55136,Definitivo,Definitivo,Definitivo,Definitivo
+15,2024,A Coruña,12,48.03,31025,1128449,62235,Definitivo,Provisional,Definitivo,Definitivo
+15,2025,A Coruña,12,48.17,,1135623,71170,Definitivo,,Definitivo,Definitivo
+15,2026,A Coruña,12,,,1143397,79352,,,Provisional,Provisional
+16,2002,Cuenca,08,43.55,13638,199650,4895,Definitivo,Definitivo,Definitivo,Definitivo
+16,2003,Cuenca,08,43.63,14518,201189,7184,Definitivo,Definitivo,Definitivo,Definitivo
+16,2004,Cuenca,08,43.69,16023,203133,9316,Definitivo,Definitivo,Definitivo,Definitivo
+16,2005,Cuenca,08,43.71,16987,205786,12528,Definitivo,Definitivo,Definitivo,Definitivo
+16,2006,Cuenca,08,43.75,18350,208120,15160,Definitivo,Definitivo,Definitivo,Definitivo
+16,2007,Cuenca,08,43.74,19812,211114,18539,Definitivo,Definitivo,Definitivo,Definitivo
+16,2008,Cuenca,08,43.58,19770,214903,23319,Definitivo,Definitivo,Definitivo,Definitivo
+16,2009,Cuenca,08,43.58,18959,216435,25488,Definitivo,Definitivo,Definitivo,Definitivo
+16,2010,Cuenca,08,43.72,19587,216609,26162,Definitivo,Definitivo,Definitivo,Definitivo
+16,2011,Cuenca,08,43.91,19863,216377,26078,Definitivo,Definitivo,Definitivo,Definitivo
+16,2012,Cuenca,08,44.11,19540,214752,25720,Definitivo,Definitivo,Definitivo,Definitivo
+16,2013,Cuenca,08,44.36,19566,211356,24657,Definitivo,Definitivo,Definitivo,Definitivo
+16,2014,Cuenca,08,44.67,19360,208031,22898,Definitivo,Definitivo,Definitivo,Definitivo
+16,2015,Cuenca,08,44.97,20663,205664,21933,Definitivo,Definitivo,Definitivo,Definitivo
+16,2016,Cuenca,08,45.24,21288,202864,21260,Definitivo,Definitivo,Definitivo,Definitivo
+16,2017,Cuenca,08,45.49,22164,200531,20576,Definitivo,Definitivo,Definitivo,Definitivo
+16,2018,Cuenca,08,45.7,23222,198922,20753,Definitivo,Definitivo,Definitivo,Definitivo
+16,2019,Cuenca,08,45.93,23241,197617,21274,Definitivo,Definitivo,Definitivo,Definitivo
+16,2020,Cuenca,08,46.05,21672,197537,22663,Definitivo,Definitivo,Definitivo,Definitivo
+16,2021,Cuenca,08,46.11,25348,196510,22974,Definitivo,Definitivo,Definitivo,Definitivo
+16,2022,Cuenca,08,46.27,28580,196640,23737,Definitivo,Definitivo,Definitivo,Definitivo
+16,2023,Cuenca,08,46.32,29411,198436,26222,Definitivo,Definitivo,Definitivo,Definitivo
+16,2024,Cuenca,08,46.44,30036,199025,27972,Definitivo,Provisional,Definitivo,Definitivo
+16,2025,Cuenca,08,46.49,,199859,29774,Definitivo,,Definitivo,Definitivo
+16,2026,Cuenca,08,,,201080,31505,,,Provisional,Provisional
+17,2002,Girona,09,40.59,22806,568690,42372,Definitivo,Definitivo,Definitivo,Definitivo
+17,2003,Girona,09,40.48,23554,593087,59002,Definitivo,Definitivo,Definitivo,Definitivo
+17,2004,Girona,09,40.34,24600,618291,75077,Definitivo,Definitivo,Definitivo,Definitivo
+17,2005,Girona,09,40.24,25449,645160,92665,Definitivo,Definitivo,Definitivo,Definitivo
+17,2006,Girona,09,40.17,27504,668911,108660,Definitivo,Definitivo,Definitivo,Definitivo
+17,2007,Girona,09,40.09,28130,694222,125613,Definitivo,Definitivo,Definitivo,Definitivo
+17,2008,Girona,09,40.02,27846,719747,143637,Definitivo,Definitivo,Definitivo,Definitivo
+17,2009,Girona,09,40.02,26596,735856,153084,Definitivo,Definitivo,Definitivo,Definitivo
+17,2010,Girona,09,40.18,26772,741841,153829,Definitivo,Definitivo,Definitivo,Definitivo
+17,2011,Girona,09,40.37,26168,747036,153066,Definitivo,Definitivo,Definitivo,Definitivo
+17,2012,Girona,09,40.62,25545,751599,151582,Definitivo,Definitivo,Definitivo,Definitivo
+17,2013,Girona,09,40.86,25202,750022,148366,Definitivo,Definitivo,Definitivo,Definitivo
+17,2014,Girona,09,41.18,25692,745189,138647,Definitivo,Definitivo,Definitivo,Definitivo
+17,2015,Girona,09,41.46,26721,743431,133631,Definitivo,Definitivo,Definitivo,Definitivo
+17,2016,Girona,09,41.66,27792,745797,133268,Definitivo,Definitivo,Definitivo,Definitivo
+17,2017,Girona,09,41.88,27361,750468,134165,Definitivo,Definitivo,Definitivo,Definitivo
+17,2018,Girona,09,42.02,27864,756522,137927,Definitivo,Definitivo,Definitivo,Definitivo
+17,2019,Girona,09,42.14,28643,765476,145241,Definitivo,Definitivo,Definitivo,Definitivo
+17,2020,Girona,09,42.27,25331,776698,153768,Definitivo,Definitivo,Definitivo,Definitivo
+17,2021,Girona,09,42.47,29732,784941,157436,Definitivo,Definitivo,Definitivo,Definitivo
+17,2022,Girona,09,42.73,32882,790432,158529,Definitivo,Definitivo,Definitivo,Definitivo
+17,2023,Girona,09,42.77,35749,808672,171482,Definitivo,Definitivo,Definitivo,Definitivo
+17,2024,Girona,09,42.92,37363,821108,177636,Definitivo,Provisional,Definitivo,Definitivo
+17,2025,Girona,09,43.15,,830429,181899,Definitivo,,Definitivo,Definitivo
+17,2026,Girona,09,,,838182,183481,,,Provisional,Provisional
+18,2002,Granada,01,38.34,12505,821889,14473,Definitivo,Definitivo,Definitivo,Definitivo
+18,2003,Granada,01,38.56,13362,831320,20280,Definitivo,Definitivo,Definitivo,Definitivo
+18,2004,Granada,01,38.76,14112,842810,25745,Definitivo,Definitivo,Definitivo,Definitivo
+18,2005,Granada,01,38.92,14830,856429,33132,Definitivo,Definitivo,Definitivo,Definitivo
+18,2006,Granada,01,39.05,16403,871597,42030,Definitivo,Definitivo,Definitivo,Definitivo
+18,2007,Granada,01,39.21,17286,885032,48986,Definitivo,Definitivo,Definitivo,Definitivo
+18,2008,Granada,01,39.32,17521,900260,58046,Definitivo,Definitivo,Definitivo,Definitivo
+18,2009,Granada,01,39.49,16639,909112,62030,Definitivo,Definitivo,Definitivo,Definitivo
+18,2010,Granada,01,39.74,16431,915317,63827,Definitivo,Definitivo,Definitivo,Definitivo
+18,2011,Granada,01,40,16347,919885,64087,Definitivo,Definitivo,Definitivo,Definitivo
+18,2012,Granada,01,40.28,15971,922460,64008,Definitivo,Definitivo,Definitivo,Definitivo
+18,2013,Granada,01,40.56,15877,921509,63896,Definitivo,Definitivo,Definitivo,Definitivo
+18,2014,Granada,01,40.9,16429,919381,60442,Definitivo,Definitivo,Definitivo,Definitivo
+18,2015,Granada,01,41.23,17320,917546,58209,Definitivo,Definitivo,Definitivo,Definitivo
+18,2016,Granada,01,41.51,17368,915706,57021,Definitivo,Definitivo,Definitivo,Definitivo
+18,2017,Granada,01,41.8,17846,914780,55644,Definitivo,Definitivo,Definitivo,Definitivo
+18,2018,Granada,01,42.09,18353,915140,57489,Definitivo,Definitivo,Definitivo,Definitivo
+18,2019,Granada,01,42.38,19091,916879,60123,Definitivo,Definitivo,Definitivo,Definitivo
+18,2020,Granada,01,42.64,17310,921966,64906,Definitivo,Definitivo,Definitivo,Definitivo
+18,2021,Granada,01,42.88,18776,925046,68774,Definitivo,Definitivo,Definitivo,Definitivo
+18,2022,Granada,01,43.16,20624,926019,71015,Definitivo,Definitivo,Definitivo,Definitivo
+18,2023,Granada,01,43.39,22139,934072,77605,Definitivo,Definitivo,Definitivo,Definitivo
+18,2024,Granada,01,43.65,23122,939741,81238,Definitivo,Provisional,Definitivo,Definitivo
+18,2025,Granada,01,43.92,,945797,86233,Definitivo,,Definitivo,Definitivo
+18,2026,Granada,01,,,956078,92433,,,Provisional,Provisional
+19,2002,Guadalajara,08,41.06,16959,175769,7039,Definitivo,Definitivo,Definitivo,Definitivo
+19,2003,Guadalajara,08,40.89,17579,183879,10419,Definitivo,Definitivo,Definitivo,Definitivo
+19,2004,Guadalajara,08,40.61,17935,193139,13847,Definitivo,Definitivo,Definitivo,Definitivo
+19,2005,Guadalajara,08,40.36,19263,202525,17140,Definitivo,Definitivo,Definitivo,Definitivo
+19,2006,Guadalajara,08,40.1,19749,213166,21134,Definitivo,Definitivo,Definitivo,Definitivo
+19,2007,Guadalajara,08,39.79,20539,225058,26747,Definitivo,Definitivo,Definitivo,Definitivo
+19,2008,Guadalajara,08,39.46,20965,237361,34301,Definitivo,Definitivo,Definitivo,Definitivo
+19,2009,Guadalajara,08,39.35,19591,245403,37488,Definitivo,Definitivo,Definitivo,Definitivo
+19,2010,Guadalajara,08,39.42,19778,250531,38361,Definitivo,Definitivo,Definitivo,Definitivo
+19,2011,Guadalajara,08,39.55,19687,254656,38339,Definitivo,Definitivo,Definitivo,Definitivo
+19,2012,Guadalajara,08,39.69,18989,257731,39264,Definitivo,Definitivo,Definitivo,Definitivo
+19,2013,Guadalajara,08,39.92,18484,256825,38044,Definitivo,Definitivo,Definitivo,Definitivo
+19,2014,Guadalajara,08,40.27,17691,255075,34311,Definitivo,Definitivo,Definitivo,Definitivo
+19,2015,Guadalajara,08,40.64,17794,254458,32311,Definitivo,Definitivo,Definitivo,Definitivo
+19,2016,Guadalajara,08,40.88,18678,254191,31507,Definitivo,Definitivo,Definitivo,Definitivo
+19,2017,Guadalajara,08,41.12,19985,255242,31401,Definitivo,Definitivo,Definitivo,Definitivo
+19,2018,Guadalajara,08,41.36,20914,256247,31900,Definitivo,Definitivo,Definitivo,Definitivo
+19,2019,Guadalajara,08,41.55,21655,259266,33600,Definitivo,Definitivo,Definitivo,Definitivo
+19,2020,Guadalajara,08,41.74,19815,262985,35559,Definitivo,Definitivo,Definitivo,Definitivo
+19,2021,Guadalajara,08,41.88,21774,265969,36389,Definitivo,Definitivo,Definitivo,Definitivo
+19,2022,Guadalajara,08,42.16,24960,268412,37236,Definitivo,Definitivo,Definitivo,Definitivo
+19,2023,Guadalajara,08,42.29,24492,275082,41407,Definitivo,Definitivo,Definitivo,Definitivo
+19,2024,Guadalajara,08,42.5,25146,280225,44851,Definitivo,Provisional,Definitivo,Definitivo
+19,2025,Guadalajara,08,42.66,,285839,47970,Definitivo,,Definitivo,Definitivo
+19,2026,Guadalajara,08,,,291593,50278,,,Provisional,Provisional
+20,2002,Gipuzkoa,16,41.68,22769,673594,10071,Definitivo,Definitivo,Definitivo,Definitivo
+20,2003,Gipuzkoa,16,41.9,23506,676778,13900,Definitivo,Definitivo,Definitivo,Definitivo
+20,2004,Gipuzkoa,16,42.08,24922,680750,17800,Definitivo,Definitivo,Definitivo,Definitivo
+20,2005,Gipuzkoa,16,42.29,26396,684269,21490,Definitivo,Definitivo,Definitivo,Definitivo
+20,2006,Gipuzkoa,16,42.47,28823,688423,25653,Definitivo,Definitivo,Definitivo,Definitivo
+20,2007,Gipuzkoa,16,42.64,30538,693439,30370,Definitivo,Definitivo,Definitivo,Definitivo
+20,2008,Gipuzkoa,16,42.78,30720,699398,36485,Definitivo,Definitivo,Definitivo,Definitivo
+20,2009,Gipuzkoa,16,42.93,29132,704173,40967,Definitivo,Definitivo,Definitivo,Definitivo
+20,2010,Gipuzkoa,16,43.13,29564,705977,42177,Definitivo,Definitivo,Definitivo,Definitivo
+20,2011,Gipuzkoa,16,43.35,29458,707258,42436,Definitivo,Definitivo,Definitivo,Definitivo
+20,2012,Gipuzkoa,16,43.56,28781,708421,42561,Definitivo,Definitivo,Definitivo,Definitivo
+20,2013,Gipuzkoa,16,43.77,28283,709043,42049,Definitivo,Definitivo,Definitivo,Definitivo
+20,2014,Gipuzkoa,16,44.03,28443,708675,40013,Definitivo,Definitivo,Definitivo,Definitivo
+20,2015,Gipuzkoa,16,44.24,29424,709766,39856,Definitivo,Definitivo,Definitivo,Definitivo
+20,2016,Gipuzkoa,16,44.43,30149,711261,41358,Definitivo,Definitivo,Definitivo,Definitivo
+20,2017,Gipuzkoa,16,44.64,32136,713130,42620,Definitivo,Definitivo,Definitivo,Definitivo
+20,2018,Gipuzkoa,16,44.83,32913,715749,46370,Definitivo,Definitivo,Definitivo,Definitivo
+20,2019,Gipuzkoa,16,44.99,33900,719613,51281,Definitivo,Definitivo,Definitivo,Definitivo
+20,2020,Gipuzkoa,16,45.17,30179,724347,57506,Definitivo,Definitivo,Definitivo,Definitivo
+20,2021,Gipuzkoa,16,45.38,34099,725508,60063,Definitivo,Definitivo,Definitivo,Definitivo
+20,2022,Gipuzkoa,16,45.63,36374,723241,60081,Definitivo,Definitivo,Definitivo,Definitivo
+20,2023,Gipuzkoa,16,45.77,39026,726712,66111,Definitivo,Definitivo,Definitivo,Definitivo
+20,2024,Gipuzkoa,16,45.94,40838,729722,70451,Definitivo,Provisional,Definitivo,Definitivo
+20,2025,Gipuzkoa,16,46.13,,733149,74616,Definitivo,,Definitivo,Definitivo
+20,2026,Gipuzkoa,16,,,735379,76795,,,Provisional,Provisional
+21,2002,Huelva,01,37.79,14010,463863,8321,Definitivo,Definitivo,Definitivo,Definitivo
+21,2003,Huelva,01,38.01,14964,468682,11492,Definitivo,Definitivo,Definitivo,Definitivo
+21,2004,Huelva,01,38.2,16195,473452,14155,Definitivo,Definitivo,Definitivo,Definitivo
+21,2005,Huelva,01,38.39,17248,479910,17889,Definitivo,Definitivo,Definitivo,Definitivo
+21,2006,Huelva,01,38.51,17811,488528,23970,Definitivo,Definitivo,Definitivo,Definitivo
+21,2007,Huelva,01,38.69,18331,495171,28023,Definitivo,Definitivo,Definitivo,Definitivo
+21,2008,Huelva,01,38.78,18634,505037,35736,Definitivo,Definitivo,Definitivo,Definitivo
+21,2009,Huelva,01,38.94,17028,510278,38319,Definitivo,Definitivo,Definitivo,Definitivo
+21,2010,Huelva,01,39.14,17351,514629,40222,Definitivo,Definitivo,Definitivo,Definitivo
+21,2011,Huelva,01,39.38,17882,517890,41610,Definitivo,Definitivo,Definitivo,Definitivo
+21,2012,Huelva,01,39.64,17373,519980,42035,Definitivo,Definitivo,Definitivo,Definitivo
+21,2013,Huelva,01,39.89,16185,520327,42410,Definitivo,Definitivo,Definitivo,Definitivo
+21,2014,Huelva,01,40.17,16154,520453,41335,Definitivo,Definitivo,Definitivo,Definitivo
+21,2015,Huelva,01,40.46,17177,520840,40913,Definitivo,Definitivo,Definitivo,Definitivo
+21,2016,Huelva,01,40.76,17877,520086,40616,Definitivo,Definitivo,Definitivo,Definitivo
+21,2017,Huelva,01,41.08,19318,519144,39814,Definitivo,Definitivo,Definitivo,Definitivo
+21,2018,Huelva,01,41.38,20380,520445,41646,Definitivo,Definitivo,Definitivo,Definitivo
+21,2019,Huelva,01,41.67,20329,522138,43813,Definitivo,Definitivo,Definitivo,Definitivo
+21,2020,Huelva,01,41.95,17800,525333,46935,Definitivo,Definitivo,Definitivo,Definitivo
+21,2021,Huelva,01,42.27,20086,527254,48868,Definitivo,Definitivo,Definitivo,Definitivo
+21,2022,Huelva,01,42.52,24145,531094,52546,Definitivo,Definitivo,Definitivo,Definitivo
+21,2023,Huelva,01,42.77,24705,534084,56445,Definitivo,Definitivo,Definitivo,Definitivo
+21,2024,Huelva,01,43.09,26224,535734,58574,Definitivo,Provisional,Definitivo,Definitivo
+21,2025,Huelva,01,43.38,,538789,62146,Definitivo,,Definitivo,Definitivo
+21,2026,Huelva,01,,,542512,65884,,,Provisional,Provisional
+22,2002,Huesca,02,44.07,19295,206712,6660,Definitivo,Definitivo,Definitivo,Definitivo
+22,2003,Huesca,02,44.05,20409,209449,9526,Definitivo,Definitivo,Definitivo,Definitivo
+22,2004,Huesca,02,44.05,21296,211743,12070,Definitivo,Definitivo,Definitivo,Definitivo
+22,2005,Huesca,02,44.02,22077,214552,14871,Definitivo,Definitivo,Definitivo,Definitivo
+22,2006,Huesca,02,43.98,23655,217247,17569,Definitivo,Definitivo,Definitivo,Definitivo
+22,2007,Huesca,02,43.96,25828,220090,20348,Definitivo,Definitivo,Definitivo,Definitivo
+22,2008,Huesca,02,43.84,27230,224407,24392,Definitivo,Definitivo,Definitivo,Definitivo
+22,2009,Huesca,02,43.82,25509,226769,26572,Definitivo,Definitivo,Definitivo,Definitivo
+22,2010,Huesca,02,43.97,26084,226790,26626,Definitivo,Definitivo,Definitivo,Definitivo
+22,2011,Huesca,02,44.13,25978,226596,26404,Definitivo,Definitivo,Definitivo,Definitivo
+22,2012,Huesca,02,44.29,24813,225821,26111,Definitivo,Definitivo,Definitivo,Definitivo
+22,2013,Huesca,02,44.45,25616,224776,26023,Definitivo,Definitivo,Definitivo,Definitivo
+22,2014,Huesca,02,44.66,25476,223702,24508,Definitivo,Definitivo,Definitivo,Definitivo
+22,2015,Huesca,02,44.85,25867,222677,23854,Definitivo,Definitivo,Definitivo,Definitivo
+22,2016,Huesca,02,45.01,28169,221495,23697,Definitivo,Definitivo,Definitivo,Definitivo
+22,2017,Huesca,02,45.21,28467,220749,23492,Definitivo,Definitivo,Definitivo,Definitivo
+22,2018,Huesca,02,45.33,28749,220653,24240,Definitivo,Definitivo,Definitivo,Definitivo
+22,2019,Huesca,02,45.44,29643,220996,25288,Definitivo,Definitivo,Definitivo,Definitivo
+22,2020,Huesca,02,45.5,28385,222767,27219,Definitivo,Definitivo,Definitivo,Definitivo
+22,2021,Huesca,02,45.56,30234,223995,28481,Definitivo,Definitivo,Definitivo,Definitivo
+22,2022,Huesca,02,45.72,33763,225199,29350,Definitivo,Definitivo,Definitivo,Definitivo
+22,2023,Huesca,02,45.73,36296,226878,31926,Definitivo,Definitivo,Definitivo,Definitivo
+22,2024,Huesca,02,45.84,38714,228519,33849,Definitivo,Provisional,Definitivo,Definitivo
+22,2025,Huesca,02,45.93,,230087,35759,Definitivo,,Definitivo,Definitivo
+22,2026,Huesca,02,,,233011,38543,,,Provisional,Provisional
+23,2002,Jaén,01,38.75,11767,643821,4920,Definitivo,Definitivo,Definitivo,Definitivo
+23,2003,Jaén,01,39,13457,646844,7181,Definitivo,Definitivo,Definitivo,Definitivo
+23,2004,Jaén,01,39.22,13981,649924,9092,Definitivo,Definitivo,Definitivo,Definitivo
+23,2005,Jaén,01,39.43,14307,653779,11268,Definitivo,Definitivo,Definitivo,Definitivo
+23,2006,Jaén,01,39.66,15348,656526,13217,Definitivo,Definitivo,Definitivo,Definitivo
+23,2007,Jaén,01,39.9,16530,659840,15273,Definitivo,Definitivo,Definitivo,Definitivo
+23,2008,Jaén,01,40.09,16739,663528,18848,Definitivo,Definitivo,Definitivo,Definitivo
+23,2009,Jaén,01,40.31,16347,665201,19602,Definitivo,Definitivo,Definitivo,Definitivo
+23,2010,Jaén,01,40.57,16388,666363,20384,Definitivo,Definitivo,Definitivo,Definitivo
+23,2011,Jaén,01,40.85,16349,667059,21442,Definitivo,Definitivo,Definitivo,Definitivo
+23,2012,Jaén,01,41.12,14677,667260,22405,Definitivo,Definitivo,Definitivo,Definitivo
+23,2013,Jaén,01,41.43,15780,661647,19831,Definitivo,Definitivo,Definitivo,Definitivo
+23,2014,Jaén,01,41.78,15125,656162,17169,Definitivo,Definitivo,Definitivo,Definitivo
+23,2015,Jaén,01,42.11,17128,652317,16257,Definitivo,Definitivo,Definitivo,Definitivo
+23,2016,Jaén,01,42.42,16916,647007,15779,Definitivo,Definitivo,Definitivo,Definitivo
+23,2017,Jaén,01,42.74,17382,642515,15164,Definitivo,Definitivo,Definitivo,Definitivo
+23,2018,Jaén,01,43.06,18320,637669,15038,Definitivo,Definitivo,Definitivo,Definitivo
+23,2019,Jaén,01,43.36,17840,633375,14975,Definitivo,Definitivo,Definitivo,Definitivo
+23,2020,Jaén,01,43.68,17140,630524,15940,Definitivo,Definitivo,Definitivo,Definitivo
+23,2021,Jaén,01,43.94,18955,627568,16881,Definitivo,Definitivo,Definitivo,Definitivo
+23,2022,Jaén,01,44.23,18859,624191,17737,Definitivo,Definitivo,Definitivo,Definitivo
+23,2023,Jaén,01,44.52,21027,620637,19985,Definitivo,Definitivo,Definitivo,Definitivo
+23,2024,Jaén,01,44.79,23321,619055,22342,Definitivo,Provisional,Definitivo,Definitivo
+23,2025,Jaén,01,45.07,,618143,25569,Definitivo,,Definitivo,Definitivo
+23,2026,Jaén,01,,,619033,29573,,,Provisional,Provisional
+24,2002,León,07,44.47,14888,487511,8026,Definitivo,Definitivo,Definitivo,Definitivo
+24,2003,León,07,44.78,15540,487393,9683,Definitivo,Definitivo,Definitivo,Definitivo
+24,2004,León,07,45.06,16281,487073,10893,Definitivo,Definitivo,Definitivo,Definitivo
+24,2005,León,07,45.32,17801,487440,12519,Definitivo,Definitivo,Definitivo,Definitivo
+24,2006,León,07,45.54,18982,488534,15041,Definitivo,Definitivo,Definitivo,Definitivo
+24,2007,León,07,45.75,20032,491130,17923,Definitivo,Definitivo,Definitivo,Definitivo
+24,2008,León,07,45.87,20323,493938,21781,Definitivo,Definitivo,Definitivo,Definitivo
+24,2009,León,07,46.04,20015,495041,23757,Definitivo,Definitivo,Definitivo,Definitivo
+24,2010,León,07,46.3,19926,494823,24397,Definitivo,Definitivo,Definitivo,Definitivo
+24,2011,León,07,46.56,19610,494211,24546,Definitivo,Definitivo,Definitivo,Definitivo
+24,2012,León,07,46.83,19154,492823,24665,Definitivo,Definitivo,Definitivo,Definitivo
+24,2013,León,07,47.11,18654,488756,24157,Definitivo,Definitivo,Definitivo,Definitivo
+24,2014,León,07,47.46,18774,483681,21852,Definitivo,Definitivo,Definitivo,Definitivo
+24,2015,León,07,47.77,19456,479104,20460,Definitivo,Definitivo,Definitivo,Definitivo
+24,2016,León,07,48.08,19604,473574,19480,Definitivo,Definitivo,Definitivo,Definitivo
+24,2017,León,07,48.39,20400,468637,18717,Definitivo,Definitivo,Definitivo,Definitivo
+24,2018,León,07,48.7,21175,464276,18815,Definitivo,Definitivo,Definitivo,Definitivo
+24,2019,León,07,48.97,21919,460247,19002,Definitivo,Definitivo,Definitivo,Definitivo
+24,2020,León,07,49.25,20431,456697,19928,Definitivo,Definitivo,Definitivo,Definitivo
+24,2021,León,07,49.41,23214,452435,20449,Definitivo,Definitivo,Definitivo,Definitivo
+24,2022,León,07,49.68,26190,449270,20916,Definitivo,Definitivo,Definitivo,Definitivo
+24,2023,León,07,49.82,27135,448573,23398,Definitivo,Definitivo,Definitivo,Definitivo
+24,2024,León,07,50.03,27837,447802,25051,Definitivo,Provisional,Definitivo,Definitivo
+24,2025,León,07,50.16,,448030,28693,Definitivo,,Definitivo,Definitivo
+24,2026,León,07,,,449839,32026,,,Provisional,Provisional
+25,2002,Lleida,09,42.33,22494,363190,14874,Definitivo,Definitivo,Definitivo,Definitivo
+25,2003,Lleida,09,42.25,23785,371137,22073,Definitivo,Definitivo,Definitivo,Definitivo
+25,2004,Lleida,09,42.11,24398,380554,30080,Definitivo,Definitivo,Definitivo,Definitivo
+25,2005,Lleida,09,41.92,24396,392921,41127,Definitivo,Definitivo,Definitivo,Definitivo
+25,2006,Lleida,09,41.77,26668,401661,49247,Definitivo,Definitivo,Definitivo,Definitivo
+25,2007,Lleida,09,41.67,27890,411141,57094,Definitivo,Definitivo,Definitivo,Definitivo
+25,2008,Lleida,09,41.5,28390,423484,67851,Definitivo,Definitivo,Definitivo,Definitivo
+25,2009,Lleida,09,41.42,27615,431409,74020,Definitivo,Definitivo,Definitivo,Definitivo
+25,2010,Lleida,09,41.53,27544,434179,75423,Definitivo,Definitivo,Definitivo,Definitivo
+25,2011,Lleida,09,41.68,27231,436689,76159,Definitivo,Definitivo,Definitivo,Definitivo
+25,2012,Lleida,09,41.87,27041,438213,77146,Definitivo,Definitivo,Definitivo,Definitivo
+25,2013,Lleida,09,42.12,27463,435838,75838,Definitivo,Definitivo,Definitivo,Definitivo
+25,2014,Lleida,09,42.42,27801,432397,71305,Definitivo,Definitivo,Definitivo,Definitivo
+25,2015,Lleida,09,42.64,29091,431044,69613,Definitivo,Definitivo,Definitivo,Definitivo
+25,2016,Lleida,09,42.85,28316,429806,69230,Definitivo,Definitivo,Definitivo,Definitivo
+25,2017,Lleida,09,43.07,27461,429821,68612,Definitivo,Definitivo,Definitivo,Definitivo
+25,2018,Lleida,09,43.22,28290,430650,70501,Definitivo,Definitivo,Definitivo,Definitivo
+25,2019,Lleida,09,43.35,29386,432917,73594,Definitivo,Definitivo,Definitivo,Definitivo
+25,2020,Lleida,09,43.45,26556,437508,78665,Definitivo,Definitivo,Definitivo,Definitivo
+25,2021,Lleida,09,43.56,29554,439258,80820,Definitivo,Definitivo,Definitivo,Definitivo
+25,2022,Lleida,09,43.72,31050,440883,82602,Definitivo,Definitivo,Definitivo,Definitivo
+25,2023,Lleida,09,43.76,33718,447343,88356,Definitivo,Definitivo,Definitivo,Definitivo
+25,2024,Lleida,09,43.94,36496,451707,91815,Definitivo,Provisional,Definitivo,Definitivo
+25,2025,Lleida,09,44,,458226,98146,Definitivo,,Definitivo,Definitivo
+25,2026,Lleida,09,,,465028,103754,,,Provisional,Provisional
+26,2002,La Rioja,17,41.76,19791,277993,14243,Definitivo,Definitivo,Definitivo,Definitivo
+26,2003,La Rioja,17,41.73,20933,284609,19928,Definitivo,Definitivo,Definitivo,Definitivo
+26,2004,La Rioja,17,41.7,21689,291082,24852,Definitivo,Definitivo,Definitivo,Definitivo
+26,2005,La Rioja,17,41.67,22851,298050,30003,Definitivo,Definitivo,Definitivo,Definitivo
+26,2006,La Rioja,17,41.71,24361,302697,33543,Definitivo,Definitivo,Definitivo,Definitivo
+26,2007,La Rioja,17,41.75,25488,308118,37496,Definitivo,Definitivo,Definitivo,Definitivo
+26,2008,La Rioja,17,41.66,25954,316192,43872,Definitivo,Definitivo,Definitivo,Definitivo
+26,2009,La Rioja,17,41.73,24741,319786,45863,Definitivo,Definitivo,Definitivo,Definitivo
+26,2010,La Rioja,17,41.98,25035,319939,45081,Definitivo,Definitivo,Definitivo,Definitivo
+26,2011,La Rioja,17,42.18,24748,320850,44693,Definitivo,Definitivo,Definitivo,Definitivo
+26,2012,La Rioja,17,42.44,23961,320951,43895,Definitivo,Definitivo,Definitivo,Definitivo
+26,2013,La Rioja,17,42.74,23898,318819,41384,Definitivo,Definitivo,Definitivo,Definitivo
+26,2014,La Rioja,17,43.12,24586,315736,36603,Definitivo,Definitivo,Definitivo,Definitivo
+26,2015,La Rioja,17,43.46,25594,314457,34387,Definitivo,Definitivo,Definitivo,Definitivo
+26,2016,La Rioja,17,43.72,25713,314025,33793,Definitivo,Definitivo,Definitivo,Definitivo
+26,2017,La Rioja,17,44,26585,314136,33676,Definitivo,Definitivo,Definitivo,Definitivo
+26,2018,La Rioja,17,44.24,27470,314890,34717,Definitivo,Definitivo,Definitivo,Definitivo
+26,2019,La Rioja,17,44.44,28040,315967,36139,Definitivo,Definitivo,Definitivo,Definitivo
+26,2020,La Rioja,17,44.57,25654,318703,38991,Definitivo,Definitivo,Definitivo,Definitivo
+26,2021,La Rioja,17,44.73,27365,319444,40379,Definitivo,Definitivo,Definitivo,Definitivo
+26,2022,La Rioja,17,44.94,30433,319617,41341,Definitivo,Definitivo,Definitivo,Definitivo
+26,2023,La Rioja,17,45.07,32361,322282,44336,Definitivo,Definitivo,Definitivo,Definitivo
+26,2024,La Rioja,17,45.28,33886,324184,46734,Definitivo,Provisional,Definitivo,Definitivo
+26,2025,La Rioja,17,45.45,35588,326803,48436,Definitivo,Avance,Definitivo,Definitivo
+26,2026,La Rioja,17,,,329574,50868,,,Provisional,Provisional
+27,2002,Lugo,12,46.36,13497,357303,3905,Definitivo,Definitivo,Definitivo,Definitivo
+27,2003,Lugo,12,46.66,14440,355702,4847,Definitivo,Definitivo,Definitivo,Definitivo
+27,2004,Lugo,12,46.9,15477,354345,5652,Definitivo,Definitivo,Definitivo,Definitivo
+27,2005,Lugo,12,47.17,17359,353357,6586,Definitivo,Definitivo,Definitivo,Definitivo
+27,2006,Lugo,12,47.41,18661,352624,7638,Definitivo,Definitivo,Definitivo,Definitivo
+27,2007,Lugo,12,47.64,19592,352247,9069,Definitivo,Definitivo,Definitivo,Definitivo
+27,2008,Lugo,12,47.77,19968,352633,11266,Definitivo,Definitivo,Definitivo,Definitivo
+27,2009,Lugo,12,47.92,19179,352322,12879,Definitivo,Definitivo,Definitivo,Definitivo
+27,2010,Lugo,12,48.11,19985,351000,13418,Definitivo,Definitivo,Definitivo,Definitivo
+27,2011,Lugo,12,48.32,20083,349525,13664,Definitivo,Definitivo,Definitivo,Definitivo
+27,2012,Lugo,12,48.54,19899,347629,13919,Definitivo,Definitivo,Definitivo,Definitivo
+27,2013,Lugo,12,48.75,20190,344603,13693,Definitivo,Definitivo,Definitivo,Definitivo
+27,2014,Lugo,12,48.98,20939,341495,12530,Definitivo,Definitivo,Definitivo,Definitivo
+27,2015,Lugo,12,49.22,22265,338430,11839,Definitivo,Definitivo,Definitivo,Definitivo
+27,2016,Lugo,12,49.41,22354,335752,12092,Definitivo,Definitivo,Definitivo,Definitivo
+27,2017,Lugo,12,49.58,22468,333152,12315,Definitivo,Definitivo,Definitivo,Definitivo
+27,2018,Lugo,12,49.72,23579,331128,13213,Definitivo,Definitivo,Definitivo,Definitivo
+27,2019,Lugo,12,49.89,23836,329070,13935,Definitivo,Definitivo,Definitivo,Definitivo
+27,2020,Lugo,12,50.07,21271,327573,15482,Definitivo,Definitivo,Definitivo,Definitivo
+27,2021,Lugo,12,50.25,23529,326068,16371,Definitivo,Definitivo,Definitivo,Definitivo
+27,2022,Lugo,12,50.45,26425,324240,16967,Definitivo,Definitivo,Definitivo,Definitivo
+27,2023,Lugo,12,50.48,28921,324267,19759,Definitivo,Definitivo,Definitivo,Definitivo
+27,2024,Lugo,12,50.5,30113,325048,22584,Definitivo,Provisional,Definitivo,Definitivo
+27,2025,Lugo,12,50.5,,326022,25964,Definitivo,,Definitivo,Definitivo
+27,2026,Lugo,12,,,327963,29371,,,Provisional,Provisional
+28,2002,Madrid,13,39.02,23904,5478405,401774,Definitivo,Definitivo,Definitivo,Definitivo
+28,2003,Madrid,13,39,24973,5638827,535828,Definitivo,Definitivo,Definitivo,Definitivo
+28,2004,Madrid,13,39.05,26394,5766566,642340,Definitivo,Definitivo,Definitivo,Definitivo
+28,2005,Madrid,13,39.19,28020,5866186,717926,Definitivo,Definitivo,Definitivo,Definitivo
+28,2006,Madrid,13,39.34,30136,5953604,782968,Definitivo,Definitivo,Definitivo,Definitivo
+28,2007,Madrid,13,39.44,31555,6074984,862953,Definitivo,Definitivo,Definitivo,Definitivo
+28,2008,Madrid,13,39.51,32125,6226195,966765,Definitivo,Definitivo,Definitivo,Definitivo
+28,2009,Madrid,13,39.66,31364,6327594,1013735,Definitivo,Definitivo,Definitivo,Definitivo
+28,2010,Madrid,13,39.9,31059,6373532,1012623,Definitivo,Definitivo,Definitivo,Definitivo
+28,2011,Madrid,13,40.21,31147,6394239,972005,Definitivo,Definitivo,Definitivo,Definitivo
+28,2012,Madrid,13,40.5,30566,6425573,939076,Definitivo,Definitivo,Definitivo,Definitivo
+28,2013,Madrid,13,40.83,30264,6411525,878968,Definitivo,Definitivo,Definitivo,Definitivo
+28,2014,Madrid,13,41.21,30776,6372553,783048,Definitivo,Definitivo,Definitivo,Definitivo
+28,2015,Madrid,13,41.51,32275,6375737,722378,Definitivo,Definitivo,Definitivo,Definitivo
+28,2016,Madrid,13,41.75,33350,6411466,715879,Definitivo,Definitivo,Definitivo,Definitivo
+28,2017,Madrid,13,41.99,34592,6459297,719594,Definitivo,Definitivo,Definitivo,Definitivo
+28,2018,Madrid,13,42.18,35601,6529923,757117,Definitivo,Definitivo,Definitivo,Definitivo
+28,2019,Madrid,13,42.37,36613,6618078,817809,Definitivo,Definitivo,Definitivo,Definitivo
+28,2020,Madrid,13,42.53,32853,6720310,893337,Definitivo,Definitivo,Definitivo,Definitivo
+28,2021,Madrid,13,42.72,35703,6726640,923113,Definitivo,Definitivo,Definitivo,Definitivo
+28,2022,Madrid,13,43.02,39246,6743254,938683,Definitivo,Definitivo,Definitivo,Definitivo
+28,2023,Madrid,13,43.09,42594,6871903,1041889,Definitivo,Definitivo,Definitivo,Definitivo
+28,2024,Madrid,13,43.25,45128,7009268,1123731,Definitivo,Provisional,Definitivo,Definitivo
+28,2025,Madrid,13,43.42,47220,7113886,1181319,Definitivo,Avance,Definitivo,Definitivo
+28,2026,Madrid,13,,,7168399,1204087,,,Provisional,Provisional
+29,2002,Málaga,01,37.89,13587,1302638,93308,Definitivo,Definitivo,Definitivo,Definitivo
+29,2003,Málaga,01,38.1,14470,1338402,115307,Definitivo,Definitivo,Definitivo,Definitivo
+29,2004,Málaga,01,38.26,15649,1373760,136306,Definitivo,Definitivo,Definitivo,Definitivo
+29,2005,Málaga,01,38.44,17026,1415713,161716,Definitivo,Definitivo,Definitivo,Definitivo
+29,2006,Málaga,01,38.59,17805,1456083,186809,Definitivo,Definitivo,Definitivo,Definitivo
+29,2007,Málaga,01,38.75,18316,1491784,206403,Definitivo,Definitivo,Definitivo,Definitivo
+29,2008,Málaga,01,38.9,18480,1529003,228918,Definitivo,Definitivo,Definitivo,Definitivo
+29,2009,Málaga,01,39.12,17762,1552894,239332,Definitivo,Definitivo,Definitivo,Definitivo
+29,2010,Málaga,01,39.42,17608,1566667,241356,Definitivo,Definitivo,Definitivo,Definitivo
+29,2011,Málaga,01,39.74,17160,1581343,243073,Definitivo,Definitivo,Definitivo,Definitivo
+29,2012,Málaga,01,40.05,16257,1598137,247761,Definitivo,Definitivo,Definitivo,Definitivo
+29,2013,Málaga,01,40.34,16016,1610728,252481,Definitivo,Definitivo,Definitivo,Definitivo
+29,2014,Málaga,01,40.67,16398,1618101,248077,Definitivo,Definitivo,Definitivo,Definitivo
+29,2015,Málaga,01,41,17077,1629179,247223,Definitivo,Definitivo,Definitivo,Definitivo
+29,2016,Málaga,01,41.28,17379,1638378,247605,Definitivo,Definitivo,Definitivo,Definitivo
+29,2017,Málaga,01,41.55,18189,1644147,244714,Definitivo,Definitivo,Definitivo,Definitivo
+29,2018,Málaga,01,41.76,18922,1650068,244958,Definitivo,Definitivo,Definitivo,Definitivo
+29,2019,Málaga,01,41.98,19477,1660348,248813,Definitivo,Definitivo,Definitivo,Definitivo
+29,2020,Málaga,01,42.25,16913,1683380,264722,Definitivo,Definitivo,Definitivo,Definitivo
+29,2021,Málaga,01,42.55,19145,1696955,272571,Definitivo,Definitivo,Definitivo,Definitivo
+29,2022,Málaga,01,42.87,21470,1715109,283013,Definitivo,Definitivo,Definitivo,Definitivo
+29,2023,Málaga,01,43.03,23299,1752728,314360,Definitivo,Definitivo,Definitivo,Definitivo
+29,2024,Málaga,01,43.26,24577,1774701,328513,Definitivo,Provisional,Definitivo,Definitivo
+29,2025,Málaga,01,43.5,,1791183,341229,Definitivo,,Definitivo,Definitivo
+29,2026,Málaga,01,,,1813066,356632,,,Provisional,Provisional
+30,2002,Murcia,14,37.16,15531,1206619,76194,Definitivo,Definitivo,Definitivo,Definitivo
+30,2003,Murcia,14,37.2,16376,1242632,102941,Definitivo,Definitivo,Definitivo,Definitivo
+30,2004,Murcia,14,37.26,17152,1276812,127051,Definitivo,Definitivo,Definitivo,Definitivo
+30,2005,Murcia,14,37.38,18178,1313496,152731,Definitivo,Definitivo,Definitivo,Definitivo
+30,2006,Murcia,14,37.48,19274,1351109,179092,Definitivo,Definitivo,Definitivo,Definitivo
+30,2007,Murcia,14,37.6,20228,1385715,201842,Definitivo,Definitivo,Definitivo,Definitivo
+30,2008,Murcia,14,37.7,20636,1419567,223831,Definitivo,Definitivo,Definitivo,Definitivo
+30,2009,Murcia,14,37.84,19383,1441783,233711,Definitivo,Definitivo,Definitivo,Definitivo
+30,2010,Murcia,14,38.09,19479,1453545,235701,Definitivo,Definitivo,Definitivo,Definitivo
+30,2011,Murcia,14,38.41,18957,1459076,231009,Definitivo,Definitivo,Definitivo,Definitivo
+30,2012,Murcia,14,38.75,18444,1461928,224882,Definitivo,Definitivo,Definitivo,Definitivo
+30,2013,Murcia,14,39.03,18502,1462271,219770,Definitivo,Definitivo,Definitivo,Definitivo
+30,2014,Murcia,14,39.35,18606,1462734,210626,Definitivo,Definitivo,Definitivo,Definitivo
+30,2015,Murcia,14,39.63,19901,1465195,205658,Definitivo,Definitivo,Definitivo,Definitivo
+30,2016,Murcia,14,39.88,20402,1468367,203148,Definitivo,Definitivo,Definitivo,Definitivo
+30,2017,Murcia,14,40.13,21128,1475275,201463,Definitivo,Definitivo,Definitivo,Definitivo
+30,2018,Murcia,14,40.3,21393,1478718,200952,Definitivo,Definitivo,Definitivo,Definitivo
+30,2019,Murcia,14,40.51,22015,1491312,206965,Definitivo,Definitivo,Definitivo,Definitivo
+30,2020,Murcia,14,40.71,20108,1509077,218409,Definitivo,Definitivo,Definitivo,Definitivo
+30,2021,Murcia,14,40.96,22087,1518279,221052,Definitivo,Definitivo,Definitivo,Definitivo
+30,2022,Murcia,14,41.18,24263,1529658,223587,Definitivo,Definitivo,Definitivo,Definitivo
+30,2023,Murcia,14,41.34,25532,1551692,236766,Definitivo,Definitivo,Definitivo,Definitivo
+30,2024,Murcia,14,41.58,26817,1568492,241494,Definitivo,Provisional,Definitivo,Definitivo
+30,2025,Murcia,14,41.82,28087,1586989,252671,Definitivo,Avance,Definitivo,Definitivo
+30,2026,Murcia,14,,,1605908,264127,,,Provisional,Provisional
+31,2002,Navarra,15,41,22841,557454,26120,Definitivo,Definitivo,Definitivo,Definitivo
+31,2003,Navarra,15,41.02,23848,567888,34124,Definitivo,Definitivo,Definitivo,Definitivo
+31,2004,Navarra,15,41.06,25096,576346,39992,Definitivo,Definitivo,Definitivo,Definitivo
+31,2005,Navarra,15,41.16,26586,584367,44284,Definitivo,Definitivo,Definitivo,Definitivo
+31,2006,Navarra,15,41.25,28111,592146,48184,Definitivo,Definitivo,Definitivo,Definitivo
+31,2007,Navarra,15,41.31,29307,602831,54015,Definitivo,Definitivo,Definitivo,Definitivo
+31,2008,Navarra,15,41.28,29937,616711,62694,Definitivo,Definitivo,Definitivo,Definitivo
+31,2009,Navarra,15,41.3,28569,627276,67836,Definitivo,Definitivo,Definitivo,Definitivo
+31,2010,Navarra,15,41.45,28487,633017,67799,Definitivo,Definitivo,Definitivo,Definitivo
+31,2011,Navarra,15,41.65,28279,637099,66601,Definitivo,Definitivo,Definitivo,Definitivo
+31,2012,Navarra,15,41.85,27184,640023,64891,Definitivo,Definitivo,Definitivo,Definitivo
+31,2013,Navarra,15,42.09,27213,639089,62145,Definitivo,Definitivo,Definitivo,Definitivo
+31,2014,Navarra,15,42.38,27704,637099,55180,Definitivo,Definitivo,Definitivo,Definitivo
+31,2015,Navarra,15,42.61,28761,637317,52468,Definitivo,Definitivo,Definitivo,Definitivo
+31,2016,Navarra,15,42.81,29556,638922,52690,Definitivo,Definitivo,Definitivo,Definitivo
+31,2017,Navarra,15,42.97,30631,642075,52889,Definitivo,Definitivo,Definitivo,Definitivo
+31,2018,Navarra,15,43.11,31190,646340,57122,Definitivo,Definitivo,Definitivo,Definitivo
+31,2019,Navarra,15,43.21,32136,652797,62506,Definitivo,Definitivo,Definitivo,Definitivo
+31,2020,Navarra,15,43.35,28987,659907,68911,Definitivo,Definitivo,Definitivo,Definitivo
+31,2021,Navarra,15,43.51,31486,662032,71363,Definitivo,Definitivo,Definitivo,Definitivo
+31,2022,Navarra,15,43.74,34720,664514,73416,Definitivo,Definitivo,Definitivo,Definitivo
+31,2023,Navarra,15,43.85,37020,672155,80941,Definitivo,Definitivo,Definitivo,Definitivo
+31,2024,Navarra,15,44.05,38816,678333,85891,Definitivo,Provisional,Definitivo,Definitivo
+31,2025,Navarra,15,44.22,40421,683854,90049,Definitivo,Avance,Definitivo,Definitivo
+31,2026,Navarra,15,,,690061,93997,,,Provisional,Provisional
+32,2002,Ourense,12,46.72,13398,338166,7771,Definitivo,Definitivo,Definitivo,Definitivo
+32,2003,Ourense,12,47.02,14158,337302,8964,Definitivo,Definitivo,Definitivo,Definitivo
+32,2004,Ourense,12,47.27,14803,336018,9821,Definitivo,Definitivo,Definitivo,Definitivo
+32,2005,Ourense,12,47.57,15909,335063,10616,Definitivo,Definitivo,Definitivo,Definitivo
+32,2006,Ourense,12,47.81,17063,334127,11433,Definitivo,Definitivo,Definitivo,Definitivo
+32,2007,Ourense,12,48.03,17981,333549,12423,Definitivo,Definitivo,Definitivo,Definitivo
+32,2008,Ourense,12,48.2,18819,332808,13731,Definitivo,Definitivo,Definitivo,Definitivo
+32,2009,Ourense,12,48.35,17897,332163,14775,Definitivo,Definitivo,Definitivo,Definitivo
+32,2010,Ourense,12,48.54,18515,331649,15422,Definitivo,Definitivo,Definitivo,Definitivo
+32,2011,Ourense,12,48.77,18766,330019,15276,Definitivo,Definitivo,Definitivo,Definitivo
+32,2012,Ourense,12,48.99,18595,328188,15284,Definitivo,Definitivo,Definitivo,Definitivo
+32,2013,Ourense,12,49.21,18417,325140,14994,Definitivo,Definitivo,Definitivo,Definitivo
+32,2014,Ourense,12,49.49,18508,321472,13513,Definitivo,Definitivo,Definitivo,Definitivo
+32,2015,Ourense,12,49.78,19284,318288,12881,Definitivo,Definitivo,Definitivo,Definitivo
+32,2016,Ourense,12,50.05,20206,314476,12361,Definitivo,Definitivo,Definitivo,Definitivo
+32,2017,Ourense,12,50.28,21035,311385,12070,Definitivo,Definitivo,Definitivo,Definitivo
+32,2018,Ourense,12,50.49,22030,309290,12616,Definitivo,Definitivo,Definitivo,Definitivo
+32,2019,Ourense,12,50.68,23276,307764,13570,Definitivo,Definitivo,Definitivo,Definitivo
+32,2020,Ourense,12,50.82,21005,306825,15196,Definitivo,Definitivo,Definitivo,Definitivo
+32,2021,Ourense,12,50.96,23878,305297,16019,Definitivo,Definitivo,Definitivo,Definitivo
+32,2022,Ourense,12,51.19,26705,304223,16557,Definitivo,Definitivo,Definitivo,Definitivo
+32,2023,Ourense,12,51.23,29518,304563,19483,Definitivo,Definitivo,Definitivo,Definitivo
+32,2024,Ourense,12,51.33,30965,304467,21531,Definitivo,Provisional,Definitivo,Definitivo
+32,2025,Ourense,12,51.38,,305278,24134,Definitivo,,Definitivo,Definitivo
+32,2026,Ourense,12,,,306541,26837,,,Provisional,Provisional
+33,2002,Asturias,03,44,15188,1062796,14230,Definitivo,Definitivo,Definitivo,Definitivo
+33,2003,Asturias,03,44.29,16039,1062320,18460,Definitivo,Definitivo,Definitivo,Definitivo
+33,2004,Asturias,03,44.56,17055,1062408,21835,Definitivo,Definitivo,Definitivo,Definitivo
+33,2005,Asturias,03,44.83,18482,1062755,24763,Definitivo,Definitivo,Definitivo,Definitivo
+33,2006,Asturias,03,45.07,20059,1063488,27969,Definitivo,Definitivo,Definitivo,Definitivo
+33,2007,Asturias,03,45.31,21416,1065291,31707,Definitivo,Definitivo,Definitivo,Definitivo
+33,2008,Asturias,03,45.46,21987,1071081,38700,Definitivo,Definitivo,Definitivo,Definitivo
+33,2009,Asturias,03,45.61,20778,1076280,44247,Definitivo,Definitivo,Definitivo,Definitivo
+33,2010,Asturias,03,45.82,20992,1077103,46300,Definitivo,Definitivo,Definitivo,Definitivo
+33,2011,Asturias,03,46.06,20706,1075877,46973,Definitivo,Definitivo,Definitivo,Definitivo
+33,2012,Asturias,03,46.31,19867,1074304,47772,Definitivo,Definitivo,Definitivo,Definitivo
+33,2013,Asturias,03,46.58,19475,1067425,46993,Definitivo,Definitivo,Definitivo,Definitivo
+33,2014,Asturias,03,46.9,19588,1058560,41869,Definitivo,Definitivo,Definitivo,Definitivo
+33,2015,Asturias,03,47.23,20497,1049328,39142,Definitivo,Definitivo,Definitivo,Definitivo
+33,2016,Asturias,03,47.51,20913,1040407,38576,Definitivo,Definitivo,Definitivo,Definitivo
+33,2017,Asturias,03,47.79,21897,1033550,37856,Definitivo,Definitivo,Definitivo,Definitivo
+33,2018,Asturias,03,48.07,22651,1027091,38614,Definitivo,Definitivo,Definitivo,Definitivo
+33,2019,Asturias,03,48.33,23220,1021469,39647,Definitivo,Definitivo,Definitivo,Definitivo
+33,2020,Asturias,03,48.61,21069,1018053,43337,Definitivo,Definitivo,Definitivo,Definitivo
+33,2021,Asturias,03,48.85,23446,1012117,45309,Definitivo,Definitivo,Definitivo,Definitivo
+33,2022,Asturias,03,49.16,26544,1004960,45679,Definitivo,Definitivo,Definitivo,Definitivo
+33,2023,Asturias,03,49.3,28103,1006060,53572,Definitivo,Definitivo,Definitivo,Definitivo
+33,2024,Asturias,03,49.47,29400,1009599,60330,Definitivo,Provisional,Definitivo,Definitivo
+33,2025,Asturias,03,49.59,30683,1015128,68989,Definitivo,Avance,Definitivo,Definitivo
+33,2026,Asturias,03,,,1021590,77759,,,Provisional,Provisional
+34,2002,Palencia,07,43.49,17422,173745,1630,Definitivo,Definitivo,Definitivo,Definitivo
+34,2003,Palencia,07,43.84,18695,173246,2182,Definitivo,Definitivo,Definitivo,Definitivo
+34,2004,Palencia,07,44.13,19805,172692,2766,Definitivo,Definitivo,Definitivo,Definitivo
+34,2005,Palencia,07,44.43,21133,172377,3457,Definitivo,Definitivo,Definitivo,Definitivo
+34,2006,Palencia,07,44.64,22119,172438,4280,Definitivo,Definitivo,Definitivo,Definitivo
+34,2007,Palencia,07,44.9,24196,172566,5048,Definitivo,Definitivo,Definitivo,Definitivo
+34,2008,Palencia,07,45.12,24788,172709,6227,Definitivo,Definitivo,Definitivo,Definitivo
+34,2009,Palencia,07,45.33,23740,172665,6957,Definitivo,Definitivo,Definitivo,Definitivo
+34,2010,Palencia,07,45.59,23498,171894,7134,Definitivo,Definitivo,Definitivo,Definitivo
+34,2011,Palencia,07,45.88,23715,171305,7321,Definitivo,Definitivo,Definitivo,Definitivo
+34,2012,Palencia,07,46.18,22517,170301,7189,Definitivo,Definitivo,Definitivo,Definitivo
+34,2013,Palencia,07,46.48,22465,168670,6961,Definitivo,Definitivo,Definitivo,Definitivo
+34,2014,Palencia,07,46.78,22414,167237,6452,Definitivo,Definitivo,Definitivo,Definitivo
+34,2015,Palencia,07,47.04,23857,165820,6273,Definitivo,Definitivo,Definitivo,Definitivo
+34,2016,Palencia,07,47.29,25476,164421,6189,Definitivo,Definitivo,Definitivo,Definitivo
+34,2017,Palencia,07,47.56,25054,163221,6149,Definitivo,Definitivo,Definitivo,Definitivo
+34,2018,Palencia,07,47.79,27101,162064,6349,Definitivo,Definitivo,Definitivo,Definitivo
+34,2019,Palencia,07,48.02,27505,161053,6593,Definitivo,Definitivo,Definitivo,Definitivo
+34,2020,Palencia,07,48.27,25293,160357,7069,Definitivo,Definitivo,Definitivo,Definitivo
+34,2021,Palencia,07,48.41,27331,159146,7277,Definitivo,Definitivo,Definitivo,Definitivo
+34,2022,Palencia,07,48.67,29853,157993,7381,Definitivo,Definitivo,Definitivo,Definitivo
+34,2023,Palencia,07,48.82,32140,157787,8581,Definitivo,Definitivo,Definitivo,Definitivo
+34,2024,Palencia,07,48.99,35007,158063,9694,Definitivo,Provisional,Definitivo,Definitivo
+34,2025,Palencia,07,49.06,,158702,11234,Definitivo,,Definitivo,Definitivo
+34,2026,Palencia,07,,,160116,13159,,,Provisional,Provisional
+35,2002,Las Palmas,05,35.95,17258,892640,53382,Definitivo,Definitivo,Definitivo,Definitivo
+35,2003,Las Palmas,05,36.18,17850,919570,68997,Definitivo,Definitivo,Definitivo,Definitivo
+35,2004,Las Palmas,05,36.44,18123,943646,81900,Definitivo,Definitivo,Definitivo,Definitivo
+35,2005,Las Palmas,05,36.73,18554,967922,95120,Definitivo,Definitivo,Definitivo,Definitivo
+35,2006,Las Palmas,05,37.03,19353,991822,107463,Definitivo,Definitivo,Definitivo,Definitivo
+35,2007,Las Palmas,05,37.32,20021,1016209,119799,Definitivo,Definitivo,Definitivo,Definitivo
+35,2008,Las Palmas,05,37.63,20147,1040110,133446,Definitivo,Definitivo,Definitivo,Definitivo
+35,2009,Las Palmas,05,37.98,19219,1056361,140670,Definitivo,Definitivo,Definitivo,Definitivo
+35,2010,Las Palmas,05,38.4,18796,1066491,142459,Definitivo,Definitivo,Definitivo,Definitivo
+35,2011,Las Palmas,05,38.83,18561,1077087,142644,Definitivo,Definitivo,Definitivo,Definitivo
+35,2012,Las Palmas,05,39.24,17743,1089051,144150,Definitivo,Definitivo,Definitivo,Definitivo
+35,2013,Las Palmas,05,39.65,17832,1094875,143584,Definitivo,Definitivo,Definitivo,Definitivo
+35,2014,Las Palmas,05,40.06,17876,1094856,133959,Definitivo,Definitivo,Definitivo,Definitivo
+35,2015,Las Palmas,05,40.47,18321,1097578,129843,Definitivo,Definitivo,Definitivo,Definitivo
+35,2016,Las Palmas,05,40.86,19181,1099894,128010,Definitivo,Definitivo,Definitivo,Definitivo
+35,2017,Las Palmas,05,41.23,19945,1105579,128516,Definitivo,Definitivo,Definitivo,Definitivo
+35,2018,Las Palmas,05,41.56,20595,1111873,131773,Definitivo,Definitivo,Definitivo,Definitivo
+35,2019,Las Palmas,05,41.89,20864,1121686,137899,Definitivo,Definitivo,Definitivo,Definitivo
+35,2020,Las Palmas,05,42.22,16895,1131195,144720,Definitivo,Definitivo,Definitivo,Definitivo
+35,2021,Las Palmas,05,42.62,18912,1131359,143762,Definitivo,Definitivo,Definitivo,Definitivo
+35,2022,Las Palmas,05,43.06,22358,1133733,144638,Definitivo,Definitivo,Definitivo,Definitivo
+35,2023,Las Palmas,05,43.37,24293,1145843,154129,Definitivo,Definitivo,Definitivo,Definitivo
+35,2024,Las Palmas,05,43.67,25937,1159890,162853,Definitivo,Provisional,Definitivo,Definitivo
+35,2025,Las Palmas,05,43.96,,1171547,171235,Definitivo,,Definitivo,Definitivo
+35,2026,Las Palmas,05,,,1181345,174505,,,Provisional,Provisional
+36,2002,Pontevedra,12,40.58,14137,905270,13629,Definitivo,Definitivo,Definitivo,Definitivo
+36,2003,Pontevedra,12,40.86,15128,911201,17976,Definitivo,Definitivo,Definitivo,Definitivo
+36,2004,Pontevedra,12,41.14,16376,916516,21535,Definitivo,Definitivo,Definitivo,Definitivo
+36,2005,Pontevedra,12,41.43,17434,922305,24500,Definitivo,Definitivo,Definitivo,Definitivo
+36,2006,Pontevedra,12,41.71,19036,927931,26989,Definitivo,Definitivo,Definitivo,Definitivo
+36,2007,Pontevedra,12,41.98,20494,933944,30244,Definitivo,Definitivo,Definitivo,Definitivo
+36,2008,Pontevedra,12,42.22,21205,940727,34121,Definitivo,Definitivo,Definitivo,Definitivo
+36,2009,Pontevedra,12,42.45,20048,947703,36961,Definitivo,Definitivo,Definitivo,Definitivo
+36,2010,Pontevedra,12,42.71,19720,951701,37660,Definitivo,Definitivo,Definitivo,Definitivo
+36,2011,Pontevedra,12,43.01,19172,953802,37469,Definitivo,Definitivo,Definitivo,Definitivo
+36,2012,Pontevedra,12,43.31,18530,954921,37212,Definitivo,Definitivo,Definitivo,Definitivo
+36,2013,Pontevedra,12,43.62,18673,953087,36360,Definitivo,Definitivo,Definitivo,Definitivo
+36,2014,Pontevedra,12,43.96,19086,950254,33181,Definitivo,Definitivo,Definitivo,Definitivo
+36,2015,Pontevedra,12,44.32,19932,948487,31790,Definitivo,Definitivo,Definitivo,Definitivo
+36,2016,Pontevedra,12,44.66,20460,945852,31441,Definitivo,Definitivo,Definitivo,Definitivo
+36,2017,Pontevedra,12,44.99,21815,944116,31210,Definitivo,Definitivo,Definitivo,Definitivo
+36,2018,Pontevedra,12,45.29,22157,942556,30817,Definitivo,Definitivo,Definitivo,Definitivo
+36,2019,Pontevedra,12,45.6,23013,942944,32443,Definitivo,Definitivo,Definitivo,Definitivo
+36,2020,Pontevedra,12,45.89,21304,946213,36473,Definitivo,Definitivo,Definitivo,Definitivo
+36,2021,Pontevedra,12,46.2,23251,946311,38052,Definitivo,Definitivo,Definitivo,Definitivo
+36,2022,Pontevedra,12,46.51,25076,945198,39494,Definitivo,Definitivo,Definitivo,Definitivo
+36,2023,Pontevedra,12,46.76,27177,946710,44928,Definitivo,Definitivo,Definitivo,Definitivo
+36,2024,Pontevedra,12,47.06,28988,947869,48931,Definitivo,Provisional,Definitivo,Definitivo
+36,2025,Pontevedra,12,47.34,,947818,53226,Definitivo,,Definitivo,Definitivo
+36,2026,Pontevedra,12,,,950520,57989,,,Provisional,Provisional
+37,2002,Salamanca,07,43.74,14618,345107,5173,Definitivo,Definitivo,Definitivo,Definitivo
+37,2003,Salamanca,07,43.98,15779,345560,6956,Definitivo,Definitivo,Definitivo,Definitivo
+37,2004,Salamanca,07,44.2,16590,345714,8462,Definitivo,Definitivo,Definitivo,Definitivo
+37,2005,Salamanca,07,44.43,17232,346313,9604,Definitivo,Definitivo,Definitivo,Definitivo
+37,2006,Salamanca,07,44.67,18197,346299,9956,Definitivo,Definitivo,Definitivo,Definitivo
+37,2007,Salamanca,07,44.87,19022,347713,11754,Definitivo,Definitivo,Definitivo,Definitivo
+37,2008,Salamanca,07,45.01,19280,349843,14432,Definitivo,Definitivo,Definitivo,Definitivo
+37,2009,Salamanca,07,45.15,19105,351018,15965,Definitivo,Definitivo,Definitivo,Definitivo
+37,2010,Salamanca,07,45.39,18370,350901,16365,Definitivo,Definitivo,Definitivo,Definitivo
+37,2011,Salamanca,07,45.65,18285,350819,16533,Definitivo,Definitivo,Definitivo,Definitivo
+37,2012,Salamanca,07,45.96,17716,349625,16264,Definitivo,Definitivo,Definitivo,Definitivo
+37,2013,Salamanca,07,46.26,17326,347040,15818,Definitivo,Definitivo,Definitivo,Definitivo
+37,2014,Salamanca,07,46.58,17553,344104,14296,Definitivo,Definitivo,Definitivo,Definitivo
+37,2015,Salamanca,07,46.93,18417,341635,13729,Definitivo,Definitivo,Definitivo,Definitivo
+37,2016,Salamanca,07,47.25,19332,338308,13249,Definitivo,Definitivo,Definitivo,Definitivo
+37,2017,Salamanca,07,47.57,20030,335783,12828,Definitivo,Definitivo,Definitivo,Definitivo
+37,2018,Salamanca,07,47.84,20735,333500,13289,Definitivo,Definitivo,Definitivo,Definitivo
+37,2019,Salamanca,07,48.08,21588,332044,14035,Definitivo,Definitivo,Definitivo,Definitivo
+37,2020,Salamanca,07,48.33,20029,330834,15325,Definitivo,Definitivo,Definitivo,Definitivo
+37,2021,Salamanca,07,48.48,22643,327735,15365,Definitivo,Definitivo,Definitivo,Definitivo
+37,2022,Salamanca,07,48.76,26471,326285,15991,Definitivo,Definitivo,Definitivo,Definitivo
+37,2023,Salamanca,07,48.83,29204,327089,18606,Definitivo,Definitivo,Definitivo,Definitivo
+37,2024,Salamanca,07,49.05,29363,327552,20518,Definitivo,Provisional,Definitivo,Definitivo
+37,2025,Salamanca,07,49.2,,328446,22863,Definitivo,,Definitivo,Definitivo
+37,2026,Salamanca,07,,,330246,25406,,,Provisional,Provisional
+38,2002,Santa Cruz de Tenerife,05,37.82,16328,811206,54181,Definitivo,Definitivo,Definitivo,Definitivo
+38,2003,Santa Cruz de Tenerife,05,38.04,17073,836123,67074,Definitivo,Definitivo,Definitivo,Definitivo
+38,2004,Santa Cruz de Tenerife,05,38.29,17824,860609,79366,Definitivo,Definitivo,Definitivo,Definitivo
+38,2005,Santa Cruz de Tenerife,05,38.56,18877,885233,92309,Definitivo,Definitivo,Definitivo,Definitivo
+38,2006,Santa Cruz de Tenerife,05,38.82,19628,907787,103409,Definitivo,Definitivo,Definitivo,Definitivo
+38,2007,Santa Cruz de Tenerife,05,39.09,20554,929862,114214,Definitivo,Definitivo,Definitivo,Definitivo
+38,2008,Santa Cruz de Tenerife,05,39.35,20835,951836,125912,Definitivo,Definitivo,Definitivo,Definitivo
+38,2009,Santa Cruz de Tenerife,05,39.64,19641,969125,132759,Definitivo,Definitivo,Definitivo,Definitivo
+38,2010,Santa Cruz de Tenerife,05,40.03,19964,978677,133438,Definitivo,Definitivo,Definitivo,Definitivo
+38,2011,Santa Cruz de Tenerife,05,40.43,19688,987789,133143,Definitivo,Definitivo,Definitivo,Definitivo
+38,2012,Santa Cruz de Tenerife,05,40.81,18945,996877,133792,Definitivo,Definitivo,Definitivo,Definitivo
+38,2013,Santa Cruz de Tenerife,05,41.15,18519,1001461,133803,Definitivo,Definitivo,Definitivo,Definitivo
+38,2014,Santa Cruz de Tenerife,05,41.51,18696,1003299,127615,Definitivo,Definitivo,Definitivo,Definitivo
+38,2015,Santa Cruz de Tenerife,05,41.84,19494,1003741,124172,Definitivo,Definitivo,Definitivo,Definitivo
+38,2016,Santa Cruz de Tenerife,05,42.11,19745,1003542,121375,Definitivo,Definitivo,Definitivo,Definitivo
+38,2017,Santa Cruz de Tenerife,05,42.4,20681,1009654,122070,Definitivo,Definitivo,Definitivo,Definitivo
+38,2018,Santa Cruz de Tenerife,05,42.64,21134,1019708,128273,Definitivo,Definitivo,Definitivo,Definitivo
+38,2019,Santa Cruz de Tenerife,05,42.87,21478,1031630,135133,Definitivo,Definitivo,Definitivo,Definitivo
+38,2020,Santa Cruz de Tenerife,05,43.15,17611,1045045,143825,Definitivo,Definitivo,Definitivo,Definitivo
+38,2021,Santa Cruz de Tenerife,05,43.53,19138,1047565,145221,Definitivo,Definitivo,Definitivo,Definitivo
+38,2022,Santa Cruz de Tenerife,05,43.95,22108,1051874,147763,Definitivo,Definitivo,Definitivo,Definitivo
+38,2023,Santa Cruz de Tenerife,05,44.2,24027,1067173,160394,Definitivo,Definitivo,Definitivo,Definitivo
+38,2024,Santa Cruz de Tenerife,05,44.48,25847,1078864,166499,Definitivo,Provisional,Definitivo,Definitivo
+38,2025,Santa Cruz de Tenerife,05,44.74,,1087319,171377,Definitivo,,Definitivo,Definitivo
+38,2026,Santa Cruz de Tenerife,05,,,1094929,174308,,,Provisional,Provisional
+39,2002,Cantabria,06,41.84,17099,536289,9521,Definitivo,Definitivo,Definitivo,Definitivo
+39,2003,Cantabria,06,42.04,17801,541645,12734,Definitivo,Definitivo,Definitivo,Definitivo
+39,2004,Cantabria,06,42.2,18744,548009,16096,Definitivo,Definitivo,Definitivo,Definitivo
+39,2005,Cantabria,06,42.38,19981,554690,19210,Definitivo,Definitivo,Definitivo,Definitivo
+39,2006,Cantabria,06,42.54,21184,561042,22239,Definitivo,Definitivo,Definitivo,Definitivo
+39,2007,Cantabria,06,42.67,22423,568190,26324,Definitivo,Definitivo,Definitivo,Definitivo
+39,2008,Cantabria,06,42.74,22852,577266,32357,Definitivo,Definitivo,Definitivo,Definitivo
+39,2009,Cantabria,06,42.84,21834,584655,36275,Definitivo,Definitivo,Definitivo,Definitivo
+39,2010,Cantabria,06,43.03,21850,588518,37586,Definitivo,Definitivo,Definitivo,Definitivo
+39,2011,Cantabria,06,43.26,21435,590874,37337,Definitivo,Definitivo,Definitivo,Definitivo
+39,2012,Cantabria,06,43.51,20691,592387,37455,Definitivo,Definitivo,Definitivo,Definitivo
+39,2013,Cantabria,06,43.8,20299,589789,36024,Definitivo,Definitivo,Definitivo,Definitivo
+39,2014,Cantabria,06,44.12,20747,587491,32741,Definitivo,Definitivo,Definitivo,Definitivo
+39,2015,Cantabria,06,44.42,21329,585184,30767,Definitivo,Definitivo,Definitivo,Definitivo
+39,2016,Cantabria,06,44.73,22072,582494,29869,Definitivo,Definitivo,Definitivo,Definitivo
+39,2017,Cantabria,06,45.03,22922,581421,29301,Definitivo,Definitivo,Definitivo,Definitivo
+39,2018,Cantabria,06,45.29,23818,581533,30475,Definitivo,Definitivo,Definitivo,Definitivo
+39,2019,Cantabria,06,45.55,24515,581989,32133,Definitivo,Definitivo,Definitivo,Definitivo
+39,2020,Cantabria,06,45.81,22279,583011,34506,Definitivo,Definitivo,Definitivo,Definitivo
+39,2021,Cantabria,06,46.07,24303,584708,35812,Definitivo,Definitivo,Definitivo,Definitivo
+39,2022,Cantabria,06,46.39,26506,585450,36924,Definitivo,Definitivo,Definitivo,Definitivo
+39,2023,Cantabria,06,46.57,28334,588387,41711,Definitivo,Definitivo,Definitivo,Definitivo
+39,2024,Cantabria,06,46.85,30011,590851,44760,Definitivo,Provisional,Definitivo,Definitivo
+39,2025,Cantabria,06,47.1,31266,593623,48359,Definitivo,Avance,Definitivo,Definitivo
+39,2026,Cantabria,06,,,597089,51540,,,Provisional,Provisional
+40,2002,Segovia,07,43.24,17737,147631,5591,Definitivo,Definitivo,Definitivo,Definitivo
+40,2003,Segovia,07,43.28,18650,149643,7776,Definitivo,Definitivo,Definitivo,Definitivo
+40,2004,Segovia,07,43.31,19416,151733,9649,Definitivo,Definitivo,Definitivo,Definitivo
+40,2005,Segovia,07,43.31,20741,154209,11873,Definitivo,Definitivo,Definitivo,Definitivo
+40,2006,Segovia,07,43.33,21948,156275,13685,Definitivo,Definitivo,Definitivo,Definitivo
+40,2007,Segovia,07,43.32,22808,159139,16233,Definitivo,Definitivo,Definitivo,Definitivo
+40,2008,Segovia,07,43.18,22270,163091,20145,Definitivo,Definitivo,Definitivo,Definitivo
+40,2009,Segovia,07,43.3,21250,163374,20411,Definitivo,Definitivo,Definitivo,Definitivo
+40,2010,Segovia,07,43.49,21474,163174,20275,Definitivo,Definitivo,Definitivo,Definitivo
+40,2011,Segovia,07,43.68,21034,163423,20353,Definitivo,Definitivo,Definitivo,Definitivo
+40,2012,Segovia,07,43.88,20171,162937,20404,Definitivo,Definitivo,Definitivo,Definitivo
+40,2013,Segovia,07,44.16,19974,161205,19751,Definitivo,Definitivo,Definitivo,Definitivo
+40,2014,Segovia,07,44.53,20527,158798,18050,Definitivo,Definitivo,Definitivo,Definitivo
+40,2015,Segovia,07,44.81,21609,157578,17370,Definitivo,Definitivo,Definitivo,Definitivo
+40,2016,Segovia,07,45.1,21738,155991,16845,Definitivo,Definitivo,Definitivo,Definitivo
+40,2017,Segovia,07,45.39,21163,154854,16326,Definitivo,Definitivo,Definitivo,Definitivo
+40,2018,Segovia,07,45.63,22012,153983,16378,Definitivo,Definitivo,Definitivo,Definitivo
+40,2019,Segovia,07,45.85,22690,153571,16827,Definitivo,Definitivo,Definitivo,Definitivo
+40,2020,Segovia,07,46.03,20668,153641,17552,Definitivo,Definitivo,Definitivo,Definitivo
+40,2021,Segovia,07,46.05,23743,153626,17969,Definitivo,Definitivo,Definitivo,Definitivo
+40,2022,Segovia,07,46.31,26207,153731,18079,Definitivo,Definitivo,Definitivo,Definitivo
+40,2023,Segovia,07,46.41,28277,155332,20015,Definitivo,Definitivo,Definitivo,Definitivo
+40,2024,Segovia,07,46.59,29902,156620,21570,Definitivo,Provisional,Definitivo,Definitivo
+40,2025,Segovia,07,46.65,,158251,23117,Definitivo,,Definitivo,Definitivo
+40,2026,Segovia,07,,,160493,24676,,,Provisional,Provisional
+41,2002,Sevilla,01,37.24,14323,1732697,17219,Definitivo,Definitivo,Definitivo,Definitivo
+41,2003,Sevilla,01,37.49,15373,1748400,23230,Definitivo,Definitivo,Definitivo,Definitivo
+41,2004,Sevilla,01,37.69,16309,1764493,28814,Definitivo,Definitivo,Definitivo,Definitivo
+41,2005,Sevilla,01,37.89,17573,1785135,35425,Definitivo,Definitivo,Definitivo,Definitivo
+41,2006,Sevilla,01,38.06,18590,1807971,43745,Definitivo,Definitivo,Definitivo,Definitivo
+41,2007,Sevilla,01,38.23,19814,1831956,51469,Definitivo,Definitivo,Definitivo,Definitivo
+41,2008,Sevilla,01,38.36,19946,1859555,63329,Definitivo,Definitivo,Definitivo,Definitivo
+41,2009,Sevilla,01,38.5,19124,1884107,70676,Definitivo,Definitivo,Definitivo,Definitivo
+41,2010,Sevilla,01,38.69,18891,1902956,74139,Definitivo,Definitivo,Definitivo,Definitivo
+41,2011,Sevilla,01,38.92,18686,1918747,74630,Definitivo,Definitivo,Definitivo,Definitivo
+41,2012,Sevilla,01,39.16,18194,1932573,76002,Definitivo,Definitivo,Definitivo,Definitivo
+41,2013,Sevilla,01,39.44,17669,1935023,74619,Definitivo,Definitivo,Definitivo,Definitivo
+41,2014,Sevilla,01,39.76,18032,1934058,67731,Definitivo,Definitivo,Definitivo,Definitivo
+41,2015,Sevilla,01,40.06,18594,1935135,63656,Definitivo,Definitivo,Definitivo,Definitivo
+41,2016,Sevilla,01,40.35,18947,1935590,62634,Definitivo,Definitivo,Definitivo,Definitivo
+41,2017,Sevilla,01,40.65,19774,1936735,61383,Definitivo,Definitivo,Definitivo,Definitivo
+41,2018,Sevilla,01,40.96,20429,1938007,64054,Definitivo,Definitivo,Definitivo,Definitivo
+41,2019,Sevilla,01,41.27,21043,1941191,67132,Definitivo,Definitivo,Definitivo,Definitivo
+41,2020,Sevilla,01,41.58,19208,1947848,73790,Definitivo,Definitivo,Definitivo,Definitivo
+41,2021,Sevilla,01,41.89,21346,1950056,77511,Definitivo,Definitivo,Definitivo,Definitivo
+41,2022,Sevilla,01,42.18,23273,1949558,79319,Definitivo,Definitivo,Definitivo,Definitivo
+41,2023,Sevilla,01,42.45,24865,1959394,90197,Definitivo,Definitivo,Definitivo,Definitivo
+41,2024,Sevilla,01,42.76,26561,1968624,97579,Definitivo,Provisional,Definitivo,Definitivo
+41,2025,Sevilla,01,43.05,,1977664,108200,Definitivo,,Definitivo,Definitivo
+41,2026,Sevilla,01,,,1996754,124091,,,Provisional,Provisional
+42,2002,Soria,07,45.45,17775,90378,2420,Definitivo,Definitivo,Definitivo,Definitivo
+42,2003,Soria,07,45.49,18825,91119,3579,Definitivo,Definitivo,Definitivo,Definitivo
+42,2004,Soria,07,45.57,20172,91778,4354,Definitivo,Definitivo,Definitivo,Definitivo
+42,2005,Soria,07,45.62,20385,92265,5214,Definitivo,Definitivo,Definitivo,Definitivo
+42,2006,Soria,07,45.7,21548,92736,5960,Definitivo,Definitivo,Definitivo,Definitivo
+42,2007,Soria,07,45.72,22897,93430,6956,Definitivo,Definitivo,Definitivo,Definitivo
+42,2008,Soria,07,45.67,23364,94470,8434,Definitivo,Definitivo,Definitivo,Definitivo
+42,2009,Soria,07,45.66,22193,94738,9163,Definitivo,Definitivo,Definitivo,Definitivo
+42,2010,Soria,07,45.78,23036,94987,9541,Definitivo,Definitivo,Definitivo,Definitivo
+42,2011,Soria,07,45.92,23012,94898,9621,Definitivo,Definitivo,Definitivo,Definitivo
+42,2012,Soria,07,46.08,21833,94463,9605,Definitivo,Definitivo,Definitivo,Definitivo
+42,2013,Soria,07,46.32,22241,93373,9198,Definitivo,Definitivo,Definitivo,Definitivo
+42,2014,Soria,07,46.58,22749,92374,8284,Definitivo,Definitivo,Definitivo,Definitivo
+42,2015,Soria,07,46.77,23763,91454,7757,Definitivo,Definitivo,Definitivo,Definitivo
+42,2016,Soria,07,46.98,24056,90460,7642,Definitivo,Definitivo,Definitivo,Definitivo
+42,2017,Soria,07,47.18,24746,89614,7331,Definitivo,Definitivo,Definitivo,Definitivo
+42,2018,Soria,07,47.34,28019,89329,7605,Definitivo,Definitivo,Definitivo,Definitivo
+42,2019,Soria,07,47.49,28421,89008,7767,Definitivo,Definitivo,Definitivo,Definitivo
+42,2020,Soria,07,47.55,25821,89302,8448,Definitivo,Definitivo,Definitivo,Definitivo
+42,2021,Soria,07,47.51,28912,88796,8740,Definitivo,Definitivo,Definitivo,Definitivo
+42,2022,Soria,07,47.73,30468,88330,8689,Definitivo,Definitivo,Definitivo,Definitivo
+42,2023,Soria,07,47.63,31524,89528,10363,Definitivo,Definitivo,Definitivo,Definitivo
+42,2024,Soria,07,47.7,32514,90073,11151,Definitivo,Provisional,Definitivo,Definitivo
+42,2025,Soria,07,47.8,,90183,11808,Definitivo,,Definitivo,Definitivo
+42,2026,Soria,07,,,90828,12649,,,Provisional,Provisional
+43,2002,Tarragona,09,40.58,23728,613031,30506,Definitivo,Definitivo,Definitivo,Definitivo
+43,2003,Tarragona,09,40.49,24375,636614,45851,Definitivo,Definitivo,Definitivo,Definitivo
+43,2004,Tarragona,09,40.43,25960,661094,60731,Definitivo,Definitivo,Definitivo,Definitivo
+43,2005,Tarragona,09,40.33,25448,689266,78317,Definitivo,Definitivo,Definitivo,Definitivo
+43,2006,Tarragona,09,40.18,26476,718448,96537,Definitivo,Definitivo,Definitivo,Definitivo
+43,2007,Tarragona,09,40.06,27469,749156,115335,Definitivo,Definitivo,Definitivo,Definitivo
+43,2008,Tarragona,09,39.94,27654,780209,136898,Definitivo,Definitivo,Definitivo,Definitivo
+43,2009,Tarragona,09,40,26518,793983,143799,Definitivo,Definitivo,Definitivo,Definitivo
+43,2010,Tarragona,09,40.2,26997,798818,143114,Definitivo,Definitivo,Definitivo,Definitivo
+43,2011,Tarragona,09,40.41,26403,803859,141807,Definitivo,Definitivo,Definitivo,Definitivo
+43,2012,Tarragona,09,40.67,25539,806904,140581,Definitivo,Definitivo,Definitivo,Definitivo
+43,2013,Tarragona,09,41,25457,802724,135120,Definitivo,Definitivo,Definitivo,Definitivo
+43,2014,Tarragona,09,41.39,26151,795485,124422,Definitivo,Definitivo,Definitivo,Definitivo
+43,2015,Tarragona,09,41.73,27832,793272,119435,Definitivo,Definitivo,Definitivo,Definitivo
+43,2016,Tarragona,09,42.02,29105,792163,117484,Definitivo,Definitivo,Definitivo,Definitivo
+43,2017,Tarragona,09,42.32,30395,793077,116198,Definitivo,Definitivo,Definitivo,Definitivo
+43,2018,Tarragona,09,42.54,30427,795919,118245,Definitivo,Definitivo,Definitivo,Definitivo
+43,2019,Tarragona,09,42.73,30643,803528,124261,Definitivo,Definitivo,Definitivo,Definitivo
+43,2020,Tarragona,09,42.88,26378,815746,133675,Definitivo,Definitivo,Definitivo,Definitivo
+43,2021,Tarragona,09,43.08,29817,823435,137475,Definitivo,Definitivo,Definitivo,Definitivo
+43,2022,Tarragona,09,43.31,32695,830906,139138,Definitivo,Definitivo,Definitivo,Definitivo
+43,2023,Tarragona,09,43.43,34548,848592,151436,Definitivo,Definitivo,Definitivo,Definitivo
+43,2024,Tarragona,09,43.62,36302,861744,158807,Definitivo,Provisional,Definitivo,Definitivo
+43,2025,Tarragona,09,43.8,,875530,167655,Definitivo,,Definitivo,Definitivo
+43,2026,Tarragona,09,,,890164,175931,,,Provisional,Provisional
+44,2002,Teruel,02,45.12,19449,135730,3526,Definitivo,Definitivo,Definitivo,Definitivo
+44,2003,Teruel,02,45.07,19843,137487,5914,Definitivo,Definitivo,Definitivo,Definitivo
+44,2004,Teruel,02,45.07,20739,138393,7371,Definitivo,Definitivo,Definitivo,Definitivo
+44,2005,Teruel,02,45.05,22355,139827,9375,Definitivo,Definitivo,Definitivo,Definitivo
+44,2006,Teruel,02,45,23667,141281,11276,Definitivo,Definitivo,Definitivo,Definitivo
+44,2007,Teruel,02,44.87,24955,143622,13989,Definitivo,Definitivo,Definitivo,Definitivo
+44,2008,Teruel,02,44.69,25799,145704,16860,Definitivo,Definitivo,Definitivo,Definitivo
+44,2009,Teruel,02,44.68,24210,146132,18066,Definitivo,Definitivo,Definitivo,Definitivo
+44,2010,Teruel,02,44.82,24291,145112,17714,Definitivo,Definitivo,Definitivo,Definitivo
+44,2011,Teruel,02,44.96,24009,144357,17521,Definitivo,Definitivo,Definitivo,Definitivo
+44,2012,Teruel,02,45.12,23643,142918,16976,Definitivo,Definitivo,Definitivo,Definitivo
+44,2013,Teruel,02,45.32,23994,141092,16117,Definitivo,Definitivo,Definitivo,Definitivo
+44,2014,Teruel,02,45.54,24326,139470,14781,Definitivo,Definitivo,Definitivo,Definitivo
+44,2015,Teruel,02,45.8,24012,137871,13871,Definitivo,Definitivo,Definitivo,Definitivo
+44,2016,Teruel,02,46.02,23993,136377,13387,Definitivo,Definitivo,Definitivo,Definitivo
+44,2017,Teruel,02,46.21,23935,135324,13149,Definitivo,Definitivo,Definitivo,Definitivo
+44,2018,Teruel,02,46.34,25241,134449,13357,Definitivo,Definitivo,Definitivo,Definitivo
+44,2019,Teruel,02,46.41,25570,134025,13733,Definitivo,Definitivo,Definitivo,Definitivo
+44,2020,Teruel,02,46.48,23292,134085,14469,Definitivo,Definitivo,Definitivo,Definitivo
+44,2021,Teruel,02,46.49,26341,134259,14972,Definitivo,Definitivo,Definitivo,Definitivo
+44,2022,Teruel,02,46.6,30262,134132,15306,Definitivo,Definitivo,Definitivo,Definitivo
+44,2023,Teruel,02,46.56,32264,135046,16692,Definitivo,Definitivo,Definitivo,Definitivo
+44,2024,Teruel,02,46.69,34030,135309,17372,Definitivo,Provisional,Definitivo,Definitivo
+44,2025,Teruel,02,46.7,,136091,18887,Definitivo,,Definitivo,Definitivo
+44,2026,Teruel,02,,,137209,20360,,,Provisional,Provisional
+45,2002,Toledo,08,40.12,14670,543387,16626,Definitivo,Definitivo,Definitivo,Definitivo
+45,2003,Toledo,08,40.1,15653,558376,24436,Definitivo,Definitivo,Definitivo,Definitivo
+45,2004,Toledo,08,40.04,16049,574502,31081,Definitivo,Definitivo,Definitivo,Definitivo
+45,2005,Toledo,08,39.97,17557,592396,38220,Definitivo,Definitivo,Definitivo,Definitivo
+45,2006,Toledo,08,39.9,18777,611787,45635,Definitivo,Definitivo,Definitivo,Definitivo
+45,2007,Toledo,08,39.77,19742,636696,57366,Definitivo,Definitivo,Definitivo,Definitivo
+45,2008,Toledo,08,39.54,19724,665283,73051,Definitivo,Definitivo,Definitivo,Definitivo
+45,2009,Toledo,08,39.54,18532,682734,79051,Definitivo,Definitivo,Definitivo,Definitivo
+45,2010,Toledo,08,39.7,17844,692424,79818,Definitivo,Definitivo,Definitivo,Definitivo
+45,2011,Toledo,08,39.88,17254,701011,79572,Definitivo,Definitivo,Definitivo,Definitivo
+45,2012,Toledo,08,40.1,16425,705583,79144,Definitivo,Definitivo,Definitivo,Definitivo
+45,2013,Toledo,08,40.35,16325,703566,75980,Definitivo,Definitivo,Definitivo,Definitivo
+45,2014,Toledo,08,40.71,16273,697605,68564,Definitivo,Definitivo,Definitivo,Definitivo
+45,2015,Toledo,08,41.07,16982,694329,64443,Definitivo,Definitivo,Definitivo,Definitivo
+45,2016,Toledo,08,41.39,17629,691787,62780,Definitivo,Definitivo,Definitivo,Definitivo
+45,2017,Toledo,08,41.7,18217,691021,61169,Definitivo,Definitivo,Definitivo,Definitivo
+45,2018,Toledo,08,41.93,18940,691124,61566,Definitivo,Definitivo,Definitivo,Definitivo
+45,2019,Toledo,08,42.13,19308,696390,64985,Definitivo,Definitivo,Definitivo,Definitivo
+45,2020,Toledo,08,42.3,17804,704792,70657,Definitivo,Definitivo,Definitivo,Definitivo
+45,2021,Toledo,08,42.4,19714,710400,73222,Definitivo,Definitivo,Definitivo,Definitivo
+45,2022,Toledo,08,42.63,21870,716309,75539,Definitivo,Definitivo,Definitivo,Definitivo
+45,2023,Toledo,08,42.77,23313,731112,86998,Definitivo,Definitivo,Definitivo,Definitivo
+45,2024,Toledo,08,42.96,24534,743165,94306,Definitivo,Provisional,Definitivo,Definitivo
+45,2025,Toledo,08,43.11,,755081,101459,Definitivo,,Definitivo,Definitivo
+45,2026,Toledo,08,,,771701,109537,,,Provisional,Provisional
+46,2002,Valencia/València,10,39.83,17562,2226431,75840,Definitivo,Definitivo,Definitivo,Definitivo
+46,2003,Valencia/València,10,39.88,18284,2275650,114162,Definitivo,Definitivo,Definitivo,Definitivo
+46,2004,Valencia/València,10,39.93,19138,2321592,147950,Definitivo,Definitivo,Definitivo,Definitivo
+46,2005,Valencia/València,10,40.01,19886,2371882,182452,Definitivo,Definitivo,Definitivo,Definitivo
+46,2006,Valencia/València,10,40.08,21248,2418730,216262,Definitivo,Definitivo,Definitivo,Definitivo
+46,2007,Valencia/València,10,40.14,22610,2467761,250680,Definitivo,Definitivo,Definitivo,Definitivo
+46,2008,Valencia/València,10,40.18,23079,2522559,289407,Definitivo,Definitivo,Definitivo,Definitivo
+46,2009,Valencia/València,10,40.32,21712,2550405,300520,Definitivo,Definitivo,Definitivo,Definitivo
+46,2010,Valencia/València,10,40.59,21786,2553693,291856,Definitivo,Definitivo,Definitivo,Definitivo
+46,2011,Valencia/València,10,40.87,21506,2559199,282095,Definitivo,Definitivo,Definitivo,Definitivo
+46,2012,Valencia/València,10,41.16,20629,2562514,275163,Definitivo,Definitivo,Definitivo,Definitivo
+46,2013,Valencia/València,10,41.49,20594,2548936,260241,Definitivo,Definitivo,Definitivo,Definitivo
+46,2014,Valencia/València,10,41.86,21115,2531628,236300,Definitivo,Definitivo,Definitivo,Definitivo
+46,2015,Valencia/València,10,42.17,21862,2528776,227356,Definitivo,Definitivo,Definitivo,Definitivo
+46,2016,Valencia/València,10,42.46,22198,2526469,224690,Definitivo,Definitivo,Definitivo,Definitivo
+46,2017,Valencia/València,10,42.74,22795,2531673,225215,Definitivo,Definitivo,Definitivo,Definitivo
+46,2018,Valencia/València,10,42.97,23825,2542923,238024,Definitivo,Definitivo,Definitivo,Definitivo
+46,2019,Valencia/València,10,43.21,24397,2554332,249121,Definitivo,Definitivo,Definitivo,Definitivo
+46,2020,Valencia/València,10,43.4,22104,2584654,278064,Definitivo,Definitivo,Definitivo,Definitivo
+46,2021,Valencia/València,10,43.66,23967,2593243,289734,Definitivo,Definitivo,Definitivo,Definitivo
+46,2022,Valencia/València,10,43.87,25935,2609322,305352,Definitivo,Definitivo,Definitivo,Definitivo
+46,2023,Valencia/València,10,43.92,28100,2656841,350686,Definitivo,Definitivo,Definitivo,Definitivo
+46,2024,Valencia/València,10,44.01,29449,2710808,395987,Definitivo,Provisional,Definitivo,Definitivo
+46,2025,Valencia/València,10,44.1,,2763996,439728,Definitivo,,Definitivo,Definitivo
+46,2026,Valencia/València,10,,,2807656,472845,,,Provisional,Provisional
+47,2002,Valladolid,07,41.21,18109,499631,7696,Definitivo,Definitivo,Definitivo,Definitivo
+47,2003,Valladolid,07,41.47,18869,503347,11258,Definitivo,Definitivo,Definitivo,Definitivo
+47,2004,Valladolid,07,41.72,19992,506393,14001,Definitivo,Definitivo,Definitivo,Definitivo
+47,2005,Valladolid,07,41.97,21379,510004,17048,Definitivo,Definitivo,Definitivo,Definitivo
+47,2006,Valladolid,07,42.19,22590,513751,19703,Definitivo,Definitivo,Definitivo,Definitivo
+47,2007,Valladolid,07,42.4,23792,518851,23186,Definitivo,Definitivo,Definitivo,Definitivo
+47,2008,Valladolid,07,42.56,23816,525651,28996,Definitivo,Definitivo,Definitivo,Definitivo
+47,2009,Valladolid,07,42.78,22830,528788,30677,Definitivo,Definitivo,Definitivo,Definitivo
+47,2010,Valladolid,07,43.07,23521,530503,31016,Definitivo,Definitivo,Definitivo,Definitivo
+47,2011,Valladolid,07,43.34,23110,531881,30990,Definitivo,Definitivo,Definitivo,Definitivo
+47,2012,Valladolid,07,43.67,22355,532644,30877,Definitivo,Definitivo,Definitivo,Definitivo
+47,2013,Valladolid,07,43.98,22240,530848,29739,Definitivo,Definitivo,Definitivo,Definitivo
+47,2014,Valladolid,07,44.34,22706,528486,26964,Definitivo,Definitivo,Definitivo,Definitivo
+47,2015,Valladolid,07,44.66,23737,527199,26042,Definitivo,Definitivo,Definitivo,Definitivo
+47,2016,Valladolid,07,44.97,25043,524669,25214,Definitivo,Definitivo,Definitivo,Definitivo
+47,2017,Valladolid,07,45.3,26362,522985,24422,Definitivo,Definitivo,Definitivo,Definitivo
+47,2018,Valladolid,07,45.61,27580,520930,24001,Definitivo,Definitivo,Definitivo,Definitivo
+47,2019,Valladolid,07,45.89,28079,520483,24915,Definitivo,Definitivo,Definitivo,Definitivo
+47,2020,Valladolid,07,46.18,26067,520904,26992,Definitivo,Definitivo,Definitivo,Definitivo
+47,2021,Valladolid,07,46.4,26940,519380,28457,Definitivo,Definitivo,Definitivo,Definitivo
+47,2022,Valladolid,07,46.71,29369,518158,29162,Definitivo,Definitivo,Definitivo,Definitivo
+47,2023,Valladolid,07,46.87,31473,521333,33352,Definitivo,Definitivo,Definitivo,Definitivo
+47,2024,Valladolid,07,47.06,33742,525116,37166,Definitivo,Provisional,Definitivo,Definitivo
+47,2025,Valladolid,07,47.26,,528644,40733,Definitivo,,Definitivo,Definitivo
+47,2026,Valladolid,07,,,533411,44848,,,Provisional,Provisional
+48,2002,Bizkaia,16,42.16,20565,1122667,16972,Definitivo,Definitivo,Definitivo,Definitivo
+48,2003,Bizkaia,16,42.42,21845,1125115,23386,Definitivo,Definitivo,Definitivo,Definitivo
+48,2004,Bizkaia,16,42.64,23073,1128049,30401,Definitivo,Definitivo,Definitivo,Definitivo
+48,2005,Bizkaia,16,42.85,24749,1132163,37780,Definitivo,Definitivo,Definitivo,Definitivo
+48,2006,Bizkaia,16,43.04,26141,1136766,45390,Definitivo,Definitivo,Definitivo,Definitivo
+48,2007,Bizkaia,16,43.22,27546,1142686,54217,Definitivo,Definitivo,Definitivo,Definitivo
+48,2008,Bizkaia,16,43.39,28810,1149084,63421,Definitivo,Definitivo,Definitivo,Definitivo
+48,2009,Bizkaia,16,43.57,27922,1154628,69860,Definitivo,Definitivo,Definitivo,Definitivo
+48,2010,Bizkaia,16,43.79,28342,1155818,71422,Definitivo,Definitivo,Definitivo,Definitivo
+48,2011,Bizkaia,16,44.02,27849,1156030,72000,Definitivo,Definitivo,Definitivo,Definitivo
+48,2012,Bizkaia,16,44.25,27224,1155709,70300,Definitivo,Definitivo,Definitivo,Definitivo
+48,2013,Bizkaia,16,44.55,26850,1150032,64907,Definitivo,Definitivo,Definitivo,Definitivo
+48,2014,Bizkaia,16,44.89,27560,1143121,57142,Definitivo,Definitivo,Definitivo,Definitivo
+48,2015,Bizkaia,16,45.15,28852,1141400,55414,Definitivo,Definitivo,Definitivo,Definitivo
+48,2016,Bizkaia,16,45.38,29532,1140191,56869,Definitivo,Definitivo,Definitivo,Definitivo
+48,2017,Bizkaia,16,45.58,30047,1141564,58894,Definitivo,Definitivo,Definitivo,Definitivo
+48,2018,Bizkaia,16,45.78,31099,1143742,64966,Definitivo,Definitivo,Definitivo,Definitivo
+48,2019,Bizkaia,16,45.96,31944,1147589,72190,Definitivo,Definitivo,Definitivo,Definitivo
+48,2020,Bizkaia,16,46.11,28583,1154696,83080,Definitivo,Definitivo,Definitivo,Definitivo
+48,2021,Bizkaia,16,46.32,31265,1153635,88229,Definitivo,Definitivo,Definitivo,Definitivo
+48,2022,Bizkaia,16,46.58,35630,1148677,89065,Definitivo,Definitivo,Definitivo,Definitivo
+48,2023,Bizkaia,16,46.68,38276,1153282,99097,Definitivo,Definitivo,Definitivo,Definitivo
+48,2024,Bizkaia,16,46.84,40031,1159368,107194,Definitivo,Provisional,Definitivo,Definitivo
+48,2025,Bizkaia,16,46.98,,1167233,114241,Definitivo,,Definitivo,Definitivo
+48,2026,Bizkaia,16,,,1173070,119968,,,Provisional,Provisional
+49,2002,Zamora,07,46.26,12754,198357,1608,Definitivo,Definitivo,Definitivo,Definitivo
+49,2003,Zamora,07,46.55,13709,197681,2254,Definitivo,Definitivo,Definitivo,Definitivo
+49,2004,Zamora,07,46.8,14799,196853,2903,Definitivo,Definitivo,Definitivo,Definitivo
+49,2005,Zamora,07,47.06,15168,196342,3736,Definitivo,Definitivo,Definitivo,Definitivo
+49,2006,Zamora,07,47.29,16727,195999,4705,Definitivo,Definitivo,Definitivo,Definitivo
+49,2007,Zamora,07,47.53,17805,195863,5705,Definitivo,Definitivo,Definitivo,Definitivo
+49,2008,Zamora,07,47.64,18159,196165,7558,Definitivo,Definitivo,Definitivo,Definitivo
+49,2009,Zamora,07,47.87,17803,194924,7942,Definitivo,Definitivo,Definitivo,Definitivo
+49,2010,Zamora,07,48.14,18235,193751,7986,Definitivo,Definitivo,Definitivo,Definitivo
+49,2011,Zamora,07,48.42,18608,192726,8042,Definitivo,Definitivo,Definitivo,Definitivo
+49,2012,Zamora,07,48.68,18651,191306,8205,Definitivo,Definitivo,Definitivo,Definitivo
+49,2013,Zamora,07,48.96,18112,188878,7938,Definitivo,Definitivo,Definitivo,Definitivo
+49,2014,Zamora,07,49.28,18132,186117,7169,Definitivo,Definitivo,Definitivo,Definitivo
+49,2015,Zamora,07,49.61,18984,183885,6913,Definitivo,Definitivo,Definitivo,Definitivo
+49,2016,Zamora,07,49.92,19366,181057,6619,Definitivo,Definitivo,Definitivo,Definitivo
+49,2017,Zamora,07,50.22,18454,178243,6349,Definitivo,Definitivo,Definitivo,Definitivo
+49,2018,Zamora,07,50.53,19328,175662,6290,Definitivo,Definitivo,Definitivo,Definitivo
+49,2019,Zamora,07,50.8,20270,173318,6231,Definitivo,Definitivo,Definitivo,Definitivo
+49,2020,Zamora,07,51.08,18827,171301,6395,Definitivo,Definitivo,Definitivo,Definitivo
+49,2021,Zamora,07,51.2,21814,169165,6424,Definitivo,Definitivo,Definitivo,Definitivo
+49,2022,Zamora,07,51.48,24770,167868,6611,Definitivo,Definitivo,Definitivo,Definitivo
+49,2023,Zamora,07,51.65,26487,166927,7601,Definitivo,Definitivo,Definitivo,Definitivo
+49,2024,Zamora,07,51.79,27767,166253,8569,Definitivo,Provisional,Definitivo,Definitivo
+49,2025,Zamora,07,51.91,,165564,9639,Definitivo,,Definitivo,Definitivo
+49,2026,Zamora,07,,,165576,10940,,,Provisional,Provisional
+50,2002,Zaragoza,02,42.19,19546,867475,33541,Definitivo,Definitivo,Definitivo,Definitivo
+50,2003,Zaragoza,02,42.25,20722,878627,44850,Definitivo,Definitivo,Definitivo,Definitivo
+50,2004,Zaragoza,02,42.3,21912,887658,54453,Definitivo,Definitivo,Definitivo,Definitivo
+50,2005,Zaragoza,02,42.34,23225,900698,65670,Definitivo,Definitivo,Definitivo,Definitivo
+50,2006,Zaragoza,02,42.33,24806,915041,78989,Definitivo,Definitivo,Definitivo,Definitivo
+50,2007,Zaragoza,02,42.33,26312,930533,91715,Definitivo,Definitivo,Definitivo,Definitivo
+50,2008,Zaragoza,02,42.2,26462,955315,113426,Definitivo,Definitivo,Definitivo,Definitivo
+50,2009,Zaragoza,02,42.2,25207,969877,125072,Definitivo,Definitivo,Definitivo,Definitivo
+50,2010,Zaragoza,02,42.39,25371,972282,125174,Definitivo,Definitivo,Definitivo,Definitivo
+50,2011,Zaragoza,02,42.61,24939,973443,122869,Definitivo,Definitivo,Definitivo,Definitivo
+50,2012,Zaragoza,02,42.82,23874,975050,121259,Definitivo,Definitivo,Definitivo,Definitivo
+50,2013,Zaragoza,02,43.07,23946,971807,118551,Definitivo,Definitivo,Definitivo,Definitivo
+50,2014,Zaragoza,02,43.36,24378,967541,112391,Definitivo,Definitivo,Definitivo,Definitivo
+50,2015,Zaragoza,02,43.6,25194,965052,108213,Definitivo,Definitivo,Definitivo,Definitivo
+50,2016,Zaragoza,02,43.87,26118,960170,104056,Definitivo,Definitivo,Definitivo,Definitivo
+50,2017,Zaragoza,02,44.11,27582,959338,102381,Definitivo,Definitivo,Definitivo,Definitivo
+50,2018,Zaragoza,02,44.32,28597,958391,103569,Definitivo,Definitivo,Definitivo,Definitivo
+50,2019,Zaragoza,02,44.45,29386,965673,111151,Definitivo,Definitivo,Definitivo,Definitivo
+50,2020,Zaragoza,02,44.59,27197,973740,120704,Definitivo,Definitivo,Definitivo,Definitivo
+50,2021,Zaragoza,02,44.73,29279,973684,123938,Definitivo,Definitivo,Definitivo,Definitivo
+50,2022,Zaragoza,02,44.97,32813,968884,121197,Definitivo,Definitivo,Definitivo,Definitivo
+50,2023,Zaragoza,02,45.03,34702,979365,132426,Definitivo,Definitivo,Definitivo,Definitivo
+50,2024,Zaragoza,02,45.2,36445,987763,140214,Definitivo,Provisional,Definitivo,Definitivo
+50,2025,Zaragoza,02,45.3,,998443,147784,Definitivo,,Definitivo,Definitivo
+50,2026,Zaragoza,02,,,1011814,158303,,,Provisional,Provisional
+51,2002,Ceuta,18,34.68,14680,70874,3229,Definitivo,Definitivo,Definitivo,Definitivo
+51,2003,Ceuta,18,34.9,15593,71110,3162,Definitivo,Definitivo,Definitivo,Definitivo
+51,2004,Ceuta,18,35.12,16358,71542,3153,Definitivo,Definitivo,Definitivo,Definitivo
+51,2005,Ceuta,18,35.32,17135,71983,3104,Definitivo,Definitivo,Definitivo,Definitivo
+51,2006,Ceuta,18,35.48,18107,72806,3111,Definitivo,Definitivo,Definitivo,Definitivo
+51,2007,Ceuta,18,35.65,19051,74155,3265,Definitivo,Definitivo,Definitivo,Definitivo
+51,2008,Ceuta,18,35.77,19584,75252,3352,Definitivo,Definitivo,Definitivo,Definitivo
+51,2009,Ceuta,18,35.86,19077,76922,3704,Definitivo,Definitivo,Definitivo,Definitivo
+51,2010,Ceuta,18,35.84,18532,79294,4141,Definitivo,Definitivo,Definitivo,Definitivo
+51,2011,Ceuta,18,35.83,17986,81627,4838,Definitivo,Definitivo,Definitivo,Definitivo
+51,2012,Ceuta,18,35.85,17094,83837,5637,Definitivo,Definitivo,Definitivo,Definitivo
+51,2013,Ceuta,18,36.04,17229,84487,5775,Definitivo,Definitivo,Definitivo,Definitivo
+51,2014,Ceuta,18,36.2,17123,84562,5118,Definitivo,Definitivo,Definitivo,Definitivo
+51,2015,Ceuta,18,36.35,17757,84561,4901,Definitivo,Definitivo,Definitivo,Definitivo
+51,2016,Ceuta,18,36.6,18155,84558,5155,Definitivo,Definitivo,Definitivo,Definitivo
+51,2017,Ceuta,18,36.8,18262,85005,5408,Definitivo,Definitivo,Definitivo,Definitivo
+51,2018,Ceuta,18,37,18923,85327,5709,Definitivo,Definitivo,Definitivo,Definitivo
+51,2019,Ceuta,18,37.3,19577,85087,5569,Definitivo,Definitivo,Definitivo,Definitivo
+51,2020,Ceuta,18,37.66,18184,84502,5590,Definitivo,Definitivo,Definitivo,Definitivo
+51,2021,Ceuta,18,37.96,19661,84071,5488,Definitivo,Definitivo,Definitivo,Definitivo
+51,2022,Ceuta,18,38.26,21273,83051,4930,Definitivo,Definitivo,Definitivo,Definitivo
+51,2023,Ceuta,18,38.55,22432,83052,4912,Definitivo,Definitivo,Definitivo,Definitivo
+51,2024,Ceuta,18,38.92,23352,83179,4991,Definitivo,Provisional,Definitivo,Definitivo
+51,2025,Ceuta,18,39.25,24622,83567,5307,Definitivo,Avance,Definitivo,Definitivo
+51,2026,Ceuta,18,,,84199,5751,,,Provisional,Provisional
+52,2002,Melilla,19,33.68,14478,65901,6797,Definitivo,Definitivo,Definitivo,Definitivo
+52,2003,Melilla,19,33.9,15570,65390,5946,Definitivo,Definitivo,Definitivo,Definitivo
+52,2004,Melilla,19,34.04,16650,64754,4590,Definitivo,Definitivo,Definitivo,Definitivo
+52,2005,Melilla,19,34.21,17256,64914,4093,Definitivo,Definitivo,Definitivo,Definitivo
+52,2006,Melilla,19,34.43,18066,67110,5488,Definitivo,Definitivo,Definitivo,Definitivo
+52,2007,Melilla,19,34.51,18495,68968,6402,Definitivo,Definitivo,Definitivo,Definitivo
+52,2008,Melilla,19,34.6,18800,71244,7499,Definitivo,Definitivo,Definitivo,Definitivo
+52,2009,Melilla,19,34.64,18284,73361,8333,Definitivo,Definitivo,Definitivo,Definitivo
+52,2010,Melilla,19,34.67,17661,76047,9267,Definitivo,Definitivo,Definitivo,Definitivo
+52,2011,Melilla,19,34.66,17144,78863,10239,Definitivo,Definitivo,Definitivo,Definitivo
+52,2012,Melilla,19,34.64,16035,81786,11291,Definitivo,Definitivo,Definitivo,Definitivo
+52,2013,Melilla,19,34.6,15981,83669,11962,Definitivo,Definitivo,Definitivo,Definitivo
+52,2014,Melilla,19,34.69,15999,84103,11424,Definitivo,Definitivo,Definitivo,Definitivo
+52,2015,Melilla,19,34.72,16506,85009,11504,Definitivo,Definitivo,Definitivo,Definitivo
+52,2016,Melilla,19,34.85,16979,85457,12074,Definitivo,Definitivo,Definitivo,Definitivo
+52,2017,Melilla,19,35.04,17051,85918,12336,Definitivo,Definitivo,Definitivo,Definitivo
+52,2018,Melilla,19,35.24,17531,86084,12654,Definitivo,Definitivo,Definitivo,Definitivo
+52,2019,Melilla,19,35.48,18073,86373,12681,Definitivo,Definitivo,Definitivo,Definitivo
+52,2020,Melilla,19,35.76,16776,86558,12645,Definitivo,Definitivo,Definitivo,Definitivo
+52,2021,Melilla,19,36.08,17891,86450,12531,Definitivo,Definitivo,Definitivo,Definitivo
+52,2022,Melilla,19,36.45,19433,84932,11285,Definitivo,Definitivo,Definitivo,Definitivo
+52,2023,Melilla,19,36.84,20446,85493,11327,Definitivo,Definitivo,Definitivo,Definitivo
+52,2024,Melilla,19,37.25,21266,85985,11119,Definitivo,Provisional,Definitivo,Definitivo
+52,2025,Melilla,19,37.66,22302,87067,12081,Definitivo,Avance,Definitivo,Definitivo
+52,2026,Melilla,19,,,86906,11604,,,Provisional,Provisional

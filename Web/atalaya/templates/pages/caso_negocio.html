@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% from "partials/artifact.html" import provenance, empty_state %}
+{% block title %}Caso de negocio{% endblock %}
+{% block content %}
+<div class="hero">
+  <p>Atalaya es una plataforma académica de analítica del mercado hipotecario español. Integra datos públicos oficiales por provincia y trimestre, modelos econométricos y de demanda, y un simulador de esfuerzo, con trazabilidad completa de cada cifra.</p>
+</div>
+<div class="prose stack">
+  <h2>Problema</h2>
+  <p>La información del mercado hipotecario está dispersa entre organismos (INE, Banco de España, BCE, Eurostat, Ministerio de Vivienda) con frecuencias, ámbitos y calendarios de publicación distintos. Comparar provincias o anticipar escenarios exige un trabajo de integración que rara vez es reproducible.</p>
+  <h2>Propuesta de valor</h2>
+  <ul>
+    <li><strong>Panel único y trazable</strong>: provincia (código INE) × trimestre, con fuente y fecha de publicación de cada serie.</li>
+    <li><strong>Lectura del ciclo</strong>: relaciones dinámicas entre hipotecas, precios, tipos y renta (VAR/VECM).</li>
+    <li><strong>Escenarios 2026-2030</strong>: proyecciones condicionadas a supuestos explícitos.</li>
+    <li><strong>Simulador de esfuerzo</strong>: cuota, ratios de endeudamiento y gastos de compra con la norma aplicable, sin decisiones automáticas de concesión.</li>
+  </ul>
+  <h2>Usuarios</h2>
+  <ul>
+    <li>Analistas de mercado y equipos de estudios que necesitan series comparables por provincia.</li>
+    <li>Estudiantes y docentes, como caso práctico reproducible de analítica.</li>
+    <li>Ciudadanía, para entender el esfuerzo de una hipoteca en su provincia.</li>
+  </ul>
+</div>
+
+<h2>Indicadores de los modelos</h2>
+{% for b in [demand, forecasting, advisor] %}
+<section class="card" aria-labelledby="bc-{{ b.domain }}">
+  <h3 class="card__title" id="bc-{{ b.domain }}">{{ b.label }}</h3>
+  {% if b.ok %}
+    {% set mv = b.views|selectattr("type", "equalto", "metrics")|list %}
+    {% if mv %}<script type="application/json" id="bc-{{ b.domain }}-data">{{ mv|tojson }}</script><div class="views" data-views="bc-{{ b.domain }}-data"></div>
+    {% else %}<p class="muted">Sin vistas de métricas en el artefacto.</p>{% endif %}
+    {{ provenance(b) }}
+  {% else %}
+    {{ empty_state(b) }}
+  {% endif %}
+</section>
+{% endfor %}
+
+<div class="prose stack">
+  <h2>Limitaciones</h2>
+  <ul>
+    <li>Las variables nacionales (Euríbor, diferencial, ahorro, costes de construcción) se replican por provincia: no aportan variación territorial.</li>
+    <li>Algunas series son anuales; no se interpolan a trimestres.</li>
+    <li>Las proyecciones dependen de los supuestos y de la estabilidad de las relaciones históricas.</li>
+    <li>Los resultados son de asociación estadística; no identifican efectos causales.</li>
+  </ul>
+  <h2>Consideraciones regulatorias</h2>
+  <p>El simulador es informativo: no evalúa solvencia ni concede financiación (Ley 5/2019 de contratos de crédito inmobiliario; Directiva 2014/17/UE). Si en el futuro se usara un modelo para evaluar la solvencia de personas físicas, entraría en la categoría de alto riesgo del Reglamento (UE) 2024/1689 de IA, con sus obligaciones de transparencia, supervisión humana y gestión de datos.</p>
+</div>
+{% endblock %}

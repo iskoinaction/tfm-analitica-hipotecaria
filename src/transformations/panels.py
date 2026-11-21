@@ -79,7 +79,7 @@ def build_panel_trimestral(q: pd.DataFrame, start: str = config.PERIOD_START) ->
     return out.sort_values(["prov_code", "period"]).reset_index(drop=True)
 
 
-def build_panel_anual(staging: dict[str, pd.DataFrame], start_year: int = 2005) -> pd.DataFrame:
+def build_panel_anual(staging: dict[str, pd.DataFrame], start_year: int = 2002) -> pd.DataFrame:
     parts = []
     for key, df in staging.items():
         spec = config.DATASET_BY_KEY[key]

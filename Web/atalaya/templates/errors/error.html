@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% set messages = {400: "Petición no válida.", 404: "La página que buscas no existe.", 405: "Método no permitido.", 413: "La petición es demasiado grande.", 429: "Demasiadas peticiones. Espera un momento.", 500: "Se ha producido un error interno.", 503: "Servicio no disponible temporalmente."} %}
+{% block title %}Error {{ code }}{% endblock %}
+{% block head_scripts %}{% endblock %}
+{% block header_meta %}{% endblock %}
+{% block content %}
+<div class="error-state" role="alert">
+  <p>{{ messages.get(code, message) }}</p>
+  <a class="btn btn--secondary" href="{{ url_for('pages.index') }}">Volver al resumen</a>
+</div>
+{% endblock %}

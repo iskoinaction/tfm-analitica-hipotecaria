@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% from "partials/artifact.html" import artifact_section %}
+{% from "partials/panel.html" import panel_missing, series_card, map_card, ranking_card %}
+{% block title %}Resumen del mercado hipotecario{% endblock %}
+{% block scripts %}<script nonce="{{ csp_nonce() }}" src="{{ url_for('static', filename='js/panel.js') }}" defer></script>{% endblock %}
+{% block content %}
+{% if panel_info %}
+  <section aria-labelledby="kpi-t">
+    <h2 class="visually-hidden" id="kpi-t">Indicadores clave</h2>
+    <div class="kpis">
+      {% for k in kpis %}
+      <div class="card kpi">
+        <span class="kpi__label">{{ k.label }}</span>
+        <span class="kpi__value num">{{ k.value|num(0 if k.unit in ('nº', '€/m²') else 2) }}<span class="kpi__unit">{{ k.unit }}</span></span>
+        {% if k.change is not none %}
+        <span class="kpi__delta" data-trend="{{ 'up' if k.change > 0 else ('down' if k.change < 0 else 'flat') }}">
+          {{ k.change|num(1 if k.change_unit == '%' else 2) }} {{ k.change_unit }} frente a {{ k.change_ref|period }}
+        </span>
+        {% endif %}
+        <span class="kpi__period">{{ k.period|period }} · {{ k.agg_label }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    <p class="provenance">Fuente: {{ panel_info.source }}. Agregados nacionales calculados sobre el panel provincial (suma o media simple, según se indica).</p>
+  </section>
+
+  <div class="views">
+    {{ series_card("chart-hip", "Hipotecas sobre viviendas", "hipotecas_total", "Número de hipotecas constituidas por trimestre. Total nacional (suma de provincias).", span=6) }}
+    {{ map_card("map-res", variables, "precio_m2", span=6) }}
+    {{ series_card("chart-eur", "Euríbor y diferencial hipotecario", "euribor", "Series nacionales trimestrales (%).", extra_var="spread_hipotecas", span=6) }}
+    {{ ranking_card("rank-hip", "Provincias con más hipotecas (último trimestre)", "hipotecas_total", span=6) }}
+  </div>
+{% else %}
+  {{ panel_missing() }}
+{% endif %}
+
+<h2>Proyecciones 2026-2030</h2>
+<p class="callout">Proyecciones condicionadas a supuestos; no son previsiones oficiales. Las líneas discontinuas y las bandas indican proyección e intervalo.</p>
+{{ artifact_section(forecasting, "fc", span_charts=True) }}
+{% endblock %}

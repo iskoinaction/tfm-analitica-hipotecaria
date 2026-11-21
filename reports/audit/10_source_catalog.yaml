@@ -1,0 +1,362 @@
+# Catálogo de fuentes verificado (auditoría 10_fuentes, 2026-11-21)
+# Cada entrada se probó con llamadas reales desde este entorno (ver reports/audit/10_fuentes_scripts/).
+# Convenciones:
+#   geo: nacional | ccaa | provincia | ue
+#   freq: M (mensual) | Q (trimestral) | A (anual)
+#   ref_vs_pub: retraso típico entre fin del periodo de referencia y publicación (medido o documentado)
+#   status: verified (id y endpoint probados) | verified_download (fichero descargable probado) |
+#           manual (sin API; normativa) | pending (no verificado desde este entorno)
+#   INE: fechas de la API en ms epoch = medianoche Europe/Madrid (sumar zona horaria antes de truncar a fecha).
+#   INE: las CCAA uniprovinciales (Cantabria, Illes Balears, La Rioja, Ceuta, Melilla) aparecen DOS veces
+#        (como CCAA y como provincia) en algunas tablas: deduplicar por (código provincia, fecha).
+
+defaults:
+  ine_base: https://servicios.ine.es/wstempus/js/ES
+  ine_licencia: "Reutilización libre citando la fuente (Aviso legal INE; RD 1495/2011 / Ley 37/2007)"
+  ecb_base: https://data-api.ecb.europa.eu/service/data
+  ecb_licencia: "ECB: reutilización permitida citando la fuente. Euribor: benchmark de EMMI (términos de uso EMMI)"
+  eurostat_base: https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data
+  eurostat_licencia: "CC BY 4.0 (política de reutilización de la Comisión, Decisión 2011/833/UE)"
+
+series:
+
+  # ------------------------------------------------------------------ PRECIO VIVIENDA
+  - id: precio_m2_tinsa
+    variable_panel: Precio_m2
+    fuente: "Tinsa (Accumin Home S.L.U.) - IMIE Mercados Locales, web tinsa.es/precio-vivienda/"
+    tipo_acceso: scraping
+    endpoint: "https://www.tinsa.es/precio-vivienda/{ccaa-slug}/{provincia-slug}/  (array Highcharts 'categories'/'data')"
+    concepto: "Valor medio de tasación €/m2 (vivienda terminada) - provincia"
+    unidad: EUR/m2
+    freq: Q
+    geo: provincia
+    historico: "2001T1-2026T3 (comprobado en la página de Madrid municipio, 103 trimestres)"
+    licencia: "Condiciones de uso tinsa.es: 'Cualquier explotación de todo o parte del contenido ... está estrictamente prohibido' sin autorización expresa. robots.txt no prohíbe /precio-vivienda/."
+    api_oficial: false
+    status: verified
+    recomendacion: "No usar como fuente automatizada sin permiso escrito de Tinsa/Accumin Home. Mantener solo la serie histórica v1 como referencia o sustituir por MIVAU (ver precio_m2_mivau)."
+
+  - id: precio_m2_mivau
+    variable_panel: Precio_m2 (alternativa oficial)
+    fuente: "MIVAU - Estadística de Valor Tasado de Vivienda (IOE 20007)"
+    tipo_acceso: descarga_oficial
+    endpoint: https://cdn.mivau.gob.es/portal-web-mivau/Datos_MIVAU/CSV/VDP006_01.csv
+    catalogo: "https://datos.gob.es/apidata/catalog/dataset/e05233601-valor-tasado-de-la-vivienda.json"
+    formato: "CSV ';' UTF-8 BOM, CRLF. Columnas: Año;Trimestre;Valor;Régimen;CPRO;Provincia;Comunidad_Autónoma;CODAUTO"
+    filtros: {Régimen: Libre}
+    notas_parseo:
+      - "CPRO sin cero a la izquierda (p.ej. '9' = Burgos)."
+      - "Madrid(28), Murcia(30), Navarra(31) y Asturias(33) NO aparecen como provincia: usar filas Provincia='Total CCAA' con Comunidad_Autónoma correspondiente ('Murcia, Region de' sin CODAUTO)."
+      - "Valor 0 o vacío = sin muestra suficiente (89 casos en vivienda libre) -> NaN, no cero."
+      - "Filas 'Ceuta y Melilla' agregadas y 'Total nacional'."
+    concepto: "Valor tasado medio de vivienda libre €/m2 (todas las tasaciones, todas las sociedades de tasación)"
+    unidad: EUR/m2
+    freq: Q
+    geo: provincia
+    historico: "1995T1-2026T2 (Last-Modified 2026-09-17)"
+    ref_vs_pub: "~2,5 meses (2026T2 publicado ~17-sep-2026)"
+    revisiones: "Sin vintages públicos; el fichero se sobreescribe."
+    licencia: "datos.gob.es / Aviso legal MIVAU: reutilización con cita (Ley 37/2007)"
+    status: verified_download
+
+  - id: transacciones_mivau
+    variable_panel: "Transmisiones_Total 2005-2006 (fuente usada en v1 vía XLS) / alternativa"
+    fuente: "MIVAU - Transacciones inmobiliarias de vivienda (origen: Notariado)"
+    tipo_acceso: descarga_oficial
+    endpoint: https://cdn.mivau.gob.es/portal-web-mivau/Datos_MIVAU/CSV/VDP003_01.csv
+    formato: "CSV ';'. COD_CCAA;NOM_CCAA;COD_PROV;NOM_PROV;TIPO_TRANSACCION(NUEVA|SEGUNDA_MANO);REGIMEN_VIVIENDA(LIBRE|PROTEGIDA);ANIO;TRIMESTRE;NUM_TRANSACCIONES;IMPORTE_TRANSACCIONES_EUR"
+    notas_parseo:
+      - "Número e importe vienen en filas separadas (una con NUM y IMPORTE=0, otra con NUM=0 e IMPORTE). Agregar con max/sum por clave."
+      - "IMPORTE parece estar en miles de EUR (Madrid 2024T1 nueva libre: 2.388 operaciones, 388.303,1) - confirmar en metodología."
+    freq: Q
+    geo: provincia
+    historico: "2004-2026 (23 años en el fichero)"
+    status: verified_download
+
+  - id: ipv_ine
+    variable_panel: "(control) Índice de Precios de Vivienda"
+    fuente: INE IPV
+    tipo_acceso: api
+    endpoint: "{ine_base}/DATOS_TABLA/80270"
+    concepto: "Índice de precios de vivienda (transacciones, notarial), general/nueva/segunda mano, CCAA, trimestral"
+    geo: ccaa
+    freq: Q
+    status: verified   # id listado en TABLAS_OPERACION/15; no se descargó la serie completa
+    notas: "No hay IPV provincial. Útil como validación de tasas de variación, no de niveles."
+
+  # ------------------------------------------------------------------ TIPOS DE INTERÉS
+  - id: euribor_12m_q
+    variable_panel: Euribor
+    fuente: BCE (dato EMMI vía Refinitiv)
+    tipo_acceso: api
+    endpoint: "{ecb_base}/FM/Q.U2.EUR.RT.MM.EURIBOR1YD_.HSTA?format=csvdata&startPeriod=2003-01"
+    concepto: "Euribor 12 meses, media trimestral de datos diarios (HSTA = historical close, average of observations through period)"
+    unidad: "% anual"
+    freq: Q
+    geo: ue (zona euro)
+    historico: "1994- ; último 2026-Q3"
+    ref_vs_pub: "1 día hábil tras cierre del periodo (2025-09 publicado 2025-10-01)"
+    revisiones: "Prácticamente no se revisa; la API ofrece vintages con includeHistory=true (solo 4 versiones conservadas)"
+    status: verified
+    alternativas:
+      - "{ecb_base}/FM/M.U2.EUR.RT.MM.EURIBOR1YD_.HSTA (mensual)"
+      - "BdE be1901.csv columna D_1NBAF472 (Euríbor 12m, referencia oficial mercado hipotecario, mensual)"
+
+  - id: aprc_hipotecas_es
+    variable_panel: "Spread_Hipotecas (minuendo)"
+    fuente: BCE MIR
+    tipo_acceso: api
+    endpoint: "{ecb_base}/MIR/M.ES.B.A2C.A.C.A.2250.EUR.N?format=csvdata"
+    concepto: "TAE (APRC, incluye comisiones/costes) de nuevas operaciones de préstamo a hogares para adquisición de vivienda, España, todos los periodos de fijación"
+    unidad: "% anual"
+    freq: M
+    geo: nacional
+    historico: "2003-01 - 2026-09"
+    ref_vs_pub: "≈2 meses (medido con includeHistory: 2025-12 publicado 2026-03-04; 2025-06 publicado 2025-09-03)"
+    revisiones: "Vintages disponibles con includeHistory=true (SDMX-ML, atributo validFromDate). En 2025 ningún valor revisado."
+    status: verified
+
+  - id: aar_hipotecas_variable_es
+    variable_panel: "Spread_Hipotecas (alternativa conceptual)"
+    fuente: BCE MIR
+    tipo_acceso: api
+    endpoint: "{ecb_base}/MIR/M.ES.B.A2C.F.R.A.2250.EUR.N?format=csvdata"
+    concepto: "TEDR/AAR (sin comisiones) nuevas operaciones vivienda, tipo variable o fijación inicial ≤1 año, España"
+    unidad: "% anual"
+    freq: M
+    geo: nacional
+    status: verified
+    notas: "Comparable con Euribor 12m (mismo horizonte de repricing). Otras: MIR/M.ES.B.A2C.AM.R.A.2250.EUR.N (coste total de financiación, AAR)."
+
+  - id: irph_bde
+    variable_panel: "(alternativa) tipo medio hipotecario oficial"
+    fuente: "Banco de España - Boletín Estadístico cap. 19 (tipos de referencia oficiales)"
+    tipo_acceso: descarga_oficial
+    endpoint: https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be1901.csv
+    columnas: {D_1T9H0000: "IRPH conjunto de entidades (tipo medio adquisición vivienda libre >3 años)", D_1NBAF472: "Euríbor 12 meses"}
+    formato: "CSV latin-1; cabeceras en filas 1-7 (código, nº secuencial, alias, descripción, unidad, frecuencia...); periodo 'MMM AAAA' en español"
+    freq: M
+    geo: nacional
+    historico: "desde 1973 (según serie); último OCT 2026"
+    status: verified_download
+
+  # ------------------------------------------------------------------ PRECIOS Y COSTES
+  - id: ipc_ccaa_var_anual
+    variable_panel: IPC
+    fuente: INE IPC
+    tipo_acceso: api
+    endpoint_historico: "{ine_base}/DATOS_TABLA/50913?nult=300   (base 2021, hasta 2025-12; reproduce el panel v1 al 100%)"
+    endpoint_actual: "{ine_base}/DATOS_TABLA/76136?nult=300   (base 2025, 2002-01 -> 2026-10)"
+    filtro_nombre: "'<CCAA>. Índice general. Variación anual.'"
+    concepto: "OJO: el panel usa la TASA DE VARIACIÓN ANUAL (%) del índice general, no el índice. Media de los 3 meses del trimestre."
+    unidad: "%"
+    freq: M
+    geo: ccaa
+    ref_vs_pub: "≈13 días (dato de octubre 2026 publicado 13-nov-2026; indicador adelantado a fin de mes)"
+    revisiones: "No se revisa salvo cambio de base (base 2025 cambia 1,2% de los valores trimestrales históricos hasta 0,27 pp)."
+    status: verified
+
+  - id: indice_mano_obra
+    variable_panel: Indice_Mano_Obra
+    fuente: "INE (elaborado para revisión de precios de contratos públicos) - op. IMM"
+    tipo_acceso: api
+    endpoint: "{ine_base}/DATOS_TABLA/8377"
+    serie: IMM1
+    concepto: "Índice nacional de la mano de obra en construcción, base julio 1980"
+    freq: M
+    geo: nacional
+    historico: "1995- ; último 2026-03"
+    ref_vs_pub: "≈6 meses (marzo 2026 publicado 21-sep-2026)"
+    status: verified
+
+  - id: indice_materiales
+    variable_panel: Indice_Materiales
+    fuente: "INE op. IMM - Índices de precios de materiales (revisión de precios contratos AAPP)"
+    tipo_acceso: api
+    endpoint: "{ine_base}/DATOS_TABLA/8378   (base enero 1964; 16 series = 8 materiales x {Península y Baleares, Canarias})"
+    alternativa: "{ine_base}/DATOS_TABLA/8381 (o 77209): materiales generales base dic-2011, Total Nacional, 15-16 series"
+    concepto: "El panel v1 es la MEDIA ARITMÉTICA de 14 series (7 materiales x 2 zonas, sin 'Ligantes') de niveles base 1964: no es un índice con significado económico."
+    freq: M
+    geo: nacional (Península+Baleares / Canarias)
+    ref_vs_pub: "≈6 meses"
+    status: verified
+    recomendacion: "Usar una serie concreta o el IPRI/INE de bienes intermedios, o el índice de costes de construcción de Eurostat (sts_copi_q) - pendiente de evaluar por el equipo."
+
+  # ------------------------------------------------------------------ MERCADO HIPOTECARIO / TRANSACCIONES
+  - id: hipotecas_total_fincas
+    variable_panel: Hipotecas_Total
+    fuente: INE Estadística de Hipotecas (HPT)
+    tipo_acceso: api
+    endpoint: "{ine_base}/DATOS_TABLA/76317   (alias 3200; mismas series HPT)"
+    filtro_nombre: "'Total fincas. Número de hipotecas. <Provincia>. Base nueva. Mensual.'"
+    otras_naturalezas: ["Viviendas", "Solares", "Otros", "Rústicas"]
+    concepto: "Número de hipotecas constituidas sobre TOTAL FINCAS (rústicas+urbanas), no solo viviendas. Fecha = inscripción registral, no firma."
+    freq: M
+    geo: provincia
+    historico: "2003- ; último 2026-08"
+    ref_vs_pub: "≈8 semanas (agosto 2026 publicado 26-oct-2026)"
+    revisiones: "Datos provisionales del último año se revisan al publicar definitivos."
+    status: verified
+    recomendacion: "Para el modelo de demanda hipotecaria residencial usar la naturaleza 'Viviendas'."
+
+  - id: compraventa_viviendas
+    variable_panel: Transmisiones_Total
+    fuente: INE ETDP (registros de la propiedad)
+    tipo_acceso: api
+    endpoint: "{ine_base}/DATOS_TABLA/6150   (mensual; 6155 / 49280 = anual)"
+    filtro_nombre: "'<Provincia>. General. Compraventa. Número.'  (también: Vivienda nueva, Vivienda segunda mano, Vivienda libre, Vivienda protegida)"
+    concepto: "Compraventas de viviendas inscritas en registros (fecha de inscripción). NO es total fincas (tabla 6146)."
+    freq: M
+    geo: provincia
+    historico: "2007-01 - 2026-09"
+    ref_vs_pub: "≈7 semanas (septiembre 2026 publicado 17-nov-2026)"
+    revisiones: "2025 provisional revisado (solo 23% de celdas 2025 coincide con el panel; hasta 333 operaciones)"
+    status: verified
+
+  # ------------------------------------------------------------------ MERCADO LABORAL Y RENTA
+  - id: tasa_paro_epa
+    variable_panel: Tasa_Paro
+    fuente: INE EPA
+    tipo_acceso: api
+    endpoint: "{ine_base}/DATOS_TABLA/65349   (idéntica a 72989; la antigua 3996 se detuvo en 2023T4)"
+    filtro_nombre: "'Tasa de paro de la población. <Provincia>. Ambos sexos. Total.' (nombres empiezan por 'Tasa de paro')"
+    freq: Q
+    geo: provincia
+    historico: "2002T1 - 2026T3"
+    ref_vs_pub: "≈4 semanas (2026T3 publicado 27-oct-2026)"
+    revisiones: "Revisiones por cambio de base poblacional (la API sirve solo la última)."
+    status: verified
+
+  - id: pib_pc_provincial
+    variable_panel: PIB_pc
+    fuente: INE Contabilidad Regional de España (CRE, revisión estadística 2024)
+    tipo_acceso: api
+    endpoint: "{ine_base}/DATOS_TABLA/82285   (también 80110, mismo contenido)"
+    filtro_nombre: "'<Provincia>. Dato base. Producto interior bruto a precios de mercado per capita. Precios corrientes.'"
+    unidad: "EUR corrientes por habitante"
+    freq: A
+    geo: provincia (CCAA hasta 2025; provincias hasta 2024)
+    historico: "2000-2024 provincial"
+    ref_vs_pub: "Provincial ≈ t+21 meses (2024 publicado sep-2026 aprox.); CCAA ≈ t+9 meses"
+    revisiones: "2023 y 2024 revisados: 0% de coincidencia con el panel (máx. 2.062 EUR, Salamanca 2024)"
+    status: verified
+
+  - id: tasa_ahorro_hogares
+    variable_panel: tasa_ahorro
+    fuente: INE Cuentas trimestrales no financieras de los sectores institucionales (CTNFSI)
+    tipo_acceso: api
+    endpoint_nsa: "{ine_base}/DATOS_SERIE/CTNFSI11271   (tabla 62275; NO ajustada: es la usada en el panel)"
+    endpoint_sa: "{ine_base}/DATOS_SERIE/CTNFSI11270   (ajustada de estacionalidad y calendario)"
+    concepto: "Tasa de ahorro bruto de Hogares + ISFLSH (% renta disponible bruta)"
+    unidad: "%"
+    freq: Q
+    geo: nacional
+    historico: "1999- ; último 2026T2"
+    ref_vs_pub: "≈3 meses (2026T2 publicado 30-sep-2026)"
+    revisiones: "Revisiones frecuentes: 2023T1-2025T3 difieren del panel hasta 0,7 pp."
+    alternativa: "Eurostat nasq_10_ki ?geo=ES&na_item=SRG_S14_S15&unit=PC&s_adj=NSA|SCA (verificado; 2026Q2 NSA 18,73)"
+    status: verified
+
+  # ------------------------------------------------------------------ DEMOGRAFÍA
+  - id: poblacion_padron_hasta_2021
+    variable_panel: "Poblacion (2005-2021)"
+    fuente: INE Cifras oficiales de población (Padrón) - op. DPOP
+    tipo_acceso: api
+    endpoint: "{ine_base}/DATOS_TABLA/2852"
+    concepto: "Población empadronada a 1 de enero"
+    freq: A
+    geo: provincia
+    historico: "1996-2021 (tabla congelada desde dic-2021)"
+    status: verified
+
+  - id: poblacion_ecp
+    variable_panel: "Poblacion (2022-2025) / Pob_Ext (recomendado)"
+    fuente: INE Estadística Continua de Población (ECP)
+    tipo_acceso: api
+    endpoint: "{ine_base}/DATOS_TABLA/59591 (o 82104) -> códigos de serie; DATOS_SERIE/{cod}?date=20020101:20261231"
+    series_ejemplo: {madrid_total: ECP181529, madrid_extranjera: ECP181397}
+    filtro_nombre: "'<Provincia>. Todas las edades. (Total|Extranjera). Total. Población. Número.'"
+    concepto: "Población residente (no empadronada) a día 1 de cada trimestre"
+    freq: Q
+    geo: provincia
+    historico: "2002-01-01 - 2026-10-01"
+    ref_vs_pub: "≈6 semanas (1-oct-2026 publicado 12-nov-2026)"
+    revisiones: "Datos provisionales revisados; serie retropolada por el INE"
+    status: verified
+    notas: "La tabla completa supera el límite de volumen (59589 devuelve 'restricciones de volumen'): descargar por series."
+
+  - id: edad_media
+    variable_panel: Edad_Media
+    fuente: INE Indicadores Demográficos Básicos
+    tipo_acceso: api
+    endpoint: "{ine_base}/DATOS_TABLA/3199"
+    filtro_nombre: "'<Provincia>. Indicadores de crecimiento y estructura de la población. Edad media de la población. Total. Anual. Dato base.'"
+    freq: A
+    geo: provincia
+    historico: "1975-2025 (a 1 de enero)"
+    ref_vs_pub: "≈11 meses (1-ene-2025 publicado 2-dic-2025)"
+    status: verified
+
+  - id: pob_extranjera_padron
+    variable_panel: "Pob_Ext 2005-2022 (v1)"
+    fuente: "INE Estadística del Padrón Continuo (PC-Axis/JAXI, fichero pob_ext_2005_2022.csv)"
+    tipo_acceso: descarga_oficial
+    status: pending
+    notas: "No expuesta en Tempus3 (no aparece en OPERACIONES_DISPONIBLES). No verificado el endpoint JAXI. Recomendado sustituir por ECP (poblacion_ecp, 'Extranjera')."
+
+  - id: pob_extranjera_inclusion
+    variable_panel: "Pob_Ext 2023-2025 (v1)"
+    fuente: "Ministerio de Inclusión - OPI, extranjeros con certificado de registro o tarjeta de residencia en vigor"
+    tipo_acceso: descarga_oficial (JAXI)
+    endpoint: "https://expinterweb.inclusion.gob.es/jaxiPx/Tabla.htm?path=/Stock/l0/&file=TD_PV_GE_PNDAD_NTO.px&L=0"
+    status: pending   # el host devuelve 403 desde este entorno
+    notas: "Concepto distinto del Padrón/ECP (stock de documentación de residencia). NO empalmar con Padrón."
+
+  # ------------------------------------------------------------------ PROYECCIONES (no son datos del panel)
+  - id: proyecciones_bce
+    fuente: "BCE - ECB staff macroeconomic projections, septiembre 2026"
+    url: https://www.ecb.europa.eu/press/projections/html/ecb.projections202609_ecbstaff~8e340fc69d.en.html
+    anexo_xlsx: https://www.ecb.europa.eu/pub/pdf/other/ecb.projections202609_ecbstaff_annex~ce449cbf17.en.xlsx
+    geo: zona euro
+    proxima: "Eurosystem staff, diciembre 2026"
+    status: verified_download
+  - id: proyecciones_bde
+    fuente: "Banco de España - Proyecciones macroeconómicas e informe trimestral, 3T 2026 (cierre 24-sep-2026)"
+    url: https://www.bde.es/wbe/es/publicaciones/analisis-economico-investigacion/proyecciones-macro-informe-trimestral/proyecciones-e-informe-trimestral-de-la-economia-espanola-tercer-trimestre-2026.html
+    geo: España
+    status: pending   # localizado por búsqueda web; no descargado desde este entorno
+  - id: proyecciones_fmi
+    fuente: "FMI - World Economic Outlook, octubre 2026 (13-oct-2026)"
+    url: https://www.imf.org/en/Publications/WEO/issues/2026/10/13/world-economic-outlook-october-2026
+    api: "https://www.imf.org/external/datamapper/api/v1/{indicador}/ESP  -> 403 desde este entorno"
+    status: pending
+
+  # ------------------------------------------------------------------ FISCALIDAD (sin API)
+  - id: fiscalidad_itp_ajd
+    fuente: "Legislación consolidada BOE (API datos abiertos) + textos autonómicos"
+    tipo_acceso: api (texto legal)
+    endpoint_texto: "https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/{BOE_ID}/texto   (Accept: application/xml)"
+    endpoint_meta: "https://www.boe.es/datosabiertos/api/legislacion-consolidada/id/{BOE_ID}/metadatos   (Accept: application/json)"
+    nota: "Cada <bloque> (artículo) trae <version id_norma fecha_publicacion fecha_vigencia>: permite construir vigencias. La extracción del tipo requiere lectura humana (tarifas en tablas)."
+    ids:
+      estatal_TRLITPAJD: BOE-A-1993-25359
+      andalucia: BOE-A-2021-17915
+      aragon: BOA-d-2005-90006
+      asturias: BOE-A-2015-945
+      illes_balears: BOE-A-2014-6925
+      canarias: BOC-j-2009-90008
+      cantabria: BOCT-c-2008-90028
+      castilla_y_leon: BOCL-h-2013-90254
+      cataluna: BOE-A-2024-6951
+      comunitat_valenciana: BOE-A-1998-8202
+      extremadura: BOE-A-2018-8159
+      galicia: BOE-A-2011-18161
+      madrid: BOCM-m-2010-90068
+      murcia: BOE-A-2011-10542
+      la_rioja: BOE-A-2017-13750
+    sin_verificar: ["Castilla-La Mancha", "Navarra (foral)", "Álava, Bizkaia, Gipuzkoa (forales)", "Murcia (tipo)", "Cataluña (AJD)"]
+    fuente_consolidada_alternativa: "Ministerio de Hacienda, 'Tributación Autonómica. Medidas 2026' (Cap. II) - host hacienda.gob.es inaccesible desde este entorno"
+    status: manual
+  - id: aranceles_notariales_registrales
+    fuente: "RD 1426/1989 (arancel de los notarios) y RD 1427/1989 (arancel de los registradores), ambos de 17 de noviembre"
+    status: pending   # identificadores BOE no localizados/verificados en esta auditoría (los probados no existen en la API)
