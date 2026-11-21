@@ -198,3 +198,205 @@
   }
  ]
 }
+
+### IPC vs INE 76136 (media trimestral de la variación anual del índice general, CCAA)
+ {
+ "n_compared": 4368,
+ "pct_equal(tol=1e-06)": 98.81,
+ "max_abs_diff": 0.26666666666666705,
+ "mean_abs_diff": 0.001755189255189315,
+ "worst": [
+  {
+   "code": "44",
+   "q": "2005-01-01",
+   "panel": 3.333333333333333,
+   "api": 3.6
+  },
+  {
+   "code": "50",
+   "q": "2005-01-01",
+   "panel": 3.333333333333333,
+   "api": 3.6
+  },
+  {
+   "code": "22",
+   "q": "2005-01-01",
+   "panel": 3.333333333333333,
+   "api": 3.6
+  },
+  {
+   "code": "52",
+   "q": "2005-01-01",
+   "panel": 3.4333333333333336,
+   "api": 3.2
+  },
+  {
+   "code": "08",
+   "q": "2005-01-01",
+   "panel": 3.8,
+   "api": 4.0
+  }
+ ]
+}
+
+### Indice_Mano_Obra vs INE 8377 (media trimestral, base jul-1980)
+ {
+ "n_compared": 4212,
+ "pct_equal(tol=1e-06)": 100.0,
+ "max_abs_diff": 5.684341886080802e-14,
+ "mean_abs_diff": 1.1228329651517632e-14,
+ "worst": [
+  {
+   "code": "13",
+   "q": "2022-07-01",
+   "panel": 449.11,
+   "api": 449.10999999999996
+  },
+  {
+   "code": "13",
+   "q": "2022-01-01",
+   "panel": 432.5633333333333,
+   "api": 432.56333333333333
+  },
+  {
+   "code": "13",
+   "q": "2021-01-01",
+   "panel": 405.5966666666666,
+   "api": 405.59666666666664
+  },
+  {
+   "code": "38",
+   "q": "2007-01-01",
+   "panel": 346.7933333333333,
+   "api": 346.79333333333335
+  },
+  {
+   "code": "13",
+   "q": "2020-01-01",
+   "panel": 403.5533333333333,
+   "api": 403.55333333333334
+  }
+ ]
+}
+
+### Indice_Materiales vs INE 8378 (media de TODAS las series y zonas, como el notebook)
+ {
+ "n_compared": 4212,
+ "pct_equal(tol=1e-06)": 0.0,
+ "max_abs_diff": 646.3776785714281,
+ "mean_abs_diff": 299.1910604056438,
+ "worst": [
+  {
+   "code": "22",
+   "q": "2022-04-01",
+   "panel": 3274.478571428572,
+   "api": 3920.8562500000003
+  },
+  {
+   "code": "27",
+   "q": "2022-04-01",
+   "panel": 3274.478571428572,
+   "api": 3920.8562500000003
+  },
+  {
+   "code": "50",
+   "q": "2022-04-01",
+   "panel": 3274.478571428572,
+   "api": 3920.8562500000003
+  },
+  {
+   "code": "15",
+   "q": "2022-04-01",
+   "panel": 3274.478571428572,
+   "api": 3920.8562500000003
+  },
+  {
+   "code": "36",
+   "q": "2022-04-01",
+   "panel": 3274.478571428572,
+   "api": 3920.8562500000003
+  }
+ ]
+}
+
+### Edad_Media vs INE 3199 (anual, a 1 de enero, repetida 4 trimestres)
+ {
+ "n_compared": 4368,
+ "pct_equal(tol=0.005)": 100.0,
+ "max_abs_diff": 0.0,
+ "mean_abs_diff": 0.0,
+ "worst": [
+  {
+   "code": "15",
+   "q": "2005-01-01",
+   "panel": 43.37,
+   "api": 43.37
+  },
+  {
+   "code": "15",
+   "q": "2005-04-01",
+   "panel": 43.37,
+   "api": 43.37
+  },
+  {
+   "code": "15",
+   "q": "2005-07-01",
+   "panel": 43.37,
+   "api": 43.37
+  },
+  {
+   "code": "15",
+   "q": "2005-10-01",
+   "panel": 43.37,
+   "api": 43.37
+  },
+  {
+   "code": "15",
+   "q": "2006-01-01",
+   "panel": 43.62,
+   "api": 43.62
+  }
+ ]
+}
+
+### Poblacion vs INE 2852 (Padrón, cifras oficiales a 1-ene, hasta 2021)
+ {
+ "n_compared": 3536,
+ "pct_equal(tol=0.5)": 100.0,
+ "max_abs_diff": 0.0,
+ "mean_abs_diff": 0.0,
+ "worst": [
+  {
+   "code": "15",
+   "q": "2005-01-01",
+   "panel": 1126707.0,
+   "api": 1126707.0
+  },
+  {
+   "code": "15",
+   "q": "2005-04-01",
+   "panel": 1126707.0,
+   "api": 1126707.0
+  },
+  {
+   "code": "15",
+   "q": "2005-07-01",
+   "panel": 1126707.0,
+   "api": 1126707.0
+  },
+  {
+   "code": "15",
+   "q": "2005-10-01",
+   "panel": 1126707.0,
+   "api": 1126707.0
+  },
+  {
+   "code": "15",
+   "q": "2006-01-01",
+   "panel": 1129141.0,
+   "api": 1129141.0
+  }
+ ]
+}
+/home/user/tfm-analitica-hipotecaria/reports/audit/10_fuentes_scripts/compare_ine.py:154: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  ec = ec[ec.nombre.str.contains("Todas las edades") & ec.nombre.str.contains(r"\. (Total|Extranjera)\. Total\. Población", regex=True)]
