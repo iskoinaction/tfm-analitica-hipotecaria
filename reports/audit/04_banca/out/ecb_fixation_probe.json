@@ -1,0 +1,13 @@
+{
+ "wildcard_url": "https://data-api.ecb.europa.eu/service/data/MIR/M.ES.B.A2C..B..2250.EUR.?format=csvdata&startPeriod=2025-01&endPeriod=2025-01&detail=dataonly",
+ "wildcard_status": 200,
+ "series_volumen_disponibles": [
+  "MIR.M.ES.B.A2C.A.B.A.2250.EUR.N",
+  "MIR.M.ES.B.A2C.A.B.A.2250.EUR.P",
+  "MIR.M.ES.B.A2C.A.B.A.2250.EUR.R"
+ ],
+ "status_F": 404,
+ "status_I": 404,
+ "status_O": 404,
+ "status_P": 404
+}

@@ -1,0 +1,215 @@
+{
+ "mivau_ceros_o_vacios_libre": 89,
+ "mivau_codes_available": 52,
+ "mivau_last": "2026-04-01",
+ "mivau_first": "1995-01-01",
+ "panel_codes_without_mivau": [],
+ "resumen": {
+  "n_provincias": 52,
+  "corr_niveles_mediana": 0.9175,
+  "corr_niveles_min": 0.5,
+  "corr_yoy_mediana": 0.7875000000000001,
+  "corr_yoy_min": 0.376,
+  "ratio_medio_mediana": 1.0,
+  "ratio_min": 0.854,
+  "ratio_max": 1.099
+ },
+ "provincias_ejemplo": [
+  {
+   "code": "44",
+   "provincia": "Teruel",
+   "n": 80,
+   "corr_niveles": 0.833,
+   "corr_yoy": 0.682,
+   "ratio_tinsa_mivau_medio": 1.056,
+   "tinsa_2025Q4": 1016.7,
+   "mivau_2025Q4": 964.0,
+   "yoy_2025Q4_tinsa_%": 8.5,
+   "yoy_2025Q4_mivau_%": 8.1
+  },
+  {
+   "code": "28",
+   "provincia": "Comunidad de Madrid",
+   "n": 84,
+   "corr_niveles": 0.899,
+   "corr_yoy": 0.826,
+   "ratio_tinsa_mivau_medio": 0.995,
+   "tinsa_2025Q4": 3805.5,
+   "mivau_2025Q4": 3902.3,
+   "yoy_2025Q4_tinsa_%": 19.8,
+   "yoy_2025Q4_mivau_%": 15.8
+  },
+  {
+   "code": "05",
+   "provincia": "Ávila",
+   "n": 84,
+   "corr_niveles": 0.948,
+   "corr_yoy": 0.839,
+   "ratio_tinsa_mivau_medio": 0.996,
+   "tinsa_2025Q4": 1047.3,
+   "mivau_2025Q4": 1087.8,
+   "yoy_2025Q4_tinsa_%": 5.9,
+   "yoy_2025Q4_mivau_%": 12.6
+  },
+  {
+   "code": "07",
+   "provincia": "Islas Baleares",
+   "n": 84,
+   "corr_niveles": 0.913,
+   "corr_yoy": 0.857,
+   "ratio_tinsa_mivau_medio": 1.033,
+   "tinsa_2025Q4": 3645.0,
+   "mivau_2025Q4": 3809.9,
+   "yoy_2025Q4_tinsa_%": 14.1,
+   "yoy_2025Q4_mivau_%": 14.9
+  },
+  {
+   "code": "41",
+   "provincia": "Sevilla",
+   "n": 84,
+   "corr_niveles": 0.962,
+   "corr_yoy": 0.869,
+   "ratio_tinsa_mivau_medio": 1.061,
+   "tinsa_2025Q4": 1783.3,
+   "mivau_2025Q4": 1780.2,
+   "yoy_2025Q4_tinsa_%": 9.6,
+   "yoy_2025Q4_mivau_%": 11.8
+  },
+  {
+   "code": "46",
+   "provincia": "Valencia",
+   "n": 84,
+   "corr_niveles": 0.927,
+   "corr_yoy": 0.869,
+   "ratio_tinsa_mivau_medio": 1.006,
+   "tinsa_2025Q4": 1739.5,
+   "mivau_2025Q4": 1832.0,
+   "yoy_2025Q4_tinsa_%": 15.8,
+   "yoy_2025Q4_mivau_%": 16.8
+  },
+  {
+   "code": "50",
+   "provincia": "Zaragoza",
+   "n": 84,
+   "corr_niveles": 0.977,
+   "corr_yoy": 0.871,
+   "ratio_tinsa_mivau_medio": 1.014,
+   "tinsa_2025Q4": 1773.1,
+   "mivau_2025Q4": 1818.1,
+   "yoy_2025Q4_tinsa_%": 11.0,
+   "yoy_2025Q4_mivau_%": 14.4
+  },
+  {
+   "code": "08",
+   "provincia": "Barcelona",
+   "n": 84,
+   "corr_niveles": 0.9,
+   "corr_yoy": 0.928,
+   "ratio_tinsa_mivau_medio": 0.986,
+   "tinsa_2025Q4": 2876.3,
+   "mivau_2025Q4": 3083.0,
+   "yoy_2025Q4_tinsa_%": 9.5,
+   "yoy_2025Q4_mivau_%": 11.4
+  },
+  {
+   "code": "29",
+   "provincia": "Málaga",
+   "n": 84,
+   "corr_niveles": 0.914,
+   "corr_yoy": 0.944,
+   "ratio_tinsa_mivau_medio": 0.982,
+   "tinsa_2025Q4": 2700.8,
+   "mivau_2025Q4": 2897.3,
+   "yoy_2025Q4_tinsa_%": 13.5,
+   "yoy_2025Q4_mivau_%": 14.9
+  }
+ ],
+ "peores_corr_yoy": [
+  {
+   "code": "10",
+   "provincia": "Cáceres",
+   "n": 84,
+   "corr_niveles": 0.853,
+   "corr_yoy": 0.376,
+   "ratio_tinsa_mivau_medio": 0.983,
+   "tinsa_2025Q4": 905.4,
+   "mivau_2025Q4": 906.4,
+   "yoy_2025Q4_tinsa_%": 3.8,
+   "yoy_2025Q4_mivau_%": 3.8
+  },
+  {
+   "code": "27",
+   "provincia": "Lugo",
+   "n": 84,
+   "corr_niveles": 0.784,
+   "corr_yoy": 0.576,
+   "ratio_tinsa_mivau_medio": 0.996,
+   "tinsa_2025Q4": 1029.5,
+   "mivau_2025Q4": 1100.6,
+   "yoy_2025Q4_tinsa_%": 10.8,
+   "yoy_2025Q4_mivau_%": 10.5
+  },
+  {
+   "code": "51",
+   "provincia": "Ceuta",
+   "n": 84,
+   "corr_niveles": 0.721,
+   "corr_yoy": 0.58,
+   "ratio_tinsa_mivau_medio": 1.054,
+   "tinsa_2025Q4": 1995.4,
+   "mivau_2025Q4": 2148.5,
+   "yoy_2025Q4_tinsa_%": 1.5,
+   "yoy_2025Q4_mivau_%": 8.8
+  },
+  {
+   "code": "49",
+   "provincia": "Zamora",
+   "n": 84,
+   "corr_niveles": 0.836,
+   "corr_yoy": 0.581,
+   "ratio_tinsa_mivau_medio": 1.007,
+   "tinsa_2025Q4": 881.8,
+   "mivau_2025Q4": 900.5,
+   "yoy_2025Q4_tinsa_%": 0.3,
+   "yoy_2025Q4_mivau_%": 7.7
+  },
+  {
+   "code": "01",
+   "provincia": "Álava",
+   "n": 84,
+   "corr_niveles": 0.933,
+   "corr_yoy": 0.594,
+   "ratio_tinsa_mivau_medio": 0.945,
+   "tinsa_2025Q4": 2188.8,
+   "mivau_2025Q4": 2404.8,
+   "yoy_2025Q4_tinsa_%": 4.8,
+   "yoy_2025Q4_mivau_%": 10.2
+  }
+ ],
+ "ipv_tables": [
+  [
+   79541,
+   "Ponderaciones IPV nacional: general, vivienda nueva y de segunda mano."
+  ],
+  [
+   80270,
+   "Índices por CCAA: general, vivienda nueva y de segunda mano. Trimestrales"
+  ],
+  [
+   79540,
+   "Índices por CCAA: general, vivienda nueva y de segunda mano"
+  ],
+  [
+   79563,
+   "Índices por CCAA: general, vivienda nueva y de segunda mano "
+  ],
+  [
+   80271,
+   "Índices por CCAA: general, vivienda nueva y de segunda mano. Medias anuales"
+  ],
+  [
+   80272,
+   "Ponderaciones IPV nacional: general, vivienda nueva y de segunda mano."
+  ]
+ ]
+}
