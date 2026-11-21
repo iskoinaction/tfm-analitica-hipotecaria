@@ -400,3 +400,245 @@
 }
 /home/user/tfm-analitica-hipotecaria/reports/audit/10_fuentes_scripts/compare_ine.py:154: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
   ec = ec[ec.nombre.str.contains("Todas las edades") & ec.nombre.str.contains(r"\. (Total|Extranjera)\. Total\. Población", regex=True)]
+
+### Poblacion vs INE ECP 59591 (Total, a 1 de enero)
+ {
+ "n_compared": 4368,
+ "pct_equal(tol=0.5)": 19.05,
+ "max_abs_diff": 97957.0,
+ "mean_abs_diff": 6090.965201465201,
+ "worst": [
+  {
+   "code": "28",
+   "q": "2005-01-01",
+   "panel": 5964143.0,
+   "api": 5866186.0
+  },
+  {
+   "code": "28",
+   "q": "2005-04-01",
+   "panel": 5964143.0,
+   "api": 5866186.0
+  },
+  {
+   "code": "28",
+   "q": "2005-07-01",
+   "panel": 5964143.0,
+   "api": 5866186.0
+  },
+  {
+   "code": "28",
+   "q": "2005-10-01",
+   "panel": 5964143.0,
+   "api": 5866186.0
+  },
+  {
+   "code": "28",
+   "q": "2011-10-01",
+   "panel": 6489680.0,
+   "api": 6394239.0
+  }
+ ]
+}
+
+### Pob_Ext vs INE ECP 59591 (Extranjera, a 1 de enero)
+ {
+ "n_compared": 4368,
+ "pct_equal(tol=0.5)": 0.0,
+ "max_abs_diff": 96905.0,
+ "mean_abs_diff": 6375.024725274725,
+ "worst": [
+  {
+   "code": "28",
+   "q": "2014-04-01",
+   "panel": 879953.0,
+   "api": 783048.0
+  },
+  {
+   "code": "28",
+   "q": "2014-01-01",
+   "panel": 879953.0,
+   "api": 783048.0
+  },
+  {
+   "code": "28",
+   "q": "2014-07-01",
+   "panel": 879953.0,
+   "api": 783048.0
+  },
+  {
+   "code": "28",
+   "q": "2014-10-01",
+   "panel": 879953.0,
+   "api": 783048.0
+  },
+  {
+   "code": "28",
+   "q": "2011-04-01",
+   "panel": 1067585.0,
+   "api": 972005.0
+  }
+ ]
+}
+
+### PIB_pc vs INE CRE 82285 (PIB pm per cápita, precios corrientes)
+ {
+ "n_compared": 3840,
+ "pct_equal(tol=0.5)": 90.0,
+ "max_abs_diff": 2062.0,
+ "mean_abs_diff": 38.72604166666667,
+ "worst": [
+  {
+   "code": "37",
+   "q": "2024-10-01",
+   "panel": 31425.0,
+   "api": 29363.0
+  },
+  {
+   "code": "37",
+   "q": "2024-07-01",
+   "panel": 31425.0,
+   "api": 29363.0
+  },
+  {
+   "code": "37",
+   "q": "2024-04-01",
+   "panel": 31425.0,
+   "api": 29363.0
+  },
+  {
+   "code": "37",
+   "q": "2024-01-01",
+   "panel": 31425.0,
+   "api": 29363.0
+  },
+  {
+   "code": "12",
+   "q": "2024-10-01",
+   "panel": 31289.0,
+   "api": 29474.0
+  }
+ ]
+}
+
+### PIB_pc vs INE CRE 80110 (PIB pm per cápita, precios corrientes)
+ {
+ "n_compared": 3840,
+ "pct_equal(tol=0.5)": 90.0,
+ "max_abs_diff": 2062.0,
+ "mean_abs_diff": 38.72604166666667,
+ "worst": [
+  {
+   "code": "37",
+   "q": "2024-10-01",
+   "panel": 31425.0,
+   "api": 29363.0
+  },
+  {
+   "code": "37",
+   "q": "2024-07-01",
+   "panel": 31425.0,
+   "api": 29363.0
+  },
+  {
+   "code": "37",
+   "q": "2024-04-01",
+   "panel": 31425.0,
+   "api": 29363.0
+  },
+  {
+   "code": "37",
+   "q": "2024-01-01",
+   "panel": 31425.0,
+   "api": 29363.0
+  },
+  {
+   "code": "12",
+   "q": "2024-10-01",
+   "panel": 31289.0,
+   "api": 29474.0
+  }
+ ]
+}
+
+### tasa_ahorro vs INE CTNFSI11271 (tasa de ahorro hogares+ISFLSH, no ajustada)
+ {
+ "n_compared": 4316,
+ "pct_equal(tol=0.05)": 87.95,
+ "max_abs_diff": 0.7000000000000002,
+ "mean_abs_diff": 0.04819277108433734,
+ "worst": [
+  {
+   "code": "28",
+   "q": "2025-01-01",
+   "panel": 4.9,
+   "api": 4.2
+  },
+  {
+   "code": "09",
+   "q": "2025-01-01",
+   "panel": 4.9,
+   "api": 4.2
+  },
+  {
+   "code": "47",
+   "q": "2025-01-01",
+   "panel": 4.9,
+   "api": 4.2
+  },
+  {
+   "code": "44",
+   "q": "2025-01-01",
+   "panel": 4.9,
+   "api": 4.2
+  },
+  {
+   "code": "35",
+   "q": "2025-01-01",
+   "panel": 4.9,
+   "api": 4.2
+  }
+ ]
+}
+
+### tasa_ahorro vs INE CTNFSI11270 (tasa de ahorro hogares+ISFLSH, ajustada estac.)
+ {
+ "n_compared": 4316,
+ "pct_equal(tol=0.05)": 0.0,
+ "max_abs_diff": 12.799999999999999,
+ "mean_abs_diff": 7.2385542168674695,
+ "worst": [
+  {
+   "code": "31",
+   "q": "2009-01-01",
+   "panel": -2.1,
+   "api": 10.7
+  },
+  {
+   "code": "22",
+   "q": "2009-01-01",
+   "panel": -2.1,
+   "api": 10.7
+  },
+  {
+   "code": "27",
+   "q": "2009-01-01",
+   "panel": -2.1,
+   "api": 10.7
+  },
+  {
+   "code": "40",
+   "q": "2009-01-01",
+   "panel": -2.1,
+   "api": 10.7
+  },
+  {
+   "code": "43",
+   "q": "2009-01-01",
+   "panel": -2.1,
+   "api": 10.7
+  }
+ ]
+}
+
+OK -> samples/compare_ine_summary.json

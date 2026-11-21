@@ -1,0 +1,5 @@
+celdas panel Hipotecas_Total no enteras: 375 de 4368 (8.6%)
+valores brutos con 1-2 decimales distintos de '.0' (miles truncados): 414
+celdas con |error| > 0.5%: 496 ; error relativo mediano en esas celdas: -33.2%
+por provincia (top): {'Barcelona': 27, 'Comunidad de Madrid': 24, 'Valencia': 23, 'Alicante': 22, 'Sevilla': 21, 'Región de Murcia': 21, 'Málaga': 21, 'Islas Baleares': 19}
+ok enteros pero distintos (revisiones): 121

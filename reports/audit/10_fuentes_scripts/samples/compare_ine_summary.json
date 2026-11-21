@@ -85,10 +85,10 @@
   "Viviendas"
  ],
  "Transmisiones_Total vs INE compraventa viviendas (6150, General)": {
-  "n_compared": 3572,
-  "pct_equal(tol=0.5)": 96.08,
+  "n_compared": 3952,
+  "pct_equal(tol=0.5)": 96.2,
   "max_abs_diff": 333.0,
-  "mean_abs_diff": 2.7178051511758117,
+  "mean_abs_diff": 2.522267206477733,
   "worst": [
    {
     "code": "03",
@@ -128,10 +128,10 @@
   "Córdoba. General. Compraventa. Número."
  ],
  "Transmisiones_Total vs INE total fincas transmitidas (6146)": {
-  "n_compared": 3572,
+  "n_compared": 3952,
   "pct_equal(tol=0.5)": 0.0,
   "max_abs_diff": 54397.0,
-  "mean_abs_diff": 7349.558230683091,
+  "mean_abs_diff": 7017.989625506073,
   "worst": [
    {
     "code": "28",
@@ -166,28 +166,31 @@
   ]
  },
  "ipc_50913_ccaa_unmatched": [
-  "Asturias",
-  "Balears",
-  "Castill",
-  "Comunita",
-  "Madrid",
-  "Murcia",
-  "Nacional",
-  "Navarra",
-  "Paí",
-  "Rioja"
+  "Nacional"
  ],
  "IPC vs INE 50913 (media trimestral de la variación anual del índice general, CCAA)": {
-  "n_compared": 2184,
+  "n_compared": 4368,
   "pct_equal(tol=1e-06)": 100.0,
   "max_abs_diff": 1.7763568394002505e-15,
-  "mean_abs_diff": 6.501082740922605e-17,
+  "mean_abs_diff": 6.26184340440053e-17,
   "worst": [
    {
-    "code": "06",
+    "code": "02",
+    "q": "2022-01-01",
+    "panel": 9.3,
+    "api": 9.299999999999999
+   },
+   {
+    "code": "07",
     "q": "2022-07-01",
-    "panel": 10.8,
-    "api": 10.799999999999999
+    "panel": 9.966666666666669,
+    "api": 9.966666666666667
+   },
+   {
+    "code": "16",
+    "q": "2022-01-01",
+    "panel": 9.3,
+    "api": 9.299999999999999
    },
    {
     "code": "52",
@@ -200,39 +203,24 @@
     "q": "2022-07-01",
     "panel": 10.8,
     "api": 10.799999999999999
-   },
-   {
-    "code": "38",
-    "q": "2022-07-01",
-    "panel": 9.033333333333331,
-    "api": 9.033333333333333
-   },
-   {
-    "code": "35",
-    "q": "2022-07-01",
-    "panel": 9.033333333333331,
-    "api": 9.033333333333333
    }
   ]
  },
  "ipc_76136_ccaa_unmatched": [
-  "Asturias",
-  "Balears",
-  "Castill",
-  "Comunita",
-  "Madrid",
-  "Murcia",
-  "Nacional",
-  "Navarra",
-  "Paí",
-  "Rioja"
+  "Nacional"
  ],
  "IPC vs INE 76136 (media trimestral de la variación anual del índice general, CCAA)": {
-  "n_compared": 2184,
+  "n_compared": 4368,
   "pct_equal(tol=1e-06)": 98.81,
   "max_abs_diff": 0.26666666666666705,
-  "mean_abs_diff": 0.001953601953602015,
+  "mean_abs_diff": 0.001755189255189315,
   "worst": [
+   {
+    "code": "44",
+    "q": "2005-01-01",
+    "panel": 3.333333333333333,
+    "api": 3.6
+   },
    {
     "code": "50",
     "q": "2005-01-01",
@@ -246,19 +234,13 @@
     "api": 3.6
    },
    {
-    "code": "44",
-    "q": "2005-01-01",
-    "panel": 3.333333333333333,
-    "api": 3.6
-   },
-   {
     "code": "52",
     "q": "2005-01-01",
     "panel": 3.4333333333333336,
     "api": 3.2
    },
    {
-    "code": "17",
+    "code": "08",
     "q": "2005-01-01",
     "panel": 3.8,
     "api": 4.0
