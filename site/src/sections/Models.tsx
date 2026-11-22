@@ -27,7 +27,7 @@ export function Econometrics() {
   const fevdItem = items.find((i) => /^fevd.*\.csv$/i.test(i.name) && i.file);
   const urItem = items.find((i) => /unit_root.*\.csv$/i.test(i.name) && i.file);
   const imgs = items.filter((i) => /\.(png|svg|jpe?g|webp)$/i.test(i.name) && i.file);
-  const [tab, setTab] = useState<'raices' | 'coint' | 'lp' | 'irf' | 'fevd' | 'antes' | 'diag'>('coint');
+  const [tab, setTab] = useState<'var' | 'raices' | 'coint' | 'lp' | 'irf' | 'fevd' | 'antes' | 'diag'>('var');
   const d = main.data;
   const meta = d?.metadatos as Obj | undefined;
   const decision = d?.decision as Obj | undefined;
@@ -59,11 +59,15 @@ export function Econometrics() {
               </ul>
             </Card>
           </div>
+          {decision && !/^VECM/i.test(String(decision.modelo_principal)) && (
+            <div className="callout callout--warn"><strong>Conclusión honesta.</strong> Con la regla de decisión del proyecto (bootstrap salvaje, H₀: r = 0, p = {pFmt(decision.p_bootstrap_r0)} frente a un umbral de {fmtNum(Number(decision.umbral) * 100, 0)} %) <strong>no hay evidencia robusta de cointegración</strong>. El modelo principal es el {String(decision.modelo_principal)}; el VECM y los coeficientes de largo plazo se muestran solo como sensibilidad y no deben leerse como relaciones de equilibrio estables.</div>
+          )}
           <Tabs label="Resultados econométricos" value={tab} onChange={setTab} tabs={[
-            { id: 'coint', label: 'Cointegración' }, { id: 'lp', label: 'Largo plazo' }, { id: 'irf', label: 'Impulso-respuesta' },
+            { id: 'var', label: 'VAR en diferencias' }, { id: 'coint', label: 'Cointegración' }, { id: 'lp', label: 'VECM (sensibilidad)' }, { id: 'irf', label: 'Impulso-respuesta' },
             { id: 'fevd', label: 'Descomposición (FEVD)' }, { id: 'raices', label: 'Raíces unitarias' }, { id: 'antes', label: 'v1 vs v2' }, { id: 'diag', label: 'Diagnóstico' },
           ]} />
           <div role="tabpanel">
+            {tab === 'var' && <VarDiff d={d} />}
             {tab === 'coint' && <Cointegration d={d} />}
             {tab === 'lp' && <LongRun d={d} />}
             {tab === 'irf' && (irfItem ? <IrfPanel file={irfItem.file!} source={irfItem.source} /> : <Pending what="IRF" expected={['artifacts/econometrics/irf_hipotecas.csv']} />)}
@@ -81,6 +85,29 @@ export function Econometrics() {
       )}
       <p className="xs muted"><SourceLine manifest={manifest} slots={['artifacts:econometrics']} /></p>
     </Section>
+  );
+}
+
+function VarDiff({ d }: { d: Obj }) {
+  const v = d.VAR_diferencias as Obj | undefined;
+  const f = v?.fevd_crecimiento_hipotecas_h20_cholesky_pct as Record<string, number> | undefined;
+  const esp = v?.especificacion as Obj | undefined;
+  return (
+    <div className="grid-2 grid-2--even">
+      <Card title="Descomposición de la varianza del crecimiento de hipotecas (h = 20, Cholesky)" subtitle="Porcentaje de la varianza del error de predicción atribuido a cada shock">
+        {f ? <BarChart ariaLabel="Cuota de varianza del crecimiento de hipotecas por shock" format={(x) => fmtNum(x, 1) + ' %'} rows={Object.entries(f).map(([k, x]) => ({ label: SHOCK[k] ?? k, value: x, highlight: k === 'hipotecas' }))} /> : <Pending what="FEVD" expected={['VAR_diferencias.fevd_crecimiento_hipotecas_h20_cholesky_pct']} />}
+        <p className="xs muted mt-2">La mayor parte de la varianza es propia (inercia); los demás shocks aportan cuotas moderadas y dependen del orden de identificación.</p>
+      </Card>
+      <Card title="Especificación y estabilidad">
+        <dl className="dl">
+          <dt>Retardos en diferencias (p)</dt><dd>{String(esp?.p_diferencias ?? '—')}</dd>
+          <dt>T efectiva</dt><dd>{String(esp?.T_efectiva ?? '—')}</dd>
+          <dt>Sistema estable</dt><dd>{v?.estable === true ? 'sí' : v?.estable === false ? 'no' : '—'}</dd>
+          <dt>Raíz máxima (módulo)</dt><dd>{typeof v?.raiz_max === 'number' ? fmtNum(v.raiz_max as number, 3) : '—'}</dd>
+        </dl>
+        <p className="small mt-2">{String(esp?.regla_p ?? '')}</p>
+      </Card>
+    </div>
   );
 }
 
@@ -209,56 +236,80 @@ function FevdPanel({ file, source }: { file: string; source: string }) {
 }
 
 // ───────────────────────── Machine Learning ─────────────────────────
+const BENCH = new Set(['naive', 'seasonal_naive', 'media_movil_4']);
+const MODEL_LABEL: Record<string, string> = { naive: 'Persistencia (naive)', seasonal_naive: 'Estacional ingenuo', media_movil_4: 'Media móvil 4T', ets_log: 'ETS (log)', sarima_log: 'SARIMA (log)', ar_log: 'AR (log)', lightgbm_pooled: 'LightGBM (panel)', condicional_ex_post: 'Condicional ex post (oráculo)', condicional_cap1: 'Condicional OLS (ΔEuríbor, Δparo)', condicional_cap2: 'Condicional OLS cap. 2', condicional_cap4: 'Condicional OLS cap. 4' };
+const mLabel = (m: string) => MODEL_LABEL[m] ?? humanize(m);
+
 export function MachineLearning() {
   const { manifest } = useApp();
-  const fc = useArtifacts('forecasting');
-  const dm = useArtifacts('demand');
-  const items = [...(fc.data ?? []), ...(dm.data ?? [])].filter((i) => i.file && /\.(json|csv)$/i.test(i.name));
-  const rolling = items.filter((i) => /rolling|backtest|benchmark/i.test(i.name));
-  const others = items.filter((i) => !rolling.includes(i));
+  const dIdx = useArtifacts('demand');
+  const fIdx = useArtifacts('forecasting');
+  const files = (dIdx.data ?? []).filter((i) => i.file && /nacional_metricas\.json$/.test(i.name));
+  const metaItem = (dIdx.data ?? []).find((i) => i.name === 'metadata.json' && i.file);
+  const fMeta = (fIdx.data ?? []).find((i) => i.name === 'metadata.json' && i.file);
+  const meta = useJSON<any>(metaItem?.file); // eslint-disable-line @typescript-eslint/no-explicit-any
+  const macro = useJSON<any>(fMeta?.file); // eslint-disable-line @typescript-eslint/no-explicit-any
+  const [serie, setSerie] = useState('');
+  const [win, setWin] = useState('holdout');
+  const [metric, setMetric] = useState('MASE');
+  const cur = files.find((f) => f.name === serie) ?? files.find((f) => /viviendas/.test(f.name)) ?? files[0];
+  const tbl = useJSON<Table>(cur?.file);
+  const dmItem = (dIdx.data ?? []).find((i) => cur && i.name === cur.name.replace('_metricas', '_dm') && i.file);
+  const dm = useJSON<Table>(dmItem?.file);
+  const hs: number[] = meta.data?.protocolo?.horizontes_tabla ?? [1, 2, 4, 8];
+  const key = cur ? (cur.name.includes('total_fincas') ? 'hipotecas_total_fincas' : 'hipotecas_viviendas') : 'hipotecas_viviendas';
+  const selH = (meta.data?.demanda?.[key]?.seleccionado_por_h ?? {}) as Record<string, string>;
+
+  const pivot = useMemo(() => {
+    const t = tbl.data; if (!t) return null;
+    const c = (n: string) => t.columns.indexOf(n);
+    const rows = t.rows.filter((r) => r[c('window')] === win && hs.includes(Number(r[c('h')])));
+    const models = [...new Set(rows.map((r) => String(r[c('model')])))];
+    const val = (m: string, h: number) => rows.find((r) => r[c('model')] === m && Number(r[c('h')]) === h)?.[c(metric)] as number | undefined;
+    const bestPerH = hs.map((h) => { let b: string | null = null; for (const m of models) { const v = val(m, h); if (v != null && (b == null || v < val(b, h)!)) b = m; } return b; });
+    const bench = hs.map((h) => Math.min(...models.filter((m) => BENCH.has(m)).map((m) => val(m, h) ?? Infinity)));
+    return { models: models.sort((a, b) => Number(BENCH.has(b)) - Number(BENCH.has(a)) || (val(a, hs[0]) ?? 9e9) - (val(b, hs[0]) ?? 9e9)), val, bestPerH, bench, n: rows.find((r) => Number(r[c('h')]) === hs[0]) ? rows.find((r) => Number(r[c('h')]) === hs[0])![c('n')] : null };
+  }, [tbl.data, win, metric, hs]);
+
   return (
     <Section id="ml" num={8} kicker="Predicción" title="Machine Learning"
-      lead="Los modelos se comparan con referencias ingenuas (persistencia, estacional) mediante validación rolling-origin: en cada origen solo se usa la información disponible entonces, y se reporta el error por horizonte.">
-      {fc.loading || dm.loading ? <Loading /> : !items.length ? (
-        <Pending what="Benchmark rolling-origin" expected={['artifacts/forecasting/*rolling*.csv|json', 'artifacts/forecasting/model_selection.json', 'artifacts/demand/*']} />
+      lead="Los modelos se comparan con referencias ingenuas (persistencia, estacional, media móvil) mediante validación rolling-origin: en cada origen solo se usa la información disponible entonces. Se elige por horizonte con la ventana de selección y se evalúa una única vez en el hold-out.">
+      {dIdx.loading || meta.loading ? <Loading /> : !files.length ? (
+        <Pending what="Benchmark rolling-origin" expected={['artifacts/demand/*_nacional_metricas.csv']} />
       ) : (
         <>
-          {rolling.map((i) => <RollingTable key={i.source} item={i} />)}
-          {!rolling.length && <Pending what="Tabla rolling-origin por horizonte" expected={['artifacts/forecasting/*rolling*.csv']} />}
-          {others.slice(0, 6).map((i) => <GenericArtifact key={i.source} item={i} />)}
+          <Card title="Error por horizonte frente a benchmarks (rolling-origin)" subtitle={`Protocolo: primer origen ${meta.data?.protocolo?.primer_origen ?? '—'}, selección hasta ${meta.data?.protocolo?.fin_seleccion ?? '—'}, hold-out ${(meta.data?.protocolo?.holdout ?? []).join(' – ')}`}
+            source={<SourceLine manifest={manifest} slots={['artifacts:demand']} extra={cur && <code>{cur.source}</code>} />}>
+            <div className="controls">
+              <Field id="ml-serie" label="Serie"><select id="ml-serie" className="select" value={cur?.name ?? ''} onChange={(e) => setSerie(e.target.value)}>{files.map((f) => <option key={f.name} value={f.name}>{/total_fincas/.test(f.name) ? 'Hipotecas, total fincas (nacional)' : 'Hipotecas sobre viviendas (nacional)'}</option>)}</select></Field>
+              <Field id="ml-win" label="Ventana"><select id="ml-win" className="select" value={win} onChange={(e) => setWin(e.target.value)}><option value="holdout">Hold-out (evaluación única)</option><option value="seleccion">Selección</option><option value="oos_extra">Fuera de muestra extra</option></select></Field>
+              <Field id="ml-met" label="Métrica"><select id="ml-met" className="select" value={metric} onChange={(e) => setMetric(e.target.value)}>{['MASE', 'MAPE', 'RMSE', 'MAE', 'TheilU'].map((m) => <option key={m}>{m}</option>)}</select></Field>
+            </div>
+            {pivot ? (
+              <div className="table-wrap" tabIndex={0} role="region" aria-label="Tabla rolling-origin por horizonte">
+                <table className="table table--compact">
+                  <caption>{metric} por modelo y horizonte (trimestres){pivot.n ? ` · n = ${pivot.n} orígenes en h = ${hs[0]}` : ''}. Negrita: mejor por horizonte. Filas con etiqueta «benchmark»: referencias ingenuas.</caption>
+                  <thead><tr><th scope="col">Modelo</th>{hs.map((h) => <th key={h} scope="col" className="num">h = {h}</th>)}</tr></thead>
+                  <tbody>{pivot.models.map((m) => (
+                    <tr key={m}><th scope="row" style={{ fontWeight: 500 }}>{mLabel(m)} {BENCH.has(m) && <span className="badge badge--neutral">benchmark</span>}{hs.some((h) => selH[String(h)] === m) && <span className="badge badge--info">seleccionado h={hs.filter((h) => selH[String(h)] === m).join(',')}</span>}</th>
+                      {hs.map((h, i) => { const v = pivot.val(m, h); return <td key={h} className="num" style={pivot.bestPerH[i] === m ? { fontWeight: 700, background: 'var(--brand-accent-soft)' } : undefined}>{v == null ? '—' : fmtNum(v, metric === 'MAPE' || metric === 'MASE' || metric === 'TheilU' ? 2 : 0)}{metric === 'MAPE' ? ' %' : ''}</td>; })}</tr>))}</tbody>
+                </table>
+              </div>
+            ) : <Loading />}
+            {metric === 'MASE' && <p className="xs muted mt-2">MASE &lt; 1: mejor que la persistencia en el periodo de entrenamiento. Theil U &lt; 1: mejor que la persistencia en la ventana evaluada.</p>}
+          </Card>
+          <div className="grid-2 grid-2--even">
+            <Card title="Contraste Diebold-Mariano" subtitle="Modelo frente a benchmark; p-valor de pérdida cuadrática (muestras cortas: potencia limitada)">
+              {dm.data ? <DataTable maxRows={12} table={{ columns: ['h', 'Ventana', 'Modelo', 'Benchmark', 'n', 'DM', 'p'], rows: (() => { const c = (n: string) => dm.data!.columns.indexOf(n); const seen = new Set<string>(); return dm.data!.rows.filter((r) => { const k = [r[c('h')], r[c('window')], r[c('model')], r[c('benchmark')]].join('|'); if (seen.has(k)) return false; seen.add(k); return true; }).map((r) => [r[c('h')], r[c('window')], mLabel(String(r[c('model')])), mLabel(String(r[c('benchmark')])), r[c('n')], r[c('DM_sq')], pFmt(r[c('p_sq')])]); })() }} format={(v) => (typeof v === 'number' ? fmtNum(v, 2) : String(v ?? '—'))} /> : <Loading />}
+            </Card>
+            <Card title="Variables macro: modelo seleccionado" subtitle="Menor MASE de selección por variable (panel provincial)">
+              {macro.data?.macro ? <DataTable table={{ columns: ['Variable', 'Seleccionado', 'MASE sel.', 'MASE persistencia'], rows: Object.entries(macro.data.macro as Obj).map(([k, v]) => { const sc = (v as Obj).score_seleccion_MASE as Record<string, number>; const s = String((v as Obj).seleccionado); return [humanize(k), mLabel(s), sc?.[s] ?? null, sc?.naive ?? null]; }) }} format={(v) => (typeof v === 'number' ? fmtNum(v, 2) : String(v ?? '—'))} /> : <Pending what="Selección macro" expected={['artifacts/forecasting/metadata.json']} />}
+            </Card>
+          </div>
         </>
       )}
-      <div className="callout small">Regla de publicación: un modelo solo se presenta como mejor que la referencia si su error es menor de forma consistente por horizonte (y, cuando se publica, con contraste Diebold-Mariano). En caso contrario se informa de que no la mejora.</div>
-      <p className="xs muted"><SourceLine manifest={manifest} slots={['artifacts:forecasting', 'artifacts:demand']} /></p>
+      <div className="callout small">Regla de publicación: un modelo solo se presenta como mejor que la referencia si su error es menor de forma consistente por horizonte (y, cuando se publica, con contraste Diebold-Mariano). Si no la mejora, se dice. El «condicional ex post» usa el valor realizado de las variables explicativas y es solo un techo de referencia, no una predicción.</div>
     </Section>
-  );
-}
-
-function RollingTable({ item }: { item: ArtifactItem }) {
-  const d = useJSON<unknown>(item.file);
-  const t = useMemo(() => {
-    const x = d.data as Table | Obj[] | Obj | undefined;
-    if (!x) return null;
-    if (Array.isArray((x as Table).columns)) return x as Table;
-    const arr = Array.isArray(x) ? x : ((x as Obj).rolling ?? (x as Obj).results ?? (x as Obj).tabla) as Obj[] | undefined;
-    if (!Array.isArray(arr)) return null;
-    const cols = [...new Set(arr.flatMap((r) => Object.keys(r)))];
-    return { columns: cols, rows: arr.map((r) => cols.map((c) => r[c] as never)) } as Table;
-  }, [d.data]);
-  if (d.loading) return <Loading />;
-  if (!t) return <GenericArtifact item={item} />;
-  const hi = t.columns.findIndex((c) => /^(h|horizon|horizonte)$/i.test(c));
-  const mi = t.columns.findIndex((c) => /^(mape|mase|rmse|mae)/i.test(c));
-  const best = new Set<number>();
-  if (hi >= 0 && mi >= 0) {
-    const byH = new Map<unknown, number>();
-    t.rows.forEach((r, j) => { const cur = byH.get(r[hi]); if (typeof r[mi] === 'number' && (cur == null || (r[mi] as number) < (t.rows[cur][mi] as number))) byH.set(r[hi], j); });
-    byH.forEach((j) => best.add(j));
-  }
-  return (
-    <Card title={`Error por horizonte · ${item.name}`} subtitle={mi >= 0 ? `Resaltado: menor ${t.columns[mi]} en cada horizonte` : undefined} source={<>Fuente: <code>{item.source}</code></>}>
-      <DataTable table={t} maxRows={60} highlight={(r) => best.has(t.rows.indexOf(r))} />
-    </Card>
   );
 }
 
@@ -295,10 +346,9 @@ function applySens(base: Record<string, number>, sens: Record<string, number> | 
   return out;
 }
 
-export function Forecasts() {
+function MacroAssumptions() {
   const { manifest } = useApp();
   const sc = useJSON<Obj>(slotFile(manifest, 'escenarios'));
-  const fidx = useJSON<{ name: string; source: string; file: string }[]>(slotIndex(manifest, 'forecasts'));
   const nat = useJSON<Table>(slotFile(manifest, 'nacional_trimestral'));
   const blocks = Object.entries(sc.data ?? {}).filter(([, v]) => v && typeof v === 'object' && (v as ScenarioBlock).base) as [string, ScenarioBlock][];
   const [var_, setVar] = useState('euribor_12m');
@@ -320,8 +370,7 @@ export function Forecasts() {
   const fuentes = (sc.data?.fuentes ?? {}) as Record<string, Obj>;
   const lastObs = series[0]?.points.filter((p) => p.y != null).at(-1)?.x;
   return (
-    <Section id="predicciones" num={9} kicker="Horizonte 2030" title="Predicciones y escenarios 2030"
-      lead="Las proyecciones son condicionales a supuestos macroeconómicos versionados, con fuente y fecha. Se presentan con intervalos y sensibilidades, nunca como cifra única.">
+    <>
       {sc.loading ? <Loading /> : !blocks.length ? <Pending what="Escenarios macro" expected={['data/metadata/escenarios_macro.yaml']} /> : (
         <div className="grid-2">
           <Card title="Supuestos macroeconómicos" subtitle={`Versión ${String(sc.data?.version ?? '—')} · corte de información ${String(sc.data?.fecha_corte_informacion ?? '—')}`}
@@ -346,45 +395,92 @@ export function Forecasts() {
             )}
             {(block?.metodo_base || block?.nota) && <p className="xs muted mt-2">{block.metodo_base ?? block.nota}</p>}
             <details className="mt-4"><summary className="small">Fuentes de los supuestos</summary>
-              <ul className="xs">{Object.entries(fuentes).map(([k, f]) => <li key={k}><strong>{String(f.nombre ?? k)}</strong>{f.url && <> · <a href={String(f.url).split(' ')[0]} target="_blank" rel="noopener noreferrer">enlace</a></>} · consultado {String(f.consultado ?? '—')}</li>)}</ul>
+              <ul className="xs">{Object.entries(fuentes).map(([k, f]) => <li key={k}><strong>{String(f.nombre ?? k)}</strong>{f.url != null && <> · <a href={String(f.url).split(' ')[0]} target="_blank" rel="noopener noreferrer">enlace</a></>} · consultado {String(f.consultado ?? '—')}</li>)}</ul>
             </details>
           </Card>
         </div>
       )}
-      {fidx.loading ? <Loading /> : !(fidx.data ?? []).length ? (
-        <Pending what="Proyecciones de demanda 2026-2030 con intervalos" expected={['data/forecasts/<run_id>/*.csv', 'artifacts/forecasting/*']} />
-      ) : (fidx.data ?? []).slice(0, 4).map((f) => <ForecastFile key={f.source} file={f.file} source={f.source} />)}
-    </Section>
+    </>
   );
 }
 
-function ForecastFile({ file, source }: { file: string; source: string }) {
-  const t = useJSON<Table>(file);
-  const [varSel, setVarSel] = useState('');
-  if (!t.data) return <Loading />;
-  const cols = t.data.columns;
-  const ci = (re: RegExp) => cols.findIndex((c) => re.test(c));
-  const ip = ci(/^(period|periodo|trimestre|fecha|date)$/i), iv = ci(/^(value|valor|yhat|mean|pred|forecast|prediccion)$/i);
-  const ilo = ci(/^(lower|lo|p5|p10|lo80|lower_80|yhat_lower|li)/i), ihi = ci(/^(upper|hi|p95|p90|hi80|upper_80|yhat_upper|ls)/i);
-  const ivar = ci(/^(variable|target|serie)$/i), isc = ci(/^(scenario|scenario_id|escenario)$/i), iprov = ci(/^(prov_code|cod_prov)$/i);
-  if (ip < 0 || iv < 0) return <Card title={source}><DataTable table={t.data} maxRows={20} /></Card>;
-  let rows = t.data.rows;
-  if (iprov >= 0) rows = rows.filter((r) => ['00', '0', 0, 'ES', null].includes(r[iprov] as never));
-  const vars = ivar >= 0 ? [...new Set(rows.map((r) => String(r[ivar])))] : [''];
-  const v = varSel || vars[0];
-  if (ivar >= 0) rows = rows.filter((r) => String(r[ivar]) === v);
-  const scen = isc >= 0 ? [...new Set(rows.map((r) => String(r[isc])))] : ['proyección'];
-  const colors = ['var(--series-1)', 'var(--series-2)', 'var(--series-3)'];
-  const series: Series[] = scen.slice(0, 3).map((s, i) => ({
-    name: s, color: colors[i], dashed: true,
-    points: rows.filter((r) => isc < 0 || String(r[isc]) === s).map((r) => ({ x: periodValue(String(r[ip])), y: r[iv] as number, lo: ilo >= 0 ? (r[ilo] as number) : null, hi: ihi >= 0 ? (r[ihi] as number) : null })).sort((a, b) => a.x - b.x),
-  }));
+
+// Proyecciones 2026-2030 (data/forecasts/*.csv): provincia, prov_code, period, variable, escenario, valor, p10, p90, modelo
+const FC_OBS: Record<string, { panel?: string; nat?: string; annual?: boolean; unit: string; label: string }> = {
+  hipotecas_viviendas: { panel: 'hipotecas_viviendas_num', nat: 'hipotecas_viviendas_num', unit: 'hipotecas / trimestre', label: 'Hipotecas sobre viviendas' },
+  hipotecas_total_fincas: { panel: 'hipotecas_fincas_total_num', nat: 'hipotecas_fincas_total_num', unit: 'hipotecas / trimestre', label: 'Hipotecas, total fincas' },
+  compraventas_viviendas: { panel: 'compraventas_viviendas_num', nat: 'compraventas_viviendas_num', unit: 'compraventas / trimestre', label: 'Compraventas de viviendas' },
+  precio_m2_mivau: { panel: 'precio_m2_mivau_tasado', nat: 'precio_m2_mivau_tasado', unit: '€/m² (MIVAU, valor tasado)', label: 'Precio m² (MIVAU)' },
+  tasa_paro: { panel: 'tasa_paro', nat: 'tasa_paro', unit: '%', label: 'Tasa de paro' },
+  euribor_12m: { nat: 'euribor_12m', unit: '%', label: 'Euríbor 12M (escenario)' },
+  pib_pc: { panel: 'pib_pc', annual: true, unit: '€ por habitante', label: 'PIB per cápita' },
+  poblacion: { panel: 'poblacion', annual: true, unit: 'personas', label: 'Población' },
+  poblacion_extranjera: { panel: 'poblacion_extranjera', annual: true, unit: 'personas', label: 'Población extranjera' },
+};
+const SC_STYLE: Record<string, { color: string; name: string }> = { base: { color: 'var(--series-2)', name: 'Escenario base' }, adverso: { color: 'var(--series-8)', name: 'Adverso' }, favorable: { color: 'var(--series-3)', name: 'Favorable' }, referencia_naive: { color: 'var(--series-7)', name: 'Referencia naive' } };
+
+export function Forecasts() {
+  const { manifest } = useApp();
+  const fidx = useJSON<{ name: string; source: string; file: string }[]>(slotIndex(manifest, 'forecasts'));
+  const item = (fidx.data ?? []).find((f) => /proyecciones.*\.json$/i.test(f.file) && !/summary/i.test(f.name));
+  const sumItem = (fidx.data ?? []).find((f) => /summary/i.test(f.name));
+  const fc = useJSON<Table>(item?.file);
+  const summary = useJSON<Obj>(sumItem?.file);
+  const nat = useJSON<Table>(slotFile(manifest, 'nacional_trimestral'));
+  const [v, setV] = useState('hipotecas_viviendas');
+  const [terr, setTerr] = useState('00');
+  const info = FC_OBS[v] ?? { unit: '', label: humanize(v) };
+  const obsPanel = useJSON<Record<string, Record<string, number>>>(info.panel && terr !== '00' ? `data/panel/${info.annual ? 'panel_anual' : 'panel_trimestral'}/${info.panel}.json` : null);
+
+  const cols = fc.data?.columns ?? [];
+  const c = (n: string) => cols.indexOf(n);
+  const vars = useMemo(() => [...new Set((fc.data?.rows ?? []).map((r) => String(r[c('variable')])))], [fc.data]); // eslint-disable-line react-hooks/exhaustive-deps
+  const rowsV = useMemo(() => (fc.data?.rows ?? []).filter((r) => r[c('variable')] === v), [fc.data, v]); // eslint-disable-line react-hooks/exhaustive-deps
+  const terrs = useMemo(() => { const m = new Map<string, string>(); rowsV.forEach((r) => m.set(String(r[c('prov_code')]), String(r[c('provincia')]))); return [...m.entries()].sort((a, b) => (a[0] === '00' ? -1 : b[0] === '00' ? 1 : a[1].localeCompare(b[1], 'es'))); }, [rowsV]); // eslint-disable-line react-hooks/exhaustive-deps
+  const terrOk = terrs.some(([k]) => k === terr) ? terr : terrs[0]?.[0] ?? '00';
+  const rows = rowsV.filter((r) => String(r[c('prov_code')]) === terrOk);
+  const scens = [...new Set(rows.map((r) => String(r[c('escenario')])))];
+  const xOf = (p: string) => (/^\d{4}$/.test(p) ? Number(p) + 0.375 : periodValue(p));
+
+  const series: Series[] = [];
+  let obs: { x: number; y: number | null }[] = [];
+  if (terrOk === '00' && info.nat && nat.data) {
+    const i = nat.data.columns.indexOf(info.nat), ip = nat.data.columns.indexOf('period');
+    if (i >= 0) obs = nat.data.rows.map((r) => ({ x: periodValue(String(r[ip])), y: typeof r[i] === 'number' ? (r[i] as number) : null }));
+  } else if (obsPanel.data) {
+    obs = Object.entries(obsPanel.data).map(([p, o]) => ({ x: xOf(p), y: o[terrOk] ?? null }));
+  }
+  obs = obs.filter((p) => Number.isFinite(p.x) && p.x >= 2012).sort((a, b) => a.x - b.x);
+  if (obs.length) series.push({ name: 'Observado', color: 'var(--series-1)', points: obs, band: false });
+  for (const s of scens) {
+    const st = SC_STYLE[s] ?? { color: 'var(--series-4)', name: s };
+    const pts = rows.filter((r) => r[c('escenario')] === s).map((r) => ({ x: xOf(String(r[c('period')])), y: r[c('valor')] as number, lo: r[c('p10')] as number | null, hi: r[c('p90')] as number | null })).sort((a, b) => a.x - b.x);
+    series.push({ name: st.name, color: st.color, dashed: true, points: pts, band: s === 'base' });
+  }
+  const lastObs = obs.filter((p) => p.y != null).at(-1)?.x;
+  const lastP = [...new Set(rows.map((r) => String(r[c('period')])))].sort((a, b) => xOf(a) - xOf(b)).at(-1);
+  const end = rows.filter((r) => String(r[c('period')]) === lastP);
+  const fmtY = (x: number) => fmtNum(x, Math.abs(x) >= 100 ? 0 : 1);
+
   return (
-    <Card title={`Proyección${v ? ` · ${humanize(v)}` : ''}`} subtitle={ilo >= 0 ? `Banda: ${cols[ilo]} – ${cols[ihi]}` : 'Sin intervalo publicado en el fichero'} source={<>Fuente: <code>{source}</code></>}>
-      {vars.length > 1 && (
-        <div className="controls"><Field id={`fv-${source}`} label="Variable"><select id={`fv-${source}`} className="select" value={v} onChange={(e) => setVarSel(e.target.value)}>{vars.map((x) => <option key={x}>{x}</option>)}</select></Field></div>
+    <Section id="predicciones" num={9} kicker="Horizonte 2030" title="Predicciones y escenarios 2030"
+      lead="Las proyecciones son condicionales a supuestos macroeconómicos versionados, con fuente y fecha. Se muestran con intervalos empíricos p10–p90 del backtest y escenarios adverso/favorable; nunca como cifra única.">
+      {fc.loading || fidx.loading ? <Loading /> : !fc.data ? (
+        <Pending what="Proyecciones 2026-2030 con intervalos" expected={['data/forecasts/proyecciones_*.csv']} />
+      ) : (
+        <Card title={`${info.label} · ${terrs.find(([k]) => k === terrOk)?.[1] ?? ''}`} subtitle={`Unidad: ${info.unit}. Línea continua: observado; discontinua: proyección; banda: intervalo p10–p90 del escenario base.`}
+          source={<SourceLine manifest={manifest} slots={['forecasts']} extra={summary.data?.filas ? `${fmtNum(summary.data.filas as number, 0)} filas` : undefined} />}>
+          <div className="controls">
+            <Field id="fc-var" label="Variable"><select id="fc-var" className="select" value={v} onChange={(e) => setV(e.target.value)}>{vars.map((x) => <option key={x} value={x}>{FC_OBS[x]?.label ?? humanize(x)}</option>)}</select></Field>
+            <Field id="fc-terr" label="Ámbito"><select id="fc-terr" className="select" value={terrOk} onChange={(e) => setTerr(e.target.value)}>{terrs.map(([k, n]) => <option key={k} value={k}>{n}</option>)}</select></Field>
+          </div>
+          <LineChart series={series} height={300} xFormat={(x) => String(Math.floor(x + 1e-9))} yFormat={fmtY} markerX={lastObs} markerLabel="último dato"
+            ariaLabel={`Observado y proyección de ${info.label}, ${terrs.find(([k]) => k === terrOk)?.[1] ?? ''}, con escenarios e intervalos`} />
+          <div className="mt-4"><DataTable table={{ columns: ['Escenario', `Valor ${lastP ? fmtPeriod(lastP) : ''}`, 'p10', 'p90', 'Método'], rows: end.map((r) => [SC_STYLE[String(r[c('escenario')])]?.name ?? String(r[c('escenario')]), r[c('valor')], r[c('p10')], r[c('p90')], String(r[c('modelo')])]) }} format={(x) => (typeof x === 'number' ? fmtNum(x, Math.abs(x) >= 100 ? 0 : 2) : String(x ?? '—'))} /></div>
+          <p className="xs muted mt-2">Los intervalos son cuantiles empíricos del error de backtest, no garantizan cobertura. Los escenarios adverso/favorable son sensibilidades de supuestos, no predicciones.</p>
+        </Card>
       )}
-      <LineChart series={series} height={280} xFormat={(x) => String(Math.floor(x))} ariaLabel={`Proyección ${v}`} />
-    </Card>
+      <MacroAssumptions />
+    </Section>
   );
 }
