@@ -148,8 +148,9 @@ def _validate_manifest(m) -> dict:
 
 
 class ArtifactStore:
-    def __init__(self, root: Path, ttl: int = 30) -> None:
+    def __init__(self, root: Path, ttl: int = 30, data_dir: Path | None = None) -> None:
         self.root = Path(root)
+        self.data_dir = Path(data_dir) if data_dir else self.root.parent / "data"
         self.ttl = ttl
         self._lock = threading.Lock()
         self._cache: dict[str, tuple[ArtifactBundle, float, float]] = {}
@@ -180,6 +181,14 @@ class ArtifactStore:
         info = DOMAINS[domain]
         base = dict(domain=domain, label=info["label"], command=info["command"], path=str(mpath.parent))
         if not mpath.exists():
+            from .native import BUILDERS
+            try:
+                res = BUILDERS[domain](self.root, self.data_dir)
+            except Exception as e:  # noqa: BLE001  adaptador defensivo: nunca rompe la página
+                return ArtifactBundle(status="invalid", message=f"Artefacto nativo no legible: {e}", **base)
+            if res:
+                manifest, views = res
+                return ArtifactBundle(status="ok", manifest=_validate_manifest(manifest), views=views, **base)
             return ArtifactBundle(status="missing", message="Artefacto no generado", **base)
         try:
             manifest = _validate_manifest(_read_json(mpath))
@@ -194,6 +203,14 @@ class ArtifactStore:
         """Vistas de un ámbito (p. ej. ``provincial`` / ``"28"``). None si no existen."""
         bundle = self.get(domain)
         if not bundle.ok:
+            return None
+        if bundle.manifest.get("native"):
+            from .native import demand_scope
+            if domain == "demand" and scope == "provincial":
+                try:
+                    return demand_scope(self.root, self.data_dir, str(key).zfill(2))
+                except Exception as e:  # noqa: BLE001
+                    return [{"type": "invalid", "title": "Vistas del ámbito no disponibles", "error": str(e)}]
             return None
         rel = bundle.manifest.get("scopes", {}).get(scope)
         if not rel:
@@ -219,6 +236,8 @@ class ArtifactStore:
 
     def scope_keys(self, domain: str, scope: str) -> list[str]:
         bundle = self.get(domain)
+        if bundle.ok and bundle.manifest.get("native") and domain == "demand" and scope == "provincial":
+            return [f"{i:02d}" for i in range(1, 53)]
         if not bundle.ok or scope not in bundle.manifest.get("scopes", {}):
             return []
         try:

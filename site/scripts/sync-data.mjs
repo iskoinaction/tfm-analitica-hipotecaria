@@ -134,6 +134,8 @@ function csvToTable(p, maxRows = LIMITS.csvRows) {
 const manifest = {
   generated_at: new Date().toISOString(),
   repo_commit: null,
+  repo_url: null,
+  repo_branch: null,
   root_available: false,
   slots: {},
 };
@@ -379,9 +381,13 @@ function syncGeo() {
   });
 }
 
-// 6) Documentación técnica
+// 6) Documentación técnica (docs/, informes de auditoría y READMEs; solo rutas y títulos)
 function syncDocs() {
-  const files = walk(path.join(ROOT, 'docs'), { exts: ['.md', '.pdf', '.html', '.ipynb'] , maxDepth: 3 });
+  const files = [
+    ...walk(path.join(ROOT, 'docs'), { exts: ['.md', '.pdf', '.html'], maxDepth: 3 }),
+    ...walk(path.join(ROOT, 'reports', 'audit'), { exts: ['.md'], maxDepth: 1 }),
+    ...['README.md', 'Web/README.md'].map((x) => path.join(ROOT, x)).filter(exists),
+  ];
   const items = files.map((f) => {
     let title = path.basename(f);
     if (f.endsWith('.md')) {
@@ -390,8 +396,7 @@ function syncDocs() {
     }
     return { path: rel(f), title, updated: mtime(f), bytes: fs.statSync(f).size };
   });
-  const readme = exists(path.join(ROOT, 'README.md')) ? [{ path: 'README.md', title: 'README del repositorio', updated: mtime(path.join(ROOT, 'README.md')) }] : [];
-  slot('docs', { title: 'docs/', status: items.length ? 'ok' : 'pending', files: [writeJSON('docs/_index.json', [...items, ...readme])], sources: items.map((i) => i.path) });
+  slot('docs', { title: 'Documentación', status: items.length ? 'ok' : 'pending', files: [writeJSON('docs/_index.json', items)], sources: items.map((i) => i.path) });
 }
 
 // 7) Capturas de la aplicación bancaria v2
@@ -421,6 +426,10 @@ function main() {
   fs.mkdirSync(OUT, { recursive: true });
   manifest.root_available = true;
   manifest.repo_commit = gitCommit();
+  try {
+    manifest.repo_url = execSync('git remote get-url origin', { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim().replace(/\.git$/, '').replace(/^git@github\.com:/, 'https://github.com/').replace(/^https:\/\/[^@/]+@/, 'https://');
+    manifest.repo_branch = execSync('git rev-parse --abbrev-ref HEAD', { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+  } catch { /* sin git */ }
   syncMetadata();
   syncArtifacts();
   syncPanel();

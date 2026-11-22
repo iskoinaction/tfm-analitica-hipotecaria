@@ -28,6 +28,7 @@ from src.models.forecasting import scenarios as S
 from src.models.forecasting import univariate as U
 from src.models.forecasting.data import load_inputs
 from src.models.demand import evaluate as D
+from src.models.forecasting.backtest import interval_coverage
 
 
 def _versions() -> dict:
@@ -105,6 +106,10 @@ def run(prefer: str = "auto", with_ml: bool = True) -> dict:
         _csv(r["stability"], C.ART_DEMAND / f"{label}_nacional_estabilidad.csv")
         _csv(r["subperiods"], C.ART_DEMAND / f"{label}_nacional_subperiodos.csv")
         _csv(r["long_metrics"], C.ART_DEMAND / f"{label}_nacional_metricas_h1_20.csv")
+        _csv(D.publication_table(r["metrics"], r["dm_holdout"], r["dm_seleccion"], r["selected"]),
+             C.ART_DEMAND / f"{label}_tabla_rolling_origin_holdout.csv")
+        cov = pd.concat([interval_coverage(r["forecasts"], m_) for m_ in {r["selected"][h] for h in r["selected"]} | {"naive"}])
+        _csv(cov, C.ART_DEMAND / f"{label}_cobertura_intervalos_holdout.csv")
         paths = D.conditional_paths(r["frame"], r["long"], r["cond_cap_chosen"], cfg)
         demand_meta[label] = {"seleccionado_por_h": r["selected"], "mejor_benchmark_por_h": r["best_benchmark"],
                               "condicional_cap_h": r["cond_cap_chosen"], "condicional_cap_scores": r["cond_cap_scores"],
@@ -131,6 +136,7 @@ def run(prefer: str = "auto", with_ml: bool = True) -> dict:
 
     # ------------------------------------------------------------------ MACRO
     macro_meta = {}
+    covs = []
     for label, (var, models, pooled) in QUARTERLY_VARS.items():
         r = M.evaluate_quarterly(I.panel, var, models, national=I.national, pooled=pooled)
         _csv(r["metrics"], C.ART_FORECAST / f"{label}_metricas.csv")
@@ -140,28 +146,40 @@ def run(prefer: str = "auto", with_ml: bool = True) -> dict:
         proj["variable"] = label
         out_rows += proj.to_dict("records")
         macro_meta[label] = {"seleccionado": r["chosen"], "score_seleccion_MASE": r["score"]}
+        covs.append(interval_coverage(r["forecasts"], r["chosen"], C.HORIZONS_Q).assign(variable=label))
         print(f"[macro] {label}: {r['chosen']} ({time.time() - t0:.0f}s)", flush=True)
     for label, (var, anchor) in ANNUAL_VARS.items():
-        r = M.evaluate_annual(I.annual, var, with_anchor=anchor)
+        ann = I.annual
+        if var == "pib_pc":  # solo años con las 52 provincias (2025 es 'Avance' en 9): sin mezclar vintages
+            full = ann.dropna(subset=["pib_pc"]).groupby("year").size()
+            ann = ann[ann.year.isin(full[full == 52].index)]
+        r = M.evaluate_annual(ann, var, with_anchor=anchor)
         _csv(r["metrics"], C.ART_FORECAST / f"{label}_metricas.csv")
         _csv(r["per_unit"], C.ART_FORECAST / f"{label}_metricas_por_provincia.csv")
-        proj = M.project_annual(I.annual, var, r["chosen"], r["forecasts"], cfg)
+        proj = M.project_annual(ann, var, r["chosen"], r["forecasts"], cfg)
         proj["variable"] = label
         out_rows += proj.to_dict("records")
         macro_meta[label] = {"seleccionado": r["chosen"], "score_seleccion_MASE": r["score"]}
+        covs.append(interval_coverage(r["forecasts"], r["chosen"], C.HORIZONS_Y).assign(variable=label))
         print(f"[macro] {label}: {r['chosen']} ({time.time() - t0:.0f}s)", flush=True)
+    _csv(pd.concat(covs), C.ART_FORECAST / "cobertura_intervalos_holdout.csv")
     out_rows += M.scenario_rows(cfg).to_dict("records")
     _dump(dict(meta, macro=macro_meta), C.ART_FORECAST / "metadata.json")
 
     out = pd.DataFrame(out_rows)
     out["provincia"] = out.prov_code.map(names)
-    out = out[["provincia", "prov_code", "period", "variable", "escenario", "valor", "p10", "p90", "modelo"]]
+    out = out[["prov_code", "period", "variable", "escenario", "valor", "p10", "p90", "modelo"]]
     out = out.sort_values(["variable", "prov_code", "escenario", "period"]).reset_index(drop=True)
     path = C.FORECASTS_DIR / "proyecciones_2026_2030_v2.csv"
     out.to_csv(path, index=False, float_format="%.6g")
     summary = {"filas": len(out), "por_variable": out.groupby("variable").size().to_dict(),
                "csv": str(path.relative_to(C.ROOT)), "segundos": round(time.time() - t0, 1)}
     _dump(summary, C.FORECASTS_DIR / "proyecciones_2026_2030_v2.summary.json")
+    _dump(dict(meta, columnas=list(out.columns), filas=len(out), demanda=demand_meta, macro=macro_meta,
+               nota="Sendas CONDICIONALES a escenarios (base/adverso/favorable); no son predicciones con un % de error. "
+                    "Variables sin modelo de escenario validado solo tienen 'base' (extrapolación del modelo elegido por regla pre-especificada). "
+                    "p10/p90: cuantiles empíricos del error de backtest por horizonte."),
+          C.FORECASTS_DIR / "proyecciones_2026_2030_v2.meta.json")
     print(json.dumps(_jsonable(summary), indent=2, ensure_ascii=False))
     return summary
 

@@ -12,6 +12,8 @@ export interface Slot {
 export interface Manifest {
   generated_at: string;
   repo_commit: string | null;
+  repo_url?: string | null;
+  repo_branch?: string | null;
   root_available: boolean;
   slots: Record<string, Slot>;
 }
@@ -100,4 +102,9 @@ export function pick(obj: Record<string, unknown>, aliases: string[]): unknown {
   const map = new Map(Object.keys(obj).map((k) => [norm(k), k]));
   for (const a of aliases) { const k = map.get(norm(a)); if (k !== undefined && obj[k] != null && obj[k] !== '') return obj[k]; }
   return undefined;
+}
+
+/** Fichero publicado (JSON) de un artefacto por dominio y nombre. */
+export function artifactFile(items: ArtifactItem[] | undefined, re: RegExp): ArtifactItem | undefined {
+  return (items ?? []).find((i) => re.test(i.name) && i.file);
 }

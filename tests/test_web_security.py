@@ -110,3 +110,15 @@ def test_assistant_context_has_no_personal_data(tmp_path, monkeypatch):
     assert "31337" not in captured["ctx"] and "ingresos" not in captured["ctx"]
     assert c.post("/api/v1/assistant", json={"message": "x" * 5000}, headers=h).status_code == 400
     assert c.post("/api/v1/assistant", json={"message": "otra"}, headers=h).status_code == 429
+
+
+def test_no_caixabank_ni_tinsa_en_web():
+    """Ningún rastro de CaixaBank en Web/ y ninguna plantilla/JS que muestre series de Tinsa."""
+    from pathlib import Path
+    web = Path(__file__).resolve().parents[1] / "Web"
+    for f in web.rglob("*"):
+        if f.is_file() and "__pycache__" not in f.parts and f.suffix in {".py", ".html", ".js", ".css", ".md", ".txt", ".svg", ".yaml", ".json"}:
+            low = f.read_text(encoding="utf-8", errors="ignore").lower()
+            assert "caixa" not in low, f"rastro de CaixaBank en {f}"
+            if f.suffix in {".html", ".js"}:
+                assert "tinsa" not in low, f"Tinsa en {f}"

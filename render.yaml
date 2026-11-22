@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: atalaya-analitica-hipotecaria
+    runtime: python
+    plan: free
+    buildCommand: pip install -r Web/requirements.txt
+    startCommand: gunicorn --chdir Web --bind 0.0.0.0:$PORT --workers 2 --timeout 60 wsgi:app
+    healthCheckPath: /healthz
+    envVars:
+      - key: ATALAYA_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ASSISTANT_ENABLED
+        value: "0"

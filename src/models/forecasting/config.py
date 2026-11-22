@@ -52,8 +52,8 @@ PROJ_END_Y = 2030
 
 # Regla de selección pre-especificada: menor MASE medio (nacional) / mediana de MASE entre provincias
 # (provincial) en la ventana de selección, por horizonte; desempate: menor RMSE.
-SELECTION_RULE = ("Por horizonte, el modelo con menor MASE (media en serie nacional; mediana entre provincias en "
-                  "paneles) en la ventana de selección (objetivos <= 2021Q4 / 2021). El hold-out 2022Q1-2025Q4 "
+SELECTION_RULE = ("Demanda: por horizonte, menor MASE en la ventana de selección. Macro: un único modelo por variable, menor MASE medio sobre los horizontes de la tabla "
+                  "(mediana entre provincias en paneles) en la ventana de selección (objetivos <= 2021Q4 / 2021). El hold-out 2022Q1-2025Q4 "
                   "(2022-2024 en anuales) se evalúa una sola vez tras fijar la elección y no modifica nada.")
 
 # Cuantiles de los intervalos empíricos (errores logarítmicos de backtest por horizonte)

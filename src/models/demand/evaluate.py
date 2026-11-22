@@ -58,6 +58,7 @@ def evaluate_national(national: pd.DataFrame, target: str = "hip_viv", with_ml: 
         pairs.append((h, sel[h], best_bench[h]))
         pairs.append((h, sel[h], "naive"))
         pairs.append((h, COND, best_bench[h]))
+    pairs = list(dict.fromkeys(pairs))
     dm_hold = dm_table(allfc, pairs, "holdout")
     dm_sel = dm_table(allfc, pairs, "seleccion")
     # estabilidad: MAPE en ventanas móviles de 8 objetivos (h=1) y por subperiodo
@@ -171,3 +172,12 @@ def provincial_paths(panel: pd.DataFrame, nat_paths: pd.DataFrame, prov_fc: pd.D
             rows.append({"prov_code": pc, "period": r.period, "escenario": r.escenario, "valor": v, "p10": lo, "p90": hi,
                          "modelo": "top-down: senda nacional condicional x cuota (media 4T)"})
     return pd.DataFrame(rows)
+
+
+def publication_table(met: pd.DataFrame, dm_hold: pd.DataFrame, dm_sel: pd.DataFrame, selected: dict) -> pd.DataFrame:
+    """Tabla publicable: por modelo y horizonte, métricas en selección y hold-out, marca de elegido y DM vs naive."""
+    out = met.copy()
+    out["elegido_en_seleccion"] = [selected.get(int(h)) == m for m, h in zip(out.model, out.h)]
+    dm = pd.concat([dm_sel, dm_hold])
+    dm = dm[dm.benchmark == "naive"][["h", "window", "model", "DM_sq", "p_sq", "DM_abs", "p_abs"]].drop_duplicates(["h", "window", "model"])
+    return out.merge(dm, on=["h", "window", "model"], how="left")
