@@ -1,1 +1,1 @@
-[]
+[{"name":"ecb_tedr_variable_mensual.csv","source":"artifacts/advisor/ecb_tedr_variable_mensual.csv","updated":"2026-11-22T00:25:04.181Z","bytes":3696,"kind":"csv","file":"data/artifacts/advisor/ecb_tedr_variable_mensual.json","n_rows":285,"truncated":false},{"name":"ecb_tedr_variable_mensual.meta.json","source":"artifacts/advisor/ecb_tedr_variable_mensual.meta.json","updated":"2026-11-22T00:25:04.181Z","bytes":279,"kind":"json","file":"data/artifacts/advisor/ecb_tedr_variable_mensual.meta.json"}]

@@ -337,6 +337,16 @@ def main(argv=None):
         res["robustez_total_fincas_VECM"] = {kk: vt[kk] for kk in ("beta_normalizado_hipotecas (log H = ...)",
                                                                     "beta_normalizado_precio (log P = ...)",
                                                                     "alpha_normalizado_hipotecas", "irf_fevd_hipotecas (respuesta en nivel, log-puntos por shock de 1 d.t.)")}
+        wt, _, _ = var_block(Yt, exog_matrix(Yt.index), 0, H, seed, "VAR_total_fincas", C.SPEC["max_lags_selection"], p_forced=k)
+        res["robustez_total_fincas_VAR"] = wt
+    if PRICE_ROB:
+        Yp = nd.system("hip_viv", PRICE_ROB)
+        wp, _, _ = var_block(Yp, exog_matrix(Yp.index), 0, H, seed, f"VAR_{PRICE_ROB}", C.SPEC["max_lags_selection"], p_forced=k)
+        res[f"robustez_precio_{PRICE_ROB}_VAR"] = wp
+    if "precio_ipv" in nd.raw and nd.raw["precio_ipv"].notna().sum() > 30:
+        Yi = nd.system("hip_viv", "precio_ipv")
+        wi, _, _ = var_block(Yi, exog_matrix(Yi.index), 0, H, seed, "VAR_precio_ipv", C.SPEC["max_lags_selection"], p_forced=k)
+        res["robustez_precio_ipv_VAR"] = wi
     pd.DataFrame(irf_rows).to_csv(out_dir / "irf_hipotecas.csv", index=False, float_format="%.6f")
     pd.DataFrame(fevd_rows).to_csv(out_dir / "fevd_hipotecas.csv", index=False, float_format="%.4f")
 

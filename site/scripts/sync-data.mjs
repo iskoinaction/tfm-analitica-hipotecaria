@@ -35,6 +35,9 @@ const LIMITS = {
   imageBytes: 1.5 * 1024 * 1024,
   images: 12,
 };
+// Restricción legal: las condiciones de uso de Tinsa prohíben explotar su contenido sin autorización.
+// Ninguna columna, variable o fichero cuyo nombre contenga "tinsa" se publica en la web.
+const EXCLUDED = /tinsa/i;
 const SKIP_DIRS = new Set(['inputs', 'cache', 'boe_cache', '__pycache__', 'tmp', '.ipynb_checkpoints']);
 
 const log = (...a) => console.log('[sync-data]', ...a);
@@ -46,7 +49,7 @@ function walk(dir, { exts, maxDepth = 6 } = {}, depth = 0) {
   if (!exists(dir) || depth > maxDepth) return [];
   const out = [];
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (e.name.startsWith('.')) continue;
+    if (e.name.startsWith('.') || EXCLUDED.test(e.name)) continue;
     const p = path.join(dir, e.name);
     if (e.isDirectory()) {
       if (SKIP_DIRS.has(e.name)) continue;
@@ -100,9 +103,12 @@ function coerce(v) {
 }
 function csvToTable(p, maxRows = LIMITS.csvRows) {
   const rows = parseCSV(fs.readFileSync(p, 'utf8').replace(/^﻿/, ''));
-  const columns = rows.shift() || [];
+  const header = rows.shift() || [];
+  const keep = header.map((c, i) => (EXCLUDED.test(c) ? -1 : i)).filter((i) => i >= 0);
+  const columns = keep.map((i) => header[i]);
   const truncated = rows.length > maxRows;
-  return { columns, rows: rows.slice(0, maxRows).map((r) => r.map(coerce)), n_rows: rows.length, truncated };
+  const excluded = header.filter((c) => EXCLUDED.test(c));
+  return { columns, rows: rows.slice(0, maxRows).map((r) => keep.map((i) => coerce(r[i] ?? ''))), n_rows: rows.length, truncated, ...(excluded.length ? { excluded_columns: excluded } : {}) };
 }
 
 // ───────────── Slots ─────────────
@@ -185,6 +191,9 @@ function syncArtifacts() {
           item.file = writeJSON(path.join('artifacts', d, name), JSON.parse(fs.readFileSync(f, 'utf8')));
         } else if (ext === '.csv') {
           const t = csvToTable(f);
+          const before = t.rows.length;
+          t.rows = t.rows.filter((r) => !r.some((v) => typeof v === 'string' && EXCLUDED.test(v)));
+          if (t.rows.length < before) t.excluded_rows = before - t.rows.length;
           item.file = writeJSON(path.join('artifacts', d, name.replace(/\.csv$/i, '.json')), t);
           item.n_rows = t.n_rows; item.truncated = t.truncated;
         } else if (ext === '.md') {

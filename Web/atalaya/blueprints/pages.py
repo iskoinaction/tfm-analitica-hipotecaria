@@ -8,7 +8,6 @@ from ..services import advisor_service
 from ..services.assistant import DISCLAIMER, is_enabled
 from ..services.geo import province_options
 from ..services.metadata import load_sources
-from ..services.panel import VARIABLES
 from . import panel, store
 
 bp = Blueprint("pages", __name__)
@@ -24,7 +23,8 @@ def _panel_info() -> dict | None:
 def _common(**kw):
     kw.setdefault("panel_info", _panel_info())
     kw.setdefault("provinces", province_options())
-    kw.setdefault("variables", [{"key": k, **v} for k, v in VARIABLES.items()])
+    # Sólo variables presentes en el panel (p. ej. el precio MIVAU no está en el panel v1)
+    kw.setdefault("variables", panel().variables() if kw["panel_info"] else [])
     return kw
 
 

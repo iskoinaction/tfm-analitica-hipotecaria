@@ -65,7 +65,7 @@ def panel_series():
         s = panel().province_series(var, prov) if prov else panel().national_series(var)
     except KeyError:
         abort(404, description="Variable no disponible en el panel")
-    return jsonify(var=var, label=VARIABLES[var]["label"], unit=VARIABLES[var]["unit"],
+    return jsonify(var=var, label=VARIABLES[var]["label"], unit=VARIABLES[var]["unit"], var_source=VARIABLES[var].get("source"),
                    scope=province_name(prov) if prov else "España",
                    aggregation=None if prov else s.get("agg_label"), source=data.source_label,
                    is_legacy=data.is_legacy, x=s["x"], values=s["values"])
@@ -75,7 +75,7 @@ def panel_series():
 @rate_limit("RATELIMIT_DEFAULT")
 def panel_choropleth():
     data = _panel_or_503()
-    var = _var_arg("precio_m2")
+    var = _var_arg("precio_m2_mivau_tasado")
     period = request.args.get("period") or None
     if period and period not in panel().periods():
         abort(400, description="Periodo no válido")
@@ -83,7 +83,7 @@ def panel_choropleth():
         used, values = panel().by_province(var, period)
     except KeyError:
         abort(404, description="Variable no disponible en el panel")
-    return jsonify(var=var, label=VARIABLES[var]["label"], unit=VARIABLES[var]["unit"], period=used,
+    return jsonify(var=var, label=VARIABLES[var]["label"], unit=VARIABLES[var]["unit"], var_source=VARIABLES[var].get("source"), period=used,
                    scope_note=VARIABLES[var]["scope"], source=data.source_label, is_legacy=data.is_legacy,
                    values=values)
 
@@ -101,7 +101,7 @@ def panel_ranking():
         r = panel().ranking(var, request.args.get("period") or None, n)
     except KeyError:
         abort(404, description="Variable no disponible en el panel")
-    return jsonify(var=var, label=VARIABLES[var]["label"], unit=VARIABLES[var]["unit"],
+    return jsonify(var=var, label=VARIABLES[var]["label"], unit=VARIABLES[var]["unit"], var_source=VARIABLES[var].get("source"),
                    source=data.source_label, is_legacy=data.is_legacy, **r)
 
 

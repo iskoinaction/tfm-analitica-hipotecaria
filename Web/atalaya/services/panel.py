@@ -10,6 +10,7 @@ Los agregados nacionales que se calculan aquí son estadísticas descriptivas ex
 """
 from __future__ import annotations
 
+import re
 import threading
 from dataclasses import dataclass
 from pathlib import Path
@@ -23,7 +24,9 @@ from .geo import province_code, province_name
 VARIABLES: dict[str, dict] = {
     "hipotecas_total": {"label": "Hipotecas sobre viviendas", "unit": "nº", "agg": "sum", "scope": "provincial"},
     "transmisiones_total": {"label": "Compraventas de viviendas", "unit": "nº", "agg": "sum", "scope": "provincial"},
-    "precio_m2": {"label": "Precio vivienda", "unit": "€/m²", "agg": "mean", "scope": "provincial"},
+    # Precio: SÓLO el valor tasado del MIVAU (las condiciones de uso de Tinsa prohíben explotar su contenido).
+    "precio_m2_mivau_tasado": {"label": "Valor tasado de la vivienda libre (MIVAU)", "unit": "€/m²", "agg": "mean",
+                               "scope": "provincial", "source": "MIVAU · Valor tasado medio de vivienda libre"},
     "euribor": {"label": "Euríbor 12 meses", "unit": "%", "agg": "first", "scope": "nacional"},
     "spread_hipotecas": {"label": "Diferencial hipotecario", "unit": "p.p.", "agg": "first", "scope": "nacional"},
     "tasa_paro": {"label": "Tasa de paro", "unit": "%", "agg": "mean", "scope": "provincial"},
@@ -39,7 +42,7 @@ VARIABLES: dict[str, dict] = {
 AGG_LABEL = {"sum": "suma de provincias", "mean": "media simple de provincias", "first": "serie nacional"}
 
 _LEGACY_COLUMNS = {
-    "Provincia": "provincia", "Trimestre": "trimestre", "Precio_m2": "precio_m2", "Euribor": "euribor",
+    "Provincia": "provincia", "Trimestre": "trimestre", "Euribor": "euribor",
     "tasa_ahorro": "tasa_ahorro", "Spread_Hipotecas": "spread_hipotecas", "Hipotecas_Total": "hipotecas_total",
     "Poblacion": "poblacion", "Edad_Media": "edad_media", "PIB_pc": "pib_pc",
     "Indice_Mano_Obra": "indice_mano_obra", "Indice_Materiales": "indice_materiales", "IPC": "ipc",
@@ -64,7 +67,13 @@ class PanelData:
         return f"Panel v1 (legado): {rel}" if self.is_legacy else f"Panel maestro v2: {rel}"
 
 
+# Columnas que la web NO puede mostrar (licencia): series de Tinsa y el "Precio_m2" del panel v1,
+# que procede de Tinsa (web scraping).
+BLOCKED_COLUMN_RE = r"tinsa|^precio_m2$"
+
+
 def _normalize(raw: pd.DataFrame) -> pd.DataFrame:
+    raw = raw[[c for c in raw.columns if not re.search(BLOCKED_COLUMN_RE, str(c).strip().lower())]]
     df = raw.rename(columns={c: _LEGACY_COLUMNS.get(c, c) for c in raw.columns})
     df.columns = [str(c).strip().lower() for c in df.columns]
     if "prov_code" in df.columns:
@@ -176,7 +185,7 @@ class PanelService:
     def kpis(self) -> list[dict]:
         """Último dato y variación interanual de un conjunto de indicadores (datos observados)."""
         out = []
-        for var in ["hipotecas_total", "precio_m2", "euribor", "tasa_paro"]:
+        for var in ["hipotecas_total", "precio_m2_mivau_tasado", "euribor", "tasa_paro"]:
             try:
                 s = self.national_series(var)
             except KeyError:

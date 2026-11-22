@@ -6,7 +6,7 @@
 {% block content %}
 {% if panel_info %}
 <div class="views">
-  {{ map_card("map-p", variables, "precio_m2") }}
+  {{ map_card("map-p", variables, "precio_m2_mivau_tasado") }}
 
   <section class="card" aria-labelledby="ser-t">
     <div class="card__header">
@@ -15,11 +15,11 @@
         <p class="card__subtitle">Selecciona indicador y ámbito. El agregado nacional se indica en el pie del gráfico.</p>
       </div>
       <div class="toolbar">
-        {{ var_select("ser-var", variables, "precio_m2") }}
+        {{ var_select("ser-var", variables, "precio_m2_mivau_tasado") }}
         {{ prov_select("ser-prov", provinces) }}
       </div>
     </div>
-    <div data-panel-series="precio_m2" data-var-select="ser-var" data-prov-select="ser-prov" id="ser">
+    <div data-panel-series="precio_m2_mivau_tasado" data-var-select="ser-var" data-prov-select="ser-prov" id="ser">
       <div class="skeleton" aria-hidden="true"></div>
     </div>
   </section>
@@ -27,9 +27,9 @@
   <section class="card" aria-labelledby="rk-t">
     <div class="card__header">
       <h2 class="card__title" id="rk-t">Ranking provincial (último trimestre disponible)</h2>
-      {{ var_select("rk-var", variables, "precio_m2", only=["precio_m2", "hipotecas_total", "transmisiones_total", "tasa_paro", "pib_pc"]) }}
+      {{ var_select("rk-var", variables, "precio_m2_mivau_tasado", only=["precio_m2_mivau_tasado", "hipotecas_total", "transmisiones_total", "tasa_paro", "pib_pc"]) }}
     </div>
-    <div data-panel-ranking="precio_m2" data-var-select="rk-var" data-n="15" id="rk"><div class="skeleton" aria-hidden="true"></div></div>
+    <div data-panel-ranking="precio_m2_mivau_tasado" data-var-select="rk-var" data-n="15" id="rk"><div class="skeleton" aria-hidden="true"></div></div>
   </section>
 </div>
 <p class="provenance">Fuente: {{ panel_info.source }}. Datos observados; no incluyen proyecciones.</p>

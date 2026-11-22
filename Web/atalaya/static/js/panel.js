@@ -10,7 +10,7 @@
       .map(function (k) { return encodeURIComponent(k) + "=" + encodeURIComponent(params[k]); }).join("&");
   }
   function sourceLine(d, extra) {
-    var t = "Fuente: " + d.source + (d.aggregation ? " · " + d.aggregation : "") + (extra ? " · " + extra : "");
+    var t = "Fuente: " + (d.var_source ? d.var_source + " (" + d.source + ")" : d.source) + (d.aggregation ? " · " + d.aggregation : "") + (extra ? " · " + extra : "");
     return A.el("p", { class: "card__source", text: t });
   }
 
@@ -50,7 +50,7 @@
   function map(node) {
     var varSel = sel(node.getAttribute("data-var-select"));
     function load() {
-      var v = varSel ? varSel.value : "precio_m2";
+      var v = varSel ? varSel.value : "hipotecas_total";
       A.fetchJSON(API + "choropleth?" + qs({ var: v })).then(function (r) {
         if (!r.ok) return A.errorState(node, r.data.error || "No se pudo cargar el mapa.", load);
         var d = r.data;
