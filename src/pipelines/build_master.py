@@ -14,10 +14,9 @@ import pandas as pd
 import yaml
 
 from src.common import config, io
-from src.common.geography import PROVINCES
 from src.ingestion import get_connector
-from src.transformations import panels, temporal, v1_corrected
-from src.validation import checks, reconciliation
+from src.transformations import panels, temporal
+from src.validation import checks
 
 log = logging.getLogger("etl.build")
 
@@ -78,8 +77,7 @@ def _dictionary(pt, pa, pm, nac) -> pd.DataFrame:
              "period": "Trimestre YYYYQn", "quarter_start": "Fecha de inicio del trimestre", "year": "Año de referencia",
              "poblacion_ecp": "Población ECP nacional en la fecha de stock más reciente <= inicio del trimestre (sin interpolar)",
              "poblacion_ecp_fecha": "Fecha de referencia del stock de población usado",
-             "pib_pc_trimestral_eur": "PIB nominal trimestral (no ajustado) / población ECP (euros por habitante y trimestre)",
-             "precio_m2_tinsa_pond_pob": "Media de precio_m2_tinsa de las 52 provincias ponderada por población ECP a 1-ene del año"}
+             "pib_pc_trimestral_eur": "PIB nominal trimestral (no ajustado) / población ECP (euros por habitante y trimestre)"}
     df = pd.DataFrame(rows)
     for k, v in extra.items():
         df.loc[df["columna"] == k, "descripcion"] = v
@@ -98,7 +96,7 @@ def build(write: bool = True) -> dict:
     issues += checks.check_panel(pa, ["prov_code", "year"], "panel_anual")
     issues += checks.check_integer_format(
         pt.melt(id_vars=["prov_code", "period"], value_vars=[c for c in pt if c.endswith("_num")], var_name="variable").dropna(), "panel_trimestral")
-    issues += checks.check_jumps(pt, "prov_code", "period", ["hipotecas_viviendas_num", "compraventas_viviendas_num", "precio_m2_tinsa"], "panel_trimestral")
+    issues += checks.check_jumps(pt, "prov_code", "period", ["hipotecas_viviendas_num", "compraventas_viviendas_num", "precio_m2_mivau_tasado"], "panel_trimestral")
     issues += checks.check_jumps(pa, "prov_code", "year", ["poblacion", "poblacion_extranjera", "pib_pc"], "panel_anual")
     issues += checks.reconcile_totals(nac, [(v, f"{v}_suma_prov") for v in
                                             ["hipotecas_viviendas_num", "hipotecas_fincas_total_num", "compraventas_viviendas_num", "hipotecas_viviendas_importe"]])
@@ -107,17 +105,12 @@ def build(write: bool = True) -> dict:
         config.PROCESSED.mkdir(parents=True, exist_ok=True)
         for name in ("panel_trimestral", "panel_anual", "panel_modelado", "nacional_trimestral"):
             result[name].to_csv(config.PROCESSED / f"{name}.csv", index=False, encoding="utf-8", float_format="%.10g")
-        v1_corrected.build()
         dic = _dictionary(pt, pa, pm, nac)
         config.METADATA.mkdir(parents=True, exist_ok=True)
         dic.to_csv(config.METADATA / "data_dictionary.csv", index=False, encoding="utf-8")
         write_metadata()
-        legacy = {p.legacy_name: c for c, p in PROVINCES.items()}
-        cmp = reconciliation.compare_v1_v2(pd.read_csv(config.V1_DATASET), pt, pa, legacy)
         config.ARTIFACTS_DQ.mkdir(parents=True, exist_ok=True)
-        cmp.to_csv(config.ARTIFACTS_DQ / "v1_vs_v2.csv", index=False, encoding="utf-8")
         (config.ARTIFACTS_DQ / "build_issues.json").write_text(json.dumps(issues, ensure_ascii=False, indent=1, default=str), encoding="utf-8")
-        result["v1_vs_v2"] = cmp
     return result
 
 

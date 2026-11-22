@@ -15,15 +15,13 @@ STAGING = DATA / "staging"
 PROCESSED = DATA / "processed"
 METADATA = DATA / "metadata"
 ARTIFACTS_DQ = ROOT / "artifacts" / "data_quality"
-V1_DATASET = ROOT / "notebooks acabados" / "dataset_final_tfm.csv"
-V1_INPUTS = ROOT / "Datos ya metidos"
 
 USER_AGENT = "tfm-analitica-hipotecaria-etl/2.0 (proyecto academico; lectura de datos publicos)"
 HTTP_TIMEOUT = (10, 90)          # (conexión, lectura) en segundos
 HTTP_RETRIES = 4                 # reintentos ante 429/5xx/errores de red
 HTTP_BACKOFF = 1.5               # espera = backoff * 2**intento
 RATE_LIMIT_PER_SEC = {"servicios.ine.es": 4.0, "data-api.ecb.europa.eu": 2.0,
-                      "ec.europa.eu": 2.0, "www.tinsa.es": 0.5, "default": 2.0}
+                      "ec.europa.eu": 2.0, "default": 2.0}
 
 PERIOD_START = "2005Q1"          # inicio del panel v2
 DOWNLOAD_FROM = "20020101"       # se descarga algo de historia previa para lags
@@ -48,7 +46,7 @@ class VarSpec:
 @dataclass(frozen=True)
 class DatasetSpec:
     key: str                       # id interno del dataset (nombre de fichero en staging)
-    source: str                    # ine | ecb | eurostat | tinsa | mivau | legacy_v1
+    source: str                    # ine | ecb | eurostat | mivau
     ref: str                       # tabla INE / clave SDMX / dataset Eurostat
     freq: str                      # M | Q | A | S (fecha puntual de stock)
     geo_vars: tuple                # T3_Variable(s) que contienen la geografía (INE)
@@ -73,7 +71,7 @@ DATASETS: list[DatasetSpec] = [
             VarSpec("hipotecas_viviendas_importe", {"Naturaleza de la finca": "Viviendas", "Concepto financiero": "Importe de hipotecas"},
                     "miles de euros", "sum", (0, 2e7), "Importe de hipotecas constituidas sobre viviendas."),
             VarSpec("hipotecas_fincas_total_num", {"Naturaleza de la finca": "Total fincas", "Concepto financiero": "Número de hipotecas"},
-                    "número", "sum", (0, 80000), "Hipotecas constituidas sobre el total de fincas (comparable con Hipotecas_Total v1).", True),
+                    "número", "sum", (0, 80000), "Hipotecas constituidas sobre el total de fincas.", True),
         ),
         {"Tipo de muestreo": "Base nueva. Mensual"},
         "Estadística de Hipotecas (HPT), datos procedentes de los Registros de la Propiedad. Flujo mensual.",
@@ -156,7 +154,7 @@ DATASETS: list[DatasetSpec] = [
         "eurostat_coste_construccion", "eurostat", "sts_copi_q", "Q", (),
         (VarSpec("indice_coste_construccion", {"geo": "ES", "indic_bt": "COST", "unit": "I21", "s_adj": "NSA"},
                  "índice 2021=100", "none", (5, 250),
-                 "Índice general de costes de construcción de edificios residenciales nuevos (STS, Eurostat), sustituye a Indice_Materiales v1."),),
+                 "Índice general de costes de construcción de edificios residenciales nuevos (STS, Eurostat)."),),
         {}, "Estadísticas coyunturales (STS) de Eurostat, dato remitido por España.", "≈3 meses", "", "https://ec.europa.eu/eurostat/databrowser/view/sts_copi_q/default/table"),
     DatasetSpec(
         "ecb_tipos", "ecb", "FM+MIR", "M", (),
@@ -170,14 +168,9 @@ DATASETS: list[DatasetSpec] = [
     DatasetSpec(
         "mivau_valor_tasado", "mivau", "VDP006_01", "Q", (),
         (VarSpec("precio_m2_mivau_tasado", {"Régimen": "Libre"}, "€/m²", "none", (300, 8000),
-                 "Valor tasado medio de vivienda libre €/m² (MIVAU, todas las tasaciones). Alternativa oficial a Tinsa."),),
+                 "Valor tasado medio de vivienda libre €/m² (MIVAU, todas las tasaciones)."),),
         {}, "Estadística de Valor Tasado de Vivienda (IOE 20007), Ministerio de Vivienda y Agenda Urbana.",
         "≈2,5 meses", "", "https://datos.gob.es/apidata/catalog/dataset/e05233601-valor-tasado-de-la-vivienda.json"),
-    DatasetSpec(
-        "tinsa_precio", "tinsa", "legacy_v1_csv", "Q", (),
-        (VarSpec("precio_m2_tinsa", {}, "€/m²", "none", (300, 8000), "Valor medio €/m² (Tinsa IMIE, provincias)."),),
-        {}, "Tinsa IMIE General y Grandes Mercados. Por defecto se reutiliza el CSV v1 (snapshot sin fecha); el scraping es opcional y está desactivado: las condiciones de uso de tinsa.es prohíben la explotación sin autorización (10_source_catalog.yaml).",
-        "≈1 mes", "", "https://www.tinsa.es/precio-vivienda/", optional=True),
 ]
 
 DATASET_BY_KEY = {d.key: d for d in DATASETS}
@@ -191,7 +184,6 @@ DERIVED = {
 # Qué modelos dependen de cada variable (para la lista de recalibración del informe de actualización)
 MODEL_DEPENDENCIES = {
     "hipotecas_viviendas_num": ["demand.rf_nacional", "demand.rf_provincial", "econometrics.var", "econometrics.vecm"],
-    "hipotecas_fincas_total_num": ["demand.v1_comparison"],
     "hipotecas_viviendas_importe": ["demand.rf_provincial", "advisor.importe_medio"],
     "compraventas_viviendas_num": ["demand.rf_provincial", "forecasting.transmisiones"],
     "tasa_paro": ["demand.rf_provincial", "advisor.gbr_spread", "forecasting.paro"],
@@ -201,8 +193,7 @@ MODEL_DEPENDENCIES = {
     "poblacion_extranjera": ["demand.rf_provincial", "forecasting.pob_ext"],
     "edad_media": ["demand.rf_provincial"],
     "pib_pc": ["advisor.gbr_spread", "econometrics.vecm", "forecasting.pib"],
-    "precio_m2_mivau_tasado": ["econometrics.robustness_price", "forecasting.precio"],
-    "precio_m2_tinsa": ["advisor.gbr_spread", "econometrics.vecm", "forecasting.precio"],
+    "precio_m2_mivau_tasado": ["advisor.gbr_spread", "econometrics.vecm", "forecasting.precio", "econometrics.robustness_price"],
     "ipv_general_indice": ["econometrics.robustness_price"],
     "euribor_12m": ["advisor.gbr_spread", "econometrics.var", "econometrics.vecm", "demand.rf_nacional"],
     "tae_vivienda": ["advisor.gbr_spread"],

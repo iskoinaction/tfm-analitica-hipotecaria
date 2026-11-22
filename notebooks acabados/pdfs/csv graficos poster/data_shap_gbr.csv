@@ -1,7 +1,0 @@
-Variable,SHAP_abs,SHAP_pct,Color,Descripcion
-Euribor,0.3816,38.16,ACENTO,Driver dominante del spread
-Tasa_Paro,0.2459,24.59,PRINCIPAL,Riesgo laboral provincial
-Precio_m2,0.1276,12.76,PRINCIPAL,Precio vivienda local
-PIB_pc,0.1201,12.01,SECUNDARIO,Renta provincial reduce spread
-IPC,0.0629,6.29,TERCIARIO,Inflación
-tasa_ahorro,0.03,3.0,TERCIARIO,Capacidad ahorro

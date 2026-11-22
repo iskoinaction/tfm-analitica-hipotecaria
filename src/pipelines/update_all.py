@@ -2,7 +2,7 @@
 
     python -m src.pipelines.update_all                 # consulta todas las fuentes, guarda novedades y reconstruye
     python -m src.pipelines.update_all --dry-run       # descarga y valida en memoria; NO escribe raw/staging/processed
-    python -m src.pipelines.update_all --source ine    # solo una fuente (ine | ecb | eurostat | mivau | tinsa)
+    python -m src.pipelines.update_all --source ine    # solo una fuente (ine | ecb | eurostat | mivau)
     python -m src.pipelines.update_all --dataset ine_hipotecas
     python -m src.pipelines.update_all --rebuild       # sin red: borra staging/processed y reconstruye desde el último raw
     python -m src.pipelines.update_all --rebuild --refetch   # desde cero: descarga, re-stagea todo y reconstruye
@@ -57,8 +57,6 @@ def run(source=None, dataset=None, dry_run=False, rebuild=False, refetch=False, 
             if p.exists():
                 for f in p.glob("*.csv"):
                     f.unlink()
-                if (p / "v1_corrected").exists():
-                    shutil.rmtree(p / "v1_corrected")
     changed_vars = set()
     for spec in specs:
         con = get_connector(spec.source)

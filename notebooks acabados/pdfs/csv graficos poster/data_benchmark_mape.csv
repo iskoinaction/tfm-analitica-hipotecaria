@@ -1,8 +1,0 @@
-Modelo,MAPE_pct,Color,Nota
-RF_Nac,7.11,GANADOR,Medias ponderadas pob. + momentum
-RF_Provincial,18.0,SECUNDARIO,Lags lag1/lag4 por provincia
-XGBoost,20.0,SECUNDARIO,n=500 lr=0.05 depth=6
-LightGBM,22.0,SECUNDARIO,n=500 lr=0.05 leaves=31
-GBM_sklearn,25.0,TERCIARIO,n=300 lr=0.05 depth=5
-ElasticNet,30.0,TERCIARIO,StandardScaler + CV auto
-SARIMAX,35.0,TERCIARIO,"order=(1,1,1) seasonal=(1,0,0,4)"

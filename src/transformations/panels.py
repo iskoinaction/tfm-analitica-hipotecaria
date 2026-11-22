@@ -140,17 +140,6 @@ def build_nacional(q: pd.DataFrame, pt: pd.DataFrame, staging: dict[str, pd.Data
         w["poblacion_ecp_fecha"] = m.set_index("period")["ref_date"].dt.strftime("%Y-%m-%d")
         if "pib_nominal_meur" in w:
             w["pib_pc_trimestral_eur"] = w["pib_nominal_meur"] * 1e6 / w["poblacion_ecp"]
-    # medias ponderadas por población (1-ene del año, ECP provincial) de variables provinciales de nivel
-    pa_pop = staging.get("ine_ecp_poblacion")
-    if pa_pop is not None and "precio_m2_tinsa" in pt:
-        a = temporal.stock_at_january(pa_pop[(pa_pop["variable"] == "poblacion") & (pa_pop["geo_level"] == "provincia")])
-        wts = a.set_index(["geo_code", "year"])["value"]
-        d = pt[["prov_code", "period", "precio_m2_tinsa"]].dropna().copy()
-        d["year"] = d["period"].str[:4].astype(int)
-        d["w"] = [wts.get((c, y), np.nan) for c, y in zip(d["prov_code"], d["year"])]
-        d = d.dropna()
-        g = d.groupby("period")
-        w["precio_m2_tinsa_pond_pob"] = g.apply(lambda x: np.average(x["precio_m2_tinsa"], weights=x["w"]) if len(x) == 52 else np.nan)
     w = w.reset_index()
     first = config.PERIOD_START
     return w[w["period"] >= "2002Q1"].sort_values("period").reset_index(drop=True)
