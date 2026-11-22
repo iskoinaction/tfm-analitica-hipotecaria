@@ -11,13 +11,6 @@ ROOT = Path(__file__).resolve().parents[3]
 DATA_PROCESSED = ROOT / "data" / "processed"
 NATIONAL_V2 = DATA_PROCESSED / "nacional_trimestral.csv"
 PANEL_V2 = DATA_PROCESSED / "panel_trimestral.csv"
-V1FIX = DATA_PROCESSED / "v1_corrected" / "dataset_final_tfm_v1fix.csv"
-
-# Fuentes de la construcción PROVISIONAL (solo desarrollo; los resultados finales salen de v2)
-V1_DATASET = ROOT / "notebooks acabados" / "dataset_final_tfm.csv"
-V1_HIP_RAW = ROOT / "Datos ya metidos" / "hipotecas_por_prov_men.csv"
-INE_HPT_VIV = ROOT / "reports" / "audit" / "03_economia" / "data" / "ine_HPT34618.json"   # viviendas, número
-INE_HPT_TOT = ROOT / "reports" / "audit" / "03_economia" / "data" / "ine_HPT34936.json"   # total fincas, número
 
 PANEL_MODELADO_V2 = DATA_PROCESSED / "panel_modelado.csv"
 
@@ -27,16 +20,16 @@ V2_NATIONAL_COLMAP = {
     "period": "period",
     "hip_viv": "hipotecas_viviendas_num",            # INE 3200, objetivo principal v2
     "hip_tot": "hipotecas_fincas_total_num",         # robustez
-    "precio": "precio_m2_tinsa_pond_pob",            # Tinsa IMIE, media provincial ponderada por población
+    "precio_mivau": "precio_m2_mivau_tasado",        # MIVAU valor tasado medio vivienda libre, nacional
     "precio_ipv": "ipv_general_indice",              # INE IPV (desde 2007), robustez
     "pib_nominal_sa": "pib_nominal_meur_sa",         # INE CNTR 67821, nominal, CVEC
     "poblacion": "poblacion_ecp",                    # INE ECP (stock semestral, sin interpolar)
     "euribor": "euribor_12m",
-    "materiales": "indice_coste_construccion",       # Eurostat STS sts_copi_q (sustituye a Indice_Materiales v1)
+    "materiales": "indice_coste_construccion",       # Eurostat STS sts_copi_q
 }
 V2_PANEL_COLMAP = {
     "prov_code": "prov_code", "period": "period", "hip_viv": "hipotecas_viviendas_num",
-    "hip_tot": "hipotecas_fincas_total_num", "precio": "precio_m2_tinsa", "pib_pc": "pib_pc",
+    "hip_tot": "hipotecas_fincas_total_num", "precio": "precio_m2_mivau_tasado", "pib_pc": "pib_pc",
     "poblacion": "poblacion", "euribor": "euribor_12m", "materiales": "indice_coste_construccion",
 }
 
@@ -50,7 +43,7 @@ N_JOBS = 1
 SYSTEM = ["log_materiales", "euribor", "log_pib_pc", "log_precio", "log_hipotecas"]
 TARGET = "log_hipotecas"
 LABELS = {
-    "log_materiales": "Índice de costes de construcción residencial (log; v1: índice de materiales)",
+    "log_materiales": "Índice de costes de construcción residencial (log)",
     "euribor": "Euríbor 12m (%)",
     "log_pib_pc": "PIB per cápita (log)",
     "log_precio": "Precio vivienda m² (log)",

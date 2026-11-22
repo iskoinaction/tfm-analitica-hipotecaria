@@ -24,18 +24,14 @@ PROVS = [f"{i:02d}" for i in range(1, 53)]
 PERIODS = ["2024Q3", "2024Q4", "2025Q1", "2025Q2", "2025Q3"]
 
 
-def write_panel(data_dir: Path, with_tinsa: bool = True) -> None:
+def write_panel(data_dir: Path) -> None:
     processed = data_dir / "processed"
     processed.mkdir(parents=True, exist_ok=True)
     cols = ["prov_code", "period", "hipotecas_viviendas_num", "precio_m2_mivau_tasado", "euribor_12m", "tasa_paro"]
-    if with_tinsa:
-        cols.append("precio_m2_tinsa")
     lines = [",".join(cols)]
     for pi, per in enumerate(PERIODS):
         for i, code in enumerate(PROVS):
             row = [code, per, str(100 + i + pi), f"{1500 + 10 * i:.1f}", "2.5", f"{10 + i % 5:.1f}"]
-            if with_tinsa:
-                row.append("9999.9")
             lines.append(",".join(row))
     (processed / "panel_trimestral.csv").write_text("\n".join(lines), encoding="utf-8")
     nat = ["period,hipotecas_viviendas_num,precio_m2_mivau_tasado,euribor_12m,tasa_paro"]
@@ -93,7 +89,7 @@ def make_app(tmp_path: Path, artifacts: bool = True, panel: bool = True, **overr
         for dom in ("econometrics", "forecasting", "advisor", "data_quality"):
             write_artifact(art, dom)
         write_artifact(art, "demand", scopes={"28": [VIEWS[0]]})
-    cfg = {"ARTIFACTS_DIR": art, "DATA_DIR": data, "ALLOW_LEGACY_PANEL": False, "RATELIMIT_ENABLED": True,
+    cfg = {"ARTIFACTS_DIR": art, "DATA_DIR": data, "RATELIMIT_ENABLED": True,
            "SECRET_KEY": "x" * 40}
     cfg.update(overrides)
     limiter.reset()

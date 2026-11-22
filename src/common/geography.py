@@ -1,6 +1,6 @@
 """Geografía canónica: provincias (código INE 01-52) y comunidades autónomas.
 
-Sustituye al *fuzzy matching* (difflib, cutoff=0.5) del notebook v1 por una
+Sustituye al *fuzzy matching* (difflib, cutoff=0.5) del notebook original por una
 resolución determinista basada en alias explícitos. Un nombre desconocido
 lanza ``KeyError`` en lugar de asignarse silenciosamente a la provincia más
 parecida.
@@ -73,7 +73,7 @@ def normalize(text: str) -> str:
 
 
 # Alias explícitos (normalizados) -> código. Se generan desde nombres oficiales,
-# legacy y las formas cooficiales/variantes observadas en INE, MIVAU, BCE, Tinsa.
+# legacy y las formas cooficiales/variantes observadas en INE, MIVAU, BCE.
 _EXTRA_ALIASES = {
     "01": ["alava", "araba", "arabaalava"], "03": ["alicante", "alacant"],
     "07": ["baleares", "balears", "illesbalears", "balearsilles", "islasbaleares"],

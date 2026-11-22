@@ -17,7 +17,7 @@ def _panel_info() -> dict | None:
     if not panel().available():
         return None
     q = panel().quality()
-    return {k: q[k] for k in ("source", "is_legacy", "rows", "provinces", "first_period", "last_period")}
+    return {k: q[k] for k in ("source", "rows", "provinces", "first_period", "last_period")}
 
 
 def _common(**kw):

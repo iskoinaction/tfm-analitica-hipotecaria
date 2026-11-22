@@ -1,10 +1,10 @@
 """Pipeline de econometría v2.
 
 Uso:
-    python -m src.models.econometrics.run [--prefer auto|v2|provisional] [--quick]
+    python -m src.models.econometrics.run [--prefer auto|v2] [--quick]
                                           [--B-rank 999] [--B-irf 499] [--out artifacts/econometrics]
 
-Lee los datos (v2 si existen; si no, construcción provisional marcada como tal), ejecuta
+Lee los datos (pipeline v2), ejecuta
 raíces unitarias, rango de Johansen con bootstrap salvaje, aplica la regla de decisión
 VECM vs VAR en diferencias, estima ambos, IRF/FEVD (Cholesky + rango por ordenación + GIRF
 + bandas bootstrap), ARDL-bounds y panel, y escribe los artefactos (JSON + CSV + PNG).
@@ -213,21 +213,11 @@ def panel_block(pdata: D.PanelData, seed):
     return out
 
 
-V1_DOCUMENTED = {
-    "beta_pib_pc": 0.35, "beta_precio": 2.48, "beta_euribor": -0.10, "beta_materiales": -1.09,
-    "alpha_hipotecas": -0.44, "semivida_hipotecas_trim": 1.2, "alpha_precio": -0.006, "semivida_precio_trim": 120,
-    "fevd20_precio_pct": 53.3, "fevd20_materiales_pct": 38.8, "fevd20_pib_pct": 2.6, "fevd20_euribor_pct": 2.2,
-    "fevd20_propio_pct": 3.0, "johansen_traza_r0": 92.89, "johansen_traza_r1": 46.45, "ECT_ADF_p (doc: <0.05)": 0.204,
-}
-
-
 def main(argv=None):
     ap = argparse.ArgumentParser()
-    ap.add_argument("--prefer", default="auto", choices=["auto", "v2", "provisional"])
+    ap.add_argument("--prefer", default="auto", choices=["auto", "v2"])
     ap.add_argument("--B-rank", type=int, default=C.SPEC["bootstrap_B_rank"])
     ap.add_argument("--B-irf", type=int, default=C.SPEC["bootstrap_B_irf"])
-    ap.add_argument("--price", default="auto", choices=["auto", "mivau", "tinsa"],
-                    help="precio principal: auto = MIVAU valor tasado si existe (decisión del coordinador), si no Tinsa")
     ap.add_argument("--quick", action="store_true", help="B pequeños, sin panel (para pruebas)")
     ap.add_argument("--no-panel", action="store_true")
     ap.add_argument("--out", default=str(C.ARTIFACTS))
@@ -239,20 +229,17 @@ def main(argv=None):
     H, seed = C.SPEC["horizon"], C.SEED
 
     nd = D.load_national(a.prefer)
-    has_mivau = "precio_mivau" in nd.raw and nd.raw["precio_mivau"].notna().sum() >= 60
-    if a.price == "mivau" and not has_mivau:
-        raise SystemExit("--price mivau pedido pero no hay columna precio_m2_mivau_tasado* con >= 60 trimestres")
-    PRICE = "precio_mivau" if (a.price == "mivau" or (a.price == "auto" and has_mivau)) else "precio"
-    PRICE_ROB = "precio" if PRICE == "precio_mivau" else ("precio_mivau" if has_mivau else None)
+    if "precio_mivau" not in nd.raw or nd.raw["precio_mivau"].notna().sum() < 60:
+        raise SystemExit("Falta precio_m2_mivau_tasado con >= 60 trimestres en nacional_trimestral.csv")
+    PRICE = "precio_mivau"
     Y = nd.system("hip_viv", PRICE)
     ex = exog_matrix(Y.index)
     res = {"metadatos": {
         "generado": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
         "fuente_datos": nd.source, "provisional": nd.source != "v2", "entradas": nd.inputs, "notas_datos": nd.notes,
         "mapeo_columnas": nd.colmap, "especificacion": C.SPEC, "semilla": seed,
-        "precio_principal": {"precio": "Tinsa IMIE ponderado por población (PROVISIONAL: pendiente valor tasado MIVAU)",
-                             "precio_mivau": "Valor tasado MIVAU"}[PRICE],
-        "precio_robustez": PRICE_ROB,
+        "precio_principal": "Valor tasado MIVAU",
+        "precio_robustez": "IPV (INE)",
         "muestra": [str(Y.index[0]), str(Y.index[-1])], "T": len(Y), "variables": list(Y.columns),
         "orden_cholesky_referencia": list(Y.columns),
         "versiones": {"python": platform.python_version(), "numpy": np.__version__, "pandas": pd.__version__,
@@ -318,9 +305,6 @@ def main(argv=None):
     if "precio_ipv" in nd.raw and nd.raw["precio_ipv"].notna().sum() > 30:
         Yi = nd.system("hip_viv", "precio_ipv")
         grid.append(("precio_ipv", Yi, exog_matrix(Yi.index), k, 3))
-    if PRICE_ROB:
-        Yv = nd.system("hip_viv", PRICE_ROB)
-        grid.append((f"precio_robustez_{PRICE_ROB}", Yv, exog_matrix(Yv.index), k, 3))
     for nm, Yg, eg, kg, cg in grid:
         r = rank_tests(Yg.values, kg, cg, eg.values, B=Bs, seed=seed)
         sens[nm] = {"muestra": [str(Yg.index[0]), str(Yg.index[-1])], "T_efectiva": r["T_efectiva"], "B": Bs,
@@ -345,10 +329,6 @@ def main(argv=None):
                                                                     "alpha_normalizado_hipotecas", "irf_fevd_hipotecas (respuesta en nivel, log-puntos por shock de 1 d.t.)")}
         wt, _, _ = var_block(Yt, exog_matrix(Yt.index), 0, H, seed, "VAR_total_fincas", C.SPEC["max_lags_selection"], p_forced=k)
         res["robustez_total_fincas_VAR"] = wt
-    if PRICE_ROB:
-        Yp = nd.system("hip_viv", PRICE_ROB)
-        wp, _, _ = var_block(Yp, exog_matrix(Yp.index), 0, H, seed, f"VAR_{PRICE_ROB}", C.SPEC["max_lags_selection"], p_forced=k)
-        res[f"robustez_precio_{PRICE_ROB}_VAR"] = wp
     if "precio_ipv" in nd.raw and nd.raw["precio_ipv"].notna().sum() > 30:
         Yi = nd.system("hip_viv", "precio_ipv")
         wi, _, _ = var_block(Yi, exog_matrix(Yi.index), 0, H, seed, "VAR_precio_ipv", C.SPEC["max_lags_selection"], p_forced=k)
@@ -369,19 +349,18 @@ def main(argv=None):
         except Exception as e:  # el panel es complementario: no bloquea
             res["panel"] = {"error": repr(e)}
 
-    # 7. Antes / después
+    # 7. Resumen de parámetros del VECM y FEVD del modelo principal
     vh = res["VECM"]["beta_normalizado_hipotecas (log H = ...)"]
     main_key = "VECM" if use_vecm else "VAR_diferencias"
     blk = res[main_key][[kk for kk in res[main_key] if kk.startswith("irf_fevd")][0]]
-    res["antes_despues"] = {
-        "v1_documentado": V1_DOCUMENTED,
-        "v2_VECM": {"beta_pib_pc": vh["pib_pc"], "beta_precio": vh["precio"], "beta_euribor": vh["euribor"],
+    res["resumen_modelo"] = {
+        "VECM": {"beta_pib_pc": vh["pib_pc"], "beta_precio": vh["precio"], "beta_euribor": vh["euribor"],
                     "beta_materiales": vh["coste_construccion"],
                     "alpha_hipotecas": res["VECM"]["alpha_normalizado_hipotecas"]["hipotecas"],
                     "alpha_precio": res["VECM"]["alpha_normalizado_hipotecas"]["precio"],
                     "traza_r0_r1": [rk["tests"][0]["trace"], rk["tests"][1]["trace"]],
                     "p_boot_r0": p0},
-        f"v2_principal_{main_key}_fevd20": {"cholesky": blk["fevd_cholesky_pct"][f"h{H}"], "gfevd": blk["gfevd_pct"][f"h{H}"],
+        f"principal_{main_key}_fevd20": {"cholesky": blk["fevd_cholesky_pct"][f"h{H}"], "gfevd": blk["gfevd_pct"][f"h{H}"],
                                              "rango_ordenaciones": blk["fevd_rango_120_ordenaciones_pct"][f"h{H}"]},
     }
 

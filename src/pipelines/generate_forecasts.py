@@ -2,7 +2,7 @@
 
 Uso:
     python -m src.pipelines.generate_forecasts                # datos v2 (data/processed) si existen
-    python -m src.pipelines.generate_forecasts --prefer provisional --no-ml
+    python -m src.pipelines.generate_forecasts --no-ml
 
 Salidas:
     data/forecasts/proyecciones_2026_2030_v2.csv        long: provincia, prov_code, period, variable, escenario,
@@ -186,7 +186,7 @@ def run(prefer: str = "auto", with_ml: bool = True) -> dict:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--prefer", default="auto", choices=["auto", "v2", "provisional"])
+    ap.add_argument("--prefer", default="auto", choices=["auto", "v2"])
     ap.add_argument("--no-ml", action="store_true")
     a = ap.parse_args()
     run(a.prefer, with_ml=not a.no_ml)

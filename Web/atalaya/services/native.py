@@ -219,7 +219,7 @@ def econometrics(root: Path, data: Path):
     if dec.get("regla"):
         views.append({"type": "note", "title": "Regla de decisión", "text": dec["regla"]})
     views.append({"type": "table", "title": "Orden de integración (dictamen)", "columns": ["Serie", "Dictamen"],
-                  "rows": [[k, v] for k, v in j.get("raices_unitarias_dictamen", {}).items() if "tinsa" not in k.lower()]})
+                  "rows": [[k, v] for k, v in j.get("raices_unitarias_dictamen", {}).items()]})
     irf = _read(d / "irf_hipotecas.csv")
     if irf is not None:
         s = irf[(irf.modelo == "VAR_diferencias") & (irf.identificacion == "cholesky")]
@@ -233,11 +233,6 @@ def econometrics(root: Path, data: Path):
                           "series": [{"name": "IRF", "values": [_clean(v) for v in g.valor], "role": "historical"},
                                      {"name": "p5", "values": [_clean(v) for v in g.p5], "role": "lower"},
                                      {"name": "p95", "values": [_clean(v) for v in g.p95], "role": "upper"}]})
-    ad = j.get("antes_despues", {})
-    if ad:
-        views.append({"type": "note", "title": "Antes y después (v1 frente a v2)",
-                      "text": "La cointegración de la v1 no se sostiene tras corregir los datos y usar contrastes con bootstrap (p r=0 = "
-                              f"{dec.get('p_bootstrap_r0')}). Ver detalle en el informe de econometría."})
     ur = _read(d / "unit_root.csv")
     if ur is not None:
         u = ur[ur.det == "c"][["serie", "transf", "T", "adf_bic_p", "kpss_p"]].round(3)
@@ -276,14 +271,9 @@ def data_quality(root: Path, data: Path):
         return None
     views = []
     iss = json.loads(f.read_text(encoding="utf-8"))
-    iss = [i for i in iss if "tinsa" not in json.dumps(i).lower()] if isinstance(iss, list) else iss  # sin series Tinsa en la UI
     if isinstance(iss, list) and iss:
         views.append({"type": "table", "title": "Incidencias de construcción del panel", "columns": ["Control", "Gravedad", "Objetivo", "Detalle", "n"],
                       "rows": [[i.get("check"), i.get("severity"), i.get("target"), i.get("detail"), i.get("n")] for i in iss[:200]]})
-    v = _read(d / "v1_vs_v2.csv")
-    if v is not None:
-        v = v[~v.apply(lambda r: "tinsa" in " ".join(map(str, r)).lower(), axis=1)]
-        views.append(_table("Panel v1 frente a v2", v, cols=["v1", "v2", "n_comparadas", "pct_iguales_0.5pct", "max_dif_rel_pct", "nota"]))
     return _bundle(root, "data_quality", {}, views, None, [f], [{"name": "Pipeline Atalaya (build_master)"}], None)
 
 

@@ -48,7 +48,7 @@ def meta():
     pnl = None
     if panel().available():
         q = panel().quality()
-        pnl = {k: q[k] for k in ("source", "is_legacy", "rows", "provinces", "first_period", "last_period")}
+        pnl = {k: q[k] for k in ("source", "rows", "provinces", "first_period", "last_period")}
     return jsonify(artifacts=store().status_all(), panel=pnl, provinces=province_options())
 
 
@@ -72,7 +72,7 @@ def panel_series():
     return jsonify(var=var, label=_meta(var)["label"], unit=_meta(var)["unit"], var_source=_meta(var).get("source"),
                    scope=province_name(prov) if prov else "España",
                    aggregation=None if prov else s.get("agg_label"), source=data.source_label,
-                   is_legacy=data.is_legacy, x=s["x"], values=s["values"])
+                   x=s["x"], values=s["values"])
 
 
 @bp.get("/panel/choropleth")
@@ -88,7 +88,7 @@ def panel_choropleth():
     except KeyError:
         abort(404, description="Variable no disponible en el panel")
     return jsonify(var=var, label=_meta(var)["label"], unit=_meta(var)["unit"], var_source=_meta(var).get("source"), period=used,
-                   scope_note=_meta(var).get("geo_level") or "provincia", source=data.source_label, is_legacy=data.is_legacy,
+                   scope_note=_meta(var).get("geo_level") or "provincia", source=data.source_label,
                    values=values)
 
 
@@ -106,14 +106,14 @@ def panel_ranking():
     except KeyError:
         abort(404, description="Variable no disponible en el panel")
     return jsonify(var=var, label=_meta(var)["label"], unit=_meta(var)["unit"], var_source=_meta(var).get("source"),
-                   source=data.source_label, is_legacy=data.is_legacy, **r)
+                   source=data.source_label, **r)
 
 
 @bp.get("/panel/kpis")
 @rate_limit("RATELIMIT_DEFAULT")
 def panel_kpis():
     data = _panel_or_503()
-    return jsonify(source=data.source_label, is_legacy=data.is_legacy, kpis=panel().kpis())
+    return jsonify(source=data.source_label, kpis=panel().kpis())
 
 
 # ------------------------------------------------------------------ artefactos

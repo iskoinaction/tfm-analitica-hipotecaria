@@ -202,7 +202,7 @@
     filtro_origen:
       Naturaleza de la finca: Total fincas
       Concepto financiero: Número de hipotecas
-    descripcion: Hipotecas constituidas sobre el total de fincas (comparable con Hipotecas_Total v1).
+    descripcion: Hipotecas constituidas sobre el total de fincas.
 - dataset: ine_etdp_compraventas
   fuente: ine
   tabla_o_clave: '6150'
@@ -968,7 +968,7 @@
       indic_bt: COST
       unit: I21
       s_adj: NSA
-    descripcion: Índice general de costes de construcción de edificios residenciales nuevos (STS, Eurostat), sustituye a Indice_Materiales v1.
+    descripcion: Índice general de costes de construcción de edificios residenciales nuevos (STS, Eurostat).
 - dataset: ecb_tipos
   fuente: ecb
   tabla_o_clave: FM+MIR
@@ -1040,30 +1040,4 @@
     - 8000
     filtro_origen:
       Régimen: Libre
-    descripcion: Valor tasado medio de vivienda libre €/m² (MIVAU, todas las tasaciones). Alternativa oficial a Tinsa.
-- dataset: tinsa_precio
-  fuente: tinsa
-  tabla_o_clave: legacy_v1_csv
-  frecuencia: Q
-  operacion_ine: null
-  metodologia: 'Tinsa IMIE General y Grandes Mercados. Por defecto se reutiliza el CSV v1 (snapshot sin fecha); el scraping es opcional y está
-    desactivado: las condiciones de uso de tinsa.es prohíben la explotación sin autorización (10_source_catalog.yaml).'
-  retraso_publicacion: ≈1 mes
-  url_documentacion: https://www.tinsa.es/precio-vivienda/
-  opcional: true
-  ultima_modificacion_origen: null
-  fecha_extraccion: 'desconocida: CSV generado en v1 por tinsa_scraper.py sin fecha'
-  series_ids:
-  - tinsa:IMIE:provincias
-  vintages: 'No disponibles vía API: el INE/BCE solo sirven la última versión; cada snapshot raw es nuestro vintage. El INE marca cada dato como
-    Provisional/Definitivo/Avance (columna status).'
-  fecha_referencia_vs_publicacion: ref_date = periodo de referencia; la fecha de publicación no la da la API (se aproxima con retraso_publicacion)
-  variables:
-  - nombre: precio_m2_tinsa
-    unidad: €/m²
-    agregacion_trimestral: none
-    rango_valido:
-    - 300
-    - 8000
-    filtro_origen: {}
-    descripcion: Valor medio €/m² (Tinsa IMIE, provincias).
+    descripcion: Valor tasado medio de vivienda libre €/m² (MIVAU, todas las tasaciones).

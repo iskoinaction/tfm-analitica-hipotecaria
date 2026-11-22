@@ -7,7 +7,7 @@ import pytest
 
 from src.models.econometrics import irf_fevd as F
 from src.models.econometrics.cointegration import Johansen, wild_bootstrap_trace
-from src.models.econometrics.data import (impulse_dummies, parse_ine_thousands, resolve_columns,
+from src.models.econometrics.data import (impulse_dummies, resolve_columns,
                                           seasonal_dummies, NATIONAL_RULES)
 from src.models.econometrics.panel import cd_test, mg_pmg
 from src.models.econometrics.var import VARdiff
@@ -87,20 +87,13 @@ def test_var_diff_ma_and_resample():
     assert m2.B.shape == m.B.shape and np.max(m.roots()) < 1
 
 
-def test_parse_ine_thousands():
-    assert parse_ine_thousands("17.49") == 17490
-    assert parse_ine_thousands("3.915") == 3915
-    assert parse_ine_thousands("398.0") == 398
-    assert parse_ine_thousands("19.1") == 19100
-
-
 def test_resolve_columns_and_dummies():
     df = pd.DataFrame(columns=["period", "hipotecas_viviendas_num", "hipotecas_viviendas_importe",
-                               "hipotecas_total_fincas_num", "precio_m2_tinsa_pond", "precio_ipv",
+                               "hipotecas_total_fincas_num", "precio_m2_mivau_tasado", "precio_ipv",
                                "pib_pc", "euribor_12m", "indice_materiales"])
-    cm = resolve_columns(df, NATIONAL_RULES, ["period", "hip_viv", "precio", "euribor", "materiales"])
+    cm = resolve_columns(df, NATIONAL_RULES, ["period", "hip_viv", "precio_mivau", "euribor", "materiales"])
     assert cm["hip_viv"] == "hipotecas_viviendas_num" and cm["hip_tot"] == "hipotecas_total_fincas_num"
-    assert cm["precio"] == "precio_m2_tinsa_pond" and cm["precio_ipv"] == "precio_ipv"
+    assert cm["precio_mivau"] == "precio_m2_mivau_tasado" and cm["precio_ipv"] == "precio_ipv"
     idx = pd.period_range("2019Q1", "2021Q4", freq="Q")
     sd = seasonal_dummies(idx)
     assert np.allclose(sd.sum(axis=0), 0)

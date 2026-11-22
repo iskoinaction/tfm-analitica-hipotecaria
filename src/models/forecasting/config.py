@@ -16,18 +16,12 @@ DATA_PROCESSED = ROOT / "data" / "processed"
 PANEL_V2 = DATA_PROCESSED / "panel_trimestral.csv"
 PANEL_ANUAL_V2 = DATA_PROCESSED / "panel_anual.csv"
 NATIONAL_V2 = DATA_PROCESSED / "nacional_trimestral.csv"
-V1FIX = DATA_PROCESSED / "v1_corrected" / "dataset_final_tfm_v1fix.csv"
-
-# ---------------------------------------------------------------- construcción PROVISIONAL (solo si no hay v2)
-V1_DATASET = ROOT / "notebooks acabados" / "dataset_final_tfm.csv"
-INE_3200_URL = "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/3200?nult=300"
 
 # ---------------------------------------------------------------- salidas
 SCENARIOS_YAML = ROOT / "data" / "metadata" / "escenarios_macro.yaml"
 FORECASTS_DIR = ROOT / "data" / "forecasts"
 ART_FORECAST = ROOT / "artifacts" / "forecasting"
 ART_DEMAND = ROOT / "artifacts" / "demand"
-INPUT_CACHE = ART_DEMAND / "inputs"   # descargas cacheadas (INE 3200) con hash
 
 SEED = 12345
 N_JOBS = 2

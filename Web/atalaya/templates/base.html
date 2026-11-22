@@ -71,8 +71,7 @@
       </div>
       {% block header_meta %}
         {% if panel_info %}
-        <p class="page-header__meta">Datos observados: {{ panel_info.first_period|period }}–{{ panel_info.last_period|period }}
-          {% if panel_info.is_legacy %}<span class="badge badge--warn">Panel v1 (legado)</span>{% endif %}</p>
+        <p class="page-header__meta">Datos observados: {{ panel_info.first_period|period }}–{{ panel_info.last_period|period }}</p>
         {% endif %}
       {% endblock %}
     </div>

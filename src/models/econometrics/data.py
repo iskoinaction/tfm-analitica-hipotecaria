@@ -1,9 +1,6 @@
 """Entrada de datos de la econometría v2.
 
-Fuente preferente: ``data/processed/nacional_trimestral.csv`` y ``panel_trimestral.csv``
-(Data Engineering). Mientras no existan se usa una construcción PROVISIONAL a
-partir del dataset v1 con el parseo de hipotecas corregido y la serie nacional INE
-de hipotecas sobre viviendas; queda marcada como ``provisional`` en los metadatos.
+Fuente: ``data/processed/nacional_trimestral.csv`` y ``panel_modelado.csv`` (pipeline de datos v2).
 
 Las columnas de los ficheros v2 se resuelven por reglas explícitas (regex sobre el
 nombre normalizado) y cualquier ambigüedad lanza un error: no se adivina.
@@ -54,9 +51,8 @@ NATIONAL_RULES = {
     "period": ([r"^(period|periodo|trimestre|quarter|fecha|date)$"], []),
     "hip_viv": ([r"hipotec", r"viv"], [r"importe", r"impor", r"_eur", r"tasa", r"var", r"medio", r"_sa$", r"desest"]),
     "hip_tot": ([r"hipotec", r"(total|fincas)"], [r"viv", r"importe", r"impor", r"tasa", r"var", r"medio", r"_sa$", r"desest"]),
-    "precio": ([r"(precio|tinsa|imie)"], [r"ipv", r"tasad", r"mivau", r"mitma", r"var", r"indice_ipv", r"_n$", r"simple"]),
     "precio_ipv": ([r"ipv"], [r"var", r"tasa_var"]),
-    "precio_tasado": ([r"(tasad|mivau|mitma)"], [r"var"]),
+    "precio_mivau": ([r"(tasad|mivau|mitma)"], [r"var"]),
     "pib_pc": ([r"pib", r"(pc|per_capita|percapita)"], [r"var", r"tasa", r"real", r"anual"]),
     "pib": ([r"^pib"], [r"pc", r"per_capita", r"percapita", r"var", r"tasa", r"real", r"anual"]),
     "poblacion": ([r"^poblacion"], [r"ext", r"var"]),
@@ -89,12 +85,12 @@ def resolve_columns(df: pd.DataFrame, rules: dict, required: list[str]) -> dict:
 @dataclass
 class NationalData:
     raw: pd.DataFrame                    # índice PeriodIndex, columnas canónicas en niveles
-    source: str                          # "v2" | "provisional_v1fix"
+    source: str                          # "v2"
     inputs: list = field(default_factory=list)   # [{path, sha256}]
     notes: list = field(default_factory=list)
     colmap: dict = field(default_factory=dict)
 
-    def system(self, hip: str = "hip_viv", price: str = "precio", start: str = C.START,
+    def system(self, hip: str = "hip_viv", price: str = "precio_mivau", start: str = C.START,
                end: str | None = None) -> pd.DataFrame:
         r = self.raw
         if hip not in r or price not in r:
@@ -119,90 +115,10 @@ class NationalData:
         return y
 
 
-def _ine_monthly_to_quarter(path: Path) -> pd.Series:
-    d = json.load(open(path, encoding="utf-8"))
-    rows = [(int(x["Anyo"]), int(x["FK_Periodo"]), float(x["Valor"])) for x in d["Data"] if x["Valor"] is not None]
-    s = pd.DataFrame(rows, columns=["y", "m", "v"])
-    s["q"] = [pd.Period(year=a, quarter=(m - 1) // 3 + 1, freq="Q-DEC") for a, m in zip(s.y, s.m)]
-    g = s.groupby("q")["v"].agg(["sum", "count"])
-    return g.loc[g["count"] == 3, "sum"]  # solo trimestres completos
-
-
-def parse_ine_thousands(v: str) -> float:
-    """Parseo correcto del CSV INE exportado (miles truncados: '17.49' = 17.490; 'X.0' = X)."""
-    a, b = str(v).strip().split(".")
-    return float(a) if b == "0" else float(int(a) * 1000 + int(b.ljust(3, "0")))
-
-
-def hip_total_provincial_fixed() -> pd.DataFrame:
-    h = pd.read_csv(C.V1_HIP_RAW, sep=";", dtype=str)
-    h["v"] = h["Total"].map(parse_ine_thousands)
-    h["period"] = [pd.Period(year=int(p[:4]), quarter=(int(p[5:]) - 1) // 3 + 1, freq="Q-DEC") for p in h.Periodo]
-    g = h.groupby(["Provincias", "period"])["v"].agg(["sum", "count"]).reset_index()
-    g = g[g["count"] == 3]
-    from src.common.geography import province_code
-    g["prov_code"] = g.Provincias.map(province_code)
-    return g[["prov_code", "period", "sum"]].rename(columns={"sum": "hip_tot"})
-
-
-def _v1_inputs() -> list[Path]:
-    return [C.V1FIX] if C.V1FIX.exists() else [C.V1_DATASET, C.V1_HIP_RAW]
-
-
-def _v1_panel() -> pd.DataFrame:
-    """Panel v1 con hipotecas (total fincas) bien parseadas: usa el v1fix de Data Engineering si existe."""
-    from src.common.geography import province_code
-    if C.V1FIX.exists():
-        df = pd.read_csv(C.V1FIX)
-        df["hip_tot"] = df["Hipotecas_Total"]
-    else:
-        df = pd.read_csv(C.V1_DATASET)
-    df["prov_code"] = df.Provincia.map(province_code)
-    df["period"] = pd.PeriodIndex(pd.to_datetime(df.Trimestre), freq="Q-DEC")
-    if not C.V1FIX.exists():
-        df = df.merge(hip_total_provincial_fixed(), on=["prov_code", "period"], how="left")
-    return df
-
-
-def load_national_provisional() -> NationalData:
-    df = _v1_panel()
-    g = df.groupby("period")
-    w = df["Poblacion"]
-    df["_p"] = df.Precio_m2 * w
-    df["_y"] = df.PIB_pc * w
-    raw = pd.DataFrame({
-        "hip_tot": g["hip_tot"].sum(min_count=52),
-        "precio": g["_p"].sum(min_count=52) / g["Poblacion"].sum(),
-        "pib_pc": g["_y"].sum(min_count=52) / g["Poblacion"].sum(),
-        "euribor": g["Euribor"].mean(),
-        "materiales": g["Indice_Materiales"].mean(),
-        "poblacion": g["Poblacion"].sum(),
-    })
-    raw["hip_viv"] = _ine_monthly_to_quarter(C.INE_HPT_VIV).reindex(raw.index)
-    raw.index = pd.PeriodIndex(raw.index, freq="Q-DEC")
-    inputs = [{"path": str(p.relative_to(C.ROOT)), "sha256": sha256(p)} for p in (*_v1_inputs(), C.INE_HPT_VIV)]
-    notes = ["PROVISIONAL: construcción propia desde dataset v1 corregido (v1fix de Data Engineering si existe) + INE HPT34618 (viviendas).",
-             "PIB_pc provincial ANUAL repetido en los 4 trimestres (escalón), ponderado por población; sustituir por INE CNTR en v2.",
-             "Precio Tinsa ponderado por población."]
-    return NationalData(raw=raw, source="provisional_v1fix", inputs=inputs, notes=notes)
-
-
-def _mivau_column(cols):
-    """Columna de valor tasado MIVAU (prefijo acordado ``precio_m2_mivau_tasado``); preferir la ponderada."""
-    c = [x for x in cols if str(x).startswith("precio_m2_mivau_tasado")]
-    if not c:
-        return None
-    pond = [x for x in c if "pond" in x]
-    return sorted(pond or c, key=len)[0]
-
-
 def load_national_v2(path: Path = C.NATIONAL_V2, colmap: dict | None = None) -> NationalData:
     df = pd.read_csv(path)
     if colmap is None and all(c in df.columns for c in C.V2_NATIONAL_COLMAP.values()):
         colmap = dict(C.V2_NATIONAL_COLMAP)
-        mv = _mivau_column(df.columns)
-        if mv:
-            colmap["precio_mivau"] = mv
     cm = colmap or resolve_columns(df, NATIONAL_RULES, ["period", "euribor", "materiales"])
     raw = pd.DataFrame(index=to_period(df[cm["period"]]))
     for k, c in cm.items():
@@ -226,11 +142,9 @@ def load_national_v2(path: Path = C.NATIONAL_V2, colmap: dict | None = None) -> 
 
 
 def load_national(prefer: str = "auto", colmap: dict | None = None) -> NationalData:
-    if prefer in ("auto", "v2") and C.NATIONAL_V2.exists():
-        return load_national_v2(colmap=colmap)
-    if prefer == "v2":
+    if not C.NATIONAL_V2.exists():
         raise FileNotFoundError(C.NATIONAL_V2)
-    return load_national_provisional()
+    return load_national_v2(colmap=colmap)
 
 
 # --------------------------------------------------------------------------- panel
@@ -239,7 +153,7 @@ PANEL_RULES = {
     "period": ([r"^(period|periodo|trimestre|quarter|fecha|date)$"], []),
     "hip_viv": ([r"hipotec", r"viv"], [r"importe", r"impor", r"var", r"medio"]),
     "hip_tot": ([r"hipotec", r"(total|fincas)"], [r"viv", r"importe", r"impor", r"var", r"medio"]),
-    "precio": ([r"(precio|tinsa|imie)"], [r"ipv", r"tasad", r"mivau", r"var", r"lag"]),
+    "precio": ([r"(tasad|mivau)"], [r"ipv", r"var", r"lag"]),
     "pib_pc": ([r"pib", r"(pc|per_capita|percapita)"], [r"var", r"tasa", r"lag"]),
     "poblacion": ([r"^poblacion"], [r"ext", r"var"]),
     "euribor": ([r"euribor"], [r"var", r"lag"]),
@@ -256,15 +170,12 @@ class PanelData:
     notes: list
 
 
-def load_panel(prefer: str = "auto", colmap: dict | None = None, price: str = "precio") -> PanelData:
+def load_panel(prefer: str = "auto", colmap: dict | None = None) -> PanelData:
     src = C.PANEL_MODELADO_V2 if C.PANEL_MODELADO_V2.exists() else C.PANEL_V2
     if prefer in ("auto", "v2") and src.exists():
         df = pd.read_csv(src, dtype={"prov_code": str})
         if colmap is None and all(c in df.columns for c in C.V2_PANEL_COLMAP.values()):
             colmap = dict(C.V2_PANEL_COLMAP)
-            mv = _mivau_column(df.columns)
-            if mv and price == "precio_mivau":
-                colmap["precio"] = mv
         cm = colmap or resolve_columns(df, PANEL_RULES, ["prov_code", "period", "precio", "euribor", "materiales"])
         out = pd.DataFrame({"prov_code": df[cm["prov_code"]].astype(str).str.zfill(2),
                             "period": to_period(df[cm["period"]])})
@@ -275,15 +186,7 @@ def load_panel(prefer: str = "auto", colmap: dict | None = None, price: str = "p
         out["hip"] = pd.to_numeric(df[cm[kind]], errors="coerce").values
         return PanelData(out, "v2", kind, [{"path": str(src.relative_to(C.ROOT)), "sha256": sha256(src)}],
                          [f"columnas: {cm}", "pib_pc provincial anual (CRE) asignado a los 4 trimestres del año de referencia"])
-    if prefer == "v2":
-        raise FileNotFoundError(C.PANEL_V2)
-    df = _v1_panel()
-    out = pd.DataFrame({"prov_code": df.prov_code, "period": df.period, "hip": df.hip_tot, "precio": df.Precio_m2,
-                        "pib_pc": df.PIB_pc, "euribor": df.Euribor, "materiales": df.Indice_Materiales,
-                        "poblacion": df.Poblacion})
-    return PanelData(out, "provisional_v1fix", "hip_tot",
-                     [{"path": str(p.relative_to(C.ROOT)), "sha256": sha256(p)} for p in _v1_inputs()],
-                     ["PROVISIONAL: hipotecas provinciales = total fincas con parseo corregido (no hay viviendas provinciales en v1)."])
+    raise FileNotFoundError(C.PANEL_V2)
 
 
 def seasonal_dummies(index: pd.PeriodIndex) -> pd.DataFrame:

@@ -5,17 +5,12 @@ Ficheros (contrato de datos v2, ``data/processed/``):
 * ``nacional_trimestral.csv``          series nacionales publicadas (se prefieren a agregar provincias).
 * ``data/metadata/data_dictionary.csv`` unidad, fuente, dataset y tabla de cada columna (atribución).
 
-Sólo si ``ATALAYA_ALLOW_LEGACY_PANEL`` y no existe el panel v2 se usa el dataset v1, etiquetado
-como "legado" y con sus columnas renombradas a las claves v2.
-
-Licencias: las columnas de Tinsa (``precio_m2_tinsa`` y el ``Precio_m2`` del v1, que procedía de
-Tinsa) NO se exponen nunca: sus condiciones de uso prohíben explotar el contenido sin autorización.
-El precio por m² que muestra la web es el valor tasado del MIVAU (``precio_m2_mivau_tasado``).
+Sólo se exponen las variables de ``VARIABLES``. El precio por m² que muestra la web es el valor
+tasado del MIVAU (``precio_m2_mivau_tasado``).
 """
 from __future__ import annotations
 
 import csv
-import re
 import threading
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -43,17 +38,7 @@ VARIABLES: dict[str, dict] = {
 AGG_LABEL = {"sum": "suma de provincias", "mean": "media simple de provincias", "first": "serie nacional",
              "national": "serie nacional del panel"}
 SOURCE_NAMES = {"ine": "INE", "mivau": "MIVAU", "ecb": "BCE", "eurostat": "Eurostat", "bde": "Banco de España",
-                "derivada": "Derivada", "tinsa": "Tinsa"}
-
-# Columnas que la web NO puede mostrar (licencia Tinsa). "precio_m2" es el nombre normalizado del v1.
-BLOCKED_COLUMN_RE = re.compile(r"tinsa|^precio_m2$")
-
-_LEGACY_COLUMNS = {
-    "Provincia": "provincia", "Trimestre": "trimestre", "Euribor": "euribor_12m",
-    "Spread_Hipotecas": "diferencial_tae_euribor", "Hipotecas_Total": "hipotecas_viviendas_num",
-    "Tasa_Paro": "tasa_paro", "IPC": "ipc_var_anual", "tasa_ahorro": "tasa_ahorro_hogares",
-    "Transmisiones_Total": "compraventas_viviendas_num", "Precio_m2": "precio_m2",
-}
+                "derivada": "Derivada"}
 
 
 class PanelUnavailable(RuntimeError):
@@ -65,17 +50,12 @@ class PanelData:
     df: pd.DataFrame                 # prov_code, period, <variables>
     national: pd.DataFrame | None    # period, <variables>
     path: Path
-    is_legacy: bool
     mtime: float
     dictionary: dict = field(default_factory=dict)
 
     @property
     def source_label(self) -> str:
-        return f"Panel v1 (legado): {self.path.name}" if self.is_legacy else f"Panel maestro v2: data/processed/{self.path.name}"
-
-
-def _blocked(col: str) -> bool:
-    return bool(BLOCKED_COLUMN_RE.search(str(col).strip().lower()))
+        return f"Panel maestro v2: data/processed/{self.path.name}"
 
 
 def _period_labels(series: pd.Series) -> list[str]:
@@ -87,9 +67,8 @@ def _period_labels(series: pd.Series) -> list[str]:
 
 
 def _normalize(raw: pd.DataFrame) -> pd.DataFrame:
-    df = raw.rename(columns={c: _LEGACY_COLUMNS.get(c, c) for c in raw.columns})
+    df = raw.copy()
     df.columns = [str(c).strip().lower() if str(c) not in VARIABLES else str(c) for c in df.columns]
-    df = df[[c for c in df.columns if not _blocked(c)]]
     if "prov_code" in df.columns:
         df["prov_code"] = df["prov_code"].astype(str).str.zfill(2)
     elif "provincia" in df.columns:
@@ -121,41 +100,37 @@ def _load_dictionary(path: Path) -> dict:
 
 
 class PanelService:
-    def __init__(self, data_dir: Path, legacy_path: Path | None, allow_legacy: bool) -> None:
+    def __init__(self, data_dir: Path) -> None:
         processed = Path(data_dir) / "processed"
         self.candidates = [processed / "panel_trimestral.parquet", processed / "panel_trimestral.csv"]
         self.national_path = processed / "nacional_trimestral.csv"
         self.dictionary_path = Path(data_dir) / "metadata" / "data_dictionary.csv"
-        self.legacy_path = legacy_path if allow_legacy else None
         self._lock = threading.Lock()
         self._data: PanelData | None = None
 
-    def _locate(self) -> tuple[Path, bool]:
+    def _locate(self) -> Path:
         for p in self.candidates:
             if p.is_file():
-                return p, False
-        if self.legacy_path and self.legacy_path.is_file():
-            return self.legacy_path, True
+                return p
         raise PanelUnavailable("No se encuentra el panel maestro (data/processed/panel_trimestral.*). "
                                "Genéralo con: python -m src.pipelines.build_master")
 
     def load(self) -> PanelData:
-        path, legacy = self._locate()
+        path = self._locate()
         mtime = path.stat().st_mtime
         with self._lock:
             if self._data and self._data.path == path and self._data.mtime == mtime:
                 return self._data
             raw = pd.read_parquet(path) if path.suffix == ".parquet" else pd.read_csv(path, dtype={"prov_code": str})
             national = None
-            if not legacy and self.national_path.is_file():
+            if self.national_path.is_file():
                 nat = pd.read_csv(self.national_path)
-                nat = nat[[c for c in nat.columns if not _blocked(c)]]
                 nat["period"] = _period_labels(nat["period"])
                 national = nat[["period"] + [v for v in VARIABLES if v in nat.columns]].copy()
                 for v in national.columns[1:]:
                     national[v] = pd.to_numeric(national[v], errors="coerce")
-            self._data = PanelData(_normalize(raw), national, path, legacy, mtime,
-                                   _load_dictionary(self.dictionary_path) if not legacy else {})
+            self._data = PanelData(_normalize(raw), national, path, mtime,
+                                   _load_dictionary(self.dictionary_path))
             return self._data
 
     def available(self) -> bool:
@@ -268,7 +243,6 @@ class PanelService:
         df = d.df
         return {
             "source": d.source_label,
-            "is_legacy": d.is_legacy,
             "rows": int(len(df)),
             "provinces": int(df["prov_code"].nunique()),
             "periods": int(df["period"].nunique()),

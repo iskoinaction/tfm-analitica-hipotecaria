@@ -25,7 +25,7 @@
 
 <h2>Panel de datos</h2>
 {% if quality %}
-<p>{{ quality.source }} {% if quality.is_legacy %}<span class="badge badge--warn">Legado: pendiente de sustituir por el panel maestro v2</span>{% endif %}</p>
+<p>{{ quality.source }}</p>
 <dl class="kv card">
   <dt>Filas</dt><dd>{{ quality.rows|num }}</dd>
   <dt>Provincias</dt><dd>{{ quality.provinces|num }}</dd>

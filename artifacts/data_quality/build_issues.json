@@ -37,13 +37,6 @@
  {
   "check": "missing",
   "severity": "info",
-  "target": "panel_trimestral:precio_m2_tinsa",
-  "detail": "3.4% NaN",
-  "n": 154
- },
- {
-  "check": "missing",
-  "severity": "info",
   "target": "panel_trimestral:ipv_general_indice",
   "detail": "10.3% NaN",
   "n": 466

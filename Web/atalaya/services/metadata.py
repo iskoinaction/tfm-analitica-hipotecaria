@@ -71,7 +71,5 @@ def _to_table(raw) -> dict:
             if isinstance(v, (dict, list)):
                 v = json.dumps(v, ensure_ascii=False)[:200]
             row.append(None if v is None else str(v)[:300])
-        if any("tinsa" in str(c).lower() for c in row):
-            continue  # Tinsa no se muestra en la web
         rows.append(row)
     return {"columns": [{"key": k, "label": label} for k, label in present], "rows": rows}

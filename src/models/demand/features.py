@@ -3,7 +3,7 @@
 Convención temporal (documentada en el informe):
   * Origen T = momento en que se publica el dato del trimestre T de hipotecas (INE H, ~2 meses tras el cierre de
     cada mes). En ese momento también se conocen: Euribor de T (BCE, diario), paro EPA de T (~4 semanas),
-    precio Tinsa de T y transmisiones de T (INE ETDP, ~2 meses).
+    precio (MIVAU valor tasado) de T y transmisiones de T (INE ETDP, ~2 meses).
   * NO se usa: Euribor/paro/precio del trimestre objetivo (salvo en el modelo *condicional*, que se declara como
     tal y en producción recibe la senda del escenario), PIB_pc/poblacion anuales del año en curso (publicación
     del INE muy posterior), ni ninguna variable contemporánea al objetivo.

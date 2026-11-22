@@ -57,8 +57,7 @@ def create_app(config_name: str | None = None, overrides: dict | None = None) ->
     from .services.panel import PanelService
 
     app.extensions["atalaya.artifacts"] = ArtifactStore(app.config["ARTIFACTS_DIR"], app.config["ARTIFACT_CACHE_TTL"], app.config["DATA_DIR"])
-    app.extensions["atalaya.panel"] = PanelService(
-        app.config["DATA_DIR"], app.config["LEGACY_PANEL_PATH"], app.config["ALLOW_LEGACY_PANEL"])
+    app.extensions["atalaya.panel"] = PanelService(app.config["DATA_DIR"])
 
     # ---------------------------------------------------------------- seguridad
     from . import security

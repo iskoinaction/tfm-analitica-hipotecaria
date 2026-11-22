@@ -45,9 +45,6 @@ class BaseConfig:
     ARTIFACTS_DIR = _path("ATALAYA_ARTIFACTS_DIR", REPO_ROOT / "artifacts")
     DATA_DIR = _path("ATALAYA_DATA_DIR", REPO_ROOT / "data")
     # Panel maestro v2 (contrato: data/processed/panel_trimestral.{parquet,csv}).
-    # El panel v1 sólo se usa si ATALAYA_ALLOW_LEGACY_PANEL=1 y se etiqueta como tal en la UI.
-    ALLOW_LEGACY_PANEL = _bool("ATALAYA_ALLOW_LEGACY_PANEL", True)
-    LEGACY_PANEL_PATH = REPO_ROOT / "notebooks acabados" / "dataset_final_tfm.csv"
 
     # Caché de artefactos: se recargan si cambia el mtime del manifest (comprobado como mucho cada N s)
     ARTIFACT_CACHE_TTL = _int("ATALAYA_ARTIFACT_CACHE_TTL", 30)
@@ -105,7 +102,6 @@ class DevelopmentConfig(BaseConfig):
 class TestingConfig(DevelopmentConfig):
     ENV_NAME = "testing"
     TESTING = True
-    ALLOW_LEGACY_PANEL = False
     ARTIFACT_CACHE_TTL = 0
 
 

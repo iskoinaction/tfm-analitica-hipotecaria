@@ -10,21 +10,8 @@ from src.ingestion.ecb import ECBConnector
 from src.ingestion.eurostat import jsonstat_to_frame
 from src.ingestion.ine import INEConnector, geo_of, match_variable
 from src.ingestion.vivienda import parse_vdp006
-from src.transformations.v1_corrected import nb3_limpiar_numero, parse_v1_count
 
 FX = Path(__file__).parent / "fixtures_data"
-
-
-@pytest.mark.parametrize("raw,expected", [("17.49", 17490), ("1.041", 1041), ("398.0", 398), ("1.07", 1070),
-                                          ("2.5", 2500), ("12", 12), ("1.234,5", 1234.5)])
-def test_parse_v1_count(raw, expected):
-    assert parse_v1_count(raw) == expected
-
-
-def test_nb3_bug_reproduced():
-    # el parseo v1 leía "17.49" (17.490 hipotecas) como 17,49
-    assert nb3_limpiar_numero("17.49") == 17.49
-    assert nb3_limpiar_numero("1.041") == 1041
 
 
 def _ine_series(cod, nat, concepto, prov_name, prov_code, values):
