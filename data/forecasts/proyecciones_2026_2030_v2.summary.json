@@ -1,5 +1,5 @@
 {
-  "filas": 6483,
+  "filas": 8884,
   "por_variable": {
     "compraventas_viviendas": 884,
     "euribor_12m": 60,
@@ -7,13 +7,13 @@
     "hipotecas_viviendas": 2880,
     "ipc_iapc_espana": 15,
     "paro_nacional": 15,
-    "pib_pc": 303,
+    "pib_pc": 936,
     "pib_pc_crecimiento_nominal": 18,
     "poblacion": 208,
     "poblacion_extranjera": 208,
     "precio_m2_mivau": 936,
-    "tasa_paro": 884
+    "tasa_paro": 2652
   },
   "csv": "data/forecasts/proyecciones_2026_2030_v2.csv",
-  "segundos": 458.4
+  "segundos": 923.7
 }

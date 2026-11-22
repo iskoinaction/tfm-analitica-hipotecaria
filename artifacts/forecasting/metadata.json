@@ -1,5 +1,5 @@
 {
-  "generado": "2026-11-22T00:28:33",
+  "generado": "2026-11-22T15:33:29",
   "datos": {
     "source": "v2",
     "inputs": [
@@ -82,7 +82,7 @@
       4,
       8
     ],
-    "regla_seleccion": "Por horizonte, el modelo con menor MASE (media en serie nacional; mediana entre provincias en paneles) en la ventana de selección (objetivos <= 2021Q4 / 2021). El hold-out 2022Q1-2025Q4 (2022-2024 en anuales) se evalúa una sola vez tras fijar la elección y no modifica nada.",
+    "regla_seleccion": "Demanda: por horizonte, menor MASE en la ventana de selección. Macro: un único modelo por variable, menor MASE medio sobre los horizontes de la tabla (mediana entre provincias en paneles) en la ventana de selección (objetivos <= 2021Q4 / 2021). El hold-out 2022Q1-2025Q4 (2022-2024 en anuales) se evalúa una sola vez tras fijar la elección y no modifica nada.",
     "semilla": 12345,
     "n_jobs": 2,
     "intervalos": "cuantiles empíricos 10%-90% del error de backtest por horizonte (log para niveles, aditivo para el paro); h sin errores suficientes: escalado sqrt(h/h0)"

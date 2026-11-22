@@ -90,3 +90,14 @@ pib_pc_nominal:
   sensibilidades:   # supuesto: true, pp sobre la base
     adverso: {2026: -0.5, desde_2027: -2.0}
     favorable: {2026: 0.25, desde_2027: 1.0}
+
+# ------------------------------------------------------------------ Verificacion (2026-11-22) y contraste
+verificacion:
+  verificado_en_fuente_2026_11_22:
+    - "BCE sep-2026: Euribor 3M 2,2 / 2,4 / 3,0 / 3,0 (2025-2028) - pagina de proyecciones leida"
+    - "CE otono-2026 (17-11-2026), Espana: PIB 2,6/2,1/1,9; IAPC 3,9/3,3/2,3; paro 9,9/9,6/9,4 - pagina leida"
+    - "BCE API: Euribor 12M y 3M mensuales hasta 2026-10; diferencial 12M-3M medio nov-25..oct-26 = 0,414 pp"
+    - "Eurostat nama_10_gdp ES CP_MEUR: 2024 = 1.598.588; 2025 = 1.690.012 (actualizado 2026-11-11)"
+  no_verificado_supuesto:
+    - "Contraste BdE (oct-2026: IAPC 3,9/3,7; Euribor 3M 3,6 en 2027) tomado de reports/audit/03_economia.md; NO releido en la fuente"
+    - "2029-2030 = valores de 2028 mantenidos (sin proyeccion oficial). Sensibilidades adverso/favorable: propias, no institucionales"

@@ -103,7 +103,7 @@ def test_output_csv_if_present():
     if not p.exists():
         pytest.skip("pipeline no ejecutado")
     d = pd.read_csv(p, dtype={"prov_code": str})
-    assert list(d.columns) == ["provincia", "prov_code", "period", "variable", "escenario", "valor", "p10", "p90", "modelo"]
+    assert list(d.columns) == ["prov_code", "period", "variable", "escenario", "valor", "p10", "p90", "modelo"]
     paro = d[d.variable == "tasa_paro"]
     assert paro.valor.min() < 8.5 or paro.empty  # sin suelo NAIRU
     pib = d[d.variable == "pib_pc"]
