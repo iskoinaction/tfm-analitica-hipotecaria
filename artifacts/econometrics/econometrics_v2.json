@@ -1,0 +1,1946 @@
+{
+ "metadatos": {
+  "generado": "2026-11-21T19:17:43+00:00",
+  "fuente_datos": "v2",
+  "provisional": false,
+  "entradas": [
+   {
+    "path": "data/processed/nacional_trimestral.csv",
+    "sha256": "1a442c79e1d1ab1e0b5191426c89bad5d4b524858e5a4dbb1ce7e40e62de44ae"
+   }
+  ],
+  "notas_datos": [
+   "pib_pc = PIB nominal trimestral CNTR (CVEC, M€) / población ECP (stock vigente, sin interpolar)"
+  ],
+  "mapeo_columnas": {
+   "period": "period",
+   "hip_viv": "hipotecas_viviendas_num",
+   "hip_tot": "hipotecas_fincas_total_num",
+   "precio": "precio_m2_tinsa_pond_pob",
+   "precio_ipv": "ipv_general_indice",
+   "pib_nominal_sa": "pib_nominal_meur_sa",
+   "poblacion": "poblacion_ecp",
+   "euribor": "euribor_12m",
+   "materiales": "indice_coste_construccion"
+  },
+  "especificacion": {
+   "deterministic_case": 3,
+   "sensitivity_cases": [
+    2,
+    4
+   ],
+   "seasonal_dummies": "centradas Q2-Q4, no restringidas",
+   "impulse_dummies": [
+    "2020Q2",
+    "2020Q3"
+   ],
+   "max_lags_selection": 6,
+   "k_ar_diff_default": 1,
+   "bootstrap_B_rank": 999,
+   "bootstrap_B_irf": 499,
+   "horizon": 20,
+   "alpha_rank_decision": 0.1,
+   "band": [
+    5,
+    95
+   ]
+  },
+  "semilla": 20240521,
+  "muestra": [
+   "2005Q1",
+   "2025Q4"
+  ],
+  "T": 84,
+  "variables": [
+   "log_materiales",
+   "euribor",
+   "log_pib_pc",
+   "log_precio",
+   "log_hipotecas"
+  ],
+  "orden_cholesky_referencia": [
+   "log_materiales",
+   "euribor",
+   "log_pib_pc",
+   "log_precio",
+   "log_hipotecas"
+  ],
+  "versiones": {
+   "python": "3.13.18",
+   "numpy": "2.5.3",
+   "pandas": "3.0.5",
+   "statsmodels": "0.15.0",
+   "arch": "9.0.0",
+   "linearmodels": "7.1"
+  },
+  "B_rank": 999,
+  "B_irf": 499,
+  "advertencia": "IRF/FEVD son descomposiciones condicionadas a supuestos de identificación; no prueban causalidad."
+ },
+ "raices_unitarias_dictamen": {
+  "log_materiales": "I(1)",
+  "euribor": "I(1)",
+  "log_pib_pc": "I(1)",
+  "log_precio": "I(1)/I(2) ambiguo: ADF no rechaza raíz unitaria en 1ª diferencia",
+  "log_hipotecas": "I(1) (KPSS en 1ª dif. rechaza al 5 %: estacionalidad/rupturas)",
+  "log_hipotecas_total_fincas": "I(1)",
+  "log_precio_ipv": "I(1) (KPSS en 1ª dif. rechaza al 5 %: estacionalidad/rupturas)"
+ },
+ "seleccion_retardos_VAR_niveles": {
+  "criterios": {
+   "aic": 4,
+   "bic": 2,
+   "hqic": 2,
+   "fpe": 3
+  },
+  "k_ar_diff_elegido": 1,
+  "regla": "BIC - 1 (mín. 1)"
+ },
+ "residuos_hipotecas_mayores_z (sin impulsos)": {
+  "2009Q1": -2.4517,
+  "2019Q3": -2.2372,
+  "2011Q2": -2.0401,
+  "2008Q1": -2.0396,
+  "2020Q2": -2.0262
+ },
+ "rango_principal": {
+  "T_efectiva": 82,
+  "case": 3,
+  "k_ar_diff": 1,
+  "B": 999,
+  "tests": [
+   {
+    "H0": "r<=0",
+    "eigenvalue": 0.3511,
+    "trace": 105.3083,
+    "trace_reinsel_ahn": 92.4658,
+    "cv95_trace": 69.8189,
+    "maxeig": 35.4575,
+    "cv95_maxeig": 33.8769,
+    "p_bootstrap_trace": 0.009
+   },
+   {
+    "H0": "r<=1",
+    "eigenvalue": 0.3399,
+    "trace": 69.8508,
+    "trace_reinsel_ahn": 61.3324,
+    "cv95_trace": 47.8561,
+    "maxeig": 34.0561,
+    "cv95_maxeig": 27.5843,
+    "p_bootstrap_trace": 0.007
+   },
+   {
+    "H0": "r<=2",
+    "eigenvalue": 0.2308,
+    "trace": 35.7947,
+    "trace_reinsel_ahn": 31.4295,
+    "cv95_trace": 29.7971,
+    "maxeig": 21.52,
+    "cv95_maxeig": 21.1316,
+    "p_bootstrap_trace": 0.1291
+   },
+   {
+    "H0": "r<=3",
+    "eigenvalue": 0.1495,
+    "trace": 14.2747,
+    "trace_reinsel_ahn": 12.5339,
+    "cv95_trace": 15.4947,
+    "maxeig": 13.2745,
+    "cv95_maxeig": 14.2646,
+    "p_bootstrap_trace": null
+   },
+   {
+    "H0": "r<=4",
+    "eigenvalue": 0.0121,
+    "trace": 1.0002,
+    "trace_reinsel_ahn": 0.8782,
+    "cv95_trace": 3.8415,
+    "maxeig": 1.0002,
+    "cv95_maxeig": 3.8415,
+    "p_bootstrap_trace": null
+   }
+  ],
+  "rango_seleccionado": {
+   "asintotico_traza": 3,
+   "reinsel_ahn_traza": 3,
+   "max_autovalor": 3,
+   "bootstrap_5pct": 2,
+   "bootstrap_10pct": 2
+  }
+ },
+ "decision": {
+  "p_bootstrap_r0": 0.009,
+  "umbral": 0.1,
+  "modelo_principal": "VECM (r=1)",
+  "modelo_sensibilidad": "VAR en diferencias",
+  "regla": "VECM si p_boot(H0: r=0) < 0.10 (bootstrap salvaje CRT, traza); si no, VAR en diferencias."
+ },
+ "rango_sensibilidad": {
+  "caso2": {
+   "muestra": [
+    "2005Q1",
+    "2025Q4"
+   ],
+   "T_efectiva": 82,
+   "B": 199,
+   "traza_r0_r1": [
+    132.7891,
+    82.9028
+   ],
+   "cv95_r0_r1": [
+    76.9728,
+    54.079
+   ],
+   "p_boot_r0_r1": [
+    0.0,
+    0.005
+   ],
+   "rango_seleccionado": {
+    "asintotico_traza": 4,
+    "reinsel_ahn_traza": 3,
+    "max_autovalor": 3,
+    "bootstrap_5pct": 2,
+    "bootstrap_10pct": 2
+   }
+  },
+  "caso4": {
+   "muestra": [
+    "2005Q1",
+    "2025Q4"
+   ],
+   "T_efectiva": 82,
+   "B": 199,
+   "traza_r0_r1": [
+    127.095,
+    88.148
+   ],
+   "cv95_r0_r1": [
+    88.8038,
+    63.8761
+   ],
+   "p_boot_r0_r1": [
+    0.0201,
+    0.0151
+   ],
+   "rango_seleccionado": {
+    "asintotico_traza": 4,
+    "reinsel_ahn_traza": 4,
+    "max_autovalor": 2,
+    "bootstrap_5pct": 2,
+    "bootstrap_10pct": 2
+   }
+  },
+  "k+1": {
+   "muestra": [
+    "2005Q1",
+    "2025Q4"
+   ],
+   "T_efectiva": 81,
+   "B": 199,
+   "traza_r0_r1": [
+    78.2463,
+    47.0683
+   ],
+   "cv95_r0_r1": [
+    69.8189,
+    47.8561
+   ],
+   "p_boot_r0_r1": [
+    0.3518,
+    0.5327
+   ],
+   "rango_seleccionado": {
+    "asintotico_traza": 1,
+    "reinsel_ahn_traza": 0,
+    "max_autovalor": 0,
+    "bootstrap_5pct": 0,
+    "bootstrap_10pct": 0
+   }
+  },
+  "sin_impulsos": {
+   "muestra": [
+    "2005Q1",
+    "2025Q4"
+   ],
+   "T_efectiva": 82,
+   "B": 199,
+   "traza_r0_r1": [
+    93.5674,
+    60.0383
+   ],
+   "cv95_r0_r1": [
+    69.8189,
+    47.8561
+   ],
+   "p_boot_r0_r1": [
+    0.0302,
+    0.0804
+   ],
+   "rango_seleccionado": {
+    "asintotico_traza": 4,
+    "reinsel_ahn_traza": 2,
+    "max_autovalor": 0,
+    "bootstrap_5pct": 1,
+    "bootstrap_10pct": 2
+   }
+  },
+  "hip_total_fincas": {
+   "muestra": [
+    "2005Q1",
+    "2025Q4"
+   ],
+   "T_efectiva": 82,
+   "B": 199,
+   "traza_r0_r1": [
+    105.6407,
+    70.259
+   ],
+   "cv95_r0_r1": [
+    69.8189,
+    47.8561
+   ],
+   "p_boot_r0_r1": [
+    0.0151,
+    0.0201
+   ],
+   "rango_seleccionado": {
+    "asintotico_traza": 3,
+    "reinsel_ahn_traza": 3,
+    "max_autovalor": 2,
+    "bootstrap_5pct": 2,
+    "bootstrap_10pct": 3
+   }
+  },
+  "precio_ipv": {
+   "muestra": [
+    "2007Q1",
+    "2026Q2"
+   ],
+   "T_efectiva": 76,
+   "B": 199,
+   "traza_r0_r1": [
+    111.6516,
+    68.7942
+   ],
+   "cv95_r0_r1": [
+    69.8189,
+    47.8561
+   ],
+   "p_boot_r0_r1": [
+    0.0,
+    0.0151
+   ],
+   "rango_seleccionado": {
+    "asintotico_traza": 3,
+    "reinsel_ahn_traza": 3,
+    "max_autovalor": 3,
+    "bootstrap_5pct": 2,
+    "bootstrap_10pct": 3
+   }
+  }
+ },
+ "VECM": {
+  "especificacion": {
+   "k_ar_diff": 1,
+   "caso_johansen": 3,
+   "rango": 1,
+   "T_efectiva": 82,
+   "exog": [
+    "Q2",
+    "Q3",
+    "Q4",
+    "D2020Q2",
+    "D2020Q3"
+   ]
+  },
+  "beta_normalizado_hipotecas (log H = ...)": {
+   "coste_construccion": {
+    "coef_LP": -6.2369,
+    "se": 1.8464,
+    "p": 0.0007
+   },
+   "euribor": {
+    "coef_LP": 0.2933,
+    "se": 0.0612,
+    "p": 0.0
+   },
+   "pib_pc": {
+    "coef_LP": 5.7897,
+    "se": 2.1327,
+    "p": 0.0066
+   },
+   "precio": {
+    "coef_LP": -1.1888,
+    "se": 0.6394,
+    "p": 0.063
+   }
+  },
+  "alpha_normalizado_hipotecas": {
+   "hipotecas": {
+    "alpha": -0.0071,
+    "se": 0.0278,
+    "p": 0.7992
+   },
+   "coste_construccion": {
+    "alpha": 0.0195,
+    "se": 0.0039,
+    "p": 0.0
+   },
+   "euribor": {
+    "alpha": 0.3338,
+    "se": 0.0797,
+    "p": 0.0
+   },
+   "pib_pc": {
+    "alpha": 0.0046,
+    "se": 0.0034,
+    "p": 0.1782
+   },
+   "precio": {
+    "alpha": 0.0001,
+    "se": 0.0011,
+    "p": 0.9214
+   }
+  },
+  "beta_normalizado_precio (log P = ...)": {
+   "coste_construccion": {
+    "coef_LP": -5.2465,
+    "se": 1.6664,
+    "p": 0.0016
+   },
+   "euribor": {
+    "coef_LP": 0.2467,
+    "se": 0.0472,
+    "p": 0.0
+   },
+   "pib_pc": {
+    "coef_LP": 4.8703,
+    "se": 1.782,
+    "p": 0.0063
+   },
+   "hipotecas": {
+    "coef_LP": -0.8412,
+    "se": 0.1957,
+    "p": 0.0
+   }
+  },
+  "alpha_normalizado_precio": {
+   "precio": {
+    "alpha": 0.0001,
+    "se": 0.0013,
+    "p": 0.9214
+   },
+   "coste_construccion": {
+    "alpha": 0.0232,
+    "se": 0.0047,
+    "p": 0.0
+   },
+   "euribor": {
+    "alpha": 0.3969,
+    "se": 0.0947,
+    "p": 0.0
+   },
+   "pib_pc": {
+    "alpha": 0.0055,
+    "se": 0.0041,
+    "p": 0.1782
+   },
+   "hipotecas": {
+    "alpha": -0.0084,
+    "se": 0.033,
+    "p": 0.7992
+   }
+  },
+  "euribor_semielasticidad_hipotecas_pct_por_pp": 34.0871,
+  "ECT_AR1_1_mas_beta_alpha": 0.99,
+  "semivida_ECT_sistema_trimestres": 69.1692,
+  "LR_exclusion_beta": {
+   "coste_construccion": {
+    "LR": 0.4678,
+    "df": 1,
+    "p": 0.494
+   },
+   "euribor": {
+    "LR": 1.3682,
+    "df": 1,
+    "p": 0.2421
+   },
+   "pib_pc": {
+    "LR": 0.6299,
+    "df": 1,
+    "p": 0.4274
+   },
+   "precio": {
+    "LR": 0.0817,
+    "df": 1,
+    "p": 0.775
+   },
+   "hipotecas": {
+    "LR": 0.4861,
+    "df": 1,
+    "p": 0.4857
+   }
+  },
+  "LR_exogeneidad_debil": {
+   "coste_construccion": {
+    "LR": 1.3065,
+    "df": 1,
+    "p": 0.253
+   },
+   "euribor": {
+    "LR": 1.1211,
+    "df": 1,
+    "p": 0.2897
+   },
+   "pib_pc": {
+    "LR": 0.1166,
+    "df": 1,
+    "p": 0.7327
+   },
+   "precio": {
+    "LR": 0.001,
+    "df": 1,
+    "p": 0.9747
+   },
+   "hipotecas": {
+    "LR": 0.011,
+    "df": 1,
+    "p": 0.9163
+   }
+  },
+  "LR_exogeneidad_debil_conjunta_salvo_hipotecas": {
+   "LR": 13.7904,
+   "df": 4,
+   "p": 0.008
+  },
+  "LR_exogeneidad_debil_conjunta_salvo_precio": {
+   "LR": 18.8219,
+   "df": 4,
+   "p": 0.0009
+  },
+  "LR_homogeneidad_nominal (b_pib+b_precio+b_coste=0)": {
+   "LR": 0.6306,
+   "df": 1,
+   "p": 0.4271
+  },
+  "diagnosticos": {
+   "LM_h1": {
+    "LM": 53.0329,
+    "df": 25,
+    "p_chi2": 0.0009,
+    "F_rao": 1.9666,
+    "p_F": 0.0053
+   },
+   "LM_h4": {
+    "LM": 147.6715,
+    "df": 100,
+    "p_chi2": 0.0014,
+    "F_rao": 1.3716,
+    "p_F": 0.0275
+   },
+   "ARCH4_p": {
+    "log_materiales": 0.7714,
+    "euribor": 0.0001,
+    "log_pib_pc": 0.9889,
+    "log_precio": 0.8411,
+    "log_hipotecas": 0.4426
+   },
+   "normalidad": {
+    "stat": 1170.7923,
+    "df": 10,
+    "p": 0.0,
+    "jb_p_por_ecuacion": [
+     0.0,
+     0.0,
+     0.0,
+     0.3182,
+     0.284
+    ]
+   },
+   "raices_modulo": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.9703,
+    0.8045,
+    0.8045,
+    0.5456
+   ]
+  },
+  "ECT_ADF_tablas_DF (solo descriptivo; VC no válidos para residuo estimado)": {
+   "stat": -3.924,
+   "p": 0.0019
+  },
+  "engle_granger_5var_dep_hipotecas": {
+   "stat": -3.0494,
+   "p": 0.5612,
+   "cv5": -4.5862
+  },
+  "irf_fevd_hipotecas (respuesta en nivel, log-puntos por shock de 1 d.t.)": {
+   "irf_cholesky_h0_h4_h8_h20": {
+    "coste_construccion": [
+     0.0099,
+     -0.0074,
+     -0.0147,
+     -0.0198
+    ],
+    "euribor": [
+     0.0204,
+     0.0059,
+     0.037,
+     0.0582
+    ],
+    "pib_pc": [
+     0.0246,
+     0.0501,
+     0.059,
+     0.0774
+    ],
+    "precio": [
+     0.0146,
+     0.026,
+     0.033,
+     0.0641
+    ],
+    "hipotecas": [
+     0.0827,
+     0.0755,
+     0.0668,
+     0.0712
+    ]
+   },
+   "girf_h0_h4_h8_h20": {
+    "coste_construccion": [
+     0.0099,
+     -0.0074,
+     -0.0147,
+     -0.0198
+    ],
+    "euribor": [
+     0.0206,
+     0.0057,
+     0.0366,
+     0.0577
+    ],
+    "pib_pc": [
+     0.0292,
+     0.0494,
+     0.0645,
+     0.0868
+    ],
+    "precio": [
+     0.0226,
+     0.0369,
+     0.0516,
+     0.0895
+    ],
+    "hipotecas": [
+     0.0904,
+     0.0874,
+     0.0892,
+     0.1075
+    ]
+   },
+   "fevd_cholesky_pct": {
+    "h1": {
+     "coste_construccion": 1.2009,
+     "euribor": 5.0908,
+     "pib_pc": 7.4021,
+     "precio": 2.5922,
+     "hipotecas": 83.7141
+    },
+    "h4": {
+     "coste_construccion": 0.4775,
+     "euribor": 1.2942,
+     "pib_pc": 18.067,
+     "precio": 4.7361,
+     "hipotecas": 75.4252
+    },
+    "h8": {
+     "coste_construccion": 0.9375,
+     "euribor": 2.7977,
+     "pib_pc": 24.7866,
+     "precio": 6.7581,
+     "hipotecas": 64.7201
+    },
+    "h20": {
+     "coste_construccion": 1.7085,
+     "euribor": 14.0377,
+     "pib_pc": 29.5803,
+     "precio": 13.3219,
+     "hipotecas": 41.3515
+    }
+   },
+   "gfevd_pct": {
+    "h1": {
+     "coste_construccion": 0.9754,
+     "euribor": 4.2337,
+     "pib_pc": 8.4771,
+     "precio": 5.0922,
+     "hipotecas": 81.2216
+    },
+    "h4": {
+     "coste_construccion": 0.3939,
+     "euribor": 1.0873,
+     "pib_pc": 14.8624,
+     "precio": 7.9558,
+     "hipotecas": 75.7005
+    },
+    "h8": {
+     "coste_construccion": 0.7173,
+     "euribor": 2.1027,
+     "pib_pc": 19.74,
+     "precio": 11.2245,
+     "hipotecas": 66.2155
+    },
+    "h20": {
+     "coste_construccion": 1.1226,
+     "euribor": 9.0658,
+     "pib_pc": 23.517,
+     "precio": 18.912,
+     "hipotecas": 47.3826
+    }
+   },
+   "fevd_rango_120_ordenaciones_pct": {
+    "h4": {
+     "coste_construccion": [
+      0.425,
+      1.0934,
+      1.8719
+     ],
+     "euribor": [
+      0.9437,
+      2.2505,
+      4.2709
+     ],
+     "pib_pc": [
+      1.5284,
+      7.9444,
+      18.213
+     ],
+     "precio": [
+      0.2642,
+      2.8064,
+      9.6443
+     ],
+     "hipotecas": [
+      71.4652,
+      81.2307,
+      94.7027
+     ]
+    },
+    "h8": {
+     "coste_construccion": [
+      0.7536,
+      2.2424,
+      3.6249
+     ],
+     "euribor": [
+      1.0452,
+      2.6956,
+      2.9057
+     ],
+     "pib_pc": [
+      4.3754,
+      12.272,
+      26.5159
+     ],
+     "precio": [
+      1.3688,
+      4.9909,
+      14.6709
+     ],
+     "hipotecas": [
+      60.9421,
+      72.3206,
+      88.8356
+     ]
+    },
+    "h20": {
+     "coste_construccion": [
+      1.2631,
+      3.4967,
+      5.4585
+     ],
+     "euribor": [
+      2.512,
+      4.6488,
+      14.0377
+     ],
+     "pib_pc": [
+      7.7832,
+      16.3127,
+      37.1277
+     ],
+     "precio": [
+      6.7826,
+      12.7159,
+      28.7823
+     ],
+     "hipotecas": [
+      39.2137,
+      51.0572,
+      75.1863
+     ]
+    }
+   },
+   "bandas_bootstrap_B_validas": 499,
+   "irf_cholesky_h20_p5_p95": {
+    "coste_construccion": [
+     -0.048,
+     0.0154
+    ],
+    "euribor": [
+     -0.0215,
+     0.0933
+    ],
+    "pib_pc": [
+     0.0219,
+     0.0975
+    ],
+    "precio": [
+     -0.0154,
+     0.1002
+    ],
+    "hipotecas": [
+     0.0257,
+     0.0939
+    ]
+   },
+   "girf_h20_p5_p95": {
+    "coste_construccion": [
+     -0.048,
+     0.0154
+    ],
+    "euribor": [
+     -0.0249,
+     0.0925
+    ],
+    "pib_pc": [
+     0.024,
+     0.1091
+    ],
+    "precio": [
+     -0.0101,
+     0.1313
+    ],
+    "hipotecas": [
+     0.0421,
+     0.1338
+    ]
+   },
+   "fevd_cholesky_h20_p5_p95_pct": {
+    "coste_construccion": [
+     0.2009,
+     15.2575
+    ],
+    "euribor": [
+     0.6374,
+     45.1661
+    ],
+    "pib_pc": [
+     7.9707,
+     44.4577
+    ],
+    "precio": [
+     0.4292,
+     32.3876
+    ],
+    "hipotecas": [
+     12.2009,
+     74.0095
+    ]
+   },
+   "gfevd_h20_p5_p95_pct": {
+    "coste_construccion": [
+     0.1306,
+     10.5323
+    ],
+    "euribor": [
+     0.5337,
+     28.5879
+    ],
+    "pib_pc": [
+     7.4894,
+     35.0988
+    ],
+    "precio": [
+     1.3877,
+     32.7323
+    ],
+    "hipotecas": [
+     25.6207,
+     76.227
+    ]
+   }
+  },
+  "estabilidad_beta_min_max": {
+   "norm_precio|movil48": {
+    "coste_construccion": [
+     -1207.6638,
+     331.0579
+    ],
+    "euribor": [
+     -0.9213,
+     76.517
+    ],
+    "pib_pc": [
+     -18.6984,
+     1952.9889
+    ],
+    "hipotecas": [
+     -117.1718,
+     14.3995
+    ]
+   },
+   "norm_precio|recursivo": {
+    "coste_construccion": [
+     -5.2465,
+     2.7283
+    ],
+    "euribor": [
+     -0.0657,
+     0.2467
+    ],
+    "pib_pc": [
+     -1.2686,
+     4.8703
+    ],
+    "hipotecas": [
+     -0.8412,
+     0.4054
+    ]
+   },
+   "norm_hipotecas|recursivo": {
+    "coste_construccion": [
+     -6.7307,
+     1.4084
+    ],
+    "euribor": [
+     -0.1991,
+     0.2933
+    ],
+    "pib_pc": [
+     -0.1698,
+     5.7897
+    ],
+    "precio": [
+     -1.1888,
+     4.7579
+    ]
+   }
+  }
+ },
+ "VAR_diferencias": {
+  "especificacion": {
+   "p_diferencias": 1,
+   "seleccion": {
+    "aic": 2,
+    "bic": 1,
+    "hqic": 2
+   },
+   "T_efectiva": 82,
+   "exog": [
+    "Q2",
+    "Q3",
+    "Q4",
+    "D2020Q2",
+    "D2020Q3"
+   ],
+   "constante": true
+  },
+  "estable": true,
+  "raiz_max": 0.9618,
+  "irf_fevd_hipotecas (nivel = IRF acumulada de diferencias)": {
+   "irf_cholesky_h0_h4_h8_h20": {
+    "coste_construccion": [
+     0.0075,
+     -0.0201,
+     -0.0257,
+     -0.0325
+    ],
+    "euribor": [
+     0.0164,
+     -0.0225,
+     -0.0301,
+     -0.0353
+    ],
+    "pib_pc": [
+     0.0245,
+     0.0442,
+     0.0497,
+     0.0619
+    ],
+    "precio": [
+     0.0152,
+     0.0319,
+     0.0434,
+     0.0674
+    ],
+    "hipotecas": [
+     0.0838,
+     0.087,
+     0.0898,
+     0.0963
+    ]
+   },
+   "girf_h0_h4_h8_h20": {
+    "coste_construccion": [
+     0.0075,
+     -0.0201,
+     -0.0257,
+     -0.0325
+    ],
+    "euribor": [
+     0.0177,
+     -0.0264,
+     -0.0351,
+     -0.0416
+    ],
+    "pib_pc": [
+     0.0285,
+     0.0344,
+     0.0371,
+     0.0466
+    ],
+    "precio": [
+     0.0226,
+     0.0364,
+     0.0473,
+     0.0722
+    ],
+    "hipotecas": [
+     0.0905,
+     0.0922,
+     0.0964,
+     0.1082
+    ]
+   },
+   "fevd_cholesky_pct": {
+    "h1": {
+     "coste_construccion": 0.6852,
+     "euribor": 3.2959,
+     "pib_pc": 7.3435,
+     "precio": 2.8241,
+     "hipotecas": 85.8512
+    },
+    "h4": {
+     "coste_construccion": 1.8772,
+     "euribor": 1.8715,
+     "pib_pc": 14.9341,
+     "precio": 5.3793,
+     "hipotecas": 75.938
+    },
+    "h8": {
+     "coste_construccion": 3.1805,
+     "euribor": 3.9696,
+     "pib_pc": 16.2733,
+     "precio": 8.4221,
+     "hipotecas": 68.1545
+    },
+    "h20": {
+     "coste_construccion": 4.5222,
+     "euribor": 5.7207,
+     "pib_pc": 17.8517,
+     "precio": 15.4422,
+     "hipotecas": 56.4632
+    }
+   },
+   "gfevd_pct": {
+    "h1": {
+     "coste_construccion": 0.5677,
+     "euribor": 3.1617,
+     "pib_pc": 8.2368,
+     "precio": 5.1773,
+     "hipotecas": 82.8565
+    },
+    "h4": {
+     "coste_construccion": 1.6669,
+     "euribor": 2.253,
+     "pib_pc": 10.6175,
+     "precio": 7.8576,
+     "hipotecas": 77.605
+    },
+    "h8": {
+     "coste_construccion": 2.931,
+     "euribor": 4.9738,
+     "pib_pc": 9.9712,
+     "precio": 10.4935,
+     "hipotecas": 71.6305
+    },
+    "h20": {
+     "coste_construccion": 4.1834,
+     "euribor": 7.2461,
+     "pib_pc": 9.7236,
+     "precio": 17.0453,
+     "hipotecas": 61.8016
+    }
+   },
+   "fevd_rango_120_ordenaciones_pct": {
+    "h4": {
+     "coste_construccion": [
+      0.8565,
+      2.0818,
+      4.2748
+     ],
+     "euribor": [
+      1.8715,
+      6.007,
+      9.6864
+     ],
+     "pib_pc": [
+      0.2454,
+      4.8766,
+      14.9341
+     ],
+     "precio": [
+      0.2747,
+      2.8668,
+      9.9538
+     ],
+     "hipotecas": [
+      71.4124,
+      80.4191,
+      93.7627
+     ]
+    },
+    "h8": {
+     "coste_construccion": [
+      1.1782,
+      3.0385,
+      6.3848
+     ],
+     "euribor": [
+      3.9696,
+      11.8537,
+      17.6653
+     ],
+     "pib_pc": [
+      0.1426,
+      4.4645,
+      16.2733
+     ],
+     "precio": [
+      1.1467,
+      4.8881,
+      14.2616
+     ],
+     "hipotecas": [
+      61.6808,
+      72.3617,
+      88.264
+     ]
+    },
+    "h20": {
+     "coste_construccion": [
+      1.5244,
+      4.1159,
+      8.341
+     ],
+     "euribor": [
+      5.7207,
+      16.3536,
+      23.9872
+     ],
+     "pib_pc": [
+      0.1009,
+      4.3334,
+      17.8517
+     ],
+     "precio": [
+      4.5687,
+      10.5442,
+      23.3711
+     ],
+     "hipotecas": [
+      49.1279,
+      61.238,
+      79.5234
+     ]
+    }
+   },
+   "bandas_bootstrap_B_validas": 499,
+   "irf_cholesky_h20_p5_p95": {
+    "coste_construccion": [
+     -0.0635,
+     0.0063
+    ],
+    "euribor": [
+     -0.0762,
+     0.0105
+    ],
+    "pib_pc": [
+     0.0158,
+     0.0824
+    ],
+    "precio": [
+     -0.0112,
+     0.0966
+    ],
+    "hipotecas": [
+     0.0576,
+     0.107
+    ]
+   },
+   "girf_h20_p5_p95": {
+    "coste_construccion": [
+     -0.0635,
+     0.0063
+    ],
+    "euribor": [
+     -0.0827,
+     0.0071
+    ],
+    "pib_pc": [
+     0.0004,
+     0.0704
+    ],
+    "precio": [
+     -0.0145,
+     0.108
+    ],
+    "hipotecas": [
+     0.0537,
+     0.1288
+    ]
+   },
+   "fevd_cholesky_h20_p5_p95_pct": {
+    "coste_construccion": [
+     0.2691,
+     18.3578
+    ],
+    "euribor": [
+     0.4214,
+     29.8748
+    ],
+    "pib_pc": [
+     4.9821,
+     30.6686
+    ],
+    "precio": [
+     0.6188,
+     29.3033
+    ],
+    "hipotecas": [
+     33.3453,
+     79.6163
+    ]
+   },
+   "gfevd_h20_p5_p95_pct": {
+    "coste_construccion": [
+     0.2402,
+     16.3203
+    ],
+    "euribor": [
+     0.4283,
+     34.6695
+    ],
+    "pib_pc": [
+     1.1594,
+     21.0494
+    ],
+    "precio": [
+     1.0514,
+     28.0069
+    ],
+    "hipotecas": [
+     37.9012,
+     80.4516
+    ]
+   }
+  },
+  "fevd_crecimiento_hipotecas_h20_cholesky_pct": {
+   "coste_construccion": 5.4228,
+   "euribor": 7.8227,
+   "pib_pc": 8.8804,
+   "precio": 4.0024,
+   "hipotecas": 73.8717
+  },
+  "diagnosticos": {
+   "LM_h1": {
+    "LM": 56.0552,
+    "df": 25,
+    "p_chi2": 0.0004,
+    "F_rao": 2.1137,
+    "p_F": 0.0022
+   },
+   "LM_h4": {
+    "LM": 146.3239,
+    "df": 100,
+    "p_chi2": 0.0018,
+    "F_rao": 1.3783,
+    "p_F": 0.0252
+   },
+   "ARCH4_p": {
+    "log_materiales": 0.0485,
+    "euribor": 0.0001,
+    "log_pib_pc": 0.9924,
+    "log_precio": 0.8366,
+    "log_hipotecas": 0.4298
+   },
+   "normalidad": {
+    "stat": 1181.1377,
+    "df": 10,
+    "p": 0.0,
+    "jb_p_por_ecuacion": [
+     0.0,
+     0.0,
+     0.0,
+     0.3056,
+     0.301
+    ]
+   }
+  }
+ },
+ "robustez_total_fincas_VECM": {
+  "beta_normalizado_hipotecas (log H = ...)": {
+   "coste_construccion": {
+    "coef_LP": -6.2103,
+    "se": 2.4802,
+    "p": 0.0123
+   },
+   "euribor": {
+    "coef_LP": -0.2433,
+    "se": 0.0818,
+    "p": 0.0029
+   },
+   "pib_pc": {
+    "coef_LP": 2.5179,
+    "se": 2.8657,
+    "p": 0.3796
+   },
+   "precio": {
+    "coef_LP": 6.5141,
+    "se": 0.8597,
+    "p": 0.0
+   }
+  },
+  "beta_normalizado_precio (log P = ...)": {
+   "coste_construccion": {
+    "coef_LP": 0.9534,
+    "se": 0.4068,
+    "p": 0.0191
+   },
+   "euribor": {
+    "coef_LP": 0.0374,
+    "se": 0.0115,
+    "p": 0.0012
+   },
+   "pib_pc": {
+    "coef_LP": -0.3865,
+    "se": 0.4329,
+    "p": 0.3719
+   },
+   "hipotecas": {
+    "coef_LP": 0.1535,
+    "se": 0.0462,
+    "p": 0.0009
+   }
+  },
+  "alpha_normalizado_hipotecas": {
+   "hipotecas": {
+    "alpha": 0.0356,
+    "se": 0.019,
+    "p": 0.0605
+   },
+   "coste_construccion": {
+    "alpha": -0.0104,
+    "se": 0.0031,
+    "p": 0.001
+   },
+   "euribor": {
+    "alpha": -0.0056,
+    "se": 0.0656,
+    "p": 0.9318
+   },
+   "pib_pc": {
+    "alpha": 0.0081,
+    "se": 0.0024,
+    "p": 0.0009
+   },
+   "precio": {
+    "alpha": 0.0025,
+    "se": 0.0008,
+    "p": 0.0007
+   }
+  },
+  "irf_fevd_hipotecas (respuesta en nivel, log-puntos por shock de 1 d.t.)": {
+   "irf_cholesky_h0_h4_h8_h20": {
+    "coste_construccion": [
+     0.0179,
+     0.0108,
+     0.0284,
+     0.0671
+    ],
+    "euribor": [
+     0.0077,
+     -0.0245,
+     -0.006,
+     0.0538
+    ],
+    "pib_pc": [
+     0.0145,
+     0.0201,
+     0.0203,
+     0.0165
+    ],
+    "precio": [
+     0.0091,
+     0.0186,
+     0.0158,
+     -0.0109
+    ],
+    "hipotecas": [
+     0.0785,
+     0.0832,
+     0.0967,
+     0.1139
+    ]
+   },
+   "girf_h0_h4_h8_h20": {
+    "coste_construccion": [
+     0.0179,
+     0.0108,
+     0.0284,
+     0.0671
+    ],
+    "euribor": [
+     0.0116,
+     -0.0214,
+     0.0007,
+     0.0678
+    ],
+    "pib_pc": [
+     0.0204,
+     0.0162,
+     0.0257,
+     0.0469
+    ],
+    "precio": [
+     0.0137,
+     0.0168,
+     0.0195,
+     0.0084
+    ],
+    "hipotecas": [
+     0.0827,
+     0.0846,
+     0.1027,
+     0.1293
+    ]
+   },
+   "fevd_cholesky_pct": {
+    "h1": {
+     "coste_construccion": 4.6932,
+     "euribor": 0.8637,
+     "pib_pc": 3.0649,
+     "precio": 1.2227,
+     "hipotecas": 90.1554
+    },
+    "h4": {
+     "coste_construccion": 1.6126,
+     "euribor": 4.6489,
+     "pib_pc": 5.2886,
+     "precio": 3.0173,
+     "hipotecas": 85.4325
+    },
+    "h8": {
+     "coste_construccion": 2.5795,
+     "euribor": 4.3292,
+     "pib_pc": 4.8017,
+     "precio": 3.3375,
+     "hipotecas": 84.9522
+    },
+    "h20": {
+     "coste_construccion": 13.2781,
+     "euribor": 5.7861,
+     "pib_pc": 2.9251,
+     "precio": 1.2255,
+     "hipotecas": 76.7852
+    }
+   },
+   "gfevd_pct": {
+    "h1": {
+     "coste_construccion": 4.0644,
+     "euribor": 1.7044,
+     "pib_pc": 5.2538,
+     "precio": 2.3763,
+     "hipotecas": 86.6011
+    },
+    "h4": {
+     "coste_construccion": 1.5731,
+     "euribor": 4.0041,
+     "pib_pc": 4.2896,
+     "precio": 2.8579,
+     "hipotecas": 87.2753
+    },
+    "h8": {
+     "coste_construccion": 2.494,
+     "euribor": 3.1449,
+     "pib_pc": 4.0978,
+     "precio": 3.1849,
+     "hipotecas": 87.0784
+    },
+    "h20": {
+     "coste_construccion": 10.7694,
+     "euribor": 7.3953,
+     "pib_pc": 6.5494,
+     "precio": 1.7137,
+     "hipotecas": 73.5723
+    }
+   },
+   "fevd_rango_120_ordenaciones_pct": {
+    "h4": {
+     "coste_construccion": [
+      0.3609,
+      1.072,
+      2.1569
+     ],
+     "euribor": [
+      4.1046,
+      7.9341,
+      9.8102
+     ],
+     "pib_pc": [
+      0.062,
+      1.6041,
+      6.5335
+     ],
+     "precio": [
+      0.0317,
+      1.2315,
+      4.1484
+     ],
+     "hipotecas": [
+      83.2795,
+      87.3201,
+      94.5847
+     ]
+    },
+    "h8": {
+     "coste_construccion": [
+      0.2459,
+      0.8968,
+      3.656
+     ],
+     "euribor": [
+      3.2526,
+      7.9092,
+      9.4131
+     ],
+     "pib_pc": [
+      0.068,
+      1.2691,
+      6.5425
+     ],
+     "precio": [
+      0.071,
+      1.3727,
+      4.6333
+     ],
+     "hipotecas": [
+      83.3858,
+      87.2592,
+      95.6218
+     ]
+    },
+    "h20": {
+     "coste_construccion": [
+      2.382,
+      5.5054,
+      13.2781
+     ],
+     "euribor": [
+      4.7082,
+      5.863,
+      9.1181
+     ],
+     "pib_pc": [
+      0.0637,
+      1.6164,
+      8.0751
+     ],
+     "precio": [
+      0.1865,
+      0.8801,
+      2.1129
+     ],
+     "hipotecas": [
+      76.7852,
+      81.3083,
+      90.7111
+     ]
+    }
+   }
+  }
+ },
+ "ARDL_bounds": {
+  "dep_hipotecas": {
+   "dep": "log_hipotecas",
+   "regresores": [
+    "log_precio",
+    "log_pib_pc",
+    "log_materiales",
+    "euribor"
+   ],
+   "orden_p_q": [
+    1,
+    1
+   ],
+   "T": 83,
+   "F": 5.7855,
+   "p_I0": 0.0,
+   "p_I1": 0.0012,
+   "cv95_I0": 2.637,
+   "cv95_I1": 3.7914,
+   "coef_LP": {
+    "const": 1.0276,
+    "log_precio": 2.2927,
+    "log_pib_pc": 0.4133,
+    "log_materiales": -2.2409,
+    "euribor": -0.046
+   },
+   "phi_ECT": -0.3752,
+   "phi_p": 0.0,
+   "supuestos": "regresores débilmente exógenos y ninguno I(2) (PSS 2001)"
+  },
+  "dep_precio": {
+   "dep": "log_precio",
+   "regresores": [
+    "log_hipotecas",
+    "log_pib_pc",
+    "log_materiales",
+    "euribor"
+   ],
+   "orden_p_q": [
+    2,
+    1
+   ],
+   "T": 82,
+   "F": 6.2484,
+   "p_I0": 0.0,
+   "p_I1": 0.0005,
+   "cv95_I0": 2.637,
+   "cv95_I1": 3.7914,
+   "coef_LP": {
+    "const": -4.9736,
+    "log_hipotecas": 0.3395,
+    "log_pib_pc": 0.9459,
+    "log_materiales": 0.0551,
+    "euribor": -0.0157
+   },
+   "phi_ECT": -0.0269,
+   "phi_p": 0.012,
+   "supuestos": "regresores débilmente exógenos y ninguno I(2) (PSS 2001)"
+  }
+ },
+ "panel": {
+  "N": 52,
+  "T": 84,
+  "periodo": [
+   "2005Q1",
+   "2025Q4"
+  ],
+  "hipotecas": "hip_viv",
+  "CD_dlog_hipotecas": {
+   "CD": 120.9227,
+   "p": 0.0,
+   "rho_medio": 0.3645
+  },
+  "CD_dlog_precio": {
+   "CD": 213.78,
+   "p": 0.0,
+   "rho_medio": 0.6444
+  },
+  "CIPS_vc_simulados_1_5_10": {
+   "c": [
+    -2.2374,
+    -2.1146,
+    -2.0837
+   ],
+   "ct": [
+    -2.658,
+    -2.5944,
+    -2.5189
+   ]
+  },
+  "CIPS": {
+   "lhip": {
+    "nivel_c": -4.0976,
+    "nivel_ct": -4.4284,
+    "dif_c": -6.42
+   },
+   "lprecio": {
+    "nivel_c": -1.7448,
+    "nivel_ct": -2.7486,
+    "dif_c": -5.2935
+   },
+   "lpib_pc": {
+    "nivel_c": -2.0917,
+    "nivel_ct": -2.3105,
+    "dif_c": -6.0769
+   }
+  },
+  "FE_DK_niveles": {
+   "coef": {
+    "lprecio": {
+     "coef": 0.6797,
+     "se_DK": 0.3118,
+     "p": 0.0293
+    },
+    "lpib_pc": {
+     "coef": 0.7135,
+     "se_DK": 0.5148,
+     "p": 0.1659
+    },
+    "euribor": {
+     "coef": 0.1922,
+     "se_DK": 0.0491,
+     "p": 0.0001
+    },
+    "lmateriales": {
+     "coef": -2.1474,
+     "se_DK": 0.6355,
+     "p": 0.0007
+    }
+   },
+   "nobs": 4368,
+   "CD_residuos": {
+    "CD": 248.7527,
+    "p": 0.0,
+    "rho_medio": 0.7453
+   },
+   "diferencias": false
+  },
+  "FE_DK_diferencias": {
+   "coef": {
+    "lprecio": {
+     "coef": 1.0558,
+     "se_DK": 0.5105,
+     "p": 0.0387
+    },
+    "lpib_pc": {
+     "coef": 0.3181,
+     "se_DK": 0.2191,
+     "p": 0.1466
+    },
+    "euribor": {
+     "coef": -0.0129,
+     "se_DK": 0.0398,
+     "p": 0.7463
+    },
+    "lmateriales": {
+     "coef": 1.2672,
+     "se_DK": 0.5705,
+     "p": 0.0264
+    }
+   },
+   "nobs": 4316,
+   "CD_residuos": {
+    "CD": 89.5653,
+    "p": 0.0,
+    "rho_medio": 0.27
+   },
+   "diferencias": true
+  },
+  "MG_PMG_bruto": {
+   "variables": [
+    "lprecio",
+    "lpib_pc",
+    "euribor",
+    "lmateriales"
+   ],
+   "demeaned": false,
+   "N": 52,
+   "T": 84,
+   "MG": {
+    "lprecio": {
+     "coef": 0.7581,
+     "se": 0.3918
+    },
+    "lpib_pc": {
+     "coef": -0.6049,
+     "se": 0.5086
+    },
+    "euribor": {
+     "coef": -0.0314,
+     "se": 0.0322
+    },
+    "lmateriales": {
+     "coef": -0.8942,
+     "se": 0.4707
+    }
+   },
+   "MG_phi_medio": -0.2728,
+   "PMG": {
+    "lprecio": {
+     "coef": 1.0538,
+     "se": 0.1577
+    },
+    "lpib_pc": {
+     "coef": 0.1695,
+     "se": 0.3097
+    },
+    "euribor": {
+     "coef": 0.0016,
+     "se": 0.0173
+    },
+    "lmateriales": {
+     "coef": -1.2107,
+     "se": 0.2546
+    }
+   },
+   "PMG_phi_medio": -0.211,
+   "PMG_phi_se": 0.0127,
+   "PMG_phi_negativos": 52,
+   "PMG_gradiente_max": 0.0063,
+   "PMG_converge": true,
+   "Hausman_MG_vs_PMG": {
+    "stat": 6.4859,
+    "df": 4,
+    "p": 0.1657
+   }
+  },
+  "MG_PMG_centrado_transversal": {
+   "variables": [
+    "lprecio",
+    "lpib_pc"
+   ],
+   "demeaned": true,
+   "N": 52,
+   "T": 84,
+   "MG": {
+    "lprecio": {
+     "coef": 0.2305,
+     "se": 0.181
+    },
+    "lpib_pc": {
+     "coef": 0.2727,
+     "se": 0.4271
+    }
+   },
+   "MG_phi_medio": -0.5085,
+   "PMG": {
+    "lprecio": {
+     "coef": -0.049,
+     "se": 0.0929
+    },
+    "lpib_pc": {
+     "coef": 0.0305,
+     "se": 0.1551
+    }
+   },
+   "PMG_phi_medio": -0.3902,
+   "PMG_phi_se": 0.031,
+   "PMG_phi_negativos": 52,
+   "PMG_gradiente_max": 0.0001,
+   "PMG_converge": true,
+   "Hausman_MG_vs_PMG": {
+    "stat": 3.6052,
+    "df": 2,
+    "p": 0.1649
+   }
+  }
+ },
+ "antes_despues": {
+  "v1_documentado": {
+   "beta_pib_pc": 0.35,
+   "beta_precio": 2.48,
+   "beta_euribor": -0.1,
+   "beta_materiales": -1.09,
+   "alpha_hipotecas": -0.44,
+   "semivida_hipotecas_trim": 1.2,
+   "alpha_precio": -0.006,
+   "semivida_precio_trim": 120,
+   "fevd20_precio_pct": 53.3,
+   "fevd20_materiales_pct": 38.8,
+   "fevd20_pib_pct": 2.6,
+   "fevd20_euribor_pct": 2.2,
+   "fevd20_propio_pct": 3.0,
+   "johansen_traza_r0": 92.89,
+   "johansen_traza_r1": 46.45,
+   "ECT_ADF_p (doc: <0.05)": 0.204
+  },
+  "v2_VECM": {
+   "beta_pib_pc": {
+    "coef_LP": 5.7897,
+    "se": 2.1327,
+    "p": 0.0066
+   },
+   "beta_precio": {
+    "coef_LP": -1.1888,
+    "se": 0.6394,
+    "p": 0.063
+   },
+   "beta_euribor": {
+    "coef_LP": 0.2933,
+    "se": 0.0612,
+    "p": 0.0
+   },
+   "beta_materiales": {
+    "coef_LP": -6.2369,
+    "se": 1.8464,
+    "p": 0.0007
+   },
+   "alpha_hipotecas": {
+    "alpha": -0.0071,
+    "se": 0.0278,
+    "p": 0.7992
+   },
+   "alpha_precio": {
+    "alpha": 0.0001,
+    "se": 0.0011,
+    "p": 0.9214
+   },
+   "traza_r0_r1": [
+    105.3083,
+    69.8508
+   ],
+   "p_boot_r0": 0.009
+  },
+  "v2_principal_VECM_fevd20": {
+   "cholesky": {
+    "coste_construccion": 1.7085,
+    "euribor": 14.0377,
+    "pib_pc": 29.5803,
+    "precio": 13.3219,
+    "hipotecas": 41.3515
+   },
+   "gfevd": {
+    "coste_construccion": 1.1226,
+    "euribor": 9.0658,
+    "pib_pc": 23.517,
+    "precio": 18.912,
+    "hipotecas": 47.3826
+   },
+   "rango_ordenaciones": {
+    "coste_construccion": [
+     1.2631,
+     3.4967,
+     5.4585
+    ],
+    "euribor": [
+     2.512,
+     4.6488,
+     14.0377
+    ],
+    "pib_pc": [
+     7.7832,
+     16.3127,
+     37.1277
+    ],
+    "precio": [
+     6.7826,
+     12.7159,
+     28.7823
+    ],
+    "hipotecas": [
+     39.2137,
+     51.0572,
+     75.1863
+    ]
+   }
+  }
+ }
+}

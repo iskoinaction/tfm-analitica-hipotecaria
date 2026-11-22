@@ -107,7 +107,7 @@ Metodologías (no se recomienda sustituir sin entender las diferencias):
 |---|---|---|---|---|
 | Tinsa IMIE Mercados Locales | Valor de tasación €/m² de tasaciones de Tinsa (una sociedad) | Prov./municipio | Q, 2001- | Web; sin API; condiciones prohíben explotación |
 | MIVAU Valor tasado | Valor tasado medio €/m² de vivienda libre, tasaciones de todas las sociedades homologadas | Provincia | Q, 1995- | CSV oficial (datos.gob.es) |
-| INE IPV | Índice de precios de transacción (datos notariales, hedónico) | CCAA | Q, 2007- | API (tabla 80270) |
+| INE IPV | Índice de precios de transacción (datos notariales, hedónico) | CCAA | Q (histórico no verificado aquí) | API (tabla 80270, id listado en TABLAS_OPERACION/15) |
 | Notariado (Portal Estadístico) | Precio €/m² de compraventas escrituradas | Prov./municipio | M | Web; `penotariado.com` respondió 502 desde aquí → **pendiente** |
 | Registradores (ERI) | Precio €/m² inscrito | CCAA/prov. | Q | Informes PDF; **pendiente** |
 
