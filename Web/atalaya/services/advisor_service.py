@@ -149,6 +149,32 @@ def _jsonable(obj):
     return clean(data)
 
 
+def to_engine_payload(clean: dict) -> dict:
+    """Traduce el payload validado del formulario al esquema real de ``src.advisor.simulate``.
+
+    El formulario usa nombres propios (``ahorro_disponible``, ``tipo_interes``, ``segunda_mano``,
+    ``primera_vivienda``…); el motor rechaza campos desconocidos, así que se mapean explícitamente.
+    """
+    out = {
+        "provincia": clean["prov_code"],
+        "aportacion": clean["ahorro_disponible"],
+        "ingresos_netos_mensuales": clean["ingresos_netos_mensuales"],
+        "edad": clean["edad"],
+        "plazo_anios": clean["plazo_anios"],
+        "modalidad": clean.get("tipo_interes", "variable"),
+        "tipo_vivienda": "usada" if clean.get("tipo_vivienda", "segunda_mano") == "segunda_mano" else "nueva",
+        "vivienda_habitual": bool(clean.get("primera_vivienda", True)),
+        "escenario": clean.get("escenario", "base"),
+    }
+    for src_k, dst_k in (("otras_deudas_mensuales", "otras_deudas_mensuales"), ("precio_vivienda", "precio_vivienda"),
+                         ("superficie_m2", "superficie_m2")):
+        if src_k in clean:
+            out[dst_k] = clean[src_k]
+    if "anio" in clean and clean["anio"] >= 2026 and clean.get("escenario"):
+        out["escenario_anio"] = clean["anio"]
+    return out
+
+
 def simulate(payload: dict) -> dict:
     """Valida ``payload`` y delega en ``src.advisor.simulate``.
 
@@ -162,7 +188,7 @@ def simulate(payload: dict) -> dict:
         return {"status": "pending", "reason": status["reason"], "input": clean}
     fn = getattr(importlib.import_module(ENGINE_MODULE), ENGINE_FUNCTION)
     try:
-        result = fn(dict(clean))
+        result = fn(to_engine_payload(clean))
     except (ValueError, KeyError, TypeError) as e:  # errores de validación del motor -> 400
         raise AdvisorEngineError(str(e)[:500]) from e
     if not isinstance(result, dict):

@@ -1,0 +1,52 @@
+# Auditoría del TFM y registro de cambios (v1 → v2)
+
+Auditoría realizada por un equipo de especialistas (fuentes, ingeniería de datos, estadística, econometría, data science, economía, banca, software y UX) con revisión posterior independiente (estadística/economía, banca/datos y auditor académico). Informes completos: `reports/audit/` (diagnóstico v1) y `reports/phase2/` (implementación y debate v2). Todas las cifras proceden de scripts ejecutados; el repositorio conserva la v1 (`notebooks acabados/`, `Datos *`, `outputs/`) para reproducir las comparaciones.
+
+## 1. Coherencia de cifras documentadas
+| Cifra del README v1 | Verificación | Resultado |
+|---|---|---|
+| 52 provincias × 84 trimestres = 4.368 | 2005Q1–2025Q4 = 21 años × 4 = 84 trimestres | **Correcto.** Pero el periodo *observado* es 2005–2025, no «2005–2030» |
+| «2005–2030» | 2005–2025 son 84 trimestres; 2026–2030 son 20 | Engañoso: el dataset maestro no contiene proyecciones |
+| 8.320 filas de proyecciones | 8 variables × 52 provincias × 20 trimestres = 8.320; el CSV tenía 9.568 | 8.320 (2026–2030) + 1.248 filas de 2025 añadidas después. 52 × 20 = 1.040 por variable, no 8.320 |
+| «14 fuentes» | 14 ficheros de entrada; 18 series/ficheros primarios; 5 organismos (8 en toda la plataforma) | Cifra ambigua: se documentan datasets y organismos por separado (`docs/DATA_SOURCES.md`) |
+| MAPE 7,11 % (RF_Nac) | Reproducido: 6,82 % (4,9–9,9 % según semilla); naive 7,30 % en los mismos 8 trimestres | No es evidencia de capacidad predictiva |
+
+## 2. Hallazgos críticos de la v1 y su resolución
+| Problema | Evidencia | Solución v2 | Validación |
+|---|---|---|---|
+| `Hipotecas_Total` mal leída (miles sin ceros finales: «17.49» = 17.490) | 382 provincia-trimestre (8,7 %) en 39 provincias; faltaban 1,24 M de hipotecas (7,7 %) | Reingesta desde la API del INE; v1 corregida para comparar (`data/processed/v1_corrected/`) | Suma de provincias = total INE (ratio 1,0 en 284 periodos); validador de formato numérico |
+| Dataset maestro no reconstruible (falta `transmision_prov_trim_tot.csv`, `try/except` ocultaba el error) | Reconstrucción solo con una regla no escrita en el código | Pipeline por conectores con snapshots, hashes y `build_master --from-raw` | 24+ tests de datos |
+| PIB pc provincial 2024 imputado (no publicado) | Todas las provincias de una CCAA crecen igual con tasas redondas | Eliminado; solo datos publicados | `panel_anual.csv` con estado por dato |
+| Series empalmadas (población extranjera Padrón→Inclusión, transmisiones MIVAU→INE, índice de materiales = media de 14 subíndices) | Saltos +21–29 % en 2023 | Una sola fuente homogénea por variable (ECP del INE, ETDP desde 2007, índice de coste de construcción de Eurostat) | Diccionario con fuente y tabla por variable |
+| R² = 0,997 del modelo de tipos (notebook 5) | Validación cruzada con filas mezcladas; Euribor identifica el trimestre | Modelo retirado del asesor; resultado negativo documentado | Con partición temporal real el R² baja a ≈0,30 y pierde frente al último dato publicado (0,380 pp vs 0,200 pp) |
+| VECM: ECT no estacionario (ADF p = 0,204) presentado como «estacionario ✓»; FEVD del Euribor 2,2 % «robusta» | 2,2 % = mínimo de 120 ordenaciones de Cholesky (rango 2,2–17,6 %) | Johansen con bootstrap salvaje; modelo principal VAR en diferencias; VECM como sensibilidad | p(r=0) = 0,168; Euribor 4,6–16,5 % según orden |
+| PIB pc desfasado un año; tope CAGR en 52/52 provincias; suelo NAIRU 8,5 % sobre 23 provincias con paro inferior; Euribor 3M usado como 12M; IPC sin fuente | `reports/audit/02_data_science.md` | Modelos anuales sin topes ocultos; escenarios con fuente y edición (`escenarios_macro.yaml`) | Rolling-origin + hold-out 2022–2025 |
+| Selección de modelo con el test 2022–2025 | 17/17 provincias elegían la dummy que ganaba en su propio test | Selección con objetivos ≤ 2021Q4; hold-out aparte | `reports/phase2/02_ds_v2.md` |
+| Asesor: tipo mostrado ≠ tipo de la cuota; `tanh` sin base; «Aprobada/Denegada»; SHAP «cumple AI Act» | 13 de 14 perfiles con tipo mostrado superior (mediana +0,72 pp) | Simulador de capacidad con estrés +3 pp, parámetros ilustrativos, sin decisión automática | 18 vectores idénticos en Python y TypeScript |
+| App: ejecución arbitraria de código, clave de sesión y credenciales por defecto, marca CaixaBank (74 menciones, logo enlazado de su web) | Demostrado en `reports/audit/07_software.md` | App v2 de solo lectura (factory, CSRF, límites, CSP), marca neutra «Atalaya» | Tests de rutas, seguridad y marca |
+| Scraping de Tinsa pese a condiciones de uso restrictivas | Términos de tinsa.es | Precio principal = valor tasado MIVAU (VDP006), correlación de tasas 0,79 y ratio de niveles 1,00 frente a Tinsa | Tinsa solo legado; no se publica en app ni web |
+
+## 3. Debate entre revisores y arbitraje
+**Estadística/economía** (24 cifras contrastadas con artefactos, todas coinciden; sin leakage con el hold-out). Aceptado y documentado: la forma trimestral de 2026 de la demanda no es fiable; el escenario base coincide con el naive por compensación de errores; las bandas adverso/favorable son sensibilidades mecánicas; el precio plano choca con el +12,5 % interanual observado; la afirmación sobre cointegración es «no concluyente», no «inexistente»; ninguna lectura causal. Corregidos en la web: descripción invertida de VAR/VECM, suma de cuantiles trimestrales como banda anual, frase de «mejora limitada». No se reentrenó nada para no romper el protocolo pre-especificado.
+**Banca/datos** (APTO CON RESERVAS): cuota y reparto de gastos (Ley 5/2019) verificados. Corregido: B1, el simulador de la app devolvía siempre 400 por desajuste de campos con el motor (test de regresión añadido); D2, un conector caído (Eurostat devolvió 404/500 en la última comprobación) impedía al workflow guardar los datasets correctos (ahora `continue-on-error` en la descarga; los tests siguen siendo obligatorios); D1, se dejan de versionar nuevas copias de Tinsa (`data/raw/tinsa`, staging). **Pendiente, requiere decisión del autor:** la columna `precio_m2_tinsa` y su agregado siguen en `data/processed/*.csv` y el CSV v1 `Datos ya metidos/tinsa_prov_precios_trim.csv` sigue en el repositorio y su historial. Reservas sin cerrar: IGIC de Canarias en vivienda nueva, semáforo que solo mira DSTI (no LTV ni edad), `availability_rules.yaml` cubre solo 4 variables (posible look-ahead en el resto), falta columna de licencia en `provenance.csv`.
+
+## 4. Evaluación del tribunal (auditor académico)
+Puntuación estimada por eje (0–10): calidad de datos 8 · ingeniería de datos 8 · econometría 8 · estadística 7,5 · machine learning 7 · aplicación bancaria 6,5 · asesor hipotecario 7 · desarrollo tecnológico 8 · visualización 7,5 · rigor académico 8 · originalidad 7 · reproducibilidad 6,5 (antes de escribir esta documentación). **Nota global estimada: 7,6**; ≈ 8,3 si se cierran la documentación (hecha en este commit), los notebooks v1 (marcados como histórico) y la ejecución del workflow en GitHub. Las puntuaciones son del agente evaluador y no se han inflado; el tribunal real puede discrepar.
+**Fortalezas:** autocrítica cuantificada (R² 0,997 → ≈0,30; ajuste 44 % → +0,045 no significativo); protocolo pre-especificado con hold-out; escenarios etiquetados como supuestos; seguridad y pruebas (181).
+**Debilidades:** los notebooks siguen siendo la v1; panel provincial y business case de la app «pendientes»; hold-out con n = 16; asesor sin datos reales de entidad; workflow sin ejecutar.
+**Riesgos metodológicos:** cointegración frágil (T = 83); coeficientes que cambian de signo entre v1 y v2; demanda provincial top-down; mejor modelo a h = 8 (media móvil) es un hallazgo *a posteriori*; política del banco ilustrativa.
+
+**Cinco preguntas difíciles y respuesta defendible**
+1. *¿Por qué VAR en diferencias y no VECM?* Johansen con bootstrap p = 0,168 y Engle-Granger p = 0,63; con 3 retardos p = 0,024 y con IPV p = 0,086, así que es frágil; además α de hipotecas = +0,045 (n.s.) y β recursivo inestable. La regla se fijó antes de ver el resultado; el VECM se conserva como sensibilidad.
+2. *¿Por qué nadie bate al naive?* Es el resultado honesto del hold-out (U de Theil 1,14–1,46): a estos horizontes la demanda es casi un paseo aleatorio. El valor del proyecto está en los escenarios condicionales y en haber eliminado la ilusión de precisión de la v1.
+3. *¿Por qué sustituir Tinsa por MIVAU?* Condiciones de uso y trazabilidad. Medias casi idénticas (1.406,9 vs 1.408,2 €/m²), diferencia relativa mediana 5,9 %; Tinsa queda como legado.
+4. *¿Hay pseudo-replicación en el panel?* Sí: las variables nacionales aportan solo 81–86 observaciones independientes, no 4.368. Por eso se usa Driscoll-Kraay (7,6 veces el error de OLS en el ejemplo), efectos temporales y panel centrado transversalmente, donde la elasticidad al precio es ≈0.
+5. *¿Qué estatus regulatorio tiene el asesor?* Es informativo; no evalúa solvencia. La evaluación de solvencia de personas físicas es alto riesgo (Reglamento (UE) 2024/1689, anexo III) y, según la verificación realizada, el Reglamento (UE) 2026/1744 aplaza sus obligaciones al 2/12/2027 (leído en un considerando, no en el artículo modificado). SHAP no basta para cumplir.
+
+## 5. Pendiente / no resuelto
+- Decisión del autor sobre los datos de Tinsa ya versionados (columna del panel, CSV v1 e historial).
+- Ejecutar `update-data.yml` en GitHub con `workflow_dispatch` (solo corre desde `main`; esta rama no se ha fusionado) y revisar la rama `datos/auto-update`.
+- Eurostat no respondía en la última comprobación (HTTP 404 y luego 500 en `sts_copi_q`); el último snapshot sigue siendo válido.
+- Re-ejecutar o reescribir los notebooks sobre los datos v2 si el tribunal exige notebooks vigentes.
+- Verificar las 7 reglas fiscales restantes, las páginas de panel econométrico y business case de la app, y cargar vintages si se desea evitar look-ahead.
+- No se ha desplegado nada: ni la app (Render/Docker listos) ni la web (`site/vercel.json` lista).
