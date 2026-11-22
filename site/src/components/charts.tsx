@@ -62,7 +62,7 @@ export function LineChart({ series, height = 300, xFormat, yFormat = (v) => fmtN
   const X = (x: number) => m.l + ((x - x0) / (x1 - x0)) * (width - m.l - m.r);
   const Y = (y: number) => m.t + (1 - (y - y0) / (y1 - y0)) * (height - m.t - m.b);
   const nXT = Math.max(2, Math.floor((width - m.l - m.r) / 90));
-  const xt = xs.filter((_, i) => i % Math.ceil(xs.length / nXT) === 0);
+  const xt = xs.filter((_, i) => i % Math.ceil(xs.length / nXT) === 0).filter((x, i, a) => i === 0 || xFormat(x) !== xFormat(a[i - 1]));
   const path = (pts: Pt[]) => {
     let d = '', pen = false;
     for (const p of pts) { if (p.y == null) { pen = false; continue; } d += `${pen ? 'L' : 'M'}${X(p.x).toFixed(1)},${Y(p.y).toFixed(1)}`; pen = true; }

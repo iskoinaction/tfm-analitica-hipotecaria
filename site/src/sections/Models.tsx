@@ -237,14 +237,14 @@ function FevdPanel({ file, source }: { file: string; source: string }) {
 
 // ───────────────────────── Machine Learning ─────────────────────────
 const BENCH = new Set(['naive', 'seasonal_naive', 'media_movil_4']);
-const MODEL_LABEL: Record<string, string> = { naive: 'Persistencia (naive)', seasonal_naive: 'Estacional ingenuo', media_movil_4: 'Media móvil 4T', ets_log: 'ETS (log)', sarima_log: 'SARIMA (log)', ar_log: 'AR (log)', lightgbm_pooled: 'LightGBM (panel)', condicional_ex_post: 'Condicional ex post (oráculo)', condicional_cap1: 'Condicional OLS (ΔEuríbor, Δparo)', condicional_cap2: 'Condicional OLS cap. 2', condicional_cap4: 'Condicional OLS cap. 4' };
+const MODEL_LABEL: Record<string, string> = { elasticnet: 'Elastic net', random_forest: 'Random forest', lightgbm: 'LightGBM', gbm: 'Gradient boosting', xgboost: 'XGBoost', drift: 'Deriva (drift)', naive: 'Persistencia (naive)', seasonal_naive: 'Estacional ingenuo', media_movil_4: 'Media móvil 4T', ets_log: 'ETS (log)', sarima_log: 'SARIMA (log)', ar_log: 'AR (log)', lightgbm_pooled: 'LightGBM (panel)', condicional_ex_post: 'Condicional ex post (oráculo)', condicional_cap1: 'Condicional OLS (ΔEuríbor, Δparo)', condicional_cap2: 'Condicional OLS cap. 2', condicional_cap4: 'Condicional OLS cap. 4' };
 const mLabel = (m: string) => MODEL_LABEL[m] ?? humanize(m);
 
 export function MachineLearning() {
   const { manifest } = useApp();
   const dIdx = useArtifacts('demand');
   const fIdx = useArtifacts('forecasting');
-  const files = (dIdx.data ?? []).filter((i) => i.file && /nacional_metricas\.json$/.test(i.name));
+  const files = (dIdx.data ?? []).filter((i) => i.file && /nacional_metricas\.(csv|json)$/.test(i.name));
   const metaItem = (dIdx.data ?? []).find((i) => i.name === 'metadata.json' && i.file);
   const fMeta = (fIdx.data ?? []).find((i) => i.name === 'metadata.json' && i.file);
   const meta = useJSON<any>(metaItem?.file); // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -300,7 +300,7 @@ export function MachineLearning() {
           </Card>
           <div className="grid-2 grid-2--even">
             <Card title="Contraste Diebold-Mariano" subtitle="Modelo frente a benchmark; p-valor de pérdida cuadrática (muestras cortas: potencia limitada)">
-              {dm.data ? <DataTable maxRows={12} table={{ columns: ['h', 'Ventana', 'Modelo', 'Benchmark', 'n', 'DM', 'p'], rows: (() => { const c = (n: string) => dm.data!.columns.indexOf(n); const seen = new Set<string>(); return dm.data!.rows.filter((r) => { const k = [r[c('h')], r[c('window')], r[c('model')], r[c('benchmark')]].join('|'); if (seen.has(k)) return false; seen.add(k); return true; }).map((r) => [r[c('h')], r[c('window')], mLabel(String(r[c('model')])), mLabel(String(r[c('benchmark')])), r[c('n')], r[c('DM_sq')], pFmt(r[c('p_sq')])]); })() }} format={(v) => (typeof v === 'number' ? fmtNum(v, 2) : String(v ?? '—'))} /> : <Loading />}
+              {dm.data ? <DataTable maxRows={12} table={{ columns: ['h', 'Ventana', 'Modelo', 'Benchmark', 'n', 'DM', 'p'], rows: (() => { const c = (n: string) => dm.data!.columns.indexOf(n); const seen = new Set<string>(); return dm.data!.rows.filter((r) => { const k = [r[c('h')], r[c('window')], r[c('model')], r[c('benchmark')]].join('|'); if (seen.has(k)) return false; seen.add(k); return true; }).map((r) => [r[c('h')], r[c('window')], mLabel(String(r[c('model')])), mLabel(String(r[c('benchmark')])), r[c('n')], r[c('DM_sq')], pFmt(r[c('p_sq')])]); })() }} format={(v) => (typeof v === 'number' ? fmtNum(v, Number.isInteger(v) ? 0 : 2) : String(v ?? '—'))} /> : <Loading />}
             </Card>
             <Card title="Variables macro: modelo seleccionado" subtitle="Menor MASE de selección por variable (panel provincial)">
               {macro.data?.macro ? <DataTable table={{ columns: ['Variable', 'Seleccionado', 'MASE sel.', 'MASE persistencia'], rows: Object.entries(macro.data.macro as Obj).map(([k, v]) => { const sc = (v as Obj).score_seleccion_MASE as Record<string, number>; const s = String((v as Obj).seleccionado); return [humanize(k), mLabel(s), sc?.[s] ?? null, sc?.naive ?? null]; }) }} format={(v) => (typeof v === 'number' ? fmtNum(v, 2) : String(v ?? '—'))} /> : <Pending what="Selección macro" expected={['artifacts/forecasting/metadata.json']} />}
@@ -417,6 +417,7 @@ const FC_OBS: Record<string, { panel?: string; nat?: string; annual?: boolean; u
   poblacion: { panel: 'poblacion', annual: true, unit: 'personas', label: 'Población' },
   poblacion_extranjera: { panel: 'poblacion_extranjera', annual: true, unit: 'personas', label: 'Población extranjera' },
 };
+const pc = (x: unknown) => String(x ?? '').padStart(2, '0');
 const SC_STYLE: Record<string, { color: string; name: string }> = { base: { color: 'var(--series-2)', name: 'Escenario base' }, adverso: { color: 'var(--series-8)', name: 'Adverso' }, favorable: { color: 'var(--series-3)', name: 'Favorable' }, referencia_naive: { color: 'var(--series-7)', name: 'Referencia naive' } };
 
 export function Forecasts() {
@@ -436,9 +437,9 @@ export function Forecasts() {
   const c = (n: string) => cols.indexOf(n);
   const vars = useMemo(() => [...new Set((fc.data?.rows ?? []).map((r) => String(r[c('variable')])))], [fc.data]); // eslint-disable-line react-hooks/exhaustive-deps
   const rowsV = useMemo(() => (fc.data?.rows ?? []).filter((r) => r[c('variable')] === v), [fc.data, v]); // eslint-disable-line react-hooks/exhaustive-deps
-  const terrs = useMemo(() => { const m = new Map<string, string>(); rowsV.forEach((r) => m.set(String(r[c('prov_code')]), String(r[c('provincia')]))); return [...m.entries()].sort((a, b) => (a[0] === '00' ? -1 : b[0] === '00' ? 1 : a[1].localeCompare(b[1], 'es'))); }, [rowsV]); // eslint-disable-line react-hooks/exhaustive-deps
+  const terrs = useMemo(() => { const m = new Map<string, string>(); rowsV.forEach((r) => m.set(pc(r[c('prov_code')]), String(r[c('provincia')]))); return [...m.entries()].sort((a, b) => (a[0] === '00' ? -1 : b[0] === '00' ? 1 : a[1].localeCompare(b[1], 'es'))); }, [rowsV]); // eslint-disable-line react-hooks/exhaustive-deps
   const terrOk = terrs.some(([k]) => k === terr) ? terr : terrs[0]?.[0] ?? '00';
-  const rows = rowsV.filter((r) => String(r[c('prov_code')]) === terrOk);
+  const rows = rowsV.filter((r) => pc(r[c('prov_code')]) === terrOk);
   const scens = [...new Set(rows.map((r) => String(r[c('escenario')])))];
   const xOf = (p: string) => (/^\d{4}$/.test(p) ? Number(p) + 0.375 : periodValue(p));
 

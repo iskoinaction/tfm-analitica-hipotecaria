@@ -11,7 +11,7 @@ export function StatusView() {
   const { manifest } = useApp();
   const qa = useJSON<ArtifactItem[]>(slotIndex(manifest, 'artifacts:data_quality'));
   const issuesItem = artifactFile(qa.data, /^build_issues\.json$/);
-  const v1v2Item = artifactFile(qa.data, /^v1_vs_v2\.json$/);
+  const v1v2Item = artifactFile(qa.data, /^v1_vs_v2\.(csv|json)$/);
   const reportItem = (qa.data ?? []).filter((i) => /^update_report.*\.json$/.test(i.name) && i.file).sort((a, b) => b.name.localeCompare(a.name))[0];
   const issues = useJSON<Issue[]>(issuesItem?.file);
   const v1v2 = useJSON<Table>(v1v2Item?.file);

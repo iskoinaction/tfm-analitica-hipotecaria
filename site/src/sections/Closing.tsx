@@ -30,7 +30,7 @@ export function Results() {
   const { manifest } = useApp();
   const econ = useJSON<Obj>(artifactFile(useJSON<ArtifactItem[]>(slotIndex(manifest, 'artifacts:econometrics')).data, /^econometrics_v2\.json$/)?.file);
   const dIdx = useJSON<ArtifactItem[]>(slotIndex(manifest, 'artifacts:demand'));
-  const met = useJSON<Table>(artifactFile(dIdx.data, /^hipotecas_viviendas_nacional_metricas\.json$/)?.file);
+  const met = useJSON<Table>(artifactFile(dIdx.data, /^hipotecas_viviendas_nacional_metricas\.(csv|json)$/)?.file);
   const meta = useJSON<Obj>(artifactFile(dIdx.data, /^metadata\.json$/)?.file);
   const fc = useJSON<Table>(useJSON<{ name: string; file: string }[]>(slotIndex(manifest, 'forecasts')).data?.find((x) => /\.csv|proyecciones.*\.json$/i.test(x.name) && !/summary/.test(x.name))?.file);
 
@@ -48,7 +48,7 @@ export function Results() {
   const dec = econ.data?.decision as Obj | undefined;
   const end = fc.data ? (() => {
     const c = (n: string) => fc.data!.columns.indexOf(n);
-    const r = fc.data!.rows.filter((x) => x[c('variable')] === 'hipotecas_viviendas' && x[c('prov_code')] === '00' && x[c('escenario')] === 'base' && String(x[c('period')]).startsWith('2030'));
+    const r = fc.data!.rows.filter((x) => x[c('variable')] === 'hipotecas_viviendas' && Number(x[c('prov_code')]) === 0 && x[c('escenario')] === 'base' && String(x[c('period')]).startsWith('2030'));
     return r.length ? { v: r.reduce((a, x) => a + (x[c('valor')] as number), 0), lo: r.reduce((a, x) => a + (x[c('p10')] as number), 0), hi: r.reduce((a, x) => a + (x[c('p90')] as number), 0), n: r.length } : null;
   })() : null;
 
