@@ -150,12 +150,15 @@ function syncMetadata() {
     const hit = find(re);
     slot(key, { title, ...(hit ? { status: 'ok', files: [hit.file], sources: [hit.source], updated: hit.updated } : {}) });
   };
-  mk('sources', 'Catálogo de fuentes', /^sources\.(ya?ml|json)$/i);
-  mk('variables', 'Diccionario de variables', /^variables\.(ya?ml|json|csv)$/i);
+  mk('sources', 'Catálogo de fuentes', /^(sources|series_catalog)\.(ya?ml|json)$/i);
+  mk('variables', 'Diccionario de variables', /^(variables|data_dictionary)\.(ya?ml|json|csv)$/i);
+  mk('provenance', 'Procedencia de los snapshots', /^provenance\.(csv|json)$/i);
+  mk('aranceles', 'Aranceles notarial y registral', /^aranceles\.(ya?ml|json)$/i);
+  mk('availability', 'Reglas de disponibilidad', /^availability_rules\.(ya?ml|json)$/i);
   mk('provincias', 'Provincias (códigos INE)', /^provincias\.(csv|ya?ml|json)$/i);
   mk('escenarios', 'Escenarios macro', /^escenarios_macro\.(ya?ml|json)$/i);
   mk('advisor_policy', 'Política del simulador', /^advisor_policy\.(ya?ml|json)$/i);
-  mk('fiscalidad', 'Tabla fiscal con vigencias', /^fiscalidad\.(csv|ya?ml|json)$/i);
+  mk('fiscalidad', 'Tabla fiscal con vigencias', /^fiscalidad(_vigencias)?\.(csv|ya?ml|json)$/i);
   slot('metadata_index', { title: 'Metadatos', status: index.length ? 'ok' : 'pending', files: [writeJSON('metadata/_index.json', index)], sources: index.map((x) => x.source) });
   slot('pipeline_runs', { title: 'Ejecuciones del pipeline', status: runs.length ? 'ok' : 'pending', files: [writeJSON('metadata/_runs.json', runs)], sources: runs.map((r) => r.source), updated: runs[0]?.updated });
 }
@@ -248,13 +251,22 @@ function syncPanel() {
         n++;
       }
       const safe = v.replace(/[^A-Za-z0-9_-]/g, '_');
-      vars.push({ key: v, file: writeJSON(path.join('panel', key, safe + '.json'), byPeriod), n_values: n });
+      // ¿la variable varía entre provincias en algún periodo? Si no, es nacional replicada (no apta para mapa)
+      const provincial = Object.values(byPeriod).some((o) => new Set(Object.values(o)).size > 1);
+      vars.push({ key: v, file: writeJSON(path.join('panel', key, safe + '.json'), byPeriod), n_values: n, scope: provincial ? 'provincial' : 'nacional' });
     }
     slot(key, {
       title: name, status: 'ok', sources: [rel(f)], updated: mtime(f),
       files: [writeJSON(path.join('panel', key, '_index.json'), { periods, provinces, variables: vars, n_rows: t.n_rows, sha256: sha256(f) })],
     });
   }
+}
+
+// 3b) Serie nacional trimestral (tabla completa, es pequeña)
+function syncNacional() {
+  const f = path.join(ROOT, 'data', 'processed', 'nacional_trimestral.csv');
+  if (!exists(f)) { slot('nacional_trimestral', { title: 'nacional_trimestral.csv' }); return; }
+  slot('nacional_trimestral', { title: 'nacional_trimestral.csv', status: 'ok', sources: [rel(f)], updated: mtime(f), files: [writeJSON('panel/nacional_trimestral.json', csvToTable(f, Infinity))] });
 }
 
 // 4) Proyecciones
@@ -378,6 +390,7 @@ function main() {
   syncMetadata();
   syncArtifacts();
   syncPanel();
+  syncNacional();
   syncForecasts();
   syncGeo();
   syncDocs();

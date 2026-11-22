@@ -175,54 +175,39 @@ def _national_from_panel(panel: pd.DataFrame, nat_hip: pd.DataFrame | None) -> p
     return out.sort_index()
 
 
+V2_PANEL_COLS = {"hip_viv": "hipotecas_viviendas_num", "hip_tot": "hipotecas_fincas_total_num",
+                 "precio": "precio_m2_tinsa", "paro": "tasa_paro", "euribor": "euribor_12m", "ipc": "ipc_var_anual",
+                 "transmisiones": "compraventas_viviendas_num"}
+V2_ANNUAL_COLS = {"pib_pc": "pib_pc", "poblacion": "poblacion", "pob_ext": "poblacion_extranjera"}
+V2_NATIONAL_COLS = {"hip_viv": "hipotecas_viviendas_num", "hip_tot": "hipotecas_fincas_total_num",
+                    "precio": "precio_m2_tinsa_pond_pob", "paro": "tasa_paro", "euribor": "euribor_12m",
+                    "ipc": "ipc_var_anual", "transmisiones": "compraventas_viviendas_num", "poblacion": "poblacion_ecp"}
+
+
 def _load_v2(colmap: dict | None = None) -> Inputs:
-    df = pd.read_csv(C.PANEL_V2, dtype=str)
-    cm = colmap or resolve_columns(df, PANEL_RULES, ["prov_code", "period", "precio", "paro", "euribor"])
-    panel = pd.DataFrame({"prov_code": df[cm["prov_code"]].astype(str).str.zfill(2), "period": to_period(df[cm["period"]])})
-    for k in CANON_Q:
-        if k in cm:
-            panel[k] = pd.to_numeric(df[cm[k]], errors="coerce").values
+    """v2 de Data Engineering (esquema de data/metadata/data_dictionary.csv; mapeo explícito, sin heurísticas)."""
+    df = pd.read_csv(C.PANEL_V2, dtype={"prov_code": str})
+    cm = colmap or V2_PANEL_COLS
+    panel = pd.DataFrame({"prov_code": df["prov_code"].astype(str).str.zfill(2), "period": to_period(df["period"])})
+    for k, c in cm.items():
+        panel[k] = pd.to_numeric(df[c], errors="coerce").values
+    da = pd.read_csv(C.PANEL_ANUAL_V2, dtype={"prov_code": str})
+    annual = pd.DataFrame({"prov_code": da["prov_code"].astype(str).str.zfill(2), "year": da["year"].astype(int)})
+    for k, c in V2_ANNUAL_COLS.items():
+        annual[k] = pd.to_numeric(da[c], errors="coerce").values
+    pop = annual.set_index(["prov_code", "year"])["poblacion"]
+    panel["poblacion"] = [pop.get((p, y), np.nan) for p, y in zip(panel.prov_code, panel.period.dt.year)]
     panel = panel[panel.prov_code.isin(PROVINCES)].sort_values(["prov_code", "period"]).reset_index(drop=True)
-    inputs = [{"path": _rel(C.PANEL_V2), "sha256": sha256(C.PANEL_V2), "colmap": cm}]
-    notes = []
-    if C.PANEL_ANUAL_V2.exists():
-        da = pd.read_csv(C.PANEL_ANUAL_V2, dtype=str)
-        ca = resolve_columns(da, ANNUAL_RULES, ["prov_code", "year"])
-        annual = pd.DataFrame({"prov_code": da[ca["prov_code"]].astype(str).str.zfill(2),
-                               "year": pd.to_numeric(da[ca["year"]].str[:4], errors="coerce").astype("Int64")})
-        for k in ("pib_pc", "poblacion", "pob_ext"):
-            annual[k] = pd.to_numeric(da[ca[k]], errors="coerce").values if k in ca else np.nan
-        annual = annual[annual.prov_code.isin(PROVINCES)].dropna(subset=["year"])
-        annual["year"] = annual["year"].astype(int)
-        inputs.append({"path": _rel(C.PANEL_ANUAL_V2), "sha256": sha256(C.PANEL_ANUAL_V2), "colmap": ca})
-    else:
-        annual = _annual_from_replicated(panel.assign(year=panel.period.dt.year))
-        notes.append("panel_anual.csv no existe: anuales derivadas del panel trimestral (un valor por año).")
-    for k in ("hip_viv", "hip_tot", "poblacion"):
-        if k not in panel:
-            panel[k] = np.nan
-    if panel["poblacion"].isna().all():
-        pop = annual.set_index(["prov_code", "year"])["poblacion"]
-        panel["poblacion"] = [pop.get((p, y), np.nan) for p, y in zip(panel.prov_code, panel.period.dt.year)]
-        notes.append("poblacion trimestral = poblacion anual (solo para ponderar).")
-    nat_hip = None
-    if C.NATIONAL_V2.exists():
-        dn = pd.read_csv(C.NATIONAL_V2, dtype=str)
-        rules = {k: PANEL_RULES[k] for k in ("period", "hip_viv", "hip_tot")}
-        try:
-            cn = resolve_columns(dn, rules, ["period"])
-            nat_hip = pd.DataFrame(index=to_period(dn[cn["period"]]))
-            for k in ("hip_viv", "hip_tot"):
-                if k in cn:
-                    nat_hip[k] = pd.to_numeric(dn[cn[k]], errors="coerce").values
-            nat_hip = nat_hip[~nat_hip.index.duplicated()]
-            inputs.append({"path": _rel(C.NATIONAL_V2), "sha256": sha256(C.NATIONAL_V2), "colmap": cn})
-        except ValueError as e:
-            notes.append(f"nacional_trimestral.csv no utilizable para hipotecas ({e}); se suma el panel.")
-    if nat_hip is None or nat_hip.empty:
-        nat_hip = pd.DataFrame({"hip_viv": panel.groupby("period")["hip_viv"].sum(min_count=52),
-                                "hip_tot": panel.groupby("period")["hip_tot"].sum(min_count=52)})
-    national = _national_from_panel(panel, nat_hip)
+    dn = pd.read_csv(C.NATIONAL_V2)
+    national = pd.DataFrame(index=to_period(dn["period"]))
+    for k, c in V2_NATIONAL_COLS.items():
+        national[k] = pd.to_numeric(dn[c], errors="coerce").values
+    national = national[~national.index.duplicated()].sort_index()
+    inputs = [{"path": _rel(p), "sha256": sha256(p)} for p in (C.PANEL_V2, C.PANEL_ANUAL_V2, C.NATIONAL_V2)]
+    inputs[0]["colmap"], inputs[1]["colmap"], inputs[2]["colmap"] = cm, V2_ANNUAL_COLS, V2_NATIONAL_COLS
+    notes = ["v2 (Data Engineering): hipotecas INE (viviendas y total fincas, parseo correcto), compraventas de "
+             "viviendas INE, Tinsa, EPA (paro nacional oficial en el agregado), BCE (Euribor 12M), IPC INE.",
+             "Variables anuales (PIB_pc, poblacion, poblacion extranjera) desde panel_anual.csv, sin replicar."]
     return Inputs(panel, annual, national, "v2", inputs, notes)
 
 

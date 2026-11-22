@@ -1,0 +1,1 @@
+{"descripcion":"panel_modelado: para el trimestre que termina en E se usa el año de referencia Y más reciente con 1-ene-Y + lag_meses <= E; si ese año aún no tiene dato, el último disponible. Sin interpolación.","lag_meses":{"poblacion":5,"poblacion_extranjera":5,"edad_media":6,"pib_pc":35}}

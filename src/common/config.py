@@ -92,12 +92,12 @@ DATASETS: list[DatasetSpec] = [
         {}, "Encuesta de Población Activa; tasas trimestrales provinciales (error muestral relevante en provincias pequeñas).",
         "≈4 semanas tras el trimestre", "EPA", "https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736176918"),
     DatasetSpec(
-        "ine_ipc", "ine", "50913", "M", ("Comunidades y Ciudades Autónomas", "Totales Territoriales"),
+        "ine_ipc", "ine", "76136", "M", ("Comunidades y Ciudades Autónomas", "Totales Territoriales"),
         (VarSpec("ipc_var_anual", {"Grupos ECOICOP": "Índice general", "Índices y Tasas": "Variación anual"},
                  "%", "mean", (-5, 15), "IPC índice general, variación anual (media de los meses del trimestre). Ámbito CCAA."),
          VarSpec("ipc_indice", {"Grupos ECOICOP": "Índice general", "Índices y Tasas": "Índice"},
-                 "índice base 2021=100", "mean", (40, 200), "IPC índice general (base 2021), media trimestral. Ámbito CCAA.")),
-        {}, "IPC base 2021 (series enlazadas por el INE).", "≈2 semanas tras el mes", "IPC",
+                 "índice base 2025=100", "mean", (40, 200), "IPC índice general (base 2025), media trimestral. Ámbito CCAA.")),
+        {}, "IPC base 2025 (tabla vigente 76136, series enlazadas por el INE desde 2002; sin empalmes propios).", "≈2 semanas tras el mes", "IPC",
         "https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736176802"),
     DatasetSpec(
         "ine_ecp_poblacion", "ine", "59591", "S", ("Provincias", "Total Nacional"),
@@ -166,10 +166,16 @@ DATASETS: list[DatasetSpec] = [
                  "Tipo sin comisiones (AAR/NDER) de nuevas operaciones de préstamos a hogares para vivienda, España.")),
         {}, "BCE: mercados financieros (FM) y estadísticas de tipos de interés de IFM (MIR).", "≈5 semanas (MIR)", "", "https://data.ecb.europa.eu/"),
     DatasetSpec(
+        "mivau_valor_tasado", "mivau", "VDP006_01", "Q", (),
+        (VarSpec("precio_m2_mivau_tasado", {"Régimen": "Libre"}, "€/m²", "none", (300, 8000),
+                 "Valor tasado medio de vivienda libre €/m² (MIVAU, todas las tasaciones). Alternativa oficial a Tinsa."),),
+        {}, "Estadística de Valor Tasado de Vivienda (IOE 20007), Ministerio de Vivienda y Agenda Urbana.",
+        "≈2,5 meses", "", "https://datos.gob.es/apidata/catalog/dataset/e05233601-valor-tasado-de-la-vivienda.json"),
+    DatasetSpec(
         "tinsa_precio", "tinsa", "legacy_v1_csv", "Q", (),
         (VarSpec("precio_m2_tinsa", {}, "€/m²", "none", (300, 8000), "Valor medio €/m² (Tinsa IMIE, provincias)."),),
-        {}, "Tinsa IMIE General y Grandes Mercados. Por defecto se reutiliza el CSV v1 (snapshot sin fecha); el scraping es opcional.",
-        "≈1 mes", "", "https://www.tinsa.es/precio-vivienda/", optional=False),
+        {}, "Tinsa IMIE General y Grandes Mercados. Por defecto se reutiliza el CSV v1 (snapshot sin fecha); el scraping es opcional y está desactivado: las condiciones de uso de tinsa.es prohíben la explotación sin autorización (10_source_catalog.yaml).",
+        "≈1 mes", "", "https://www.tinsa.es/precio-vivienda/", optional=True),
 ]
 
 DATASET_BY_KEY = {d.key: d for d in DATASETS}
@@ -193,6 +199,7 @@ MODEL_DEPENDENCIES = {
     "poblacion_extranjera": ["demand.rf_provincial", "forecasting.pob_ext"],
     "edad_media": ["demand.rf_provincial"],
     "pib_pc": ["advisor.gbr_spread", "econometrics.vecm", "forecasting.pib"],
+    "precio_m2_mivau_tasado": ["econometrics.robustness_price", "forecasting.precio"],
     "precio_m2_tinsa": ["advisor.gbr_spread", "econometrics.vecm", "forecasting.precio"],
     "ipv_general_indice": ["econometrics.robustness_price"],
     "euribor_12m": ["advisor.gbr_spread", "econometrics.var", "econometrics.vecm", "demand.rf_nacional"],

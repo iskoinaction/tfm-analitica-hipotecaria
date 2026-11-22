@@ -149,20 +149,21 @@ def vecm_block(Y, ex, k, case, B_irf, H, seed, label):
     return out, ri, rf, rec.assign(norm="precio")
 
 
-def var_block(Y, ex, B_irf, H, seed, label, maxlags):
+def var_block(Y, ex, B_irf, H, seed, label, maxlags, p_forced=None):
     names = list(Y.columns)
     ih = names.index("log_hipotecas")
     dY = Y.diff().iloc[1:]
     exv = None if ex is None else ex.iloc[1:].values
     sel, ic = select_lags(dY.values, exv, maxlags)
-    p = max(1, sel["bic"])
+    p = p_forced if p_forced else max(1, sel["bic"])
     m = VARdiff(dY.values, p, exv, names)
     Phi_d = m.ma_rep(H)
     Phi_l = np.cumsum(Phi_d, axis=0)    # respuestas en niveles (logs) = IRF acumuladas de las diferencias
     bands = bootstrap_bands(m, B_irf, H, ih, seed=seed, band=tuple(C.SPEC["band"]), level_from_diff=True) if B_irf > 0 else None
     blk, ri, rf = irf_block(Phi_l, m.sigma, names, ih, H, bands, label)
     fv_g = fevd(Phi_d[:H], m.sigma)
-    out = {"especificacion": {"p_diferencias": p, "seleccion": sel, "T_efectiva": m.T,
+    out = {"especificacion": {"p_diferencias": p, "seleccion_ic": sel,
+                              "regla_p": "p = k_ar_diff del VECM (VAR(k+1) en niveles con r=0), validado por LM" if p_forced else "BIC", "T_efectiva": m.T,
                               "exog": [] if ex is None else list(ex.columns), "constante": True},
            "estable": bool(np.max(m.roots()) < 1), "raiz_max": float(np.max(m.roots())),
            "irf_fevd_hipotecas (nivel = IRF acumulada de diferencias)": blk,
@@ -264,8 +265,21 @@ def main(argv=None):
     from statsmodels.tsa.api import VAR
     sel = VAR(Y.reset_index(drop=True), exog=ex.reset_index(drop=True)).select_order(maxlags=C.SPEC["max_lags_selection"], trend="c")
     so = {k: int(v) for k, v in sel.selected_orders.items()}
-    k = max(1, so["bic"] - 1)
-    res["seleccion_retardos_VAR_niveles"] = {"criterios": so, "k_ar_diff_elegido": k, "regla": "BIC - 1 (mín. 1)"}
+    from .vecm import lm_autocorr
+    k0 = max(1, so["bic"] - 1)
+    lm_path = {}
+    k = None
+    for kk in range(k0, 5):
+        f_ = VECMfit(Y.values, kk, C.SPEC["deterministic_case"], ex.values, 1, norm_idx=list(Y.columns).index("log_hipotecas"))
+        l1, l4 = lm_autocorr(f_.resid, f_.X, 1), lm_autocorr(f_.resid, f_.X, 4)
+        lm_path[kk] = {"LM_h1_pF": l1["p_F"], "LM_h4_pF": l4["p_F"]}
+        if k is None and l1["p_F"] >= 0.05 and l4["p_F"] >= 0.05:
+            k = kk
+    k = k or k0
+    res["seleccion_retardos_VAR_niveles"] = {
+        "criterios": so, "k_ar_diff_elegido": k, "LM_por_k": lm_path,
+        "regla": "partir de BIC-1 (mín. 1) y aumentar hasta que los residuos del VECM no muestren autocorrelación "
+                 "(LM Edgerton-Shukur h=1 y h=4, p>=0.05); con autocorrelación los contrastes de rango están sobredimensionados"}
     res["residuos_hipotecas_mayores_z (sin impulsos)"] = largest_residuals(Y, D.seasonal_dummies(Y.index), k)
 
     # 3. Rango
@@ -280,6 +294,7 @@ def main(argv=None):
     Bs = max(49, a.B_rank // 5)
     sens = {}
     grid = [("caso2", Y, ex, k, 2), ("caso4", Y, ex, k, 4), ("k+1", Y, ex, k + 1, 3),
+            ("k=1 (BIC-1, residuos autocorrelacionados)", Y, ex, 1, 3),
             ("sin_impulsos", Y, D.seasonal_dummies(Y.index), k, 3)]
     if "hip_tot" in nd.raw:
         Yt = nd.system("hip_tot", "precio")
@@ -304,7 +319,7 @@ def main(argv=None):
     vb, ri, rf, rec = vecm_block(Y, ex, k, C.SPEC["deterministic_case"], a.B_irf, H, seed, "VECM")
     res["VECM"] = vb; irf_rows += ri; fevd_rows += rf
     rec.to_csv(out_dir / "beta_recursivo.csv", index=False, float_format="%.4f")
-    wb, ri, rf = var_block(Y, ex, a.B_irf, H, seed + 1, "VAR_diferencias", C.SPEC["max_lags_selection"])
+    wb, ri, rf = var_block(Y, ex, a.B_irf, H, seed + 1, "VAR_diferencias", C.SPEC["max_lags_selection"], p_forced=k)
     res["VAR_diferencias"] = wb; irf_rows += ri; fevd_rows += rf
     if "hip_tot" in nd.raw:   # robustez: total fincas (sin bandas)
         Yt = nd.system("hip_tot", "precio")

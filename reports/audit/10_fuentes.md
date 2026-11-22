@@ -190,3 +190,11 @@ Son proyecciones nacionales/zona euro: sirven como escenario exógeno (Euribor, 
 Hacienda "Tributación Autonómica 2026" (host inaccesible), AEAT, Notariado (penotariado.com 502), Registradores (ERI),
 Ministerio de Inclusión (403), FMI API (403), SEPE/Seguridad Social/OCDE/Catastro (no necesarios para las 14 variables),
 tipos de Murcia, Castilla-La Mancha, forales, AJD Cataluña y La Rioja, aranceles notariales/registrales e IVA.
+
+## 9. Verificación solicitada por coordinación: AI Act (Banca)
+Afirmación: "el Reglamento (UE) 2026/1744 aplaza al 2/12/2027 las obligaciones de alto riesgo del anexo III del AI Act".
+**Verificado en EUR-Lex** (https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32026R1744, consultado 2026-11-22):
+Reglamento (UE) 2026/1744 de 8 de julio de 2026 ("Ómnibus digital sobre IA"), modifica el Reglamento (UE) 2024/1689.
+El texto indica: "procede fijar la fecha de aplicación del capítulo III, secciones 1, 2 y 3 el 2 de diciembre de 2027 en el caso
+de los sistemas de IA clasificados como de alto riesgo en virtud del artículo 6, apartado 2, y el anexo III" (y 2 de agosto de 2028
+para los del anexo I). Nota: la cita procede de un considerando; no se revisó el artículo dispositivo concreto que modifica el art. 113.
