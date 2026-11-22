@@ -34,7 +34,7 @@ export function Econometrics() {
 
   return (
     <Section id="econometria" num={7} kicker="Modelos estructurales" title="Econometría"
-      lead="Relación de largo plazo entre hipotecas, precio, renta, Euríbor y costes de construcción (VECM con rango contrastado por bootstrap), con VAR en diferencias como sensibilidad y modelos de panel provincial.">
+      lead="Dinámica conjunta entre hipotecas, precio, renta, Euríbor y costes de construcción. Modelo principal: VAR en diferencias. El VECM (rango contrastado por bootstrap) se presenta como análisis de sensibilidad porque la cointegración no es concluyente, y el panel provincial como complemento exploratorio.">
       {idx.loading ? <Loading /> : !mainJson ? (
         <Pending what="Resultados econométricos" expected={['artifacts/econometrics/*.json', 'artifacts/econometrics/irf_*.csv']} />
       ) : !d ? <Loading /> : (

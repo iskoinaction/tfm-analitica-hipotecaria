@@ -68,7 +68,7 @@ export function Results() {
             </>) : <Pending what="Resultados de predicción" expected={['artifacts/demand/*_metricas.csv']} />}
           </Card>
           <Card title="Proyección 2030" className="card--flat">
-            {end ? <p className="small">Escenario base, España, hipotecas sobre vivienda en 2030: <strong className="num">{fmtNum(end.v, 0)}</strong> en el año (suma de {end.n} trimestres; banda p10–p90 por trimestre sumada: {fmtNum(end.lo, 0)} – {fmtNum(end.hi, 0)}, indicativa). Es una proyección condicionada a supuestos, no una predicción.</p>
+            {end ? <p className="small">Escenario base, España, hipotecas sobre vivienda en 2030: <strong className="num">{fmtNum(end.v, 0)}</strong> en el año (suma de {end.n} trimestres; no se muestra banda anual: sumar cuantiles trimestrales no da un intervalo válido del total). Es una proyección condicionada a supuestos, no una predicción.</p>
               : <Pending what="Proyecciones 2026–2030" expected={['data/forecasts/proyecciones_*.csv']} />}
           </Card>
           <Card title="Producto" className="card--flat">
@@ -86,7 +86,7 @@ export function Limitations() {
     ['Asociación, no causalidad', 'Las respuestas a impulso y la descomposición de varianza dependen de la identificación elegida; no prueban efectos causales.'],
     ['Muestra corta y rupturas', 'La muestra econométrica (≈ 86 trimestres) incluye crisis y cambios regulatorios; hay diagnósticos con rechazos (estacionalidad, rupturas).'],
     ['Sin cointegración robusta', 'El contraste bootstrap no rechaza ausencia de cointegración: el VECM es solo una sensibilidad.'],
-    ['Predicción modesta', 'Frente a la persistencia, la mejora de los modelos es limitada y varía por horizonte; los intervalos son empíricos del backtest.'],
+    ['Predicción modesta', 'En el hold-out ningún modelo elegible por la regla pre-especificada mejora a la persistencia (naive); el valor está en los escenarios condicionales, no en la predicción puntual. Los intervalos son empíricos y quedan estrechos a h≥4.'],
     ['Escenarios = supuestos', 'Las sendas de Euríbor y paro proceden de documentos de organismos o de sensibilidades propias; no son predicciones.'],
     ['Datos provisionales', 'Los últimos periodos del INE son provisionales y pueden revisarse; la fecha de publicación es una aproximación.'],
     ['Precio de vivienda', 'Se usa el valor tasado MIVAU (no el precio de cierre). Una serie privada previa no se publica por sus condiciones de uso.'],
