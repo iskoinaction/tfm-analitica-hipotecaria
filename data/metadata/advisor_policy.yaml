@@ -1,0 +1,53 @@
+# Parámetros de política del simulador hipotecario (Atalaya · Analítica Hipotecaria)
+# ============================================================================================
+# TODOS LOS VALORES SON ILUSTRATIVOS Y CONFIGURABLES. NO SON LÍMITES LEGALES.
+# En España no existe un límite legal de DSTI, LTV, LTI ni de edad al vencimiento para el crédito hipotecario a
+# consumidores. La normativa exige EVALUAR LA SOLVENCIA (Ley 5/2019 art. 11; Orden EHA/2899/2011 art. 18;
+# Circular BdE 5/2012) con métricas y análisis de sensibilidad (EBA/GL/2020/06, sección 5.2 y anexo 2).
+# El Banco de España puede fijar límites a la concesión (LTV, LTI, DSTI, plazo) en virtud del RDL 22/2018 y la
+# Circular 5/2021 (https://www.bde.es/wbe/es/areas-actuacion/politica-macroprudencial/herramientas-macroprudenciales/limites-condiciones-concesion-prestamos/);
+# a la fecha de esta versión no se ha localizado ninguna activación publicada (verificar antes de cualquier uso real).
+# Propietario: asesor (src/advisor). Lo consume src/advisor/engine.py.
+version: "2026-11-22"
+naturaleza: "ILUSTRATIVO — parámetros de un simulador académico, no política de riesgos de ninguna entidad"
+
+dsti:
+  referencia: 0.35            # cuota(s) / ingresos netos; semáforo verde hasta aquí
+  esfuerzo_elevado: 0.40      # por encima: rojo ("esfuerzo elevado"); entre ambos: ámbar
+  base: >-
+    Práctica de mercado (umbral orientativo habitual 30-40 %). Sin base legal en España. EBA/GL/2020/06 pide medir el
+    DSTI y fijar límites internos; RDL 22/2018 + Circular BdE 5/2021 habilitan límites macroprudenciales (no activados
+    según lo consultado).
+estres:
+  incremento_tipo_pp: 3.0     # se aplica a variable y al tramo variable de las mixtas
+  aplica_a: ["variable", "mixto"]
+  base: >-
+    EBA/GL/2020/06 (sección 5.2): la evaluación de solvencia debe considerar escenarios adversos, incluido el aumento
+    del tipo de interés en préstamos a tipo variable. La magnitud (+3 pp) es un supuesto ilustrativo del proyecto.
+edad:
+  maxima_al_vencimiento: 75
+  base: "Práctica de mercado. No es un límite legal. EBA/GL/2020/06 pide considerar la evolución de los ingresos tras la jubilación."
+plazo:
+  maximo_anios: 30
+  minimo_anios: 5
+  base: "Práctica de mercado (plazo máximo habitual 30 años). No es un límite legal."
+ltv:
+  referencia: 0.80            # capital / min(precio, tasación)
+  base: >-
+    Práctica de mercado ligada a la elegibilidad como cobertura de bonos garantizados y al tratamiento prudencial;
+    no es límite legal para el consumidor. Valor de tasación conforme a la Orden ECO/805/2003; la LCCI (art. 13 y 14)
+    regula la tasación y su aportación.
+lti:
+  referencia: 6.0             # capital / ingresos netos anuales: aviso si se supera
+  base: "Orientativo. EBA/GL/2020/06 (anexo 2) incluye el LTI entre las métricas de concesión; no existe umbral legal en España."
+gastos_supuestos:
+  tasacion_eur: 400           # SUPUESTO ilustrativo editable (sin tarifa oficial: pedir presupuesto a una sociedad de tasación)
+  gestoria_compraventa_eur: 0 # opcional; la gestoría del PRÉSTAMO la paga el banco (LCCI art. 14.1.e)
+  base: "Supuestos editables por el usuario; no proceden de ninguna tarifa oficial."
+mercado:
+  ventana_trimestres: 4       # rango del estimador de tipo de mercado: últimos 4 trimestres publicados
+  mixto_anios_fijos_por_defecto: 5
+semaforo:
+  verde: "DSTI (estresado si aplica) <= referencia"
+  ambar: "referencia < DSTI <= esfuerzo_elevado"
+  rojo: "DSTI > esfuerzo_elevado, o ingresos insuficientes"

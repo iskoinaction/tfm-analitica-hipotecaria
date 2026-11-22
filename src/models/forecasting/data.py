@@ -176,11 +176,11 @@ def _national_from_panel(panel: pd.DataFrame, nat_hip: pd.DataFrame | None) -> p
 
 
 V2_PANEL_COLS = {"hip_viv": "hipotecas_viviendas_num", "hip_tot": "hipotecas_fincas_total_num",
-                 "precio": "precio_m2_tinsa", "paro": "tasa_paro", "euribor": "euribor_12m", "ipc": "ipc_var_anual",
+                 "precio": "precio_m2_mivau_tasado", "precio_tinsa": "precio_m2_tinsa", "paro": "tasa_paro", "euribor": "euribor_12m", "ipc": "ipc_var_anual",
                  "transmisiones": "compraventas_viviendas_num"}
 V2_ANNUAL_COLS = {"pib_pc": "pib_pc", "poblacion": "poblacion", "pob_ext": "poblacion_extranjera"}
 V2_NATIONAL_COLS = {"hip_viv": "hipotecas_viviendas_num", "hip_tot": "hipotecas_fincas_total_num",
-                    "precio": "precio_m2_tinsa_pond_pob", "paro": "tasa_paro", "euribor": "euribor_12m",
+                    "precio": "precio_m2_mivau_tasado", "paro": "tasa_paro", "euribor": "euribor_12m",
                     "ipc": "ipc_var_anual", "transmisiones": "compraventas_viviendas_num", "poblacion": "poblacion_ecp"}
 
 
@@ -190,7 +190,8 @@ def _load_v2(colmap: dict | None = None) -> Inputs:
     cm = colmap or V2_PANEL_COLS
     panel = pd.DataFrame({"prov_code": df["prov_code"].astype(str).str.zfill(2), "period": to_period(df["period"])})
     for k, c in cm.items():
-        panel[k] = pd.to_numeric(df[c], errors="coerce").values
+        if c in df.columns:
+            panel[k] = pd.to_numeric(df[c], errors="coerce").values
     da = pd.read_csv(C.PANEL_ANUAL_V2, dtype={"prov_code": str})
     annual = pd.DataFrame({"prov_code": da["prov_code"].astype(str).str.zfill(2), "year": da["year"].astype(int)})
     for k, c in V2_ANNUAL_COLS.items():
@@ -201,12 +202,13 @@ def _load_v2(colmap: dict | None = None) -> Inputs:
     dn = pd.read_csv(C.NATIONAL_V2)
     national = pd.DataFrame(index=to_period(dn["period"]))
     for k, c in V2_NATIONAL_COLS.items():
-        national[k] = pd.to_numeric(dn[c], errors="coerce").values
+        if c in dn.columns:
+            national[k] = pd.to_numeric(dn[c], errors="coerce").values
     national = national[~national.index.duplicated()].sort_index()
     inputs = [{"path": _rel(p), "sha256": sha256(p)} for p in (C.PANEL_V2, C.PANEL_ANUAL_V2, C.NATIONAL_V2)]
     inputs[0]["colmap"], inputs[1]["colmap"], inputs[2]["colmap"] = cm, V2_ANNUAL_COLS, V2_NATIONAL_COLS
     notes = ["v2 (Data Engineering): hipotecas INE (viviendas y total fincas, parseo correcto), compraventas de "
-             "viviendas INE, Tinsa, EPA (paro nacional oficial en el agregado), BCE (Euribor 12M), IPC INE.",
+             "viviendas INE, precio m2 = valor tasado MIVAU (Tinsa solo como legado), EPA (paro nacional oficial en el agregado), BCE (Euribor 12M), IPC INE.",
              "Variables anuales (PIB_pc, poblacion, poblacion extranjera) desde panel_anual.csv, sin replicar."]
     return Inputs(panel, annual, national, "v2", inputs, notes)
 
