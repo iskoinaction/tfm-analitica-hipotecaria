@@ -32,7 +32,7 @@ Auditoría realizada por un equipo de especialistas (fuentes, ingeniería de dat
 
 ## 4. Evaluación del tribunal (auditor académico)
 Puntuación estimada por eje (0–10): calidad de datos 8 · ingeniería de datos 8 · econometría 8 · estadística 7,5 · machine learning 7 · aplicación bancaria 6,5 · asesor hipotecario 7 · desarrollo tecnológico 8 · visualización 7,5 · rigor académico 8 · originalidad 7 · reproducibilidad 6,5 (antes de escribir esta documentación). **Nota global estimada: 7,6**; ≈ 8,3 si se cierran la documentación (hecha en este commit), los notebooks v1 (marcados como histórico) y la ejecución del workflow en GitHub. Las puntuaciones son del agente evaluador y no se han inflado; el tribunal real puede discrepar.
-**Fortalezas:** autocrítica cuantificada (R² 0,997 → ≈0,30; ajuste 44 % → +0,045 no significativo); protocolo pre-especificado con hold-out; escenarios etiquetados como supuestos; seguridad y pruebas (181).
+**Fortalezas:** autocrítica cuantificada (R² 0,997 → ≈0,30; ajuste 44 % → +0,045 no significativo); protocolo pre-especificado con hold-out; escenarios etiquetados como supuestos; seguridad y pruebas (173).
 **Debilidades:** los notebooks siguen siendo la v1; panel provincial y business case de la app «pendientes»; hold-out con n = 16; asesor sin datos reales de entidad; workflow sin ejecutar.
 **Riesgos metodológicos:** cointegración frágil (T = 83); coeficientes que cambian de signo entre v1 y v2; demanda provincial top-down; mejor modelo a h = 8 (media móvil) es un hallazgo *a posteriori*; política del banco ilustrativa.
 

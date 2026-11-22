@@ -1,16 +1,15 @@
 {
-  "generado": "2026-11-22T15:33:29",
+  "generado": "2026-11-22T16:21:16",
   "datos": {
     "source": "v2",
     "inputs": [
       {
         "path": "data/processed/panel_trimestral.csv",
-        "sha256": "c0333e31fcf117197e31588e4fab83157293d3123dd5c7db85b33fc53b08a6da",
+        "sha256": "27b21bdd4dbd0aae0b84e12419b8ca36e5f7050fca666459f30b664795839c2e",
         "colmap": {
           "hip_viv": "hipotecas_viviendas_num",
           "hip_tot": "hipotecas_fincas_total_num",
           "precio": "precio_m2_mivau_tasado",
-          "precio_tinsa": "precio_m2_tinsa",
           "paro": "tasa_paro",
           "euribor": "euribor_12m",
           "ipc": "ipc_var_anual",
@@ -28,7 +27,7 @@
       },
       {
         "path": "data/processed/nacional_trimestral.csv",
-        "sha256": "ab804639d39e6ade7d5c165f2ab1fe61f929f04bb32cf7f7d6ca38ed4a0256bc",
+        "sha256": "c55652d87957910601ebba0fcf146b353e74e7e4f4e065e3084848463993d9e8",
         "colmap": {
           "hip_viv": "hipotecas_viviendas_num",
           "hip_tot": "hipotecas_fincas_total_num",
@@ -42,7 +41,7 @@
       }
     ],
     "notes": [
-      "v2 (Data Engineering): hipotecas INE (viviendas y total fincas, parseo correcto), compraventas de viviendas INE, precio m2 = valor tasado MIVAU (Tinsa solo como legado), EPA (paro nacional oficial en el agregado), BCE (Euribor 12M), IPC INE.",
+      "v2 (Data Engineering): hipotecas INE (viviendas y total fincas, parseo correcto), compraventas de viviendas INE, precio m2 = valor tasado MIVAU, EPA (paro nacional oficial en el agregado), BCE (Euribor 12M), IPC INE.",
       "Variables anuales (PIB_pc, poblacion, poblacion extranjera) desde panel_anual.csv, sin replicar."
     ],
     "panel_period_range": [
@@ -66,7 +65,7 @@
   },
   "escenarios_yaml": {
     "path": "data/metadata/escenarios_macro.yaml",
-    "sha256": "bc261ae3b54324637226e5eef29f53f591bea8c215bf25a41c68a9c8f492f3ea",
+    "sha256": "c76c13a2c9508e736762784a3177ed6bfc32223189828fcdfbb764be886a2356",
     "version": "2026-11-21"
   },
   "protocolo": {

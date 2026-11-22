@@ -24,7 +24,7 @@ python -m src.pipelines.update_all                             # descarga, valid
 python -m src.pipelines.build_master --from-raw                # reconstruir paneles sin red
 python -m src.models.econometrics.run                          # econometría -> artifacts/econometrics/
 python -m src.pipelines.generate_forecasts                     # proyecciones y demanda (~15 min)
-python -m pytest -q tests                                      # 179 pruebas
+python -m pytest -q tests                                      # 173 pruebas
 ATALAYA_ENV=development python -m flask --app Web/wsgi:app run -p 8100   # app (ver Web/README.md)
 cd site && npm ci && npm run sync-data && npm run build        # web de presentación
 ```
