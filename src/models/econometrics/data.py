@@ -187,10 +187,22 @@ def load_national_provisional() -> NationalData:
     return NationalData(raw=raw, source="provisional_v1fix", inputs=inputs, notes=notes)
 
 
+def _mivau_column(cols):
+    """Columna de valor tasado MIVAU (prefijo acordado ``precio_m2_mivau_tasado``); preferir la ponderada."""
+    c = [x for x in cols if str(x).startswith("precio_m2_mivau_tasado")]
+    if not c:
+        return None
+    pond = [x for x in c if "pond" in x]
+    return sorted(pond or c, key=len)[0]
+
+
 def load_national_v2(path: Path = C.NATIONAL_V2, colmap: dict | None = None) -> NationalData:
     df = pd.read_csv(path)
     if colmap is None and all(c in df.columns for c in C.V2_NATIONAL_COLMAP.values()):
         colmap = dict(C.V2_NATIONAL_COLMAP)
+        mv = _mivau_column(df.columns)
+        if mv:
+            colmap["precio_mivau"] = mv
     cm = colmap or resolve_columns(df, NATIONAL_RULES, ["period", "euribor", "materiales"])
     raw = pd.DataFrame(index=to_period(df[cm["period"]]))
     for k, c in cm.items():
@@ -244,12 +256,15 @@ class PanelData:
     notes: list
 
 
-def load_panel(prefer: str = "auto", colmap: dict | None = None) -> PanelData:
+def load_panel(prefer: str = "auto", colmap: dict | None = None, price: str = "precio") -> PanelData:
     src = C.PANEL_MODELADO_V2 if C.PANEL_MODELADO_V2.exists() else C.PANEL_V2
     if prefer in ("auto", "v2") and src.exists():
         df = pd.read_csv(src, dtype={"prov_code": str})
         if colmap is None and all(c in df.columns for c in C.V2_PANEL_COLMAP.values()):
             colmap = dict(C.V2_PANEL_COLMAP)
+            mv = _mivau_column(df.columns)
+            if mv and price == "precio_mivau":
+                colmap["precio"] = mv
         cm = colmap or resolve_columns(df, PANEL_RULES, ["prov_code", "period", "precio", "euribor", "materiales"])
         out = pd.DataFrame({"prov_code": df[cm["prov_code"]].astype(str).str.zfill(2),
                             "period": to_period(df[cm["period"]])})

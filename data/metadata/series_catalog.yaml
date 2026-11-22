@@ -365,56 +365,56 @@
     descripcion: Tasa de paro EPA (ambos sexos).
 - dataset: ine_ipc
   fuente: ine
-  tabla_o_clave: '50913'
+  tabla_o_clave: '76136'
   frecuencia: M
   operacion_ine: IPC
-  metodologia: IPC base 2021 (series enlazadas por el INE).
+  metodologia: IPC base 2025 (tabla vigente 76136, series enlazadas por el INE desde 2002; sin empalmes propios).
   retraso_publicacion: ≈2 semanas tras el mes
   url_documentacion: https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&cid=1254736176802
   opcional: false
-  ultima_modificacion_origen: null
-  fecha_extraccion: '2026-11-21T19:13:21Z'
+  ultima_modificacion_origen: Fri Nov 13 09:00:00 CET 2026
+  fecha_extraccion: '2026-11-22T00:25:01Z'
   series_ids:
-  - IPC251852
-  - IPC251856
-  - IPC255462
-  - IPC255465
-  - IPC255516
-  - IPC255519
-  - IPC255570
-  - IPC255573
-  - IPC255624
-  - IPC255627
-  - IPC255678
-  - IPC255681
-  - IPC255732
-  - IPC255735
-  - IPC255786
-  - IPC255789
-  - IPC255840
-  - IPC255843
-  - IPC255894
-  - IPC255897
-  - IPC255948
-  - IPC255951
-  - IPC256002
-  - IPC256005
-  - IPC256056
-  - IPC256059
-  - IPC256110
-  - IPC256113
-  - IPC256164
-  - IPC256167
-  - IPC256217
-  - IPC256220
-  - IPC256271
-  - IPC256274
-  - IPC256325
-  - IPC256328
-  - IPC256379
-  - IPC256382
-  - IPC256433
-  - IPC256436
+  - IPC290750
+  - IPC290751
+  - IPC293603
+  - IPC293604
+  - IPC293659
+  - IPC293660
+  - IPC293715
+  - IPC293716
+  - IPC293771
+  - IPC293772
+  - IPC293827
+  - IPC293828
+  - IPC293883
+  - IPC293884
+  - IPC293939
+  - IPC293940
+  - IPC293995
+  - IPC293996
+  - IPC294051
+  - IPC294052
+  - IPC294107
+  - IPC294108
+  - IPC294163
+  - IPC294164
+  - IPC294219
+  - IPC294220
+  - IPC294275
+  - IPC294276
+  - IPC294331
+  - IPC294332
+  - IPC294387
+  - IPC294388
+  - IPC294443
+  - IPC294444
+  - IPC294499
+  - IPC294500
+  - IPC294555
+  - IPC294556
+  - IPC294611
+  - IPC294612
   vintages: 'No disponibles vía API: el INE/BCE solo sirven la última versión; cada snapshot raw es nuestro vintage. El INE marca cada dato como
     Provisional/Definitivo/Avance (columna status).'
   fecha_referencia_vs_publicacion: ref_date = periodo de referencia; la fecha de publicación no la da la API (se aproxima con retraso_publicacion)
@@ -430,7 +430,7 @@
       Índices y Tasas: Variación anual
     descripcion: IPC índice general, variación anual (media de los meses del trimestre). Ámbito CCAA.
   - nombre: ipc_indice
-    unidad: índice base 2021=100
+    unidad: índice base 2025=100
     agregacion_trimestral: mean
     rango_valido:
     - 40
@@ -438,7 +438,7 @@
     filtro_origen:
       Grupos ECOICOP: Índice general
       Índices y Tasas: Índice
-    descripcion: IPC índice general (base 2021), media trimestral. Ámbito CCAA.
+    descripcion: IPC índice general (base 2025), media trimestral. Ámbito CCAA.
 - dataset: ine_ecp_poblacion
   fuente: ine
   tabla_o_clave: '59591'
@@ -882,7 +882,7 @@
     descripcion: PIB trimestral en volumen encadenado (ajustado).
 - dataset: ine_tasa_ahorro
   fuente: ine
-  tabla_o_clave: SERIE:CTNFSI11271
+  tabla_o_clave: SERIE:CTNFSI11271,CTNFSI11270
   frecuencia: Q
   operacion_ine: CTNFSI
   metodologia: Cuentas Trimestrales no Financieras de los Sectores Institucionales.
@@ -890,8 +890,9 @@
   url_documentacion: null
   opcional: false
   ultima_modificacion_origen: null
-  fecha_extraccion: '2026-11-21T19:11:55Z'
+  fecha_extraccion: '2026-11-22T00:25:21Z'
   series_ids:
+  - CTNFSI11270
   - CTNFSI11271
   vintages: 'No disponibles vía API: el INE/BCE solo sirven la última versión; cada snapshot raw es nuestro vintage. El INE marca cada dato como
     Provisional/Definitivo/Avance (columna status).'
@@ -904,7 +905,15 @@
     - -30
     - 40
     filtro_origen: {}
-    descripcion: Tasa de ahorro de hogares e ISFLSH, no ajustada (CTNFSI).
+    descripcion: Tasa de ahorro de hogares e ISFLSH, serie original no ajustada (CTNFSI11271).
+  - nombre: tasa_ahorro_hogares_sa
+    unidad: '% de la renta disponible'
+    agregacion_trimestral: none
+    rango_valido:
+    - -30
+    - 40
+    filtro_origen: {}
+    descripcion: Tasa de ahorro de hogares e ISFLSH, ajustada de estacionalidad y calendario (CTNFSI11270).
 - dataset: ine_mano_obra
   fuente: ine
   tabla_o_clave: '8377'
@@ -1006,15 +1015,42 @@
     filtro_origen:
       key: MIR/M.ES.B.A2C.A.R.A.2250.EUR.N
     descripcion: Tipo sin comisiones (AAR/NDER) de nuevas operaciones de préstamos a hogares para vivienda, España.
+- dataset: mivau_valor_tasado
+  fuente: mivau
+  tabla_o_clave: VDP006_01
+  frecuencia: Q
+  operacion_ine: null
+  metodologia: Estadística de Valor Tasado de Vivienda (IOE 20007), Ministerio de Vivienda y Agenda Urbana.
+  retraso_publicacion: ≈2,5 meses
+  url_documentacion: https://datos.gob.es/apidata/catalog/dataset/e05233601-valor-tasado-de-la-vivienda.json
+  opcional: false
+  ultima_modificacion_origen: Thu, 17 Sep 2026 14:46:28 GMT
+  fecha_extraccion: '2026-11-22T00:24:47Z'
+  series_ids:
+  - VDP006_01
+  vintages: 'No disponibles vía API: el INE/BCE solo sirven la última versión; cada snapshot raw es nuestro vintage. El INE marca cada dato como
+    Provisional/Definitivo/Avance (columna status).'
+  fecha_referencia_vs_publicacion: ref_date = periodo de referencia; la fecha de publicación no la da la API (se aproxima con retraso_publicacion)
+  variables:
+  - nombre: precio_m2_mivau_tasado
+    unidad: €/m²
+    agregacion_trimestral: none
+    rango_valido:
+    - 300
+    - 8000
+    filtro_origen:
+      Régimen: Libre
+    descripcion: Valor tasado medio de vivienda libre €/m² (MIVAU, todas las tasaciones). Alternativa oficial a Tinsa.
 - dataset: tinsa_precio
   fuente: tinsa
   tabla_o_clave: legacy_v1_csv
   frecuencia: Q
   operacion_ine: null
-  metodologia: Tinsa IMIE General y Grandes Mercados. Por defecto se reutiliza el CSV v1 (snapshot sin fecha); el scraping es opcional.
+  metodologia: 'Tinsa IMIE General y Grandes Mercados. Por defecto se reutiliza el CSV v1 (snapshot sin fecha); el scraping es opcional y está
+    desactivado: las condiciones de uso de tinsa.es prohíben la explotación sin autorización (10_source_catalog.yaml).'
   retraso_publicacion: ≈1 mes
   url_documentacion: https://www.tinsa.es/precio-vivienda/
-  opcional: false
+  opcional: true
   ultima_modificacion_origen: null
   fecha_extraccion: 'desconocida: CSV generado en v1 por tinsa_scraper.py sin fecha'
   series_ids:

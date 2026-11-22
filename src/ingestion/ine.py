@@ -71,7 +71,7 @@ class INEConnector(Connector):
 
     def select_series(self, spec) -> list[dict]:
         if spec.ref.startswith("SERIE:"):
-            return [{"COD": spec.ref.split(":", 1)[1]}]
+            return [{"COD": c} for c in spec.ref.split(":", 1)[1].split(",")]
         cat, _ = http.get(f"{config.INE_BASE}/DATOS_TABLA/{spec.ref}", params={"nult": 1, "tip": "AM"})
         if not isinstance(cat, list) or not cat:
             raise http.HttpError(f"Catálogo vacío o inesperado para tabla {spec.ref}: {str(cat)[:120]}")
@@ -113,7 +113,10 @@ class INEConnector(Connector):
     def parse(self, payload, spec, snapshot_meta) -> pd.DataFrame:
         rows = []
         for cod, s in payload["series"].items():
-            vs = match_variable(s, spec) if not spec.ref.startswith("SERIE:") else spec.variables[0]
+            if spec.ref.startswith("SERIE:"):  # series explícitas: variables en el mismo orden que los códigos
+                vs = spec.variables[spec.ref.split(":", 1)[1].split(",").index(cod)]
+            else:
+                vs = match_variable(s, spec)
             if vs is None:
                 continue
             geo = geo_of(s, spec.geo_vars) or ("nacional", "00")

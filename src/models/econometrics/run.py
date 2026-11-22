@@ -220,6 +220,8 @@ def main(argv=None):
     ap.add_argument("--prefer", default="auto", choices=["auto", "v2", "provisional"])
     ap.add_argument("--B-rank", type=int, default=C.SPEC["bootstrap_B_rank"])
     ap.add_argument("--B-irf", type=int, default=C.SPEC["bootstrap_B_irf"])
+    ap.add_argument("--price", default="auto", choices=["auto", "mivau", "tinsa"],
+                    help="precio principal: auto = MIVAU valor tasado si existe (decisión del coordinador), si no Tinsa")
     ap.add_argument("--quick", action="store_true", help="B pequeños, sin panel (para pruebas)")
     ap.add_argument("--no-panel", action="store_true")
     ap.add_argument("--out", default=str(C.ARTIFACTS))
@@ -231,12 +233,20 @@ def main(argv=None):
     H, seed = C.SPEC["horizon"], C.SEED
 
     nd = D.load_national(a.prefer)
-    Y = nd.system("hip_viv", "precio")
+    has_mivau = "precio_mivau" in nd.raw and nd.raw["precio_mivau"].notna().sum() >= 60
+    if a.price == "mivau" and not has_mivau:
+        raise SystemExit("--price mivau pedido pero no hay columna precio_m2_mivau_tasado* con >= 60 trimestres")
+    PRICE = "precio_mivau" if (a.price == "mivau" or (a.price == "auto" and has_mivau)) else "precio"
+    PRICE_ROB = "precio" if PRICE == "precio_mivau" else ("precio_mivau" if has_mivau else None)
+    Y = nd.system("hip_viv", PRICE)
     ex = exog_matrix(Y.index)
     res = {"metadatos": {
         "generado": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
         "fuente_datos": nd.source, "provisional": nd.source != "v2", "entradas": nd.inputs, "notas_datos": nd.notes,
         "mapeo_columnas": nd.colmap, "especificacion": C.SPEC, "semilla": seed,
+        "precio_principal": {"precio": "Tinsa IMIE ponderado por población (PROVISIONAL: pendiente valor tasado MIVAU)",
+                             "precio_mivau": "Valor tasado MIVAU"}[PRICE],
+        "precio_robustez": PRICE_ROB,
         "muestra": [str(Y.index[0]), str(Y.index[-1])], "T": len(Y), "variables": list(Y.columns),
         "orden_cholesky_referencia": list(Y.columns),
         "versiones": {"python": platform.python_version(), "numpy": np.__version__, "pandas": pd.__version__,
@@ -297,14 +307,14 @@ def main(argv=None):
             ("k=1 (BIC-1, residuos autocorrelacionados)", Y, ex, 1, 3),
             ("sin_impulsos", Y, D.seasonal_dummies(Y.index), k, 3)]
     if "hip_tot" in nd.raw:
-        Yt = nd.system("hip_tot", "precio")
+        Yt = nd.system("hip_tot", PRICE)
         grid.append(("hip_total_fincas", Yt, exog_matrix(Yt.index), k, 3))
     if "precio_ipv" in nd.raw and nd.raw["precio_ipv"].notna().sum() > 30:
         Yi = nd.system("hip_viv", "precio_ipv")
         grid.append(("precio_ipv", Yi, exog_matrix(Yi.index), k, 3))
-    if "precio_tasado" in nd.raw and nd.raw["precio_tasado"].notna().sum() > 30:
-        Yv = nd.system("hip_viv", "precio_tasado")
-        grid.append(("precio_valor_tasado", Yv, exog_matrix(Yv.index), k, 3))
+    if PRICE_ROB:
+        Yv = nd.system("hip_viv", PRICE_ROB)
+        grid.append((f"precio_robustez_{PRICE_ROB}", Yv, exog_matrix(Yv.index), k, 3))
     for nm, Yg, eg, kg, cg in grid:
         r = rank_tests(Yg.values, kg, cg, eg.values, B=Bs, seed=seed)
         sens[nm] = {"muestra": [str(Yg.index[0]), str(Yg.index[-1])], "T_efectiva": r["T_efectiva"], "B": Bs,
@@ -322,7 +332,7 @@ def main(argv=None):
     wb, ri, rf = var_block(Y, ex, a.B_irf, H, seed + 1, "VAR_diferencias", C.SPEC["max_lags_selection"], p_forced=k)
     res["VAR_diferencias"] = wb; irf_rows += ri; fevd_rows += rf
     if "hip_tot" in nd.raw:   # robustez: total fincas (sin bandas)
-        Yt = nd.system("hip_tot", "precio")
+        Yt = nd.system("hip_tot", PRICE)
         vt, _, _, _ = vecm_block(Yt, exog_matrix(Yt.index), k, 3, 0, H, seed, "VECM_total_fincas")
         res["robustez_total_fincas_VECM"] = {kk: vt[kk] for kk in ("beta_normalizado_hipotecas (log H = ...)",
                                                                     "beta_normalizado_precio (log P = ...)",
@@ -339,7 +349,7 @@ def main(argv=None):
     # 6. Panel
     if not a.no_panel:
         try:
-            res["panel"] = panel_block(D.load_panel(a.prefer), seed)
+            res["panel"] = panel_block(D.load_panel(a.prefer, price=PRICE), seed)
         except Exception as e:  # el panel es complementario: no bloquea
             res["panel"] = {"error": repr(e)}
 

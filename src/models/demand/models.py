@@ -100,8 +100,9 @@ class ConditionalOLS(ContextForecaster):
         paro_j = self.paro[j] if paro_j is None else paro_j
         r = {"d_eur": eur_t - eur_j, "d_paro": paro_t - paro_j,
              "gap_ma4": self.ly[j] - np.log(np.mean(self.y[j - 3:j + 1]))}
-        for k in (2, 3, 4):  # dummies centradas: sin constante no imponen deriva
-            r[f"q{k}"] = (1.0 if period_t.quarter == k else 0.0) - 0.25
+        po = self.idx[j]
+        for k in (2, 3, 4):  # estacionalidad en niveles: D_k(objetivo) - D_k(origen); válida para cualquier h
+            r[f"q{k}"] = float(period_t.quarter == k) - float(po.quarter == k)
         return r if np.all(np.isfinite(list(r.values()))) else None
 
     def fit_h(self, pos, h):

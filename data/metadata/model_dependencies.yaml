@@ -45,6 +45,9 @@ poblacion:
 poblacion_extranjera:
 - demand.rf_provincial
 - forecasting.pob_ext
+precio_m2_mivau_tasado:
+- econometrics.robustness_price
+- forecasting.precio
 precio_m2_tinsa:
 - advisor.gbr_spread
 - econometrics.vecm
@@ -54,6 +57,8 @@ tae_vivienda:
 tasa_ahorro_hogares:
 - demand.rf_nacional
 - advisor.gbr_spread
+tasa_ahorro_hogares_sa:
+- econometrics.var
 tasa_paro:
 - demand.rf_provincial
 - advisor.gbr_spread

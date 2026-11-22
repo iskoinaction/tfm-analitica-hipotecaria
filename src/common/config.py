@@ -141,9 +141,11 @@ DATASETS: list[DatasetSpec] = [
                  "índice de volumen encadenado", "none", (50, 200), "PIB trimestral en volumen encadenado (ajustado).")),
         {}, "Contabilidad Nacional Trimestral.", "≈30 días (avance)", "CNTR2010", ""),
     DatasetSpec(
-        "ine_tasa_ahorro", "ine", "SERIE:CTNFSI11271", "Q", ("Total Nacional",),
+        "ine_tasa_ahorro", "ine", "SERIE:CTNFSI11271,CTNFSI11270", "Q", ("Total Nacional",),
         (VarSpec("tasa_ahorro_hogares", {}, "% de la renta disponible", "none", (-30, 40),
-                 "Tasa de ahorro de hogares e ISFLSH, no ajustada (CTNFSI)."),),
+                 "Tasa de ahorro de hogares e ISFLSH, serie original no ajustada (CTNFSI11271)."),
+         VarSpec("tasa_ahorro_hogares_sa", {}, "% de la renta disponible", "none", (-30, 40),
+                 "Tasa de ahorro de hogares e ISFLSH, ajustada de estacionalidad y calendario (CTNFSI11270).")),
         {}, "Cuentas Trimestrales no Financieras de los Sectores Institucionales.", "≈3 meses", "CTNFSI", ""),
     DatasetSpec(
         "ine_mano_obra", "ine", "8377", "M", ("Total Nacional",),
@@ -205,7 +207,7 @@ MODEL_DEPENDENCIES = {
     "euribor_12m": ["advisor.gbr_spread", "econometrics.var", "econometrics.vecm", "demand.rf_nacional"],
     "tae_vivienda": ["advisor.gbr_spread"],
     "tedr_vivienda": ["advisor.gbr_spread"],
-    "tasa_ahorro_hogares": ["demand.rf_nacional", "advisor.gbr_spread"],
+    "tasa_ahorro_hogares": ["demand.rf_nacional", "advisor.gbr_spread"], "tasa_ahorro_hogares_sa": ["econometrics.var"],
     "indice_mano_obra_construccion": ["demand.rf_provincial"],
     "indice_coste_construccion": ["econometrics.vecm", "demand.rf_provincial"],
     "pib_nominal_meur": ["econometrics.var"], "pib_volumen_indice": ["econometrics.var"],

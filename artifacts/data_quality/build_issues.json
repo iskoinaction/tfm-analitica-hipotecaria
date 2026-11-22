@@ -30,21 +30,14 @@
  {
   "check": "missing",
   "severity": "info",
+  "target": "panel_trimestral:precio_m2_mivau_tasado",
+  "detail": "1.5% NaN",
+  "n": 68
+ },
+ {
+  "check": "missing",
+  "severity": "info",
   "target": "panel_trimestral:precio_m2_tinsa",
-  "detail": "3.4% NaN",
-  "n": 154
- },
- {
-  "check": "missing",
-  "severity": "info",
-  "target": "panel_trimestral:ipc_indice",
-  "detail": "3.4% NaN",
-  "n": 154
- },
- {
-  "check": "missing",
-  "severity": "info",
-  "target": "panel_trimestral:ipc_var_anual",
   "detail": "3.4% NaN",
   "n": 154
  },
@@ -66,6 +59,13 @@
   "check": "missing",
   "severity": "info",
   "target": "panel_trimestral:tasa_ahorro_hogares",
+  "detail": "1.1% NaN",
+  "n": 50
+ },
+ {
+  "check": "missing",
+  "severity": "info",
+  "target": "panel_trimestral:tasa_ahorro_hogares_sa",
   "detail": "1.1% NaN",
   "n": 50
  },

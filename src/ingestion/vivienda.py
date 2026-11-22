@@ -31,7 +31,9 @@ def parse_vdp006(raw: bytes, var: str = "precio_m2_mivau_tasado", unit: str = "â
     for r in d.itertuples(index=False):
         prov, ca = str(r.Provincia).strip(), str(r.ccaa).strip()
         cpro = str(r.CPRO).strip()
-        if prov == "Total CCAA":
+        if prov == "Total CCAA" and ca.lower().startswith("total nacional"):
+            geo = ("nacional", "00")
+        elif prov == "Total CCAA":
             try:
                 cc = ccaa_code(ca)
             except KeyError:
