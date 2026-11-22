@@ -44,6 +44,3 @@ articles.csv
 # Cachés de descargas de auditoría
 reports/audit/**/cache/
 
-# Tinsa: sus condiciones de uso prohíben la explotación; no se versionan nuevas copias (v2)
-data/raw/tinsa/
-data/staging/tinsa_precio.csv

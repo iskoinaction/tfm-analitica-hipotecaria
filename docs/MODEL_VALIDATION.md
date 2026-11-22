@@ -41,4 +41,4 @@ Escenarios base/adverso/favorable con supuestos en `data/metadata/escenarios_mac
 Motor determinista: 18 vectores de prueba (`artifacts/advisor/test_vectors.json`) reproducidos por el motor Python y por la versión TypeScript de la web. Fiscalidad: 38 de 45 reglas verificadas contra el BOE; las 7 restantes figuran como no verificadas y la interfaz lo advierte. Resultado negativo documentado: el GradientBoosting de la v1 daba un error de 0,380 pp frente a 0,200 pp de usar el último dato publicado, y su R² de 0,997 (validación con filas mezcladas) caía a ≈ 0,30 con una partición temporal real.
 
 ## 5. Tests
-`python -m pytest -q tests` → 179 pruebas (geografía, ingestión y validación de datos, econometría, forecasting, demanda, asesor, rutas y seguridad de la app, ausencia de marca CaixaBank y de datos de Tinsa en la app). La web: `cd site && npm test` (23 pruebas).
+`python -m pytest -q tests` → 179 pruebas (geografía, ingestión y validación de datos, econometría, forecasting, demanda, asesor, rutas y seguridad de la app, ausencia de marca CaixaBank y de series no autorizadas en la app). La web: `cd site && npm test` (23 pruebas).

@@ -11,10 +11,8 @@ export function StatusView() {
   const { manifest } = useApp();
   const qa = useJSON<ArtifactItem[]>(slotIndex(manifest, 'artifacts:data_quality'));
   const issuesItem = artifactFile(qa.data, /^build_issues\.json$/);
-  const v1v2Item = artifactFile(qa.data, /^v1_vs_v2\.(csv|json)$/);
   const reportItem = (qa.data ?? []).filter((i) => /^update_report.*\.json$/.test(i.name) && i.file).sort((a, b) => b.name.localeCompare(a.name))[0];
   const issues = useJSON<Issue[]>(issuesItem?.file);
-  const v1v2 = useJSON<Table>(v1v2Item?.file);
   const report = useJSON<Report>(reportItem?.file);
   const prov = useJSON<Table>(slotFile(manifest, 'provenance'));
   const slots = Object.entries(manifest?.slots ?? {});
@@ -37,7 +35,7 @@ export function StatusView() {
         <Card title="Snapshots de datos brutos" subtitle="Cada descarga se guarda con su huella; el cambio de huella delata una revisión en origen" source={<SourceLine manifest={manifest} slots={['provenance']} />}>
           {prov.loading ? <Loading /> : prov.data ? (
             <DataTable maxRows={20} table={{ columns: ['Conjunto', 'Fuente', 'Extracción', 'Series', 'Observaciones', 'sha256 (contenido)'],
-              rows: prov.data.rows.filter((r) => !/tinsa/i.test(String(r[0]))).map((r) => { const c = (n: string) => r[prov.data!.columns.indexOf(n)]; return [c('dataset'), String(c('fuente')).toUpperCase(), fmtDate(String(c('fecha_extraccion')), true), c('n_series'), c('n_obs'), String(c('sha256_contenido') ?? '').slice(0, 12) + '…']; }) }} />
+              rows: prov.data.rows.map((r) => { const c = (n: string) => r[prov.data!.columns.indexOf(n)]; return [c('dataset'), String(c('fuente')).toUpperCase(), fmtDate(String(c('fecha_extraccion')), true), c('n_series'), c('n_obs'), String(c('sha256_contenido') ?? '').slice(0, 12) + '…']; }) }} />
           ) : <Pending what="Procedencia" expected={['data/metadata/provenance.csv']} />}
         </Card>
         <div className="grid-2 grid-2--even">
@@ -53,9 +51,6 @@ export function StatusView() {
             ) : <Pending what="Controles de calidad" expected={['artifacts/data_quality/build_issues.json']} />}
           </Card>
         </div>
-        <Card title="Comparación v1 frente a v2" subtitle="Reconciliación de las series de la primera versión con el pipeline reproducible">
-          {v1v2.data ? <DataTable table={v1v2.data} maxRows={20} /> : v1v2.loading ? <Loading /> : <Pending what="Comparación v1/v2" expected={['artifacts/data_quality/v1_vs_v2.csv']} />}
-        </Card>
         <p><a className="btn btn--secondary" href="#portada" onClick={() => { window.location.hash = ''; }}>← Volver a la presentación</a></p>
       </div>
     </div>

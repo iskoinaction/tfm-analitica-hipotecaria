@@ -122,3 +122,13 @@ def test_no_caixabank_ni_tinsa_en_web():
             assert "caixa" not in low, f"rastro de CaixaBank en {f}"
             if f.suffix in {".html", ".js"}:
                 assert "tinsa" not in low, f"Tinsa en {f}"
+
+
+def test_no_tinsa_en_site_src():
+    """Guardia de licencia: ninguna fuente de la web de presentación (site/src, site/scripts) menciona Tinsa."""
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[1] / "site"
+    for sub in ("src", "scripts"):
+        for f in (root / sub).rglob("*"):
+            if f.is_file() and f.suffix in {".ts", ".tsx", ".js", ".mjs", ".css", ".html"}:
+                assert "tinsa" not in f.read_text(encoding="utf-8", errors="ignore").lower(), f"Tinsa en {f}"

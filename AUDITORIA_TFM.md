@@ -1,6 +1,6 @@
 # Auditoría del TFM y registro de cambios (v1 → v2)
 
-Auditoría realizada por un equipo de especialistas (fuentes, ingeniería de datos, estadística, econometría, data science, economía, banca, software y UX) con revisión posterior independiente (estadística/economía, banca/datos y auditor académico). Informes completos: `reports/audit/` (diagnóstico v1) y `reports/phase2/` (implementación y debate v2). Todas las cifras proceden de scripts ejecutados; el repositorio conserva la v1 (`notebooks acabados/`, `Datos *`, `outputs/`) para reproducir las comparaciones.
+Auditoría realizada por un equipo de especialistas (fuentes, ingeniería de datos, estadística, econometría, data science, economía, banca, software y UX) con revisión posterior independiente (estadística/economía, banca/datos y auditor académico). Informes completos: `reports/audit/` (diagnóstico v1) y `reports/phase2/` (implementación y debate v2). Todas las cifras proceden de scripts ejecutados; la v1 original (notebooks, datos brutos y salidas) se ha retirado del árbol de trabajo y queda recuperable en el commit `6b418c6` (`git checkout 6b418c6`); las cifras v1 citadas en este documento proceden de esa versión y se conservan como registro histórico.
 
 ## 1. Coherencia de cifras documentadas
 | Cifra del README v1 | Verificación | Resultado |
@@ -14,7 +14,7 @@ Auditoría realizada por un equipo de especialistas (fuentes, ingeniería de dat
 ## 2. Hallazgos críticos de la v1 y su resolución
 | Problema | Evidencia | Solución v2 | Validación |
 |---|---|---|---|
-| `Hipotecas_Total` mal leída (miles sin ceros finales: «17.49» = 17.490) | 382 provincia-trimestre (8,7 %) en 39 provincias; faltaban 1,24 M de hipotecas (7,7 %) | Reingesta desde la API del INE; v1 corregida para comparar (`data/processed/v1_corrected/`) | Suma de provincias = total INE (ratio 1,0 en 284 periodos); validador de formato numérico |
+| `Hipotecas_Total` mal leída (miles sin ceros finales: «17.49» = 17.490) | 382 provincia-trimestre (8,7 %) en 39 provincias; faltaban 1,24 M de hipotecas (7,7 %) | Reingesta desde la API del INE; comparación con la v1 hecha durante la auditoría (cifras históricas de la v1 del commit `6b418c6`) | Suma de provincias = total INE (ratio 1,0 en 284 periodos); validador de formato numérico |
 | Dataset maestro no reconstruible (falta `transmision_prov_trim_tot.csv`, `try/except` ocultaba el error) | Reconstrucción solo con una regla no escrita en el código | Pipeline por conectores con snapshots, hashes y `build_master --from-raw` | 24+ tests de datos |
 | PIB pc provincial 2024 imputado (no publicado) | Todas las provincias de una CCAA crecen igual con tasas redondas | Eliminado; solo datos publicados | `panel_anual.csv` con estado por dato |
 | Series empalmadas (población extranjera Padrón→Inclusión, transmisiones MIVAU→INE, índice de materiales = media de 14 subíndices) | Saltos +21–29 % en 2023 | Una sola fuente homogénea por variable (ECP del INE, ETDP desde 2007, índice de coste de construcción de Eurostat) | Diccionario con fuente y tabla por variable |
@@ -24,7 +24,7 @@ Auditoría realizada por un equipo de especialistas (fuentes, ingeniería de dat
 | Selección de modelo con el test 2022–2025 | 17/17 provincias elegían la dummy que ganaba en su propio test | Selección con objetivos ≤ 2021Q4; hold-out aparte | `reports/phase2/02_ds_v2.md` |
 | Asesor: tipo mostrado ≠ tipo de la cuota; `tanh` sin base; «Aprobada/Denegada»; SHAP «cumple AI Act» | 13 de 14 perfiles con tipo mostrado superior (mediana +0,72 pp) | Simulador de capacidad con estrés +3 pp, parámetros ilustrativos, sin decisión automática | 18 vectores idénticos en Python y TypeScript |
 | App: ejecución arbitraria de código, clave de sesión y credenciales por defecto, marca CaixaBank (74 menciones, logo enlazado de su web) | Demostrado en `reports/audit/07_software.md` | App v2 de solo lectura (factory, CSRF, límites, CSP), marca neutra «Atalaya» | Tests de rutas, seguridad y marca |
-| Scraping de Tinsa pese a condiciones de uso restrictivas | Términos de tinsa.es | Precio principal = valor tasado MIVAU (VDP006), correlación de tasas 0,79 y ratio de niveles 1,00 frente a Tinsa | Tinsa solo legado; no se publica en app ni web |
+| Scraping de Tinsa pese a condiciones de uso restrictivas | Términos de tinsa.es | Precio principal = valor tasado MIVAU (VDP006), correlación de tasas 0,79 y ratio de niveles 1,00 frente a Tinsa (cifras históricas de la auditoría) | Tinsa retirada del repositorio: ni datos, ni conector, ni publicación |
 
 ## 3. Debate entre revisores y arbitraje
 **Estadística/economía** (24 cifras contrastadas con artefactos, todas coinciden; sin leakage con el hold-out). Aceptado y documentado: la forma trimestral de 2026 de la demanda no es fiable; el escenario base coincide con el naive por compensación de errores; las bandas adverso/favorable son sensibilidades mecánicas; el precio plano choca con el +12,5 % interanual observado; la afirmación sobre cointegración es «no concluyente», no «inexistente»; ninguna lectura causal. Corregidos en la web: descripción invertida de VAR/VECM, suma de cuantiles trimestrales como banda anual, frase de «mejora limitada». No se reentrenó nada para no romper el protocolo pre-especificado.
@@ -39,12 +39,12 @@ Puntuación estimada por eje (0–10): calidad de datos 8 · ingeniería de dato
 **Cinco preguntas difíciles y respuesta defendible**
 1. *¿Por qué VAR en diferencias y no VECM?* Johansen con bootstrap p = 0,168 y Engle-Granger p = 0,63; con 3 retardos p = 0,024 y con IPV p = 0,086, así que es frágil; además α de hipotecas = +0,045 (n.s.) y β recursivo inestable. La regla se fijó antes de ver el resultado; el VECM se conserva como sensibilidad.
 2. *¿Por qué nadie bate al naive?* Es el resultado honesto del hold-out (U de Theil 1,14–1,46): a estos horizontes la demanda es casi un paseo aleatorio. El valor del proyecto está en los escenarios condicionales y en haber eliminado la ilusión de precisión de la v1.
-3. *¿Por qué sustituir Tinsa por MIVAU?* Condiciones de uso y trazabilidad. Medias casi idénticas (1.406,9 vs 1.408,2 €/m²), diferencia relativa mediana 5,9 %; Tinsa queda como legado.
+3. *¿Por qué sustituir Tinsa por MIVAU?* Condiciones de uso y trazabilidad. Medias casi idénticas (1.406,9 vs 1.408,2 €/m²), diferencia relativa mediana 5,9 %; Tinsa se ha retirado del repositorio por completo (la comparación procede de la v1 del commit `6b418c6`).
 4. *¿Hay pseudo-replicación en el panel?* Sí: las variables nacionales aportan solo 81–86 observaciones independientes, no 4.368. Por eso se usa Driscoll-Kraay (7,6 veces el error de OLS en el ejemplo), efectos temporales y panel centrado transversalmente, donde la elasticidad al precio es ≈0.
 5. *¿Qué estatus regulatorio tiene el asesor?* Es informativo; no evalúa solvencia. La evaluación de solvencia de personas físicas es alto riesgo (Reglamento (UE) 2024/1689, anexo III) y, según la verificación realizada, el Reglamento (UE) 2026/1744 aplaza sus obligaciones al 2/12/2027 (leído en un considerando, no en el artículo modificado). SHAP no basta para cumplir.
 
 ## 5. Pendiente / no resuelto
-- Decisión del autor sobre los datos de Tinsa ya versionados (columna del panel, CSV v1 e historial).
+- Los datos de Tinsa ya versionados quedan en el historial git (commits anteriores y commit `6b418c6`); el árbol de trabajo no los contiene. Decisión del autor sobre reescribir el historial.
 - Ejecutar `update-data.yml` en GitHub con `workflow_dispatch` (solo corre desde `main`; esta rama no se ha fusionado) y revisar la rama `datos/auto-update`.
 - Eurostat no respondía en la última comprobación (HTTP 404 y luego 500 en `sts_copi_q`); el último snapshot sigue siendo válido.
 - Re-ejecutar o reescribir los notebooks sobre los datos v2 si el tribunal exige notebooks vigentes.

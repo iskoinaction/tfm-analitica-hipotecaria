@@ -22,7 +22,7 @@ Fuentes oficiales ──► src/ingestion (conector por fuente) ──► data/r
 | Directorio | Contenido |
 |---|---|
 | `src/common/` | geografía INE canónica, periodos, HTTP (reintentos, timeouts), IO, configuración |
-| `src/ingestion/` | `ine.py`, `ecb.py`, `eurostat.py`, `vivienda.py` (MIVAU), `tinsa.py` (legado, desactivado), `fiscalidad.py` (watcher BOE), `registry.py` |
+| `src/ingestion/` | `ine.py`, `ecb.py`, `eurostat.py`, `vivienda.py` (MIVAU), `fiscalidad.py` (watcher BOE), `registry.py` |
 | `src/pipelines/` | `update_all.py` (`--dry-run`, `--source`, `--since`, `--rebuild`), `build_master.py`, `generate_forecasts.py` |
 | `src/models/` | `econometrics/`, `forecasting/`, `demand/` |
 | `src/advisor/` | motor del simulador hipotecario (sin Flask) |
@@ -30,8 +30,7 @@ Fuentes oficiales ──► src/ingestion (conector por fuente) ──► data/r
 | `artifacts/` | resultados generados (JSON/CSV) que consumen la app y la web |
 | `Web/atalaya/` | app Flask: factory, blueprints, servicios que **solo leen artefactos** (no entrenan al arrancar), seguridad (CSRF, límites, CSP), `/healthz`, `/readyz` |
 | `site/` | web independiente de presentación; `npm run sync-data` copia datos reales a `public/data/` |
-| `reports/audit/`, `reports/phase2/` | auditoría v1 y registros de implementación v2 |
-| `notebooks acabados/`, `Datos sucios/`, `Datos ya metidos/`, `outputs/`, `web scrapping/` | **línea base v1 conservada** para comparaciones antes/después; no se actualiza |
+| `reports/audit/`, `reports/phase2/` | auditoría de la v1 (histórico; la v1 original está en el commit `6b418c6`) y registros de implementación v2 |
 
 **Principios:** un conector independiente por fuente; nunca se sobrescribe un raw; los modelos solo se recalibran si cambia una variable de la que dependen (`data/metadata/model_dependencies.yaml`); la app y la web no contienen cifras de modelos escritas a mano; si falta un artefacto muestran un estado vacío con el comando para generarlo.
 

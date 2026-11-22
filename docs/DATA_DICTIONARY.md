@@ -15,11 +15,10 @@
 | `ccaa_code` |  |  |  |  | clave/estructura |  | Código INE de CCAA |
 | `quarter_start` |  |  |  |  | clave/estructura |  | Fecha de inicio del trimestre |
 | `compraventas_viviendas_num` | provincia | número | M | sum | ine | 6150 | Compraventas de viviendas inscritas (ETDP, régimen y estado: general). |
-| `hipotecas_fincas_total_num` | provincia | número | M | sum | ine | 3200 | Hipotecas constituidas sobre el total de fincas (comparable con Hipotecas_Total v1). |
+| `hipotecas_fincas_total_num` | provincia | número | M | sum | ine | 3200 | Hipotecas constituidas sobre el total de fincas. |
 | `hipotecas_viviendas_importe` | provincia | miles de euros | M | sum | ine | 3200 | Importe de hipotecas constituidas sobre viviendas. |
 | `hipotecas_viviendas_num` | provincia | número | M | sum | ine | 3200 | Hipotecas constituidas sobre viviendas (número). Objetivo principal v2. |
-| `precio_m2_mivau_tasado` | provincia | €/m² | Q | none | mivau | VDP006_01 | Valor tasado medio de vivienda libre €/m² (MIVAU, todas las tasaciones). Alternativa oficial a Tinsa. |
-| `precio_m2_tinsa` | provincia | €/m² | Q | none | tinsa | legacy_v1_csv | Valor medio €/m² (Tinsa IMIE, provincias). |
+| `precio_m2_mivau_tasado` | provincia | €/m² | Q | none | mivau | VDP006_01 | Valor tasado medio de vivienda libre €/m² (MIVAU, todas las tasaciones). |
 | `tasa_paro` | provincia | % | Q | none | ine | 65349 | Tasa de paro EPA (ambos sexos). |
 | `ipc_indice` | ccaa | índice base 2025=100 | M | mean | ine | 76136 | IPC índice general (base 2025), media trimestral. Ámbito CCAA. |
 | `ipc_var_anual` | ccaa | % | M | mean | ine | 76136 | IPC índice general, variación anual (media de los meses del trimestre). Ámbito CCAA. |
@@ -27,7 +26,7 @@
 | `diferencial_tae_euribor` | nacional | p.p. |  |  | derivada |  | Diferencial TAE vivienda − Euríbor 12M (antes 'Spread_Hipotecas') |
 | `diferencial_tedr_euribor` | nacional | p.p. |  |  | derivada |  | Diferencial tipo sin comisiones − Euríbor 12M |
 | `euribor_12m` | zona_euro | % | M | mean | ecb | FM+MIR | Euríbor a 12 meses, media mensual; trimestral = media de los 3 meses. |
-| `indice_coste_construccion` | nacional | índice 2021=100 | Q | none | eurostat | sts_copi_q | Índice general de costes de construcción de edificios residenciales nuevos (STS, Eurostat), sustituye a Indice_Materiales v1. |
+| `indice_coste_construccion` | nacional | índice 2021=100 | Q | none | eurostat | sts_copi_q | Índice general de costes de construcción de edificios residenciales nuevos (STS, Eurostat). |
 | `indice_mano_obra_construccion` | nacional | índice base 1980 | M | mean | ine | 8377 | Índice de coste de mano de obra en la construcción (MIVAU, difundido por el INE), media trimestral. |
 | `pib_nominal_meur` | nacional | millones de euros corrientes | Q | none | ine | 67821 | PIB trimestral nominal (CNTR, no ajustado). |
 | `pib_nominal_meur_sa` | nacional | millones de euros corrientes | Q | none | ine | 67821 | PIB trimestral nominal (CNTR, ajustado de estacionalidad y calendario). |
@@ -65,11 +64,10 @@
 | `ccaa_code` |  |  |  |  | clave/estructura |  | Código INE de CCAA |
 | `quarter_start` |  |  |  |  | clave/estructura |  | Fecha de inicio del trimestre |
 | `compraventas_viviendas_num` | provincia | número | M | sum | ine | 6150 | Compraventas de viviendas inscritas (ETDP, régimen y estado: general). |
-| `hipotecas_fincas_total_num` | provincia | número | M | sum | ine | 3200 | Hipotecas constituidas sobre el total de fincas (comparable con Hipotecas_Total v1). |
+| `hipotecas_fincas_total_num` | provincia | número | M | sum | ine | 3200 | Hipotecas constituidas sobre el total de fincas. |
 | `hipotecas_viviendas_importe` | provincia | miles de euros | M | sum | ine | 3200 | Importe de hipotecas constituidas sobre viviendas. |
 | `hipotecas_viviendas_num` | provincia | número | M | sum | ine | 3200 | Hipotecas constituidas sobre viviendas (número). Objetivo principal v2. |
-| `precio_m2_mivau_tasado` | provincia | €/m² | Q | none | mivau | VDP006_01 | Valor tasado medio de vivienda libre €/m² (MIVAU, todas las tasaciones). Alternativa oficial a Tinsa. |
-| `precio_m2_tinsa` | provincia | €/m² | Q | none | tinsa | legacy_v1_csv | Valor medio €/m² (Tinsa IMIE, provincias). |
+| `precio_m2_mivau_tasado` | provincia | €/m² | Q | none | mivau | VDP006_01 | Valor tasado medio de vivienda libre €/m² (MIVAU, todas las tasaciones). |
 | `tasa_paro` | provincia | % | Q | none | ine | 65349 | Tasa de paro EPA (ambos sexos). |
 | `ipc_indice` | ccaa | índice base 2025=100 | M | mean | ine | 76136 | IPC índice general (base 2025), media trimestral. Ámbito CCAA. |
 | `ipc_var_anual` | ccaa | % | M | mean | ine | 76136 | IPC índice general, variación anual (media de los meses del trimestre). Ámbito CCAA. |
@@ -77,7 +75,7 @@
 | `diferencial_tae_euribor` | nacional | p.p. |  |  | derivada |  | Diferencial TAE vivienda − Euríbor 12M (antes 'Spread_Hipotecas') |
 | `diferencial_tedr_euribor` | nacional | p.p. |  |  | derivada |  | Diferencial tipo sin comisiones − Euríbor 12M |
 | `euribor_12m` | zona_euro | % | M | mean | ecb | FM+MIR | Euríbor a 12 meses, media mensual; trimestral = media de los 3 meses. |
-| `indice_coste_construccion` | nacional | índice 2021=100 | Q | none | eurostat | sts_copi_q | Índice general de costes de construcción de edificios residenciales nuevos (STS, Eurostat), sustituye a Indice_Materiales v1. |
+| `indice_coste_construccion` | nacional | índice 2021=100 | Q | none | eurostat | sts_copi_q | Índice general de costes de construcción de edificios residenciales nuevos (STS, Eurostat). |
 | `indice_mano_obra_construccion` | nacional | índice base 1980 | M | mean | ine | 8377 | Índice de coste de mano de obra en la construcción (MIVAU, difundido por el INE), media trimestral. |
 | `pib_nominal_meur` | nacional | millones de euros corrientes | Q | none | ine | 67821 | PIB trimestral nominal (CNTR, no ajustado). |
 | `pib_nominal_meur_sa` | nacional | millones de euros corrientes | Q | none | ine | 67821 | PIB trimestral nominal (CNTR, ajustado de estacionalidad y calendario). |
@@ -105,10 +103,10 @@
 | `diferencial_tae_euribor` | nacional | p.p. |  |  | derivada |  | Diferencial TAE vivienda − Euríbor 12M (antes 'Spread_Hipotecas') |
 | `diferencial_tedr_euribor` | nacional | p.p. |  |  | derivada |  | Diferencial tipo sin comisiones − Euríbor 12M |
 | `euribor_12m` | zona_euro | % | M | mean | ecb | FM+MIR | Euríbor a 12 meses, media mensual; trimestral = media de los 3 meses. |
-| `hipotecas_fincas_total_num` | nacional | número | M | sum | ine | 3200 | Hipotecas constituidas sobre el total de fincas (comparable con Hipotecas_Total v1). |
+| `hipotecas_fincas_total_num` | nacional | número | M | sum | ine | 3200 | Hipotecas constituidas sobre el total de fincas. |
 | `hipotecas_viviendas_importe` | nacional | miles de euros | M | sum | ine | 3200 | Importe de hipotecas constituidas sobre viviendas. |
 | `hipotecas_viviendas_num` | nacional | número | M | sum | ine | 3200 | Hipotecas constituidas sobre viviendas (número). Objetivo principal v2. |
-| `indice_coste_construccion` | nacional | índice 2021=100 | Q | none | eurostat | sts_copi_q | Índice general de costes de construcción de edificios residenciales nuevos (STS, Eurostat), sustituye a Indice_Materiales v1. |
+| `indice_coste_construccion` | nacional | índice 2021=100 | Q | none | eurostat | sts_copi_q | Índice general de costes de construcción de edificios residenciales nuevos (STS, Eurostat). |
 | `indice_mano_obra_construccion` | nacional | índice base 1980 | M | mean | ine | 8377 | Índice de coste de mano de obra en la construcción (MIVAU, difundido por el INE), media trimestral. |
 | `ipc_indice` | ccaa | índice base 2025=100 | M | mean | ine | 76136 | IPC índice general (base 2025), media trimestral. Ámbito CCAA. |
 | `ipc_var_anual` | ccaa | % | M | mean | ine | 76136 | IPC índice general, variación anual (media de los meses del trimestre). Ámbito CCAA. |
@@ -117,7 +115,7 @@
 | `pib_nominal_meur_sa` | nacional | millones de euros corrientes | Q | none | ine | 67821 | PIB trimestral nominal (CNTR, ajustado de estacionalidad y calendario). |
 | `pib_volumen_indice` | nacional | índice de volumen encadenado | Q | none | ine | 67822 | PIB trimestral en volumen encadenado (no ajustado). |
 | `pib_volumen_indice_sa` | nacional | índice de volumen encadenado | Q | none | ine | 67822 | PIB trimestral en volumen encadenado (ajustado). |
-| `precio_m2_mivau_tasado` | nacional | €/m² | Q | none | mivau | VDP006_01 | Valor tasado medio de vivienda libre €/m² (MIVAU, todas las tasaciones). Alternativa oficial a Tinsa. |
+| `precio_m2_mivau_tasado` | nacional | €/m² | Q | none | mivau | VDP006_01 | Valor tasado medio de vivienda libre €/m² (MIVAU, todas las tasaciones). |
 | `tae_vivienda` | nacional | % | M | mean | ecb | FM+MIR | TAE (APRC) de nuevas operaciones de préstamos a hogares para vivienda, España. |
 | `tasa_ahorro_hogares` | nacional | % de la renta disponible | Q | none | ine | SERIE:CTNFSI11271,CTNFSI11270 | Tasa de ahorro de hogares e ISFLSH, serie original no ajustada (CTNFSI11271). |
 | `tasa_ahorro_hogares_sa` | nacional | % de la renta disponible | Q | none | ine | SERIE:CTNFSI11271,CTNFSI11270 | Tasa de ahorro de hogares e ISFLSH, ajustada de estacionalidad y calendario (CTNFSI11270). |
@@ -130,4 +128,3 @@
 | `poblacion_ecp` |  |  |  |  | clave/estructura |  | Población ECP nacional en la fecha de stock más reciente <= inicio del trimestre (sin interpolar) |
 | `poblacion_ecp_fecha` |  |  |  |  | clave/estructura |  | Fecha de referencia del stock de población usado |
 | `pib_pc_trimestral_eur` |  |  |  |  | clave/estructura |  | PIB nominal trimestral (no ajustado) / población ECP (euros por habitante y trimestre) |
-| `precio_m2_tinsa_pond_pob` |  |  |  |  | clave/estructura |  | Media de precio_m2_tinsa de las 52 provincias ponderada por población ECP a 1-ene del año |

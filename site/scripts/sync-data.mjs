@@ -35,9 +35,6 @@ const LIMITS = {
   imageBytes: 1.5 * 1024 * 1024,
   images: 12,
 };
-// Restricción legal: las condiciones de uso de Tinsa prohíben explotar su contenido sin autorización.
-// Ninguna columna, variable o fichero cuyo nombre contenga "tinsa" se publica en la web.
-const EXCLUDED = /tinsa/i;
 const SKIP_DIRS = new Set(['inputs', 'cache', 'boe_cache', '__pycache__', 'tmp', '.ipynb_checkpoints']);
 
 const log = (...a) => console.log('[sync-data]', ...a);
@@ -49,7 +46,7 @@ function walk(dir, { exts, maxDepth = 6 } = {}, depth = 0) {
   if (!exists(dir) || depth > maxDepth) return [];
   const out = [];
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (e.name.startsWith('.') || EXCLUDED.test(e.name)) continue;
+    if (e.name.startsWith('.')) continue;
     const p = path.join(dir, e.name);
     if (e.isDirectory()) {
       if (SKIP_DIRS.has(e.name)) continue;
@@ -59,29 +56,10 @@ function walk(dir, { exts, maxDepth = 6 } = {}, depth = 0) {
   return out.sort();
 }
 
-// Elimina del contenido publicado cualquier registro (fila o entrada de catálogo) que identifique una serie de Tinsa.
-const ID_KEYS = new Set(['dataset', 'fuente', 'source', 'nombre', 'columna', 'target', 'variable', 'key', 'name', 'serie', 'id', 'file', 'archivo', 'check']);
-function scrub(v) {
-  if (Array.isArray(v)) {
-    return v
-      .filter((e) => {
-        if (e && typeof e === 'object' && !Array.isArray(e)) return !Object.entries(e).some(([k, x]) => ID_KEYS.has(k) && typeof x === 'string' && EXCLUDED.test(x));
-        if (Array.isArray(e)) return !e.some((x) => typeof x === 'string' && EXCLUDED.test(x) && x.length < 80);
-        return true;
-      })
-      .map(scrub);
-  }
-  if (v && typeof v === 'object') {
-    const o = {};
-    for (const [k, x] of Object.entries(v)) { if (!EXCLUDED.test(k)) o[k] = scrub(x); }
-    return o;
-  }
-  return v;
-}
 function writeJSON(relOut, obj) {
   const p = path.join(OUT, relOut);
   fs.mkdirSync(path.dirname(p), { recursive: true });
-  fs.writeFileSync(p, JSON.stringify(scrub(obj)));
+  fs.writeFileSync(p, JSON.stringify(obj));
   return 'data/' + relOut.split(path.sep).join('/');
 }
 
@@ -123,11 +101,10 @@ function coerce(v) {
 function csvToTable(p, maxRows = LIMITS.csvRows) {
   const rows = parseCSV(fs.readFileSync(p, 'utf8').replace(/^﻿/, ''));
   const header = rows.shift() || [];
-  const keep = header.map((c, i) => (EXCLUDED.test(c) ? -1 : i)).filter((i) => i >= 0);
-  const columns = keep.map((i) => header[i]);
+  const keep = header.map((_, i) => i);
+  const columns = header.slice();
   const truncated = rows.length > maxRows;
-  const excluded = header.filter((c) => EXCLUDED.test(c));
-  return { columns, rows: rows.slice(0, maxRows).map((r) => keep.map((i) => coerce(r[i] ?? ''))), n_rows: rows.length, truncated, ...(excluded.length ? { excluded_columns: excluded } : {}) };
+  return { columns, rows: rows.slice(0, maxRows).map((r) => keep.map((i) => coerce(r[i] ?? ''))), n_rows: rows.length, truncated };
 }
 
 // ───────────── Slots ─────────────
@@ -212,9 +189,6 @@ function syncArtifacts() {
           item.file = writeJSON(path.join('artifacts', d, name), JSON.parse(fs.readFileSync(f, 'utf8')));
         } else if (ext === '.csv') {
           const t = csvToTable(f);
-          const before = t.rows.length;
-          t.rows = t.rows.filter((r) => !r.some((v) => typeof v === 'string' && EXCLUDED.test(v)));
-          if (t.rows.length < before) t.excluded_rows = before - t.rows.length;
           item.file = writeJSON(path.join('artifacts', d, name.replace(/\.csv$/i, '.json')), t);
           item.n_rows = t.n_rows; item.truncated = t.truncated;
         } else if (ext === '.md') {

@@ -27,7 +27,7 @@ export function Econometrics() {
   const fevdItem = items.find((i) => /^fevd.*\.csv$/i.test(i.name) && i.file);
   const urItem = items.find((i) => /unit_root.*\.csv$/i.test(i.name) && i.file);
   const imgs = items.filter((i) => /\.(png|svg|jpe?g|webp)$/i.test(i.name) && i.file);
-  const [tab, setTab] = useState<'var' | 'raices' | 'coint' | 'lp' | 'irf' | 'fevd' | 'antes' | 'diag'>('var');
+  const [tab, setTab] = useState<'var' | 'raices' | 'coint' | 'lp' | 'irf' | 'fevd' | 'diag'>('var');
   const d = main.data;
   const meta = d?.metadatos as Obj | undefined;
   const decision = d?.decision as Obj | undefined;
@@ -64,7 +64,7 @@ export function Econometrics() {
           )}
           <Tabs label="Resultados econométricos" value={tab} onChange={setTab} tabs={[
             { id: 'var', label: 'VAR en diferencias' }, { id: 'coint', label: 'Cointegración' }, { id: 'lp', label: 'VECM (sensibilidad)' }, { id: 'irf', label: 'Impulso-respuesta' },
-            { id: 'fevd', label: 'Descomposición (FEVD)' }, { id: 'raices', label: 'Raíces unitarias' }, { id: 'antes', label: 'v1 vs v2' }, { id: 'diag', label: 'Diagnóstico' },
+            { id: 'fevd', label: 'Descomposición (FEVD)' }, { id: 'raices', label: 'Raíces unitarias' }, { id: 'diag', label: 'Diagnóstico' },
           ]} />
           <div role="tabpanel">
             {tab === 'var' && <VarDiff d={d} />}
@@ -73,7 +73,6 @@ export function Econometrics() {
             {tab === 'irf' && (irfItem ? <IrfPanel file={irfItem.file!} source={irfItem.source} /> : <Pending what="IRF" expected={['artifacts/econometrics/irf_hipotecas.csv']} />)}
             {tab === 'fevd' && (fevdItem ? <FevdPanel file={fevdItem.file!} source={fevdItem.source} /> : <Pending what="FEVD" expected={['artifacts/econometrics/fevd_hipotecas.csv']} />)}
             {tab === 'raices' && <UnitRoots d={d} file={urItem?.file} source={urItem?.source} />}
-            {tab === 'antes' && <BeforeAfter d={d} />}
             {tab === 'diag' && <Card title="Diagnósticos de residuos y robustez"><JsonView data={{ VECM: (d.VECM as Obj)?.diagnosticos, VAR_diferencias: (d.VAR_diferencias as Obj)?.diagnosticos, ARDL_bounds: d.ARDL_bounds, panel: d.panel }} /></Card>}
           </div>
           {imgs.length > 0 && (
@@ -162,20 +161,6 @@ function UnitRoots({ d, file, source }: { d: Obj; file?: string; source?: string
       </Card>
       {t.data && <Card title="Contrastes detallados (ADF, DF-GLS, PP, KPSS, Zivot-Andrews)" source={source && <>Fuente: <code>{source}</code></>}><DataTable table={t.data} maxRows={12} /></Card>}
     </div>
-  );
-}
-
-function BeforeAfter({ d }: { d: Obj }) {
-  const ad = d.antes_despues as Obj | undefined;
-  const v1 = ad?.v1_documentado as Obj | undefined, v2 = ad?.v2_VECM as Obj | undefined;
-  if (!v1 || !v2) return <JsonView data={ad} />;
-  const keys = Object.keys(v2).filter((k) => k in v1);
-  const val = (x: unknown) => (x && typeof x === 'object' && !Array.isArray(x) ? ((x as Obj).coef_LP ?? (x as Obj).alpha) : x) as number;
-  return (
-    <Card title="Versión 1 documentada frente a versión 2 reproducible" subtitle="Mismos conceptos; la v2 se estima con datos oficiales corregidos y rango contrastado por bootstrap.">
-      <DataTable table={{ columns: ['Parámetro', 'v1 (documentado)', 'v2 (VECM)'], rows: keys.map((k) => [k, val(v1[k]), val(v2[k])]) }} />
-      <p className="xs muted mt-2">Las diferencias de signo y magnitud reflejan la corrección de datos de la v1 (formato de miles en hipotecas, series sustituidas) y no deben leerse como cambios del mercado.</p>
-    </Card>
   );
 }
 

@@ -11,7 +11,7 @@ export function Hero() {
   const cat = useJSON<CatalogEntry[]>(slotFile(manifest, 'sources'));
   const panel = useJSON<PanelIndex>(slotFile(manifest, 'panel_trimestral'));
   const ref = useReveal<HTMLDivElement>();
-  const list = Array.isArray(cat.data) ? cat.data.filter((d) => !/tinsa/i.test(d.fuente)) : [];
+  const list = Array.isArray(cat.data) ? cat.data : [];
   const nSeries = list.reduce((a, d) => a + (d.series_ids?.length ?? 0), 0);
   const orgs = [...new Set(list.map((d) => d.fuente.toUpperCase()))];
   const p = panel.data;

@@ -7,7 +7,7 @@ import { Card, DataTable, ErrorBox, Field, JsonView, Loading, Pending, Section, 
 import { ChoroplethMap, type GeoFC } from '../components/ChoroplethMap';
 import { LineChart, BarChart, type Series } from '../components/charts';
 
-const ORG: Record<string, string> = { ine: 'INE', ecb: 'BCE', bce: 'BCE', eurostat: 'Eurostat', mivau: 'MIVAU', bde: 'Banco de España', tinsa: 'Tinsa' };
+const ORG: Record<string, string> = { ine: 'INE', ecb: 'BCE', bce: 'BCE', eurostat: 'Eurostat', mivau: 'MIVAU', bde: 'Banco de España' };
 const FREQ: Record<string, string> = { M: 'Mensual', Q: 'Trimestral', A: 'Anual', S: 'Semestral', D: 'Diaria' };
 const GEO: Record<string, string> = { provincia: 'Provincial', ccaa: 'Autonómico', nacional: 'Nacional', zona_euro: 'Zona euro' };
 
@@ -39,12 +39,10 @@ export function Sources() {
               <thead><tr><th>Organismo</th><th>Conjunto</th><th>Tabla / id de serie</th><th className="num">Series</th><th>Frecuencia</th><th>Ámbito</th><th>Última modificación en origen</th><th>Extracción</th></tr></thead>
               <tbody>
                 {list.map((d) => {
-                  const excluded = /tinsa/i.test(d.fuente);
                   return (
                     <tr key={d.dataset}>
                       <td><strong>{ORG[d.fuente?.toLowerCase()] ?? d.fuente}</strong></td>
                       <td>{d.url_documentacion ? <a href={d.url_documentacion} target="_blank" rel="noopener noreferrer">{d.dataset}</a> : d.dataset}
-                        {excluded && <div><span className="badge badge--warn">⚠ no publicada en la web</span></div>}
                         {d.metodologia && <div className="xs muted">{d.metodologia.slice(0, 120)}{d.metodologia.length > 120 ? '…' : ''}</div>}</td>
                       <td><code>{d.tabla_o_clave ?? '—'}</code>{d.series_ids && d.series_ids.length <= 3 && <div className="xs muted">{d.series_ids.join(', ')}</div>}</td>
                       <td className="num">{fmtNum(d.series_ids?.length ?? null, 0)}</td>
@@ -58,7 +56,7 @@ export function Sources() {
               </tbody>
             </table>
           </div>
-          <p className="xs muted mt-2">Las series de Tinsa se usaron en la versión 1 del proyecto; sus condiciones de uso no permiten explotar su contenido sin autorización, por lo que esta web no las publica. El precio por m² que se muestra es el valor tasado de vivienda libre del MIVAU.</p>
+          <p className="xs muted mt-2">El precio por m² que se muestra es el valor tasado de vivienda libre del MIVAU.</p>
         </Card>
       )}
       <div className="grid-2 grid-2--even">
@@ -74,7 +72,7 @@ export function Sources() {
           {Object.keys(dict).length ? (
             <DataTable maxRows={8} table={{
               columns: ['Variable', 'Unidad', 'Ámbito', 'Fuente'],
-              rows: Object.values(dict).filter((v) => v.unit && !/tinsa/i.test(v.key)).map((v) => [v.label, v.unit ?? '', GEO[v.geo ?? ''] ?? v.geo ?? '', ORG[v.source ?? ''] ?? v.source ?? '']),
+              rows: Object.values(dict).filter((v) => v.unit).map((v) => [v.label, v.unit ?? '', GEO[v.geo ?? ''] ?? v.geo ?? '', ORG[v.source ?? ''] ?? v.source ?? '']),
             }} />
           ) : <Pending what="Diccionario" expected={['data/metadata/data_dictionary.csv']} />}
         </Card>

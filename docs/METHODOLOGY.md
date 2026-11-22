@@ -6,8 +6,8 @@ Este documento resume las decisiones metodológicas del proyecto y su justificac
 - **Panel provincial:** 52 provincias × trimestres. Claves canónicas: `prov_code` (INE 01–52) y `period` (`YYYYQn`). Resolución de nombres por alias explícitos (`src/common/geography.py`), sin *fuzzy matching*: un nombre desconocido lanza error.
 - **Frecuencia según naturaleza estadística:** las variables anuales (población, población extranjera, edad media, PIB per cápita provincial) se mantienen **anuales** (`panel_anual.csv`). No se interpolan ni se replican por comodidad; `panel_modelado.csv` las une al panel trimestral con `<var>_ref_year` y la regla de disponibilidad (retraso de publicación) de `data/metadata/availability_rules.yaml`.
 - **Variables nacionales y autonómicas** (Euribor, TAE, índices de construcción, IPC…) se identifican con `geo_level` en el diccionario. En el panel solo hay unos 81–86 datos independientes por variable nacional, no 4.368: la inferencia debe tenerlo en cuenta (errores Driscoll-Kraay, efectos temporales).
-- **Objetivo de demanda:** hipotecas sobre **viviendas** (número), suma mensual→trimestral por ser un flujo. El total de fincas se conserva como robustez y para comparar con la v1.
-- **Precio:** valor tasado de vivienda libre del MIVAU (`precio_m2_mivau_tasado`). Tinsa solo como legado de comparación (condiciones de uso). Ver `docs/DATA_SOURCES.md`.
+- **Objetivo de demanda:** hipotecas sobre **viviendas** (número), suma mensual→trimestral por ser un flujo. El total de fincas se conserva como robustez.
+- **Precio:** valor tasado de vivienda libre del MIVAU (`precio_m2_mivau_tasado`). Ver `docs/DATA_SOURCES.md`.
 - **Sin imputación silenciosa:** el PIB provincial de 2024 de la v1 no era un dato publicado y se elimina; los trimestres con datos mensuales incompletos son NaN.
 - **Trazabilidad:** snapshots `data/raw/<fuente>/<AAAAMMDD>/` con hash, `provenance.csv`, catálogo de series, reconciliación suma de provincias = total nacional del INE (ratio 1,0 en los 284 periodos comprobados en la última ejecución).
 

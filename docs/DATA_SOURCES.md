@@ -19,7 +19,6 @@
 | `eurostat_coste_construccion` | eurostat | sts_copi_q | Q | ≈3 meses | 2026-11-21T11:00:00+0100 | 2026-11-21T19:11:53Z | False |
 | `ecb_tipos` | ecb | FM+MIR | M | ≈5 semanas (MIR) | None | 2026-11-21T19:11:53Z | False |
 | `mivau_valor_tasado` | mivau | VDP006_01 | Q | ≈2,5 meses | Thu, 17 Sep 2026 14:46:28 GMT | 2026-11-22T00:24:47Z | False |
-| `tinsa_precio` | tinsa | legacy_v1_csv | Q | ≈1 mes | None | desconocida: CSV generado en v1 por tinsa_scraper.py sin fecha | True |
 
 ## Metodología y documentación por fuente
 
@@ -38,11 +37,10 @@
 - **eurostat_coste_construccion** — Estadísticas coyunturales (STS) de Eurostat, dato remitido por España. ([documentación](https://ec.europa.eu/eurostat/databrowser/view/sts_copi_q/default/table))
 - **ecb_tipos** — BCE: mercados financieros (FM) y estadísticas de tipos de interés de IFM (MIR). ([documentación](https://data.ecb.europa.eu/))
 - **mivau_valor_tasado** — Estadística de Valor Tasado de Vivienda (IOE 20007), Ministerio de Vivienda y Agenda Urbana. ([documentación](https://datos.gob.es/apidata/catalog/dataset/e05233601-valor-tasado-de-la-vivienda.json))
-- **tinsa_precio** — Tinsa IMIE General y Grandes Mercados. Por defecto se reutiliza el CSV v1 (snapshot sin fecha); el scraping es opcional y está desactivado: las condiciones de uso de tinsa.es prohíben la explotación sin autorización (10_source_catalog.yaml). ([documentación](https://www.tinsa.es/precio-vivienda/))
 
 ## Condiciones de uso y decisiones sobre fuentes
 - **INE, BCE, Eurostat, MIVAU:** datos públicos accesibles por API o descarga oficial; se cita siempre el organismo. Revisar el aviso legal de cada uno antes de redistribuir.
-- **Tinsa (precio del m², scraping en la v1):** sus condiciones de uso prohíben explotar el contenido sin autorización expresa. En la v2 el precio principal es el **valor tasado de vivienda libre del MIVAU** (CSV VDP006); la serie de Tinsa queda solo como legado de comparación v1↔v2, con el scraping desactivado y sin publicarse en la app ni en la web.
+- **Tinsa (descartada):** las condiciones de uso de Tinsa prohíben explotar su contenido, por lo que fue sustituida por el valor tasado de vivienda libre del MIVAU (CSV VDP006) por condiciones de uso. No se versiona ni se usa ningún dato de Tinsa; la versión 1 original (commit `6b418c6`) queda solo como referencia histórica.
 - **Financialtools (fiscalidad, scraping en la v1):** sustituida por una tabla propia con vigencias, verificada contra la API de legislación consolidada del BOE (`data/metadata/fiscalidad_vigencias.csv`). Reglas sin verificar: marcadas `verificado=false` y avisadas en la UI.
 - **Ministerio de Inclusión (población extranjera 2023+):** retirada: la v2 usa una única fuente homogénea (INE, Estadística Continua de Población, tabla 59591), sin empalmes.
 - **Proyecciones institucionales (BCE, Banco de España, Comisión Europea, FMI):** versionadas con edición y fecha en `data/metadata/escenarios_macro.yaml`; lo no releído en la fuente está marcado como supuesto.

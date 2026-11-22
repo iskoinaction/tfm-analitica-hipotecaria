@@ -15,7 +15,6 @@ Plataforma reproducible de analítica del mercado hipotecario español: datos of
 | Asesor | `src/advisor` | Simulador de capacidad de pago y costes de compra |
 | Aplicación | `Web/` | Flask de solo lectura que consume `artifacts/` |
 | Presentación | `site/` | Vite + React, 14 secciones y estado del pipeline |
-| Línea base v1 | `notebooks acabados/`, `Datos *`, `outputs/` | Conservada sin cambios (ver `LEEME_V1_HISTORICO.md`) |
 
 ## Cómo reproducir
 ```bash
@@ -41,7 +40,10 @@ La actualización semanal automática (`.github/workflows/update-data.yml`) publ
 [`AUDITORIA_TFM.md`](AUDITORIA_TFM.md) · [`docs/METHODOLOGY.md`](docs/METHODOLOGY.md) · [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) · [`docs/MODEL_VALIDATION.md`](docs/MODEL_VALIDATION.md) · [`docs/DATA_DICTIONARY.md`](docs/DATA_DICTIONARY.md) · [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md) · [`docs/API_PIPELINE.md`](docs/API_PIPELINE.md)
 
 ## Fuentes y licencias
-INE, BCE, Eurostat, Ministerio de Vivienda y Agenda Urbana (valor tasado), BOE (legislación consolidada) y proyecciones del BCE/Comisión Europea. Tinsa solo como legado de comparación (sus condiciones de uso prohíben explotar su contenido sin autorización; no se publica). Ver `docs/DATA_SOURCES.md`.
+INE, BCE, Eurostat, Ministerio de Vivienda y Agenda Urbana (valor tasado), BOE (legislación consolidada) y proyecciones del BCE/Comisión Europea. Ver `docs/DATA_SOURCES.md`.
+
+## Versión 1 original
+La primera versión del proyecto (notebooks, datos brutos y salidas) ya no forma parte del árbol de trabajo; sigue recuperable en el commit `6b418c6` (`git checkout 6b418c6`).
 
 ## Autor
 Trabajo desarrollado en el contexto del Máster en Business Analytics, IA y ML — Universidad Francisco de Vitoria (2025–2026).

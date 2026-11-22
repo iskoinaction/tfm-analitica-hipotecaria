@@ -4,7 +4,7 @@
 ```bash
 python -m src.pipelines.update_all                  # descarga todo, snapshot raw, reconcilia, valida, reconstruye paneles e informe
 python -m src.pipelines.update_all --dry-run        # sin escribir raw/staging/processed
-python -m src.pipelines.update_all --source ine      # ine | ecb | eurostat | mivau | tinsa
+python -m src.pipelines.update_all --source ine      # ine | ecb | eurostat | mivau
 python -m src.pipelines.update_all --dataset ine_hipotecas
 python -m src.pipelines.update_all --since 20250101 # incremental: INE (date=) y BCE (startPeriod), fusionado con el último snapshot
 python -m src.pipelines.update_all --rebuild        # sin red: borra staging/processed y reconstruye desde el último raw
@@ -23,9 +23,8 @@ Un conector caído no detiene al resto; un dataset con errores de validación co
 | índice coste construcción | Eurostat | API oficial |
 | precio_m2_mivau_tasado | MIVAU VDP006_01.csv | descarga oficial automatizable (CSV fijo, sin API; datos.gob.es) |
 | fiscalidad | `data/metadata/fiscalidad_vigencias.csv` | **curada manual**; no existe API de tipos. Watcher BOE avisa de cambios normativos |
-| precio_m2_tinsa | CSV v1 congelado | **manual/legado**, sin actualización: las condiciones de uso de tinsa.es prohíben su explotación |
 
-Pasos manuales restantes: solo Tinsa (desactivado) y la tabla fiscal.
+Paso manual restante: solo la tabla fiscal.
 
 ## Watcher fiscal
 `src/ingestion/fiscalidad.py` consulta `legislacion-consolidada/id/{boe_id}/metadatos` del BOE para cada norma de la tabla y compara

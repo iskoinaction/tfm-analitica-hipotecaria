@@ -8,7 +8,7 @@ un simulador hipotecario determinista, la aplicación bancaria, resultados, limi
 **Principio:** ninguna cifra se escribe a mano. `scripts/sync-data.mjs` copia y reduce los ficheros reales del repositorio
 (`../artifacts/**`, `../data/metadata/**`, `../data/processed/*`, `../data/forecasts/*`, GeoJSON de `../Web/atalaya/static/geo/`)
 a `public/data/`. Si un artefacto falta, la sección muestra «Pendiente de generar». El precio por m² es solo MIVAU
-(`precio_m2_mivau_tasado`); cualquier serie de Tinsa se excluye en la sincronización (sus condiciones de uso lo prohíben).
+(`precio_m2_mivau_tasado`).
 
 ## Uso local
 
