@@ -1,0 +1,321 @@
+{
+ "started_at": "2026-11-22T00:50:22+00:00",
+ "mode": "dry-run",
+ "filters": {
+  "source": null,
+  "dataset": null
+ },
+ "datasets": {
+  "ine_hipotecas": {
+   "source": "ine",
+   "ref": "3200",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/ine/20261121/ine_hipotecas.json.gz",
+   "origin_last_modified": "Mon Oct 26 09:00:00 CET 2026",
+   "retrieved_at": "2026-11-22T00:51:05Z",
+   "notes": [],
+   "staging": "sin cambios"
+  },
+  "ine_etdp_compraventas": {
+   "source": "ine",
+   "ref": "6150",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/ine/20261121/ine_etdp_compraventas.json.gz",
+   "origin_last_modified": "Tue Nov 17 09:00:00 CET 2026",
+   "retrieved_at": "2026-11-22T00:51:19Z",
+   "notes": [],
+   "staging": "sin cambios"
+  },
+  "ine_epa_paro": {
+   "source": "ine",
+   "ref": "65349",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/ine/20261121/ine_epa_paro.json.gz",
+   "origin_last_modified": "Tue Oct 27 09:00:00 CET 2026",
+   "retrieved_at": "2026-11-22T00:51:44Z",
+   "notes": [],
+   "staging": "sin cambios"
+  },
+  "ine_ipc": {
+   "source": "ine",
+   "ref": "76136",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/ine/20261122/ine_ipc.json.gz",
+   "origin_last_modified": "Fri Nov 13 09:00:00 CET 2026",
+   "retrieved_at": "2026-11-22T00:51:56Z",
+   "notes": [],
+   "staging": "sin cambios"
+  },
+  "ine_ecp_poblacion": {
+   "source": "ine",
+   "ref": "59591",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/ine/20261121/ine_ecp_poblacion.json.gz",
+   "origin_last_modified": "Thu Nov 12 09:00:00 CET 2026",
+   "retrieved_at": "2026-11-22T00:52:38Z",
+   "notes": [],
+   "staging": "sin cambios"
+  },
+  "ine_edad_media": {
+   "source": "ine",
+   "ref": "3199",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/ine/20261121/ine_edad_media.json.gz",
+   "origin_last_modified": "Tue Dec 02 11:00:00 CET 2025",
+   "retrieved_at": "2026-11-22T00:52:56Z",
+   "notes": [],
+   "staging": "sin cambios"
+  },
+  "ine_cre_pib_pc": {
+   "source": "ine",
+   "ref": "82285",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/ine/20261121/ine_cre_pib_pc.json.gz",
+   "origin_last_modified": "Wed Sep 30 11:00:00 CEST 2026",
+   "retrieved_at": "2026-11-22T00:53:14Z",
+   "notes": [],
+   "staging": "sin cambios"
+  },
+  "ine_ipv": {
+   "source": "ine",
+   "ref": "80270",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/ine/20261121_191513/ine_ipv.json.gz",
+   "origin_last_modified": "Mon Sep 07 09:00:00 CEST 2026",
+   "retrieved_at": "2026-11-22T00:53:20Z",
+   "notes": [],
+   "staging": "sin cambios"
+  },
+  "ine_cntr_pib": {
+   "source": "ine",
+   "ref": "67821",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/ine/20261121/ine_cntr_pib.json.gz",
+   "origin_last_modified": "Fri Oct 30 09:00:00 CET 2026",
+   "retrieved_at": "2026-11-22T00:53:23Z",
+   "notes": [],
+   "staging": "sin cambios"
+  },
+  "ine_cntr_pib_vol": {
+   "source": "ine",
+   "ref": "67822",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/ine/20261121/ine_cntr_pib_vol.json.gz",
+   "origin_last_modified": "Fri Oct 30 09:00:00 CET 2026",
+   "retrieved_at": "2026-11-22T00:53:25Z",
+   "notes": [],
+   "staging": "sin cambios"
+  },
+  "ine_tasa_ahorro": {
+   "source": "ine",
+   "ref": "SERIE:CTNFSI11271,CTNFSI11270",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/ine/20261122/ine_tasa_ahorro.json.gz",
+   "origin_last_modified": null,
+   "retrieved_at": "2026-11-22T00:53:26Z",
+   "notes": [],
+   "staging": "sin cambios"
+  },
+  "ine_mano_obra": {
+   "source": "ine",
+   "ref": "8377",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/ine/20261121/ine_mano_obra.json.gz",
+   "origin_last_modified": null,
+   "retrieved_at": "2026-11-22T00:53:27Z",
+   "notes": [],
+   "staging": "sin cambios"
+  },
+  "eurostat_coste_construccion": {
+   "source": "eurostat",
+   "ref": "sts_copi_q",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/eurostat/20261121/eurostat_coste_construccion.json.gz",
+   "origin_last_modified": "2026-11-21T11:00:00+0100",
+   "retrieved_at": "2026-11-22T00:53:28Z",
+   "notes": [],
+   "staging": "sin cambios"
+  },
+  "ecb_tipos": {
+   "source": "ecb",
+   "ref": "FM+MIR",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/ecb/20261121/ecb_tipos.json.gz",
+   "origin_last_modified": null,
+   "retrieved_at": "2026-11-22T00:53:35Z",
+   "notes": [],
+   "staging": "sin cambios"
+  },
+  "mivau_valor_tasado": {
+   "source": "mivau",
+   "ref": "VDP006_01",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/mivau/20261122/mivau_valor_tasado.csv",
+   "origin_last_modified": "Thu, 17 Sep 2026 14:46:28 GMT",
+   "retrieved_at": "2026-11-22T00:53:36Z",
+   "notes": [],
+   "staging": "sin cambios"
+  },
+  "tinsa_precio": {
+   "source": "tinsa",
+   "ref": "legacy_v1_csv",
+   "fetched": true,
+   "changed": false,
+   "snapshot": "/home/user/tfm-analitica-hipotecaria/data/raw/tinsa/20261121/tinsa_precio.csv",
+   "origin_last_modified": null,
+   "retrieved_at": null,
+   "notes": [
+    "modo legacy (ETL_TINSA_SCRAPE!=1)"
+   ],
+   "staging": "sin cambios"
+  }
+ },
+ "issues": [
+  {
+   "check": "fiscal_verificacion",
+   "severity": "info",
+   "target": "fiscalidad_vigencias",
+   "detail": "7 de 45 filas sin verificar",
+   "n": 7
+  }
+ ],
+ "changed_variables": [],
+ "models_to_recalibrate": {},
+ "fiscal_watch": [
+  {
+   "boe_id": "BOA-d-2005-90006",
+   "norma": "DLeg 1/2005 Texto refundido tributos cedidos de Aragón",
+   "fecha_actualizacion_boe": "2025-07-17",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOC-j-2009-90008",
+   "norma": "DLeg 1/2009 Texto refundido tributos cedidos de Canarias",
+   "fecha_actualizacion_boe": "2026-08-14",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOCL-h-2013-90254",
+   "norma": "DLeg 1/2013 Texto refundido tributos cedidos de Castilla y León",
+   "fecha_actualizacion_boe": "2024-07-17",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOCM-m-2010-90068",
+   "norma": "DLeg 1/2010 Texto refundido tributos cedidos de la Comunidad de Madrid",
+   "fecha_actualizacion_boe": "2026-08-31",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOCT-c-2008-90028",
+   "norma": "DLeg 62/2008 Texto refundido tributos cedidos de Cantabria",
+   "fecha_actualizacion_boe": "2026-05-14",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOE-A-1992-28740",
+   "norma": "Ley 37/1992 del IVA",
+   "fecha_actualizacion_boe": "2026-10-07",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOE-A-1993-25359",
+   "norma": "RDLeg 1/1993 Ley ITPAJD: tipo estatal 6 % (art. 11.1.a) con bonificación del 50 % para inmuebles situados en Ceuta o Melilla (art. 57 bis.3)",
+   "fecha_actualizacion_boe": "2026-03-23",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOE-A-1998-8202",
+   "norma": "Ley 13/1997 tramo autonómico IRPF y tributos cedidos (C. Valenciana)",
+   "fecha_actualizacion_boe": "2026-09-18",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOE-A-2011-10542",
+   "norma": "DLeg 1/2010 Texto refundido tributos cedidos de la Región de Murcia",
+   "fecha_actualizacion_boe": "2026-03-17",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOE-A-2011-18161",
+   "norma": "DLeg 1/2011 Texto refundido tributos cedidos de Galicia",
+   "fecha_actualizacion_boe": "2026-05-04",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOE-A-2014-1368",
+   "norma": "Ley 8/2013 de Medidas Tributarias de Castilla-La Mancha",
+   "fecha_actualizacion_boe": "2026-11-10",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOE-A-2014-6925",
+   "norma": "DLeg 1/2014 Texto refundido tributos cedidos de las Illes Balears",
+   "fecha_actualizacion_boe": "2026-07-24",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOE-A-2015-945",
+   "norma": "DLeg 2/2014 Texto refundido tributos cedidos del Principado de Asturias",
+   "fecha_actualizacion_boe": "2026-02-09",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOE-A-2017-13750",
+   "norma": "Ley 10/2017 Texto refundido tributos cedidos de La Rioja",
+   "fecha_actualizacion_boe": "2026-10-29",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOE-A-2018-8159",
+   "norma": "DLeg 1/2018 Texto refundido tributos cedidos de Extremadura",
+   "fecha_actualizacion_boe": "2026-11-12",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOE-A-2021-17915",
+   "norma": "Ley 5/2021 de Tributos Cedidos de Andalucía",
+   "fecha_actualizacion_boe": "2026-01-16",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  },
+  {
+   "boe_id": "BOE-A-2024-6951",
+   "norma": "DLeg 1/2024 Código tributario de Cataluña (libro sexto)",
+   "fecha_actualizacion_boe": "2026-11-19",
+   "fecha_verificacion": "2026-11-22",
+   "revision_requerida": false
+  }
+ ],
+ "finished_at": "2026-11-22T00:53:44+00:00"
+}
