@@ -39,6 +39,7 @@ def _configure_logging(level: str) -> None:
 def create_app(config_name: str | None = None, overrides: dict | None = None) -> Flask:
     cfg = get_config(config_name)
     app = Flask(__name__, static_folder="static", template_folder="templates")
+    app.json.ensure_ascii = False  # tildes legibles en el JSON embebido (tojson escapa <, >, &, ' para HTML)
     app.config.from_object(cfg)
     if overrides:
         app.config.update(overrides)

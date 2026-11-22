@@ -59,10 +59,29 @@ function walk(dir, { exts, maxDepth = 6 } = {}, depth = 0) {
   return out.sort();
 }
 
+// Elimina del contenido publicado cualquier registro (fila o entrada de catálogo) que identifique una serie de Tinsa.
+const ID_KEYS = new Set(['dataset', 'fuente', 'source', 'nombre', 'columna', 'target', 'variable', 'key', 'name', 'serie', 'id', 'file', 'archivo', 'check']);
+function scrub(v) {
+  if (Array.isArray(v)) {
+    return v
+      .filter((e) => {
+        if (e && typeof e === 'object' && !Array.isArray(e)) return !Object.entries(e).some(([k, x]) => ID_KEYS.has(k) && typeof x === 'string' && EXCLUDED.test(x));
+        if (Array.isArray(e)) return !e.some((x) => typeof x === 'string' && EXCLUDED.test(x) && x.length < 80);
+        return true;
+      })
+      .map(scrub);
+  }
+  if (v && typeof v === 'object') {
+    const o = {};
+    for (const [k, x] of Object.entries(v)) { if (!EXCLUDED.test(k)) o[k] = scrub(x); }
+    return o;
+  }
+  return v;
+}
 function writeJSON(relOut, obj) {
   const p = path.join(OUT, relOut);
   fs.mkdirSync(path.dirname(p), { recursive: true });
-  fs.writeFileSync(p, JSON.stringify(obj));
+  fs.writeFileSync(p, JSON.stringify(scrub(obj)));
   return 'data/' + relOut.split(path.sep).join('/');
 }
 
@@ -238,14 +257,17 @@ function syncPanel() {
     const iProv = col(/^(prov_code|cod_prov|provincia_code)$/i);
     const iPer = col(/^(period|periodo|trimestre|year|anio|año)$/i);
     const iName = col(/^(prov_name|provincia|nombre)$/i);
+    const iCcaa = col(/^ccaa_code$/i);
     if (iProv < 0 || iPer < 0) { slot(key, { title: name, note: 'No se encontraron columnas prov_code/period', sources: [rel(f)] }); continue; }
     const skip = new Set([iProv, iPer, iName, col(/^(ccaa|ccaa_code|ccaa_name|geo_level|is_projection|freq)$/i)].filter((i) => i >= 0));
     const numericCols = t.columns.map((c, i) => i).filter((i) => !skip.has(i) && t.rows.some((r) => typeof r[i] === 'number'));
     const periods = [...new Set(t.rows.map((r) => String(r[iPer])))].sort();
     const provinces = {};
+    const ccaa = {};
     for (const r of t.rows) {
       const code = String(r[iProv]).padStart(2, '0');
       if (!provinces[code]) provinces[code] = iName >= 0 ? String(r[iName]) : code;
+      if (iCcaa >= 0 && r[iCcaa] != null && !ccaa[code]) ccaa[code] = String(r[iCcaa]).padStart(2, '0');
     }
     const vars = [];
     for (const i of numericCols) {
@@ -266,7 +288,7 @@ function syncPanel() {
     }
     slot(key, {
       title: name, status: 'ok', sources: [rel(f)], updated: mtime(f),
-      files: [writeJSON(path.join('panel', key, '_index.json'), { periods, provinces, variables: vars, n_rows: t.n_rows, sha256: sha256(f) })],
+      files: [writeJSON(path.join('panel', key, '_index.json'), { periods, provinces, ccaa, variables: vars, n_rows: t.n_rows, sha256: sha256(f) })],
     });
   }
 }
@@ -328,13 +350,16 @@ const ringArea = (r) => Math.abs(r.slice(0, -1).reduce((a, p, i) => a + p[0] * r
 function syncGeo() {
   const cands = [
     ...walk(path.join(ROOT, 'data', 'metadata', 'geo'), { exts: ['.geojson', '.json'] }),
+    path.join(ROOT, 'Web', 'atalaya', 'static', 'geo', 'provincias.min.geojson'),
     path.join(ROOT, 'Web', 'static', 'spain-provinces.geojson'),
     path.join(ROOT, 'Web', 'static', 'data', 'spain-provinces.geojson'),
   ].filter(exists);
   if (!cands.length) { slot('geo', { title: 'GeoJSON provincial' }); return; }
   const src = cands[0];
   const g = JSON.parse(fs.readFileSync(src, 'utf8'));
-  const eps = 0.02, nd = 3, minArea = 0.005;
+  // Si el origen ya viene simplificado (*.min.geojson) solo se normaliza; si no, Douglas-Peucker.
+  const pre = /\.min\.|simplif/i.test(path.basename(src));
+  const eps = pre ? 0 : 0.02, nd = 3, minArea = pre ? 0 : 0.005;
   const features = g.features.map((f) => {
     const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
     const sorted = [...polys].sort((a, b) => ringArea(b[0]) - ringArea(a[0]));
@@ -344,13 +369,13 @@ function syncGeo() {
     return {
       type: 'Feature',
       properties: { prov_code: code, name: p.name ?? p.nombre ?? code, ccaa_code: p.cod_ccaa != null ? String(p.cod_ccaa).padStart(2, '0') : null },
-      geometry: { type: 'MultiPolygon', coordinates: kept.map((pl) => pl.map((r) => simplifyRing(r, eps, nd))) },
+      geometry: { type: 'MultiPolygon', coordinates: pre ? kept : kept.map((pl) => pl.map((r) => simplifyRing(r, eps, nd))) },
     };
   });
   const file = writeJSON('geo/provincias.json', { type: 'FeatureCollection', features });
   slot('geo', {
     title: 'GeoJSON provincial simplificado', status: 'ok', files: [file], sources: [rel(src)], updated: mtime(src),
-    note: `Simplificado: Douglas-Peucker ${eps}°, ${nd} decimales, islotes < ${minArea} grados² descartados; ${features.length} provincias.`,
+    note: pre ? `GeoJSON ya simplificado en el repositorio (${rel(src)}); ${features.length} provincias.` : `Simplificado: Douglas-Peucker ${eps}°, ${nd} decimales, islotes < ${minArea} grados² descartados; ${features.length} provincias.`,
   });
 }
 

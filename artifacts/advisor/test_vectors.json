@@ -520,7 +520,7 @@
     "plazo_anios": 30,
     "modalidad": "mixto",
     "tin_pct": 2.5,
-    "diferencial_pct": 0.8,
+    "tin_variable_pct": 3.8,
     "anios_fijos": 5,
     "fecha_operacion": "2026-11-22"
    },
@@ -529,8 +529,8 @@
     "plazo_meses": 360,
     "tin_inicial_pct": 2.5,
     "cuota_mensual": 612.54,
-    "cuota_estres": 949.29,
-    "total_intereses": 93856.94,
+    "cuota_estres": 947.68,
+    "total_intereses": 93440.82,
     "gastos": {
      "ITP (transmisiones patrimoniales onerosas)": 14000.0,
      "Notaría compraventa (arancel base)": 412.02,
@@ -542,10 +542,10 @@
     "ltv": 0.7751,
     "lti": 5.168,
     "dsti": 0.245,
-    "dsti_estres": 0.3797,
+    "dsti_estres": 0.3791,
     "semaforo": "ambar",
-    "tin_tramo_variable_pct": 3.8186,
-    "cuota_tras_periodo_fijo": 707.1
+    "tin_tramo_variable_pct": 3.8,
+    "cuota_tras_periodo_fijo": 705.71
    }
   },
   {

@@ -163,3 +163,25 @@ def extend_quantiles(qt: pd.DataFrame, H: int) -> pd.DataFrame:
             h0 = max([x for x in hs if x < h], default=hs[0])
             out[h] = qt.loc[h0, ["q_low", "q_high"]].values * np.sqrt(h / h0)
     return pd.DataFrame(out, index=["q_low", "q_high"]).T
+
+
+def interval_coverage(df: pd.DataFrame, model: str, horizons=None, q=(C.PI_LOW, C.PI_HIGH), additive=False) -> pd.DataFrame:
+    """Cobertura EMPÍRICA en el hold-out de los intervalos construidos SOLO con errores de la ventana de selección
+    (objetivos <= SEL_END). Nominal = q_high - q_low. Se calcula sobre todas las unidades y orígenes por horizonte."""
+    d = df[df.model == model]
+    d = d[(d.y > 0) & (d.yhat > 0)] if not additive else d
+    sel, ho = d[d.window == "seleccion"], d[d.window == "holdout"]
+    rows = []
+    for h in sorted(ho.h.unique()):
+        if horizons is not None and h not in horizons:
+            continue
+        a, b = sel[sel.h == h], ho[ho.h == h]
+        if len(a) < 8 or len(b) == 0:
+            continue
+        e = np.log(a.y / a.yhat)
+        lo, hi = e.quantile(q[0]), e.quantile(q[1])
+        eh = np.log(b.y / b.yhat)
+        rows.append({"model": model, "h": int(h), "n_seleccion": len(a), "n_holdout": len(b),
+                     "nominal": q[1] - q[0], "cobertura_holdout": float(((eh >= lo) & (eh <= hi)).mean()),
+                     "q_low_log": float(lo), "q_high_log": float(hi)})
+    return pd.DataFrame(rows)

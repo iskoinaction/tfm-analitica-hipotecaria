@@ -30,7 +30,7 @@ CASES = [
     ("ceuta_usada_bonificada", dict(provincia="51", precio_vivienda=150000, aportacion=40000, ingresos_netos_mensuales=2200, edad=30, plazo_anios=30, modalidad="fijo", tin_pct=3.0)),
     ("canarias_nueva_igic_no_modelado", dict(provincia="35", precio_vivienda=200000, tipo_vivienda="nueva", aportacion=60000, ingresos_netos_mensuales=2500, edad=33, plazo_anios=30, modalidad="fijo", tin_pct=3.0)),
     ("navarra_no_verificado", dict(provincia="31", precio_vivienda=220000, aportacion=60000, ingresos_netos_mensuales=2800, edad=36, plazo_anios=30, modalidad="fijo", tin_pct=3.0)),
-    ("mixto_5_anios", dict(provincia="41", precio_vivienda=200000, aportacion=60000, ingresos_netos_mensuales=2500, edad=34, plazo_anios=30, modalidad="mixto", tin_pct=2.5, diferencial_pct=0.8, anios_fijos=5)),
+    ("mixto_5_anios", dict(provincia="41", precio_vivienda=200000, aportacion=60000, ingresos_netos_mensuales=2500, edad=34, plazo_anios=30, modalidad="mixto", tin_pct=2.5, tin_variable_pct=3.8, anios_fijos=5)),
     ("variable_semaforo_rojo", dict(provincia="08", precio_vivienda=400000, aportacion=110000, ingresos_netos_mensuales=3200, edad=35, plazo_anios=30, modalidad="variable", tin_pct=3.4, otras_deudas_mensuales=300)),
     ("edad_60_plazo_recortado", dict(provincia="18", precio_vivienda=180000, aportacion=80000, ingresos_netos_mensuales=3000, edad=60, plazo_anios=30, modalidad="fijo", tin_pct=3.0)),
     ("14_pagas_y_tasacion_inferior", dict(provincia="15", precio_vivienda=200000, valor_tasacion=180000, aportacion=50000, numero_pagas=14, ingresos_netos_mensuales=2000, edad=31, plazo_anios=30, modalidad="fijo", tin_pct=3.0)),

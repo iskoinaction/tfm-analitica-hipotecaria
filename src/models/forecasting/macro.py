@@ -256,12 +256,13 @@ def project_quarterly(panel: pd.DataFrame, var: str, chosen: str, models: dict, 
     """Proyección hasta 2030Q4 con el modelo elegido. Intervalos empíricos (cuantiles 10/90 del error de backtest
     del modelo por horizonte, todas las provincias, objetivos <= fin del hold-out)."""
     cfg = cfg or S.load_yaml()
-    additive = var == "paro"
-    qfun = empirical_abs_quantiles if additive else empirical_log_quantiles
-    qt = extend_quantiles(qfun(bt, chosen, max_target=C.HOLDOUT_END_Q), PATH_H_Q + 4)
+    additive = False  # intervalos multiplicativos (log) también para el paro: evita bandas negativas sin imponer suelos
+    qt = extend_quantiles(empirical_log_quantiles(bt, chosen, max_target=C.HOLDOUT_END_Q), PATH_H_Q + 4)
     wide = panel.pivot(index="period", columns="prov_code", values=var).sort_index()
     rows = []
-    scen_list = S.SCENARIOS if (var == "paro" and chosen == "ancla_nacional_revierte") else ["base"]
+    # Paro: la senda de escenarios se obtiene SIEMPRE desplazando el modelo seleccionado con la diferencia entre la senda
+    # nacional del escenario y la base (supuesto documentado, no un modelo validado); el resto de variables: solo base.
+    scen_list = S.SCENARIOS if var == "paro" else ["base"]
     pooled_fc = None
     if chosen == "lightgbm_pooled":
         last = wide.dropna(how="all").index[-1]
@@ -285,13 +286,17 @@ def project_quarterly(panel: pd.DataFrame, var: str, chosen: str, models: dict, 
             else:
                 vals = models[chosen](s.values, H)
                 mname = chosen
+            off = np.zeros(len(fut))
+            if var == "paro" and scen != "base":
+                d = national_paro_path(scen, national, cfg) - national_paro_path("base", national, cfg)
+                off = d.reindex(fut).fillna(0.0).values
+                mname = f"{mname} + desvío del escenario nacional (supuesto)"
             for i, p in enumerate(fut):
                 h = i + 1
                 lo, hi = qt.loc[h, "q_low"], qt.loc[h, "q_high"]
                 v = float(vals[i])
-                rows.append({"prov_code": pc, "period": str(p), "variable": var, "escenario": scen, "valor": v,
-                             "p10": v + lo if additive else v * np.exp(lo), "p90": v + hi if additive else v * np.exp(hi),
-                             "modelo": mname})
+                rows.append({"prov_code": pc, "period": str(p), "variable": var, "escenario": scen, "valor": v + off[i],
+                             "p10": v * np.exp(lo) + off[i], "p90": v * np.exp(hi) + off[i], "modelo": mname})
     return pd.DataFrame(rows)
 
 
@@ -305,7 +310,10 @@ def project_annual(annual: pd.DataFrame, var: str, chosen: str, bt: pd.DataFrame
         last = int(s.index[-1])
         years = list(range(last + 1, C.PROJ_END_Y + 1))
         H = len(years)
-        scen_list = S.SCENARIOS if (var == "pib_pc" and chosen == "ancla_nacional") else ["base"]
+        scen_list = S.SCENARIOS if var == "pib_pc" else ["base"]
+        gb = None
+        if var == "pib_pc":
+            gb = S.annual_path("pib_pc_growth", "base", cfg, years=range(last + 1, C.PROJ_END_Y + 1))
         for scen in scen_list:
             if chosen == "ancla_nacional":
                 g = S.annual_path("pib_pc_growth", scen, cfg, years=range(2025, C.PROJ_END_Y + 1))
@@ -320,8 +328,13 @@ def project_annual(annual: pd.DataFrame, var: str, chosen: str, bt: pd.DataFrame
             else:
                 vals = U.log_drift(s.values, H)
                 mname = chosen
+            fac = np.ones(H)
+            if var == "pib_pc" and scen != "base" and chosen != "ancla_nacional":
+                gs = S.annual_path("pib_pc_growth", scen, cfg, years=range(last + 1, C.PROJ_END_Y + 1))
+                fac = np.cumprod([(1 + gs[y] / 100) / (1 + gb[y] / 100) for y in years])
+                mname = f"{mname} x desvío del escenario nacional CE (supuesto)"
             for i, y in enumerate(years):
-                v = float(vals[i])
+                v = float(vals[i]) * fac[i]
                 rows.append({"prov_code": pc, "period": str(y), "variable": var, "escenario": scen, "valor": v,
                              "p10": v * np.exp(qt.loc[i + 1, "q_low"]), "p90": v * np.exp(qt.loc[i + 1, "q_high"]),
                              "modelo": mname})

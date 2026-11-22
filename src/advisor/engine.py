@@ -127,6 +127,7 @@ def validate(payload: dict) -> dict:
         errs.append({"campo": "modalidad", "mensaje": "valores: 'fijo' | 'variable' | 'mixto'"})
     out["tin_pct"] = _num(p, "tin_pct", errs, lo=-1, hi=20)
     out["diferencial_pct"] = _num(p, "diferencial_pct", errs, lo=-1, hi=10)
+    out["tin_variable_pct"] = _num(p, "tin_variable_pct", errs, lo=-1, hi=20)  # solo mixto: fija el TIN del tramo variable
     out["anios_fijos"] = _num(p, "anios_fijos", errs, lo=1, hi=30, integer=True,
                               default=pol["mercado"]["mixto_anios_fijos_por_defecto"])
     out["gastos_tasacion"] = _num(p, "gastos_tasacion", errs, lo=0, hi=10000, default=pol["gastos_supuestos"]["tasacion_eur"])
@@ -143,7 +144,7 @@ def validate(payload: dict) -> dict:
         errs.append({"campo": "escenario", "mensaje": "valores: 'base' | 'adverso' | 'favorable'"})
     unknown = set(p) - {"provincia", "precio_vivienda", "superficie_m2", "tipo_vivienda", "vivienda_habitual", "aportacion",
                         "valor_tasacion", "numero_pagas", "ingresos_netos_mensuales", "otras_deudas_mensuales", "edad",
-                        "plazo_anios", "modalidad", "tin_pct", "diferencial_pct", "anios_fijos", "gastos_tasacion",
+                        "plazo_anios", "modalidad", "tin_pct", "tin_variable_pct", "diferencial_pct", "anios_fijos", "gastos_tasacion",
                         "gestoria_compraventa", "fecha_operacion", "escenario_anio", "escenario"}
     if unknown:
         errs.append({"campo": ",".join(sorted(unknown)), "mensaje": "campos no reconocidos"})
@@ -251,7 +252,7 @@ def resolve_rate(v: dict, pol: dict) -> tuple[dict, list]:
             info.update({"tin_inicial_pct": round(tin_var, 4), "euribor_usado": eur, "diferencial_usado": dif, "origen": origen})
         else:  # mixto
             tin_fijo = v["tin_pct"] if v["tin_pct"] is not None else mk["tin_referencia"]
-            info.update({"tin_inicial_pct": round(tin_fijo, 4), "tin_tramo_variable_pct": round(eur + dif, 4),
+            info.update({"tin_inicial_pct": round(tin_fijo, 4), "tin_tramo_variable_pct": round(v["tin_variable_pct"] if v["tin_variable_pct"] is not None else eur + dif, 4),
                          "euribor_usado": eur, "diferencial_usado": dif, "anios_fijos": v["anios_fijos"],
                          "origen": "usuario" if v["tin_pct"] is not None else "mercado"})
         if v["diferencial_pct"] is None:
