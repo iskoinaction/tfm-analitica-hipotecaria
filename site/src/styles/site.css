@@ -197,3 +197,5 @@ main { min-width: 0; padding-bottom: var(--space-16); }
 .nowrap { white-space: nowrap; }
 .mt-2 { margin-top: var(--space-2); } .mt-4 { margin-top: var(--space-4); } .mt-6 { margin-top: var(--space-6); }
 .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex: none; }
+
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("../../fonts/inter-latin-wght-normal.woff2") format("woff2"); }
