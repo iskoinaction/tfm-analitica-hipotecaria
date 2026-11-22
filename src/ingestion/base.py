@@ -36,7 +36,7 @@ def period_label(ref_date: pd.Timestamp, freq: str) -> str:
 class Connector:
     source = "base"
 
-    def fetch(self, spec: config.DatasetSpec, dry_run: bool = False) -> FetchResult:  # pragma: no cover
+    def fetch(self, spec: config.DatasetSpec, dry_run: bool = False, since: str | None = None) -> FetchResult:  # pragma: no cover
         raise NotImplementedError
 
     def parse(self, payload, spec: config.DatasetSpec, snapshot_meta: dict) -> pd.DataFrame:  # pragma: no cover

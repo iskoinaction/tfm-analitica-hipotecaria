@@ -23,6 +23,10 @@ def _panel_or_503():
         abort(503, description=str(e))
 
 
+def _meta(var: str) -> dict:
+    return panel().var_meta(var)
+
+
 def _var_arg(default: str) -> str:
     var = request.args.get("var", default)
     if var not in VARIABLES:
@@ -60,12 +64,12 @@ def panel_variables():
 @rate_limit("RATELIMIT_DEFAULT")
 def panel_series():
     data = _panel_or_503()
-    var, prov = _var_arg("hipotecas_total"), _prov_arg()
+    var, prov = _var_arg("hipotecas_viviendas_num"), _prov_arg()
     try:
         s = panel().province_series(var, prov) if prov else panel().national_series(var)
     except KeyError:
         abort(404, description="Variable no disponible en el panel")
-    return jsonify(var=var, label=VARIABLES[var]["label"], unit=VARIABLES[var]["unit"], var_source=VARIABLES[var].get("source"),
+    return jsonify(var=var, label=_meta(var)["label"], unit=_meta(var)["unit"], var_source=_meta(var).get("source"),
                    scope=province_name(prov) if prov else "España",
                    aggregation=None if prov else s.get("agg_label"), source=data.source_label,
                    is_legacy=data.is_legacy, x=s["x"], values=s["values"])
@@ -83,8 +87,8 @@ def panel_choropleth():
         used, values = panel().by_province(var, period)
     except KeyError:
         abort(404, description="Variable no disponible en el panel")
-    return jsonify(var=var, label=VARIABLES[var]["label"], unit=VARIABLES[var]["unit"], var_source=VARIABLES[var].get("source"), period=used,
-                   scope_note=VARIABLES[var]["scope"], source=data.source_label, is_legacy=data.is_legacy,
+    return jsonify(var=var, label=_meta(var)["label"], unit=_meta(var)["unit"], var_source=_meta(var).get("source"), period=used,
+                   scope_note=_meta(var).get("geo_level") or "provincia", source=data.source_label, is_legacy=data.is_legacy,
                    values=values)
 
 
@@ -92,7 +96,7 @@ def panel_choropleth():
 @rate_limit("RATELIMIT_DEFAULT")
 def panel_ranking():
     data = _panel_or_503()
-    var = _var_arg("hipotecas_total")
+    var = _var_arg("hipotecas_viviendas_num")
     try:
         n = max(3, min(int(request.args.get("n", 10)), 52))
     except ValueError:
@@ -101,7 +105,7 @@ def panel_ranking():
         r = panel().ranking(var, request.args.get("period") or None, n)
     except KeyError:
         abort(404, description="Variable no disponible en el panel")
-    return jsonify(var=var, label=VARIABLES[var]["label"], unit=VARIABLES[var]["unit"], var_source=VARIABLES[var].get("source"),
+    return jsonify(var=var, label=_meta(var)["label"], unit=_meta(var)["unit"], var_source=_meta(var).get("source"),
                    source=data.source_label, is_legacy=data.is_legacy, **r)
 
 

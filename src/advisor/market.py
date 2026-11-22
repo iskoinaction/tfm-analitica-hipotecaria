@@ -74,7 +74,10 @@ def market_reference(tipo: str, market: pd.DataFrame, ventana: int = 4) -> dict:
     var = _stat(market["tedr_variable"], ventana)
     out = {"euribor_12m": eur, "tae_media_mercado": tae, "tedr_medio_todas_fijaciones": tedr,
            "tedr_medio_variable": var, "fuentes": {k: {"descripcion": a, "serie": b} for k, (a, b) in SERIES_INFO.items()},
-           "naturaleza": "media de mercado publicada (no es una oferta personalizada)"}
+           "naturaleza": "media de mercado publicada (no es una oferta personalizada)",
+           "nota_rango": ("rango = mín–máx de las medias de los últimos trimestres publicados; NO es un intervalo de "
+                          "predicción (cubre el dato del trimestre siguiente en torno al 30 % de las veces, ver "
+                          "artifacts/advisor/estimator_validation.json)")}
     if tipo == "fijo" or tipo == "mixto":
         out["tin_referencia"] = tedr["ultimo"]
         out["tin_rango"] = [tedr["min"], tedr["max"]]

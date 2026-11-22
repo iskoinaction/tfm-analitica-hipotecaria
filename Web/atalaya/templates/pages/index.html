@@ -25,10 +25,10 @@
   </section>
 
   <div class="views">
-    {{ series_card("chart-hip", "Hipotecas sobre viviendas", "hipotecas_total", "Número de hipotecas constituidas por trimestre. Total nacional (suma de provincias).", span=6) }}
+    {{ series_card("chart-hip", "Hipotecas sobre viviendas", "hipotecas_viviendas_num", "Número de hipotecas constituidas sobre viviendas por trimestre. Total nacional.", span=6) }}
     {{ map_card("map-res", variables, "precio_m2_mivau_tasado", span=6) }}
-    {{ series_card("chart-eur", "Euríbor y diferencial hipotecario", "euribor", "Series nacionales trimestrales (%).", extra_var="spread_hipotecas", span=6) }}
-    {{ ranking_card("rank-hip", "Provincias con más hipotecas (último trimestre)", "hipotecas_total", span=6) }}
+    {{ series_card("chart-eur", "Euríbor y diferencial hipotecario", "euribor_12m", "Series nacionales trimestrales (%).", extra_var="diferencial_tae_euribor", span=6) }}
+    {{ ranking_card("rank-hip", "Provincias con más hipotecas (último trimestre)", "hipotecas_viviendas_num", span=6) }}
   </div>
 {% else %}
   {{ panel_missing() }}

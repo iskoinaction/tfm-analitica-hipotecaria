@@ -59,7 +59,7 @@ def parse_vdp006(raw: bytes, var: str = "precio_m2_mivau_tasado", unit: str = "‚
 class MivauConnector(Connector):
     source = "mivau"
 
-    def fetch(self, spec, dry_run=False) -> FetchResult:
+    def fetch(self, spec, dry_run=False, since: str | None = None) -> FetchResult:  # since: descarga completa (fichero/dataset peque√±o)
         raw, info = http.get(URL, expect="bytes")
         parse_vdp006(raw)  # valida esquema antes de guardar
         meta = {"source": "MIVAU", "dataset": spec.key, "url": URL, "last_modified": info.get("last_modified"),

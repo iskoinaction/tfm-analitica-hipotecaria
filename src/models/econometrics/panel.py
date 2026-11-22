@@ -134,7 +134,7 @@ def mg_pmg(df: pd.DataFrame, y: str, xs: list[str], demean: bool) -> dict:
     if hs < 0:
         hs = None  # Var(MG) - Var(PMG) no semidefinida positiva: contraste no definido
     return {"variables": xs, "demeaned": demean, "N": N, "T": int(Wy.shape[0]),
-            "MG": {x: {"coef": float(a), "se": float(s)} for x, a, s in zip(xs, mg_mean, mg_se)},
+            "MG": {x: {"coef": float(a), "se": float(s), "mediana": float(m)} for x, a, s, m in zip(xs, mg_mean, mg_se, np.median(th, 0))},
             "MG_phi_medio": float(np.mean(ph)),
             "PMG": {x: {"coef": float(a), "se": float(s)} for x, a, s in zip(xs, t, se)},
             "PMG_phi_medio": float(phis.mean()), "PMG_phi_se": float(phis.std(ddof=1) / np.sqrt(N)),

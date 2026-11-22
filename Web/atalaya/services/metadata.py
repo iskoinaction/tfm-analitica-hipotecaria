@@ -9,7 +9,11 @@ import json
 from pathlib import Path
 
 PREFERRED_COLUMNS = [
-    ("id", "Id"), ("name", "Fuente"), ("provider", "Organismo"), ("dataset", "Conjunto"),
+    ("dataset", "Conjunto de datos"), ("fuente", "Organismo"), ("tabla_o_clave", "Tabla / clave"),
+    ("frecuencia", "Frecuencia"), ("retraso_publicacion", "Retraso de publicación"),
+    ("ultima_modificacion_origen", "Última modificación en origen"), ("fecha_extraccion", "Extracción"),
+    ("licencia", "Licencia"), ("url_documentacion", "Documentación"),
+    ("id", "Id"), ("name", "Fuente"), ("provider", "Organismo"),
     ("series_id", "Serie / id"), ("frequency", "Frecuencia"), ("last_period", "Último periodo"),
     ("published", "Publicación"), ("downloaded_at", "Descarga"), ("license", "Licencia"),
     ("status", "Estado"), ("url", "Enlace"),
@@ -27,7 +31,7 @@ def _load(path: Path):
 
 def load_sources(data_dir: Path) -> dict:
     base = Path(data_dir) / "metadata"
-    for name in ("sources.yaml", "sources.yml", "sources.json"):
+    for name in ("series_catalog.yaml", "sources.yaml", "sources.yml", "sources.json"):
         p = base / name
         if p.is_file():
             try:
@@ -41,15 +45,17 @@ def load_sources(data_dir: Path) -> dict:
 
 
 def _to_table(raw) -> dict:
-    if isinstance(raw, dict) and isinstance(raw.get("sources"), (list, dict)):
-        raw = raw["sources"]
+    for key in ("sources", "datasets", "series"):
+        if isinstance(raw, dict) and isinstance(raw.get(key), (list, dict)):
+            raw = raw[key]
+            break
     if isinstance(raw, dict):
         items = [{"id": k, **(v if isinstance(v, dict) else {"name": v})} for k, v in raw.items()]
     elif isinstance(raw, list):
         items = [x if isinstance(x, dict) else {"name": x} for x in raw]
     else:
         items = []
-    present = [(k, label) for k, label in PREFERRED_COLUMNS if any(k in it for it in items)]
+    present = [(k, label) for k, label in PREFERRED_COLUMNS if any(k in it for it in items)][:9]
     if not present:  # esquema desconocido: columnas tal cual (primer nivel, sólo escalares)
         keys: list[str] = []
         for it in items:

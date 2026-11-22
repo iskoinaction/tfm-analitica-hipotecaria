@@ -15,8 +15,16 @@ REQUIRED_COLS = {"KEY", "TIME_PERIOD", "OBS_VALUE"}
 class ECBConnector(Connector):
     source = "ecb"
 
-    def fetch(self, spec, dry_run=False) -> FetchResult:
-        start = f"{config.DOWNLOAD_FROM[:4]}-{config.DOWNLOAD_FROM[4:6]}"
+    def fetch(self, spec, dry_run=False, since: str | None = None) -> FetchResult:
+        """``since`` (AAAAMMDD): pide solo desde ese mes y fusiona con el último snapshot.
+
+        Vintages: la API SDMX del BCE admite ``includeHistory=true`` (versiones anteriores de cada observación);
+        no se usa por defecto, los snapshots fechados hacen de vintage propio."""
+        prev = io.latest_snapshot("ecb", spec.key) if since else None
+        if since and prev is None:
+            since = None
+        frm = since or config.DOWNLOAD_FROM
+        start = f"{frm[:4]}-{frm[4:6]}"
         payload, infos = {}, {}
         for vs in spec.variables:
             key = vs.match["key"]
@@ -28,9 +36,16 @@ class ECBConnector(Connector):
             keep = [c for c in ["KEY", "TIME_PERIOD", "OBS_VALUE", "OBS_STATUS", "TITLE", "UNIT", "UNIT_MULT"] if c in df.columns]
             payload[vs.name] = df[keep].to_dict(orient="list")
             infos[vs.name] = {"url": info["url"], "last_modified": info.get("last_modified"), "rows": len(df)}
+        if since:
+            old = io.read_snapshot(prev[0])
+            for name, d in payload.items():
+                o = pd.DataFrame(old.get(name, {}))
+                if not o.empty:
+                    o = o[o["TIME_PERIOD"].astype(str) < start]
+                    payload[name] = pd.concat([o, pd.DataFrame(d)], ignore_index=True).to_dict(orient="list")
         content_hash = io.sha256_bytes(io.canonical_json(payload))
         meta = {"source": "BCE", "dataset": spec.key, "requests": infos,
-                "series_ids": [v.match["key"] for v in spec.variables],
+                "series_ids": [v.match["key"] for v in spec.variables], "mode": "incremental" if since else "full",
                 "retrieved_at": pd.Timestamp.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "licence": "BCE: reutilización permitida citando la fuente"}
         path, meta, changed = io.save_snapshot("ecb", spec.key, payload, meta, content_hash, dry_run=dry_run)

@@ -6,6 +6,7 @@
     python -m src.pipelines.update_all --dataset ine_hipotecas
     python -m src.pipelines.update_all --rebuild       # sin red: borra staging/processed y reconstruye desde el último raw
     python -m src.pipelines.update_all --rebuild --refetch   # desde cero: descarga, re-stagea todo y reconstruye
+    python -m src.pipelines.update_all --since 20250101      # incremental (INE nult/date, BCE startPeriod)
 
 Pasos: fetch (snapshot raw versionado + sha256 + detección de cambios por hash de contenido y metadatos de
 origen) → parse → reconciliación con el staging anterior (nuevas/revisadas/eliminadas) → validación → staging →
@@ -45,7 +46,7 @@ def select(source=None, dataset=None):
     return out
 
 
-def run(source=None, dataset=None, dry_run=False, rebuild=False, refetch=False) -> dict:
+def run(source=None, dataset=None, dry_run=False, rebuild=False, refetch=False, since=None, fiscal_watch=True) -> dict:
     started = dt.datetime.now(dt.timezone.utc)
     specs = select(source, dataset)
     report = {"started_at": started.isoformat(timespec="seconds"), "mode": "dry-run" if dry_run else ("rebuild" if rebuild else "update"),
@@ -67,7 +68,7 @@ def run(source=None, dataset=None, dry_run=False, rebuild=False, refetch=False) 
                 new = con.stage_from_latest(spec)
                 entry.update(fetched=False, changed=True)
             else:
-                res = con.fetch(spec, dry_run=dry_run)
+                res = con.fetch(spec, dry_run=dry_run, since=None if rebuild else since)
                 entry.update(fetched=True, changed=res.changed, snapshot=res.snapshot,
                              origin_last_modified=res.meta.get("table_last_modified") or res.meta.get("last_modified") or res.meta.get("updated"),
                              retrieved_at=res.meta.get("retrieved_at"), notes=res.notes)
@@ -108,6 +109,19 @@ def run(source=None, dataset=None, dry_run=False, rebuild=False, refetch=False) 
         for m in config.MODEL_DEPENDENCIES.get(v, []):
             recal.setdefault(m, []).append(v)
     report["models_to_recalibrate"] = {k: sorted(v) for k, v in sorted(recal.items())}
+    if fiscal_watch:
+        try:
+            from src.ingestion import fiscalidad
+            ft = fiscalidad.load()
+            report["issues"] += fiscalidad.validate(ft)
+            w = fiscalidad.boe_watch(ft)
+            report["fiscal_watch"] = w
+            for x in w:
+                if x.get("revision_requerida"):
+                    report["issues"].append({"check": "fiscal_watch", "severity": "warning", "target": x["boe_id"],
+                                             "detail": f"revisión fiscal requerida: {x['norma']} actualizada en BOE {x['fecha_actualizacion_boe']} > verificada {x['fecha_verificacion']}", "n": None})
+        except FileNotFoundError:
+            report["issues"].append({"check": "fiscal_watch", "severity": "info", "target": "fiscalidad_vigencias", "detail": "tabla no encontrada", "n": None})
     if not dry_run:
         try:
             b = build_master.build(write=True)
@@ -138,6 +152,10 @@ def write_report(rep: dict, dry_run: bool):
     L += [f"- `{m}` ← {', '.join(v)}" for m, v in rep["models_to_recalibrate"].items()] or ["(ninguno)"]
     L += ["", "## Incidencias de calidad (error/warning)", ""]
     L += [f"- **{i['severity']}** `{i['check']}` {i['target']}: {i['detail']}" for i in rep["issues"] if i["severity"] != "info"] or ["(ninguna)"]
+    if rep.get("fiscal_watch"):
+        L += ["", "## Watcher fiscal (BOE legislación consolidada)", "", "| boe_id | norma | actualización BOE | verificada | ¿revisión? |", "|---|---|---|---|---|"]
+        L += [f"| {x['boe_id']} | {x['norma']} | {x.get('fecha_actualizacion_boe') or x.get('error', '')} | {x.get('fecha_verificacion')} | "
+              f"{'**SÍ**' if x.get('revision_requerida') else 'no'} |" for x in rep["fiscal_watch"]]
     if "outputs" in rep:
         L += ["", "## Salidas", ""] + [f"- `data/processed/{k}.csv`: {v[0]} filas × {v[1]} columnas" for k, v in rep["outputs"].items()]
     (config.ARTIFACTS_DQ / f"update_report_{stamp}.md").write_text("\n".join(L) + "\n", encoding="utf-8")
@@ -150,9 +168,11 @@ def main(argv=None):
     ap.add_argument("--dataset")
     ap.add_argument("--rebuild", action="store_true")
     ap.add_argument("--refetch", action="store_true")
+    ap.add_argument("--since", help="AAAAMMDD: descarga incremental (INE, BCE) fusionada con el último snapshot")
+    ap.add_argument("--no-fiscal-watch", action="store_true")
     a = ap.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s %(message)s")
-    rep = run(a.source, a.dataset, a.dry_run, a.rebuild, a.refetch)
+    rep = run(a.source, a.dataset, a.dry_run, a.rebuild, a.refetch, a.since, not a.no_fiscal_watch)
     errs = [i for i in rep["issues"] if i["severity"] == "error"]
     print(f"Datasets: {len(rep['datasets'])} · variables con cambios: {len(rep['changed_variables'])} · errores: {len(errs)}")
     return 1 if any("error" in e for e in rep["datasets"].values()) else 0

@@ -54,7 +54,7 @@
     <tbody>
     {% for row in sources.rows %}<tr>
       {% for cell in row %}{% set col = sources.columns[loop.index0].key %}
-        <td>{% if col == 'url' and cell and cell.startswith('http') %}<a href="{{ cell }}" rel="noopener noreferrer" target="_blank">enlace</a>{% else %}{{ cell if cell is not none else '—' }}{% endif %}</td>
+        <td>{% if col in ('url', 'url_documentacion') and cell and cell.startswith('http') %}<a href="{{ cell }}" rel="noopener noreferrer" target="_blank">enlace</a>{% else %}{{ cell if cell is not none else '—' }}{% endif %}</td>
       {% endfor %}</tr>
     {% endfor %}
     </tbody>

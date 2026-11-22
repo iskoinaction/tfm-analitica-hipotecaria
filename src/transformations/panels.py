@@ -132,9 +132,9 @@ def build_nacional(q: pd.DataFrame, pt: pd.DataFrame, staging: dict[str, pd.Data
     pop = staging.get("ine_ecp_poblacion")
     if pop is not None:
         p = pop[(pop["variable"] == "poblacion") & (pop["geo_level"] == "nacional")].copy()
-        p["ref_date"] = pd.to_datetime(p["ref_date"])
+        p["ref_date"] = pd.to_datetime(p["ref_date"]).astype("datetime64[ns]")
         p = p.sort_values("ref_date")
-        qs = pd.DataFrame({"period": w.index, "qs": pd.PeriodIndex(w.index, freq="Q").start_time})
+        qs = pd.DataFrame({"period": w.index, "qs": pd.PeriodIndex(w.index, freq="Q").start_time.astype("datetime64[ns]")})
         m = pd.merge_asof(qs.sort_values("qs"), p[["ref_date", "value"]], left_on="qs", right_on="ref_date")
         w["poblacion_ecp"] = m.set_index("period")["value"]
         w["poblacion_ecp_fecha"] = m.set_index("period")["ref_date"].dt.strftime("%Y-%m-%d")

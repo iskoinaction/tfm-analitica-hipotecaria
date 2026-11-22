@@ -85,9 +85,13 @@ class INEConnector(Connector):
             raise http.HttpError(f"Ninguna serie de la tabla {spec.ref} cumple el filtro: ¿ha cambiado la tabla?")
         return out
 
-    def fetch(self, spec, dry_run=False) -> FetchResult:
+    def fetch(self, spec, dry_run=False, since: str | None = None) -> FetchResult:
+        """``since`` (AAAAMMDD): descarga incremental; las observaciones previas se toman del último snapshot."""
         sel = self.select_series(spec)
-        date = f"{config.DOWNLOAD_FROM}:20351231"
+        prev = io.latest_snapshot("ine", spec.key) if since else None
+        if since and prev is None:
+            since = None  # sin snapshot previo no hay incremental posible
+        date = f"{since or config.DOWNLOAD_FROM}:20351231"
 
         def one(cod):
             d, info = http.get(f"{config.INE_BASE}/DATOS_SERIE/{cod}", params={"tip": "AM", "date": date})
@@ -97,13 +101,19 @@ class INEConnector(Connector):
 
         with ThreadPoolExecutor(max_workers=3) as ex:
             series = dict(ex.map(lambda s: one(s["COD"]), sel))
+        if since:
+            old = io.read_snapshot(prev[0])["series"]
+            cut = pd.Timestamp(since)
+            for cod, d in series.items():
+                keep = [o for o in old.get(cod, {}).get("Data", []) if pd.Timestamp(o["Fecha"][:10]) < cut]
+                d["Data"] = keep + d["Data"]
         payload = {"table": spec.ref, "series": series}
         content_hash = io.sha256_bytes(io.canonical_json(payload))
         n_obs = sum(len(s["Data"]) for s in series.values())
         meta = {"source": "INE", "dataset": spec.key, "table": spec.ref,
                 "url": f"{config.INE_BASE}/DATOS_SERIE/<COD>?tip=AM&date={date}",
                 "catalog_url": f"{config.INE_BASE}/DATOS_TABLA/{spec.ref}?nult=1&tip=AM",
-                "n_series": len(series), "n_obs": n_obs, "series_ids": sorted(series),
+                "n_series": len(series), "n_obs": n_obs, "mode": "incremental" if since else "full", "since": since, "series_ids": sorted(series),
                 "table_last_modified": self._table_last_modified(spec),
                 "retrieved_at": pd.Timestamp.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "licence": "INE: reutilización libre citando la fuente (Aviso legal INE)"}

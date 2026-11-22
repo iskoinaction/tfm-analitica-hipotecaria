@@ -32,7 +32,7 @@ def jsonstat_to_frame(d: dict) -> pd.DataFrame:
 class EurostatConnector(Connector):
     source = "eurostat"
 
-    def fetch(self, spec, dry_run=False) -> FetchResult:
+    def fetch(self, spec, dry_run=False, since: str | None = None) -> FetchResult:  # since: descarga completa (fichero/dataset pequeño)
         vs = spec.variables[0]
         params = dict(vs.match, format="JSON", lang="EN")
         d, info = http.get(f"{config.EUROSTAT_BASE}/{spec.ref}", params=params)

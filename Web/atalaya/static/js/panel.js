@@ -50,7 +50,7 @@
   function map(node) {
     var varSel = sel(node.getAttribute("data-var-select"));
     function load() {
-      var v = varSel ? varSel.value : "hipotecas_total";
+      var v = varSel ? varSel.value : "hipotecas_viviendas_num";
       A.fetchJSON(API + "choropleth?" + qs({ var: v })).then(function (r) {
         if (!r.ok) return A.errorState(node, r.data.error || "No se pudo cargar el mapa.", load);
         var d = r.data;

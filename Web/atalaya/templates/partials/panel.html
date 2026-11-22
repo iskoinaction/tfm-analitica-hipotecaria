@@ -51,7 +51,7 @@
       <h2 class="card__title" id="{{ id }}-t">Mapa provincial</h2>
       <p class="card__subtitle">Último trimestre con datos de al menos la mitad de las provincias. Canarias en recuadro.</p>
     </div>
-    {{ var_select(id ~ "-var", variables, selected, only=["precio_m2_mivau_tasado", "hipotecas_total", "transmisiones_total", "tasa_paro", "pib_pc", "ipc"]) }}
+    {{ var_select(id ~ "-var", variables, selected, only=["precio_m2_mivau_tasado", "hipotecas_viviendas_num", "compraventas_viviendas_num", "tasa_paro", "ipc_var_anual", "ipv_general_indice"]) }}
   </div>
   <div data-panel-map data-var-select="{{ id }}-var" data-geojson="{{ url_for('static', filename='geo/provincias.min.geojson') }}" id="{{ id }}">
     <div class="skeleton" aria-hidden="true"></div>

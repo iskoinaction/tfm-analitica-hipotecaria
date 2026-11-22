@@ -27,7 +27,7 @@
   <section class="card" aria-labelledby="rk-t">
     <div class="card__header">
       <h2 class="card__title" id="rk-t">Ranking provincial (último trimestre disponible)</h2>
-      {{ var_select("rk-var", variables, "precio_m2_mivau_tasado", only=["precio_m2_mivau_tasado", "hipotecas_total", "transmisiones_total", "tasa_paro", "pib_pc"]) }}
+      {{ var_select("rk-var", variables, "precio_m2_mivau_tasado", only=["precio_m2_mivau_tasado", "hipotecas_viviendas_num", "compraventas_viviendas_num", "tasa_paro", "ipv_general_indice"]) }}
     </div>
     <div data-panel-ranking="precio_m2_mivau_tasado" data-var-select="rk-var" data-n="15" id="rk"><div class="skeleton" aria-hidden="true"></div></div>
   </section>

@@ -49,7 +49,7 @@ def scraping_enabled() -> bool:
 class TinsaConnector(Connector):
     source = "tinsa"
 
-    def fetch(self, spec, dry_run=False) -> FetchResult:
+    def fetch(self, spec, dry_run=False, since: str | None = None) -> FetchResult:  # since: descarga completa (fichero/dataset pequeño)
         if not scraping_enabled():
             raw = LEGACY_CSV.read_bytes()
             meta = {"source": "Tinsa (vía CSV v1)", "dataset": spec.key, "mode": "legacy",

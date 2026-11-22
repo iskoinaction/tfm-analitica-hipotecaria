@@ -188,13 +188,19 @@ def panel_block(pdata: D.PanelData, seed):
     for c in ("hip", "precio", "pib_pc", "materiales"):
         df[f"l{c}"] = np.log(df[c])
     cols = ["lhip", "lprecio", "lpib_pc", "euribor", "lmateriales"]
-    full = df.groupby("period")[cols].apply(lambda g: g.notna().all().all())
-    periods = full[full].index
-    periods = periods[periods >= pd.Period(C.START, freq="Q-DEC")]
-    df = df[df.period.isin(periods)]
+    df = df[df.period >= pd.Period(C.START, freq="Q-DEC")]
+    # último trimestre con datos en todas las variables para la mayoría de provincias
+    share = df.groupby("period")[cols].apply(lambda g: g.notna().all(axis=1).mean())
+    last = share[share >= 0.9].index.max()
+    df = df[df.period <= last]
+    # panel equilibrado: se excluyen (no se imputan) las provincias con huecos en la ventana
+    bad = sorted(df[df[cols].isna().any(axis=1)].prov_code.unique())
+    df = df[~df.prov_code.isin(bad)]
+    periods = pd.PeriodIndex(sorted(df.period.unique()))
     Wl = wide(df, "lhip")
     T, N = Wl.shape
     out = {"N": N, "T": T, "periodo": [str(periods.min()), str(periods.max())], "hipotecas": pdata.hip_kind,
+           "provincias_excluidas_por_huecos": bad, "entradas": pdata.inputs, "notas": pdata.notes,
            "CD_dlog_hipotecas": cd_test(Wl.diff()), "CD_dlog_precio": cd_test(wide(df, "lprecio").diff())}
     cv = cips_critical(T, N, reps=200, seed=seed)
     out["CIPS_vc_simulados_1_5_10"] = cv
